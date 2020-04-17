@@ -1,0 +1,24 @@
+{% extends "@FOSUser/layout.html.twig" %}
+{% block bodydef %}<body class="landing" oncontextmenu="return false;">{% endblock %}
+
+{% block stylesheets %}
+
+
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/css/styles.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/css/vendor/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/css/vendor/simplebar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/css/vendor/tiny-slider.css')}}">
+
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+
+{% block fos_user_content %}
+    {% include "@FOSUser/Registration/register_content.html.twig" %}
+{% endblock fos_user_content %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('template/app.bundle.min.js')}}"></script>
+{% endblock %}

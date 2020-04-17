@@ -1,0 +1,172 @@
+{% extends 'baseLouay.html.twig' %}
+
+
+{% block body %}
+
+
+
+    <div class="content-grid full">
+        <!-- POST OPEN -->
+        <article class="post-open">
+
+            <!-- POST OPEN COVER -->
+            <figure class="post-open-cover liquid">
+                <img src="{{ asset('template/img/cover/'~Competition.imageC) }}" alt="cover-19">
+            </figure>
+            <!-- /POST OPEN COVER -->
+
+
+
+            <!-- POST OPEN BODY -->
+            <div class="post-open-body">
+                <!-- POST OPEN HEADING -->
+                <div class="post-open-heading">
+                    <!-- POST OPEN TIMESTAMP -->
+                    <p class="post-open-timestamp"><span class="highlighted">
+                            <i class="fa fa-clock-o" style="font-size:15px;color:deepskyblue"></i>
+                            {{ Competition.DateDebut|date('F jS ') }}</span>
+                        <span class="highlighted"></span>
+                        <i class="fa fa-clock-o" style="font-size:15px;color:red"></i>
+                        {{ Competition.DateFin|date('F jS ') }}</p>
+                    <br>
+                    <!-- /POST OPEN TIMESTAMP -->
+                    <!-- TAG LIST -->
+
+
+
+
+                    <!-- /TAG LIST -->
+
+                    <!-- POST OPEN TITLE -->
+                    <h2 class="post-open-title">{{ Competition.Titre }}</h2>
+                    <br>
+                    <p class="post-open-timestamp"><i class="fa fa-diamond" style="font-size:15px;color:deepskyblue"></i><span class="highlighted">&nbsp;{{ Competition.Cout }} </span> </p>
+
+                    <!-- /POST OPEN TITLE -->
+                    <br>
+                    <div class="tag-list">
+                        <!-- TAG ITEM -->
+                        <a class="tag-item secondary" >{{Competition.Typedetalent}}</a>
+                        <!-- /TAG ITEM -->
+
+
+
+                    </div>
+
+                </div>
+                <!-- /POST OPEN HEADING -->
+
+
+                <!-- POST OPEN CONTENT -->
+                <div class="post-open-content">
+
+
+                    <!-- POST OPEN CONTENT BODY -->
+                    <div class="post-open-content-body">
+                        <!-- POST OPEN PARAGRAPH -->
+                        <p class="post-open-paragraph">{{ Competition.Description }}</p>
+                        <!-- /POST OPEN PARAGRAPH -->
+                        <br><br>
+
+                        <!-- META LINE -->
+                        <div class="meta-line">
+                            <!-- META LINE LIST -->
+                            <div class="meta-line-list user-avatar-list">
+                                {% set total = 0 %}
+                                {% for par in Participation if (par.idCompetition.idCompetition == Competition.idCompetition)  %}
+                                    {% set total = total + 1 %}
+
+
+
+                                    <!-- USER AVATAR -->
+                                    <div class="user-avatar micro no-stats">
+                                        <!-- USER AVATAR BORDER -->
+                                        <div class="user-avatar-border">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-22-24"></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR BORDER -->
+
+                                        <!-- USER AVATAR CONTENT -->
+                                        <div class="user-avatar-content">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-image-18-20" data-src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}"></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR CONTENT -->
+                                    </div>
+                                    <!-- /USER AVATAR -->
+
+                                {% endfor %}
+                            </div>
+                            <!-- /META LINE LIST -->
+
+                            <!-- META LINE TEXT -->
+                            <p class="meta-line-text">&nbsp;{{total}} <span>will assist</span></p>
+                            <!-- /META LINE TEXT -->
+                        </div>
+                        <!-- /META LINE -->
+
+
+
+                        <br><br>
+
+                        {% if app.user.typecompte =='Chasseur du talent' %}
+                            <!-- TAG ITEM -->
+                            <a class="post-open-title" href="{{ path('affichercompetition')  }}">Retour</a>
+                            <!-- /TAG ITEM -->
+                        {% elseif  app.user.typecompte =='Simple Utilisateur'%}
+                            <!-- TAG ITEM -->
+                            <a class="post-open-title" href="{{ path('affichercompetitionUser')  }}">Retour</a>
+                            <!-- /TAG ITEM -->
+                        {% else %}
+                            <!-- TAG ITEM -->
+                            <a class="post-open-title" href="{{ path('affichercompetitionAdmin')  }}">Retour</a>
+                            <!-- /TAG ITEM -->
+                        {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                    <!-- /POST OPEN CONTENT BODY -->
+                </div>
+                <!-- /POST OPEN CONTENT -->
+
+
+
+
+            </div>
+            <!-- /POST OPEN BODY -->
+
+
+
+
+        </article>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

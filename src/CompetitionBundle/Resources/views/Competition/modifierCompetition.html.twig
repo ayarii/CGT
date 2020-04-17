@@ -1,0 +1,376 @@
+{% extends 'baseLouay.html.twig' %}
+
+{% block body %}
+
+
+
+    {{ form_start(form) }}
+
+
+    <!-- CONTENT GRID -->
+    <div class="content-grid">
+    <!-- SECTION BANNER -->
+    <div class="section-banner">
+        <!-- SECTION BANNER ICON -->
+        <img class="section-banner-icon" src="{{ asset('template/img/banner/events-icon.png') }}" alt="marketplace-icon">
+        <!-- /SECTION BANNER ICON -->
+
+        <!-- SECTION BANNER TITLE -->
+        <p class="section-banner-title">Modifier Competition</p>
+        <!-- /SECTION BANNER TITLE -->
+
+        <!-- SECTION BANNER TEXT -->
+        <p class="section-banner-text">The best place for the community to buy and sell!</p>
+        <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+
+    <!-- SECTION HEADER -->
+    <div class="section-header">
+        <!-- SECTION HEADER INFO -->
+        <div class="section-header-info">
+            <!-- SECTION PRETITLE -->
+            <p class="section-pretitle">Modifier</p>
+            <!-- /SECTION PRETITLE -->
+
+            <!-- SECTION TITLE -->
+            <h2 class="section-title">Competition</h2>
+            <!-- /SECTION TITLE -->
+        </div>
+        <!-- /SECTION HEADER INFO -->
+    </div>
+    <!-- /SECTION HEADER -->
+
+    <!-- GRID -->
+    <div class="grid grid-9-3 small-space">
+        <!-- GRID COLUMN -->
+        <div class="grid-column">
+            <!-- WIDGET BOX -->
+            <div class="widget-box">
+                <!-- WIDGET BOX TITLE -->
+                <p class="widget-box-title">Entrer les informations</p>
+                <!-- /WIDGET BOX TITLE -->
+
+                <!-- WIDGET BOX CONTENT -->
+                <div class="widget-box-content">
+                    <!-- FORM -->
+                    <form class="form">
+                        <!-- FORM ROW -->
+
+                        <div class="form-item">
+                            <!-- FORM INPUT -->
+                            <div class="form-input small">
+                                <label for="billing-first-name">Titre</label>
+                                {{ form_widget(form.titre,{'attr':{ 'id':'billing-first-name','name':'billing_first_name'}}) }}
+                            </div>
+                            <!-- /FORM INPUT -->
+                        </div>
+                        <!-- /FORM ITEM -->
+
+
+                        <br><br>
+
+
+
+
+
+                        <div class="form-row split">
+                            <div class="container">
+                                <div class='col-md-13'>
+                                    <div class="form-group">
+                                        <div class='input-group date' id='datetimepicker6'>
+
+
+                                            {{ form_widget(form.datedebut,{'attr':{ 'class':'form-control'}}) }}
+                                        </div>
+
+
+                                        <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-md-6'>
+                                <div class="form-group">
+                                    <div class='input-group date' id='datetimepicker7'>
+                                        {{ form_widget(form.datefin,{'attr':{ 'class':'form-control'}}) }}
+                                    </div>
+
+
+                                    <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- FORM ROW -->
+                        <div class="form-row split">
+                            <!-- FORM ITEM -->
+                            <div class="form-item">
+                                <!-- FORM SELECT -->
+                                <div class="form-select">
+                                    <label for="billing-country">Type De Talent</label>
+                                    {{ form_widget(form.typedetalent,{'attr':{ 'id':'billing-country','name':'billing_country'}}) }}
+                                    <!-- FORM SELECT ICON -->
+                                    <svg class="form-select-icon icon-small-arrow">
+                                        <use xlink:href="#svg-small-arrow"></use>
+                                    </svg>
+                                    <!-- /FORM SELECT ICON -->
+                                </div>
+                                <!-- /FORM SELECT -->
+                            </div>
+
+
+                            <!-- /FORM ITEM -->
+
+                            <!-- FORM ITEM -->
+                            <div class="form-item">
+                                <!-- FORM SELECT -->
+
+                                <div class="form-group row">
+                                    <label for="example-number-input" class="collapse-sm col-form-label"></label>
+                                    <div class="col-10">
+                                        {{ form_widget(form.cout,{'attr':{ 'class':'form-control','id':'example-number-input','placeholder':'cout'}}) }}
+
+                                    </div>
+                                </div>
+                                <!-- /FORM SELECT -->
+                            </div>
+                            <!-- /FORM ITEM -->
+                        </div>
+                        <!-- /FORM ROW -->
+
+
+                        <br><br>
+
+
+                        <div class="custom-file">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            {{ form_widget(form.file,{'attr':{ 'id':'customFile','class':'custom-file-input'}})}}
+                        </div>
+
+
+
+
+
+                        <br><br> <br>
+
+                        <!-- FORM ROW -->
+                        <div class="form-row">
+                            <!-- FORM ITEM -->
+                            <div class="form-item">
+                                <!-- FORM INPUT -->
+                                <div class="form-input small medium-textarea">
+                                    {{ form_widget(form.description,{'attr':{ 'id':'billing-details','name':'billing_details','placeholder':'Write any additional details here...'}}) }}
+                                </div>
+                                <!-- /FORM INPUT -->
+                            </div>
+                            <!-- /FORM ITEM -->
+                        </div>
+                        <!-- /FORM ROW -->
+
+
+
+                        <br>
+
+                        <!-- SIDEBAR BOX ITEMS -->
+                        <div class="sidebar-box-items">
+
+                            <!-- BUTTON -->
+                            <p >
+
+                                {{ form_widget(form.valider,{'attr':{ 'class':'button primary'}})}}</p>
+                            <!-- /BUTTON -->
+                        </div>
+                        <!-- /SIDEBAR BOX ITEMS -->
+
+
+                    </form>
+                    <!-- /FORM -->
+                </div>
+                <!-- WIDGET BOX CONTENT -->
+            </div>
+            <!-- /WIDGET BOX -->
+
+        </div>
+        <!-- /GRID COLUMN -->
+
+        {{ form_end(form) }}
+
+
+        <!-- GRID COLUMN -->
+        <div class="grid-column">
+
+            <!-- WIDGET BOX -->
+            <div class="widget-box">
+                <!-- WIDGET BOX SETTINGS -->
+                <div class="widget-box-settings">
+                    <!-- POST SETTINGS WRAP -->
+                    <div class="post-settings-wrap">
+                        <!-- POST SETTINGS -->
+                        <div class="post-settings widget-box-post-settings-dropdown-trigger">
+                            <!-- POST SETTINGS ICON -->
+                            <svg class="post-settings-icon icon-more-dots">
+                                <use xlink:href="#svg-more-dots"></use>
+                            </svg>
+                            <!-- /POST SETTINGS ICON -->
+                        </div>
+                        <!-- /POST SETTINGS -->
+
+                        <!-- SIMPLE DROPDOWN -->
+                        <div class="simple-dropdown widget-box-post-settings-dropdown">
+                            <!-- SIMPLE DROPDOWN LINK -->
+                            <p class="simple-dropdown-link">Widget Settings</p>
+                            <!-- /SIMPLE DROPDOWN LINK -->
+                        </div>
+                        <!-- /SIMPLE DROPDOWN -->
+                    </div>
+                    <!-- /POST SETTINGS WRAP -->
+                </div>
+                <!-- /WIDGET BOX SETTINGS -->
+
+                <!-- WIDGET BOX TITLE -->
+                <p class="widget-box-title">Vos ancien Competition <span class="highlighted">{{ louay|length }}</span></p>
+                <!-- /WIDGET BOX TITLE -->
+
+                <!-- WIDGET BOX CONTENT -->
+                <div class="widget-box-content">
+                    <!-- EVENT PREVIEW LIST -->
+                    <div class="event-preview-list">
+                        <!-- EVENT PREVIEW -->
+                        {% for c in louay %}
+                            <div class="event-preview small">
+                                <!-- EVENT PREVIEW COVER -->
+                                <figure class="event-preview-cover liquid">
+                                    <img src="{{ asset('template/img/cover/'~c.imageC) }}" alt="cover-33">
+                                </figure>
+                                <!-- /EVENT PREVIEW COVER -->
+
+                                <!-- EVENT PREVIEW INFO -->
+                                <div class="event-preview-info">
+                                    <!-- DATE STICKER -->
+                                    <div class="date-sticker">
+                                        <!-- DATE STICKER DAY -->
+                                        <p class="date-sticker-day">{{ c.DateDebut|date('d') }}</p>
+                                        <!-- /DATE STICKER DAY -->
+
+                                        <!-- DATE STICKER MONTH -->
+                                        <p class="date-sticker-month">{{ c.DateDebut|date('F ') }}</p>
+                                        <!-- /DATE STICKER MONTH -->
+                                    </div>
+                                    <!-- /DATE STICKER -->
+
+                                    <!-- EVENT PREVIEW TITLE -->
+                                    <p class="event-preview-title popup-event-information-trigger">{{ c.Titre }}</p>
+                                    <!-- /EVENT PREVIEW TITLE -->
+
+                                    <!-- EVENT PREVIEW TIMESTAMP -->
+                                    <p class="event-preview-timestamp">
+                                        <i class="fa fa-clock-o" style="font-size:15px;color:deepskyblue"></i>
+                                        <span class="bold">{{ c.DateFin|date('F jS ') }}</span>
+                                    </p>
+                                    <!-- /EVENT PREVIEW TIMESTAMP -->
+
+                                    <!-- EVENT PREVIEW TEXT -->
+                                    <p class="event-preview-text">{{ c.Description }}</p>
+                                    <!-- /EVENT PREVIEW TEXT -->
+
+                                    <!-- META LINE -->
+                                    <div class="meta-line">
+                                        <!-- META LINE LIST -->
+                                        <div class="meta-line-list user-avatar-list">
+                                            {% set total = 0 %}
+                                            {% for par in Participation if (par.idCompetition.idCompetition == c.idCompetition)  %}
+                                                {% set total = total + 1 %}
+                                                <!-- USER AVATAR -->
+                                                <div class="user-avatar micro no-stats">
+                                                    <!-- USER AVATAR BORDER -->
+                                                    <div class="user-avatar-border">
+                                                        <!-- HEXAGON -->
+                                                        <div class="hexagon-22-24"></div>
+                                                        <!-- /HEXAGON -->
+                                                    </div>
+                                                    <!-- /USER AVATAR BORDER -->
+
+                                                    <!-- USER AVATAR CONTENT -->
+                                                    <div class="user-avatar-content">
+                                                        <!-- HEXAGON -->
+                                                        <div class="hexagon-image-18-20" data-src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}"></div>
+                                                        <!-- /HEXAGON -->
+                                                    </div>
+                                                    <!-- /USER AVATAR CONTENT -->
+                                                </div>
+                                                <!-- /USER AVATAR -->
+
+                                            {% endfor %}
+                                        </div>
+                                        <!-- /META LINE LIST -->
+
+                                        <!-- META LINE TEXT -->
+                                        <p class="meta-line-text">&nbsp;{{total}} <span>will assist</span></p>
+                                        <!-- /META LINE TEXT -->
+                                    </div>
+                                    <!-- /META LINE -->
+                                </div>
+                                <!-- /EVENT PREVIEW INFO -->
+                            </div>
+                            <!-- /EVENT PREVIEW -->
+                        {% endfor %}
+
+
+                    </div>
+                    <!-- /EVENT PREVIEW LIST -->
+                </div>
+                <!-- WIDGET BOX CONTENT -->
+            </div>
+            <!-- /WIDGET BOX -->
+
+
+        </div>
+        <!-- /GRID COLUMN -->
+
+
+
+
+
+
+
+
+    </div>
+    <!-- /GRID -->
+
+
+
+
+
+
+
+
+
+
+
+    <!-- GRID -->
+    <div class="grid grid-3-6-3 mobile-prefer-content">
+        <!-- GRID COLUMN -->
+        <div class="grid-column">
+
+
+
+        </div>
+        <!-- /GRID COLUMN -->
+    </div>
+    <!-- /GRID COLUMN -->
+
+
+
+
+
+
+
+
+{% endblock %}

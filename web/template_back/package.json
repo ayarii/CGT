@@ -1,0 +1,21 @@
+{
+  "name": "oreo",
+  "version": "1.4.0",
+  "description": "oreo bootstrap4 angular4 admin dashboard",
+  "main": "Gruntfile.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ThemeMakker",
+  "license": "ISC",
+  "dependencies": {
+    "grunt": "^1.0.2"
+  },
+  "devDependencies": {
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-sass": "^2.1.0"
+  }
+}

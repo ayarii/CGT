@@ -1,0 +1,28 @@
+fos_homepage:
+    path:     /home
+    defaults: { _controller: FOSBundle:Security:redirect }
+
+profile:
+    path:     /profile/{id}
+    defaults: { _controller: FOSBundle:ProfileUser:afficherProfile }
+
+sendInvitation:
+    path:     /sendInvitation/{id}
+    defaults: { _controller: FOSBundle:ProfileUser:sendRequest }
+
+afficherInvitation:
+    path:     /afficherInvitation
+    defaults: { _controller: FOSBundle:ProfileUser:afficherRequest }
+
+accept:
+    path:     /accept/{id}
+    defaults: { _controller: FOSBundle:ProfileUser:acceptRequest }
+
+decline:
+    path:     /decline/{id}
+    defaults: { _controller: FOSBundle:ProfileUser:supprimerRequest }
+
+friends:
+    path:     /friends
+    defaults: { _controller: FOSBundle:ProfileUser:afficherFriends }
+

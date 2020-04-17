@@ -1,0 +1,294 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+
+
+<!-- CONTENT GRID -->
+<div class="content-grid">
+    <!-- SECTION BANNER -->
+    <div class="section-banner">
+        <!-- SECTION BANNER ICON -->
+        <img class="section-banner-icon" src="{{ asset('template/img/banner/members-icon.png') }}" alt="messages-icon">
+        <!-- /SECTION BANNER ICON -->
+
+        <!-- SECTION BANNER TITLE -->
+        <p class="section-banner-title">Your Chat</p>
+        <!-- /SECTION BANNER TITLE -->
+        <!-- SECTION BANNER TEXT -->
+        <p class="section-banner-text">Easy Connection with your friends!</p>
+        <!-- /SECTION BANNER TEXT -->
+
+    </div>
+
+
+    {%  for flashMessage in app.session.flashbag.get('succes') %}
+        <div class="alert-success">
+            {{ flashMessage   }}
+
+
+        </div>
+    {% endfor %}
+            <!-- SECTION HEADER -->
+            <div class="section-header">
+                <!-- SECTION HEADER INFO -->
+                <div class="section-header-info">
+                    <!-- SECTION PRETITLE -->
+                    <p class="section-pretitle">My Profile</p>
+                    <!-- /SECTION PRETITLE -->
+
+                    <!-- SECTION TITLE -->
+                    <h2 class="section-title">Chat</h2>
+                    <!-- /SECTION TITLE -->
+                </div>
+                <!-- /SECTION HEADER INFO -->
+
+                <!-- SECTION HEADER ACTIONS -->
+                <div class="section-header-actions">
+                    <!-- SECTION HEADER ACTION -->
+                    <p class="section-header-action">Mark all as Read</p>
+                    <!-- /SECTION HEADER ACTION -->
+
+                    <!-- SECTION HEADER ACTION -->
+                    <p class="section-header-action">Settings</p>
+                    <!-- /SECTION HEADER ACTION -->
+                </div>
+                <!-- /SECTION HEADER ACTIONS -->
+            </div>
+            <!-- /SECTION HEADER -->
+
+
+
+    <!-- Conversatiiiiiiiiiiiionn -->
+
+
+            <!-- CHAT WIDGET WRAP -->
+            <div style="width:2200px"  class="chat-widget-wrap">
+                <!-- CHAT WIDGET -->
+
+
+
+
+
+
+
+
+
+
+                {%  for c in Conversation %}
+                <div class="chat-widget static">
+
+                    <!-- CHAT WIDGET MESSAGES -->
+                    <div class="chat-widget-messages" data-simplebar>
+
+
+
+                        <!-- CHAT WIDGET MESSAGE -->
+                        <div class="chat-widget-message" >
+                            <!-- USER STATUS -->
+                            <div class="user-status">
+                                <a href="{{ path('affich', {'id':c.idConversation})  }}">
+                                <!-- USER STATUS AVATAR -->
+                                <div class="user-status-avatar">
+                                    <!-- USER AVATAR -->
+                                    <div class="user-avatar small no-outline">
+                                        <!-- USER AVATAR CONTENT -->
+                                        <div class="user-avatar-content">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~c.idUFriend.imguser ) }}"></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR CONTENT -->
+
+                                        <!-- USER AVATAR PROGRESS -->
+                                        <div class="user-avatar-progress">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-progress-40-44"></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR PROGRESS -->
+
+                                        <!-- USER AVATAR PROGRESS BORDER -->
+                                        <div class="user-avatar-progress-border">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-border-40-44"></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR PROGRESS BORDER -->
+
+                                        <!-- USER AVATAR BADGE -->
+                                        <div class="user-avatar-badge">
+                                            <!-- USER AVATAR BADGE BORDER -->
+                                            <div class="user-avatar-badge-border">
+                                                <!-- HEXAGON -->
+                                                <div class="hexagon-22-24"></div>
+                                                <!-- /HEXAGON -->
+                                            </div>
+                                            <!-- /USER AVATAR BADGE BORDER -->
+
+                                            <!-- USER AVATAR BADGE CONTENT -->
+                                            <div class="user-avatar-badge-content">
+                                                <!-- HEXAGON -->
+                                                <div class="hexagon-dark-16-18"></div>
+                                                <!-- /HEXAGON -->
+                                            </div>
+                                            <!-- /USER AVATAR BADGE CONTENT -->
+
+                                            <!-- USER AVATAR BADGE TEXT -->
+                                            {% set total = 0 %}
+                                            {% for m in Message if (m.idConversation.idConversation == c.idConversation and ((m.idSender == c.idUFriend) or (m.idReceiver == c.idUFriend)) ) %}
+                                                {% set total = total + 1 %}
+                                            {%endfor%}
+                                                <!-- USER AVATAR BADGE TEXT -->
+                                                <p class="user-avatar-badge-text">{{ total }}</p>
+
+
+
+
+
+
+
+                                                <!-- /USER AVATAR BADGE TEXT -->
+
+                                            <!-- /USER AVATAR BADGE TEXT -->
+                                        </div>
+                                        <!-- /USER AVATAR BADGE -->
+                                    </div>
+                                    <!-- /USER AVATAR -->
+                                </div>
+                                <!-- /USER STATUS AVATAR -->
+
+                                <!-- USER STATUS TITLE -->
+                                <p class="user-status-title"><span class="bold">{{ c.idUFriend }}</span></p>
+                                <!-- /USER STATUS TITLE -->
+
+                                <!-- USER STATUS TEXT -->
+                                <p class="user-status-text">{{ c.Nom }}</p>
+                                <!-- /USER STATUS TEXT -->
+
+                                <!-- USER STATUS TIMESTAMP -->
+                                <p class="user-status-timestamp floaty"> created : {{ c.DateCreation|date }}</p>
+                                <!-- /USER STATUS TIMESTAMP -->
+                                </a>
+                            </div>
+
+
+
+                                    <a onclick="return confirm('confirm deleting Conversation !')" style="height: 50px ;margin-left: 1150px" href="{{ path('suppC', {'id':c.idConversation})  }}">☠</a>
+
+
+
+
+
+                        </div>
+                        <!-- /CHAT WIDGET MESSAGE -->
+
+
+
+
+                    </div>
+                    <!-- /CHAT WIDGET MESSAGES -->
+
+
+                    <!-- CHAT WIDGET FORM -->
+                    <form class="chat-widget-form">
+                        <!-- INTERACTIVE INPUT -->
+                        <div class="interactive-input small">
+                            <input type="text" id="search" name="chat_widget_search_2" placeholder="Search Messages...">
+                            <!-- INTERACTIVE INPUT ICON WRAP -->
+                            <div class="interactive-input-icon-wrap">
+                                <!-- INTERACTIVE INPUT ICON -->
+                                <svg class="interactive-input-icon icon-magnifying-glass">
+                                    <use xlink:href="#svg-magnifying-glass"></use>
+                                </svg>
+                                <!-- /INTERACTIVE INPUT ICON -->
+                            </div>
+                            <!-- /INTERACTIVE INPUT ICON WRAP -->
+
+                            <!-- INTERACTIVE INPUT ACTION -->
+                            <div class="interactive-input-action">
+                                <!-- INTERACTIVE INPUT ACTION ICON -->
+                                <svg class="interactive-input-action-icon icon-cross-thin">
+                                    <use xlink:href="#svg-cross-thin"></use>
+                                </svg>
+                                <!-- /INTERACTIVE INPUT ACTION ICON -->
+                            </div>
+                            <!-- /INTERACTIVE INPUT ACTION -->
+                        </div>
+                        <!-- /INTERACTIVE INPUT -->
+                    </form>
+
+                    <ul class="nav1" id="side-menu">
+                        <ul class="nav1 nav-second-level" id="entitiesNav">
+                        </ul>
+                    </ul><br><br><br><br>
+
+                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function() {
+                            var searchRequest = null;
+                            $("#search").keyup(function() {
+                                var minlength = 1;
+                                var that = this;
+                                var value = $(this).val();
+                                var entitySelector = $("#entitiesNav").html('');
+                                if (value.length >= minlength ) {
+                                    if (searchRequest != null)
+                                        searchRequest.abort();
+                                    searchRequest = $.ajax({
+                                        type: "GET",
+                                        url: "{{ path('ajax_search') }}",
+                                        data: {
+                                            'q' : value
+                                        },
+                                        dataType: "text",
+                                        success: function(msg){
+                                            //we need to check if the value is the same
+                                            if (value===$(that).val()) {
+                                                var result = JSON.parse(msg);
+                                                $.each(result, function(key, arr) {
+                                                    $.each(arr, function(id, value) {
+                                                        if (key === 'posts') {
+                                                            if (id !== 'error') {
+                                                                console.log(value[1]);
+                                                                entitySelector.append('<p  style="font-size: 20px; margin-left: 500px ; font-family: lato Light ; "><img src="/template/img/reaction/happy.png" style="width: 50px; height: 50px"/><a href="/Fos/web/app_dev.php/affichMessages/'+id+'">'+value[0]+'</a></p>');
+                                                            } else {
+                                                                entitySelector.append('<li style="margin-left: 500px" class="errorLi">'+value+'</li>');
+                                                            }
+                                                        }
+                                                    });
+                                                });
+                                            }
+                                        }
+                                    });
+                                }
+                            });
+                        });
+                    </script>
+
+                    <!-- /CHAT WIDGET FORM -->
+                </div>
+                <!-- /CHAT WIDGET -->
+                                                     <!-- Messages -->
+
+
+
+
+                <!-- /CHAT WIDGET -->
+            </div>
+
+            <!-- /CHAT WIDGET WRAP -->
+        </div>
+                {% endfor %}
+
+        <!-- /GRID COLUMN -->
+    </div>
+    <!-- /GRID -->
+</div>
+<!-- /CONTENT GRID -->
+
+
+{% endblock %}

@@ -1,0 +1,558 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="content-grid full">
+        <!-- POST OPEN -->
+        {{ form_start(editform) }}
+        <article class="post-open">
+            <!-- POST OPEN COVER -->
+            <figure class="post-open-cover liquid">
+                <img src="{{ asset('template/img/avatar/'~app.user.imguser) }}" alt="cover-19">
+            </figure>
+            <!-- /POST OPEN COVER -->
+
+            <!-- POST OPEN BODY -->
+            <div class="post-open-body">
+                <!-- POST OPEN HEADING -->
+                <div class="post-open-heading">
+                    <!-- POST OPEN TIMESTAMP -->
+                    <p class="post-open-timestamp"><span class="highlighted">{% if "now" |date("U") + 3600  > post.date|date("U") + 31104000 %}
+                                        {{ ("now" |date("U") + 3600  - post.date |date("U") ) |date("Y") }} Years Ago
+                                    {% elseif "now" |date("U") + 3600  > post.date |date("U") + 2592000 %}
+                                {{ ("now" |date("U") + 3600  - post.date |date("U") ) |date("m") }} Months Ago
+                            {% elseif "now" |date("U") + 3600  > post.date |date("U") + 86400 %}
+                                {{ ("now" |date("U") + 3600  - post.date|date("U") ) |date("d") }} Days Ago
+                            {% elseif "now" |date("U") + 3600  > post.date |date("U") + 3600  %}
+                                {{ ("now" |date("U") + 3600  - post.date |date("U") ) |date("H") }} Hours Ago
+                            {% elseif "now" |date("U") + 3600  > post.date |date("U") + 60 %}
+                                {{ ("now" |date("U") + 3600  - post.date |date("U") ) |date("i") }} Minutes Ago
+                            {% elseif "now" |date("U") + 3600  > post.date |date("U")  %}
+                                {{ ("now" |date("U") + 3600  - post.date |date("U") ) |date("s") }} Seconds Ago
+                            {% endif %}</span></p>
+                    <!-- /POST OPEN TIMESTAMP -->
+
+                    <!-- POST OPEN TITLE -->
+                    <textarea id="{{ form_widget(editform.titre) }}" {{post.titre }}></textarea>
+                    <!-- /POST OPEN TITLE -->
+                </div>
+                <!-- /POST OPEN HEADING -->
+
+                <!-- POST OPEN CONTENT -->
+                <div class="post-open-content">
+                    <!-- POST OPEN CONTENT SIDEBAR -->
+                    <div class="post-open-content-sidebar">
+                        <!-- USER AVATAR -->
+                        <div class="user-avatar small no-outline">
+                            <!-- USER AVATAR CONTENT -->
+                            <div class="user-avatar-content">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~app.user.imguser) }}"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR CONTENT -->
+
+                            <!-- USER AVATAR PROGRESS -->
+                            <div class="user-avatar-progress">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-progress-40-44"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR PROGRESS -->
+
+                            <!-- USER AVATAR PROGRESS BORDER -->
+                            <div class="user-avatar-progress-border">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-border-40-44"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR PROGRESS BORDER -->
+
+                            <!-- USER AVATAR BADGE -->
+                            <div class="user-avatar-badge">
+                                <!-- USER AVATAR BADGE BORDER -->
+                                <div class="user-avatar-badge-border">
+                                    <!-- HEXAGON -->
+                                    <div class="hexagon-22-24"></div>
+                                    <!-- /HEXAGON -->
+                                </div>
+                                <!-- /USER AVATAR BADGE BORDER -->
+
+                                <!-- USER AVATAR BADGE CONTENT -->
+                                <div class="user-avatar-badge-content">
+                                    <!-- HEXAGON -->
+                                    <div class="hexagon-dark-16-18"></div>
+                                    <!-- /HEXAGON -->
+                                </div>
+                                <!-- /USER AVATAR BADGE CONTENT -->
+
+                                <!-- USER AVATAR BADGE TEXT -->
+                                <p class="user-avatar-badge-text"></p>
+                                <!-- /USER AVATAR BADGE TEXT -->
+                            </div>
+                            <!-- /USER AVATAR BADGE -->
+                        </div>
+                        <!-- /USER AVATAR -->
+
+                        <!-- POST OPEN SIDEBAR TITLE -->
+                        <p class="post-open-sidebar-title">Share!</p>
+                        <!-- /POST OPEN SIDEBAR TITLE -->
+
+                        <!-- SOCIAL LINKS -->
+                        <div class="social-links vertical">
+                            <!-- SOCIAL LINK -->
+                            <a class="social-link void facebook" href="#">
+                                <!-- ICON FACEBOOK -->
+                                <svg class="icon-facebook">
+                                    <use xlink:href="#svg-facebook"></use>
+                                </svg>
+                                <!-- /ICON FACEBOOK -->
+                            </a>
+                            <!-- /SOCIAL LINK -->
+
+                            <!-- SOCIAL LINK -->
+                            <a class="social-link void twitter" href="#">
+                                <!-- ICON TWITTER -->
+                                <svg class="icon-twitter">
+                                    <use xlink:href="#svg-twitter"></use>
+                                </svg>
+                                <!-- /ICON TWITTER -->
+                            </a>
+                            <!-- /SOCIAL LINK -->
+                        </div>
+                        <!-- /SOCIAL LINKS -->
+                    </div>
+                    <!-- /POST OPEN CONTENT SIDEBAR -->
+
+                    <!-- POST OPEN CONTENT BODY -->
+                    <div class="post-open-content-body">
+
+                        <!-- POST OPEN PARAGRAPH -->
+                        <p class="post-open-paragraph"></p>
+                        <!-- /POST OPEN PARAGRAPH -->
+                        {% if post.type=="img" %}
+
+                        <!-- POST OPEN IMAGE -->
+                        <figure class="post-open-image liquid">
+                            <img src="{{ asset('/uploads/img/') ~ post.contenue }}" alt="cover-06">
+
+                        </figure>
+                        <!-- /POST OPEN IMAGE -->
+                        {% elseif post.type=="video" %}
+                        <figure class="post-open-image liquid">
+                            <video src="{{ asset('/uploads/video/') ~ post.contenue }}" alt="cover-06"></video>
+                        </figure>
+
+                        <!-- POST OPEN IMAGE INFO -->
+                        {{ form_widget(editform.contenue) }}
+                        <!-- /POST OPEN IMAGE INFO -->
+
+                    </div>
+                    <!-- /POST OPEN CONTENT BODY -->
+                </div>
+                <!-- /POST OPEN CONTENT -->
+{{ form_end(editform) }}
+                <!-- CONTENT ACTIONS -->
+                <div class="content-actions">
+                    <!-- CONTENT ACTION -->
+                    <div class="content-action">
+                        <!-- META LINE -->
+                        <div class="meta-line">
+                            <!-- META LINE LIST -->
+                            <div class="meta-line-list reaction-item-list">
+                                {% for r in reactions %}
+                                    {% if r.post.id==post.id %}
+                                        {% if r.type==1 %}
+                                            <!-- REACTION ITEM -->
+                                            <div class="reaction-item">
+                                                <!-- REACTION IMAGE -->
+                                                <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/reaction/love.png') }}" alt="reaction-love">
+                                                <!-- /REACTION IMAGE -->
+
+
+                                                <!-- SIMPLE DROPDOWN -->
+                                                <div class="simple-dropdown padded reaction-item-dropdown">
+                                                    <!-- SIMPLE DROPDOWN TEXT -->
+                                                    <p class="simple-dropdown-text"><img class="reaction" src="{{ asset('template/img/reaction/love.png') }}"  alt="reaction-love"> <span class="bold">Love</span></p>
+                                                    <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                                    <!-- SIMPLE DROPDOWN TEXT -->
+                                                    <p class="simple-dropdown-text">{{ r.idUser.username }}</p>
+
+                                                </div>
+                                                <!-- /SIMPLE DROPDOWN -->
+                                            </div>
+                                        {% endif %}
+                                        <!-- /REACTION ITEM -->
+                                        {% if r.type==2 %}
+
+                                            <!-- REACTION ITEM -->
+                                            <div class="reaction-item">
+                                                <!-- REACTION IMAGE -->
+                                                <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/reaction/like.png')}}" alt="reaction-like">
+                                                <!-- /REACTION IMAGE -->
+
+                                                <!-- SIMPLE DROPDOWN -->
+                                                <div class="simple-dropdown padded reaction-item-dropdown">
+                                                    <!-- SIMPLE DROPDOWN TEXT -->
+                                                    <p class="simple-dropdown-text"><img class="reaction"src="{{ asset('template/img/reaction/like.png')}}" alt="reaction-like"> <span class="bold">Like</span></p>
+                                                    <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                                    <!-- SIMPLE DROPDOWN TEXT -->
+                                                    <p class="simple-dropdown-text">{{ r.idUser.username }}</p>
+
+                                                </div>
+                                                <!-- /SIMPLE DROPDOWN -->
+                                            </div>
+                                            <!-- /REACTION ITEM -->
+                                        {% endif %}
+                                        {% if r.type==3 %}
+                                            <!-- REACTION ITEM -->
+                                            <div class="reaction-item">
+                                                <!-- REACTION IMAGE -->
+                                                <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/reaction/dislike.png')}}" alt="reaction-like">
+                                                <!-- /REACTION IMAGE -->
+
+                                                <!-- SIMPLE DROPDOWN -->
+                                                <div class="simple-dropdown padded reaction-item-dropdown">
+                                                    <!-- SIMPLE DROPDOWN TEXT -->
+                                                    <p class="simple-dropdown-text"><img class="reaction"src="{{ asset('template/img/reaction/dislike.png')}}" alt="reaction-like"> <span class="bold">Like</span></p>
+                                                    <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                                    <!-- SIMPLE DROPDOWN TEXT -->
+                                                    <p class="simple-dropdown-text">{{ r.idUser.username }}</p>
+
+                                                </div>
+                                                <!-- /SIMPLE DROPDOWN -->
+                                            </div>
+                                            <!-- /REACTION ITEM -->
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <!-- /META LINE LIST -->
+
+                            <!-- META LINE TEXT -->
+                            <p class="meta-line-text">{{ post.ReactionPost }}</p>
+                            <!-- /META LINE TEXT -->
+                        </div>
+
+                    </div>
+                    <!-- /CONTENT ACTION -->
+
+                    <!-- CONTENT ACTION -->
+                    <div class="content-action">
+                        <!-- META LINE -->
+                        <div class="meta-line">
+                            <!-- META LINE LINK -->
+                            <p class="meta-line-link">3 Comments</p>
+                            <!-- /META LINE LINK -->
+                        </div>
+                        <!-- /META LINE -->
+
+                        <!-- META LINE -->
+                        <div class="meta-line">
+                            <!-- META LINE TEXT -->
+                            <p class="meta-line-text">{{ post.VotesPost}}</p>
+                            <!-- /META LINE TEXT -->
+                        </div>
+                        <!-- /META LINE -->
+                    </div>
+                    <!-- /CONTENT ACTION -->
+                </div>
+                <!-- /CONTENT ACTIONS -->
+
+                <!-- POST OPTIONS -->
+                <div class="post-options">
+                    <!-- POST OPTION WRAP -->
+                    <div class="post-option-wrap">
+                        <!-- POST OPTION -->
+                        <div class="post-option reaction-options-dropdown-trigger">
+                            <!-- POST OPTION ICON -->
+                            <svg class="post-option-icon icon-thumbs-up">
+                                <use xlink:href="#svg-thumbs-up"></use>
+                            </svg>
+                            <!-- /POST OPTION ICON -->
+
+                            <!-- POST OPTION TEXT -->
+                            <p class="post-option-text">React!</p>
+                            <!-- /POST OPTION TEXT -->
+                        </div>
+                        <!-- /POST OPTION -->
+
+                        <!-- REACTION OPTIONS -->
+                        <div class="reaction-options reaction-options-dropdown">
+                            <!-- REACTION OPTION -->
+                            <div class="reaction-option text-tooltip-tft" data-title="Like">
+                                <!-- REACTION OPTION IMAGE -->
+                                <img class="reaction-option-image" src="{{ asset('template/img/reaction/like.png')}}" alt="reaction-like">
+                                <!-- /REACTION OPTION IMAGE -->
+                            </div>
+                            <!-- /REACTION OPTION -->
+
+                            <!-- REACTION OPTION -->
+                            <div class="reaction-option text-tooltip-tft" data-title="Love">
+                                <!-- REACTION OPTION IMAGE -->
+                                <img class="reaction-option-image" src="{{ asset('template/img/reaction/love.png')}}" alt="reaction-love">
+                                <!-- /REACTION OPTION IMAGE -->
+                            </div>
+                            <!-- /REACTION OPTION -->
+
+                            <!-- REACTION OPTION -->
+                            <div class="reaction-option text-tooltip-tft" data-title="Dislike">
+                                <!-- REACTION OPTION IMAGE -->
+                                <img class="reaction-option-image" src="{{asset('template/img/reaction/dislike.png')  }}" alt="reaction-dislike">
+                                <!-- /REACTION OPTION IMAGE -->
+                            </div>
+                            <!-- /REACTION OPTION -->
+
+                        </div>
+                        <!-- /REACTION OPTIONS -->
+                    </div>
+                    <!-- /POST OPTION WRAP -->
+
+                    <!-- POST OPTION -->
+                    <div class="post-option active">
+                        <!-- POST OPTION ICON -->
+                        <svg class="post-option-icon icon-comment">
+                            <use xlink:href="#svg-comment"></use>
+                        </svg>
+                        <!-- /POST OPTION ICON -->
+
+                        <!-- POST OPTION TEXT -->
+                        <p class="post-option-text">Comment</p>
+                        <!-- /POST OPTION TEXT -->
+                    </div>
+                    <!-- /POST OPTION -->
+                </div>
+                <!-- /POST OPTIONS -->
+
+                <!-- POST COMMENT LIST -->
+                <div id="comments" class="post-comment-list">
+                    <!-- POST COMMENT -->
+                    {% for comment in comments %}
+                        {% if comment.post.id==post.id %}
+                            <div class="post-comment">
+                                <!-- USER AVATAR -->
+                                <a class="user-avatar small no-outline" href="profile-timeline.html">
+                                    <!-- USER AVATAR CONTENT -->
+                                    <div class="user-avatar-content">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-image-30-32" data-src="{{ 'template/img/avatar/'~comment.idUser.imguser }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR CONTENT -->
+
+                                    <!-- USER AVATAR PROGRESS -->
+                                    <div class="user-avatar-progress">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-progress-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR PROGRESS -->
+
+                                    <!-- USER AVATAR PROGRESS BORDER -->
+                                    <div class="user-avatar-progress-border">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-border-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR PROGRESS BORDER -->
+
+                                    <!-- USER AVATAR BADGE -->
+                                    <div class="user-avatar-badge">
+                                        <!-- USER AVATAR BADGE BORDER -->
+                                        <div class="user-avatar-badge-border">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-22-24" style="width: 22px; height: 24px; position: relative;"><canvas width="22" height="24" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR BADGE BORDER -->
+
+                                        <!-- USER AVATAR BADGE CONTENT -->
+                                        <div class="user-avatar-badge-content">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-dark-16-18" style="width: 16px; height: 18px; position: relative;"><canvas width="16" height="18" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR BADGE CONTENT -->
+
+                                        <!-- USER AVATAR BADGE TEXT -->
+                                        <p class="user-avatar-badge-text">26</p>
+                                        <!-- /USER AVATAR BADGE TEXT -->
+                                    </div>
+                                    <!-- /USER AVATAR BADGE -->
+                                </a>
+                                <!-- /USER AVATAR -->
+
+                                <!-- POST COMMENT TEXT -->
+                                <p class="post-comment-text"><a class="post-comment-text-author" href="profile-timeline.html">{{ comment.idUser.username }}</a>{{ comment.contenue }}</p>
+                                <!-- /POST COMMENT TEXT -->
+
+                                <!-- CONTENT ACTIONS -->
+                                <div class="content-actions">
+                                    <!-- CONTENT ACTION -->
+                                    <div class="content-action">
+
+                                        <!-- META LINE -->
+                                        <div class="meta-line">
+                                            <!-- META LINE TIMESTAMP -->
+                                            <p class="meta-line-timestamp">{% if "now" |date("U") + 3600  > comment.date|date("U") + 31104000 %}
+                                                    {{ ("now" |date("U") + 3600  - comment.date |date("U") ) |date("Y") }} Years Ago
+                                                {% elseif "now" |date("U") + 3600  > comment.date |date("U") + 2592000 %}
+                                                    {{ ("now" |date("U") + 3600  - comment.date |date("U") ) |date("m") }} Months Ago
+                                                {% elseif "now" |date("U") + 3600  > comment.date |date("U") + 86400 %}
+                                                    {{ ("now" |date("U") + 3600  - comment.date|date("U") ) |date("d") }} Days Ago
+                                                {% elseif "now" |date("U") + 3600  >comment.date |date("U") + 3600  %}
+                                                    {{ ("now" |date("U") + 3600  -comment.date |date("U") ) |date("H") }} Hours Ago
+                                                {% elseif "now" |date("U") + 3600  >comment.date |date("U") + 60 %}
+                                                    {{ ("now" |date("U") + 3600  - comment.date |date("U") ) |date("i") }} Minutes Ago
+                                                {% elseif "now" |date("U") + 3600  > comment.date |date("U")  %}
+                                                    {{ ("now" |date("U") + 3600  - comment.date |date("U") ) |date("s") }} Seconds Ago
+                                                {% endif %}</p>
+                                            <!-- /META LINE TIMESTAMP -->
+                                        </div>
+                                        <!-- /META LINE -->
+
+                                        <!-- META LINE -->
+                                        <div class="meta-line settings">
+                                            <!-- POST SETTINGS WRAP -->
+                                            <div class="post-settings-wrap" style="position: relative;">
+                                                <!-- POST SETTINGS -->
+                                                <div class="post-settings post-settings-dropdown-trigger active">
+                                                    <!-- POST SETTINGS ICON -->
+                                                    <svg class="post-settings-icon icon-more-dots">
+                                                        <use xlink:href="#svg-more-dots"></use>
+                                                    </svg>
+                                                    <!-- /POST SETTINGS ICON -->
+                                                </div>
+                                                <!-- /POST SETTINGS -->
+
+                                                <!-- SIMPLE DROPDOWN -->
+                                                <div id="12" class="simple-dropdown post-settings-dropdown" style="position: absolute;width: 250px; z-index: 9999; bottom: 30px; right: 0px; opacity: 1; visibility: visible; transform: translate(0px, 0px); transition: transform 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s;">
+                                                    <!-- SIMPLE DROPDOWN LINK -->
+                                                    {% if app.user %}
+                                                        {% if comment.idUser.id==app.user.id  %}
+                                                            <a class="simple-dropdown-link" id="publication_delete-{{ comment.id }}" href="{{ path('commentaire_delete',{ id: comment.id})}}">Delete comment</a>
+                                                            <a class="simple-dropdown-link" id="ModifierCommentaire" >Edit comment</a>
+                                                            <div class="popup12"  style="display: none;">
+                                                                <form action="{{ path('commentaire_modif',{ id: comment.id} ) }}" class="popup12-content">
+                                                                    <img src="{{ asset('template/img/avatar/'~app.user.imguser) }}" alt="utilisateur">
+                                                                    <input type="text" id="commentaire_modif_contenue" name="contenue" >
+                                                                    <button type="submit">Edit</button>
+                                                                </form>
+                                                            </div>
+
+
+                                                        {% elseif comment.idUser.id==post.idauthor.id  %}
+                                                            <a class="simple-dropdown-link" id="publication_delete-{{ post.id }}" href="{{ path('commentaire_delete',{ id: comment.id})}}">Delete Comment</a>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    <!-- /SIMPLE DROPDOWN LINK -->
+                                                </div>
+                                                <!-- /SIMPLE DROPDOWN -->
+                                            </div>
+                                            <!-- /POST SETTINGS WRAP -->
+                                        </div>
+
+                                        <!-- /META LINE -->
+                                    </div>
+                                    <!-- /CONTENT ACTION -->
+                                </div>
+                                <!-- /CONTENT ACTIONS -->
+                            </div>
+
+                        {% endif %}
+
+                    {% endfor %}
+                    <!-- /POST COMMENT -->
+                    <!-- POST COMMENT HEADING -->
+                    <p class="post-comment-heading">Load More Comments <span class="highlighted">1+</span></p>
+                    <!-- /POST COMMENT HEADING -->
+
+                    <!-- POST COMMENT FORM -->
+                    <div class="post-comment-form">
+                        <!-- USER AVATAR -->
+                        <div class="user-avatar small no-outline">
+                            <!-- USER AVATAR CONTENT -->
+                            <div class="user-avatar-content">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-image-30-32" data-src="img/avatar/01.jpg"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR CONTENT -->
+
+                            <!-- USER AVATAR PROGRESS -->
+                            <div class="user-avatar-progress">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-progress-40-44"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR PROGRESS -->
+
+                            <!-- USER AVATAR PROGRESS BORDER -->
+                            <div class="user-avatar-progress-border">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-border-40-44"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR PROGRESS BORDER -->
+
+                            <!-- USER AVATAR BADGE -->
+                            <div class="user-avatar-badge">
+                                <!-- USER AVATAR BADGE BORDER -->
+                                <div class="user-avatar-badge-border">
+                                    <!-- HEXAGON -->
+                                    <div class="hexagon-22-24"></div>
+                                    <!-- /HEXAGON -->
+                                </div>
+                                <!-- /USER AVATAR BADGE BORDER -->
+
+                                <!-- USER AVATAR BADGE CONTENT -->
+                                <div class="user-avatar-badge-content">
+                                    <!-- HEXAGON -->
+                                    <div class="hexagon-dark-16-18"></div>
+                                    <!-- /HEXAGON -->
+                                </div>
+                                <!-- /USER AVATAR BADGE CONTENT -->
+
+                                <!-- USER AVATAR BADGE TEXT -->
+                                <p class="user-avatar-badge-text">24</p>
+                                <!-- /USER AVATAR BADGE TEXT -->
+                            </div>
+                            <!-- /USER AVATAR BADGE -->
+                        </div>
+                        <!-- /USER AVATAR -->
+
+                        <!-- FORM -->
+                        <form class="form">
+                            <!-- FORM ROW -->
+                            <div class="form-row">
+                                <!-- FORM ITEM -->
+                                <div class="form-item">
+                                    <!-- FORM INPUT -->
+                                    <div class="form-input small">
+                                        <label for="post-reply">Your Reply</label>
+                                        <input type="text" id="post-reply" name="contenue">
+                                    </div>
+                                    <!-- /FORM INPUT -->
+                                </div>
+                                <!-- /FORM ITEM -->
+                            </div>
+                            <!-- /FORM ROW -->
+                        </form>
+                        <!-- /FORM -->
+                    </div>
+                    <!-- /POST COMMENT FORM -->
+                </div>
+                <!-- /POST COMMENT LIST -->
+            </div>
+            <!-- /POST OPEN BODY -->
+        </article>
+        <!-- /POST OPEN -->
+
+    </div>
+
+
+
+
+{% endblock %}

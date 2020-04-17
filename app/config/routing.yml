@@ -1,0 +1,46 @@
+messagerie:
+    resource: "@MessagerieBundle/Resources/config/routing.yml"
+    prefix:   /
+
+competition:
+    resource: "@CompetitionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+publication:
+    resource: "@PublicationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos:
+    resource: "@FOSBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_user_registration_register:
+    path: /register
+    controller: AppBundle\Controller\RegistrationController::registerAction
+
+changePassword:
+    path:     /changePassword
+    controller: AppBundle\Controller\ChangePasswordController::changePasswordAction
+
+
+
+
+mgilet_notification:
+    resource: "@MgiletNotificationBundle/Controller/"
+    prefix: /notifications
+
+adesigns_calendar:
+    resource: "@ADesignsCalendarBundle/Resources/config/routing.xml"
+ancarebeca_fullcalendar:
+    resource: "@FullCalendarBundle/Resources/config/routing.yml"
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+

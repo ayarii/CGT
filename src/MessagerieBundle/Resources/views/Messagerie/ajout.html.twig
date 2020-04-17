@@ -1,0 +1,369 @@
+{{ form(form) }}
+
+
+
+{% extends 'base.html.twig' %}
+{% block body %}
+    <main>
+        <div class="main-section">
+            <div class="container">
+                <div class="main-section-data">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                            <div class="main-left-sidebar no-margin">
+                                <div class="user-data full-width">
+                                    <div class="user-profile">
+                                        <div class="username-dt">
+                                            <div class="usr-pic">
+                                                <img src="{{ asset('/template/images/resources/user-pic.png')}}" alt="">
+                                            </div>
+                                        </div><!--username-dt end-->
+                                        <div class="user-specs">
+                                            {% if app.user %}
+                                                <h3>{{ app.user.username }}</h3>
+                                            {% else %}
+                                                <h3>Visiteur</h3>
+                                            {% endif %}
+                                            <span>Graphic Designer at Self Employed</span>
+                                        </div>
+                                    </div><!--user-profile end-->
+                                    <ul class="user-fw-status">
+                                        <li>
+                                            <h4>Number Of Posts</h4>
+                                            <span>{{ publications|length }}</span>
+                                        </li>
+                                        <li>
+                                            <h4>Number Of Comments</h4>
+                                            <span>{{ commentaires|length }}</span>
+                                        </li>
+                                        <li>
+                                            <a href="my-profile.html" title="">View Profile</a>
+                                        </li>
+                                    </ul>
+                                </div><!--user-data end-->
+                                <div class="tags-sec full-width">
+                                    <ul>
+                                        <li><a href="#" title="">Help Center</a></li>
+                                        <li><a href="#" title="">About</a></li>
+                                        <li><a href="#" title="">Privacy Policy</a></li>
+                                        <li><a href="#" title="">Community Guidelines</a></li>
+                                        <li><a href="#" title="">Cookies Policy</a></li>
+                                        <li><a href="#" title="">Career</a></li>
+                                        <li><a href="#" title="">Language</a></li>
+                                        <li><a href="#" title="">Copyright Policy</a></li>
+                                    </ul>
+                                    <div class="cp-sec">
+                                        <img src="{{ asset('/template/images/logo2.png')}}" alt="">
+                                        <p><img src="{{ asset('/template/images/cp.png')}}" alt="">Copyright 2019</p>
+                                    </div>
+                                </div><!--tags-sec end-->
+                            </div><!--main-left-sidebar end-->
+                        </div>
+                        <div class="col-lg-6 col-md-8 no-pd">
+                            <div class="main-ws-sec">
+                                <div class="post-topbar">
+                                    <div class="user-picy">
+                                        <img src="{{ asset('/template/images/resources/user-pic.png')}}" alt="">
+                                    </div>
+                                    <div class="post-st">
+                                        <ul>
+                                            {% if user %}
+                                                <li><a class="post-jb active" href="#" title="">Post Something</a></li>
+                                            {% else %}
+                                                <li><a href="{{ path('fos_user_security_login') }}" class="post-jb active"  title="">Post Something</a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </div><!--post-st end-->
+                                </div><!--post-topbar end-->
+                                <div class="posts-section">
+
+
+                                    {% for publication in publications %}
+                                        {% if publication.isVisiblePublication %}
+                                            <div id="publication-{{ publication.id }}" class="posty">
+                                                <div class="post-bar no-margin">
+                                                    <div class="post_topbar">
+                                                        <div class="usy-dt">
+                                                            <img src="{{ asset('/template/images/resources/us-pc2.png')}}" alt="">
+                                                            <div class="usy-name">
+                                                                <h3>{{publication.userIdPublication.username}}</h3>
+                                                                <span><img src="{{ asset('/template/images/clock.png')}}" alt="">
+                                                {% if "now" |date("U") + 3600  > publication.datePublication |date("U") + 31104000 %}
+                                                    {{ ("now" |date("U") + 3600  - publication.datePublication |date("U") ) |date("Y") }} Years Ago
+                                                {% elseif "now" |date("U") + 3600  > publication.datePublication |date("U") + 2592000 %}
+                                                    {{ ("now" |date("U") + 3600  - publication.datePublication |date("U") ) |date("m") }} Months Ago
+                                                {% elseif "now" |date("U") + 3600  > publication.datePublication |date("U") + 86400 %}
+                                                    {{ ("now" |date("U") + 3600  - publication.datePublication |date("U") ) |date("d") }} Days Ago
+                                                {% elseif "now" |date("U") + 3600  > publication.datePublication |date("U") + 3600  %}
+                                                    {{ ("now" |date("U") + 3600  - publication.datePublication |date("U") ) |date("H") }} Hours Ago
+                                                {% elseif "now" |date("U") + 3600  > publication.datePublication |date("U") + 60 %}
+                                                    {{ ("now" |date("U") + 3600  - publication.datePublication |date("U") ) |date("i") }} Minutes Ago
+                                                {% elseif "now" |date("U") + 3600  > publication.datePublication |date("U")  %}
+                                                    {{ ("now" |date("U") + 3600  - publication.datePublication |date("U") ) |date("s") }} Seconds Ago
+                                                {% endif %}
+                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ed-opts">
+                                                            <a title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+                                                            {%  if user %}
+                                                                {%  if publication.userIdPublication.id == user.id %}
+                                                                    <ul class="ed-options">
+                                                                        <li><a href="{{ path( 'publication_show_one', {"id": publication.id} )  }}" >View Post</a></li>
+                                                                        <li><a id="edit_post-{{ publication.id }}" class="post_project" >Edit Post</a></li>
+                                                                        <li><a id="delete_post-{{ publication.id }}" >Remove</a></li>
+                                                                    </ul>
+                                                                {% else %}
+                                                                    <ul class="ed-options">
+                                                                        <li><a href="{{ path( 'publication_show_one', {"id": publication.id} )  }}" >View Post</a></li>
+                                                                    </ul>
+                                                                {% endif %}
+                                                            {% else %}
+                                                                <ul class="ed-options">
+                                                                    <li><a href="{{ path( 'publication_show_one', {"id": publication.id} )  }}" >View Post</a></li>
+                                                                </ul>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="epi-sec">
+                                                        <ul class="descp">
+                                                            <li><img src="{{ asset('/template/images/icon8.png')}}" alt=""><span>Epic Coder</span></li>
+                                                            <li><img src="{{ asset('/template/images/icon9.png')}}" alt=""><span>India</span></li>
+                                                        </ul>
+                                                        <ul class="bk-links">
+                                                            <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="job_descp">
+                                                        <h3 id="titre_publication-{{ publication.id }}" >{{publication.titrePublication}}</h3>
+                                                        <input type="hidden" id="type_publication-{{ publication.id }}" value="{{ publication.typePublication }}" />
+                                                        {% if publication.typePublication == "text" %}
+                                                            <input type="hidden" id="src_publication-{{ publication.id }}" value="{{ publication.srcPublication }}" />
+                                                            {% if publication.srcPublication|length > 50 %}
+                                                                <p>{{ publication.srcPublication[:50] }}<a href="#" title="">...view more</a></p>
+                                                            {% else %}
+                                                                <p>{{ publication.srcPublication }}</p>
+                                                            {% endif %}
+                                                        {% elseif publication.typePublication == "img" %}
+                                                            <center><img src="{{ asset('/uploads/img/') ~ publication.srcPublication }}"></img></center>
+                                                        {% elseif publication.typePublication == "video" %}
+                                                            <center><video width="415" controls>
+                                                                    <source src="{{ asset('/uploads/video/') ~ publication.srcPublication }}" type="video/mp4">
+                                                                    Your browser does not support HTML5 video.
+                                                                </video></center>
+                                                        {% elseif publication.typePublication == "audio" %}
+                                                            <center><audio controls>
+                                                                    <source src="{{ asset('/uploads/audio/') ~ publication.srcPublication }}" type="audio/mpeg">
+                                                                    Your browser does not support the audio element.
+                                                                </audio></center>
+                                                        {% endif %}
+                                                        <br>
+                                                        <input type="hidden" id="cat_publication-{{ publication.id }}" value="{{ publication.catPublication }}" />
+                                                        {% set categories = publication.catPublication|split(',') %}
+                                                        <ul class="skill-tags">
+                                                            {% for categorie in categories %}
+                                                                <li><a href="{{ path('publication_show_hashtag', {'hashtag': categorie }) }}" title="">{{categorie}}</a></li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                    {{ socialButtons( { 'facebook': {'locale':'fr_FR', 'url':   'http://127.0.0.1:8000/post/' ~ publication.id }}  ,{ 'twitter': { 'url':  app.request.getBaseUrl ~ publication.id } } ) }}
+                                                    <div class="job-status-bar">
+                                                        <ul class="like-com">
+                                                            <li>
+                                                                {% if not user %}
+                                                                    <a href="{{ path('fos_user_security_login') }}" ><i class="fas fa-heart"></i> Like</a>
+                                                                {% else %}
+                                                                    {% for like in likes if (like.Publicationid.id == publication.id and like.userId.id == user.id )  %}
+                                                                        <a id="dislike_post-{{ publication.id }}" ><i class="fas fa-heart"></i> Dislike</a>
+                                                                    {% else %}
+                                                                        <a id="like_post-{{ publication.id }}" ><i class="fas fa-heart"></i> Like</a>
+                                                                    {% endfor %}
+                                                                {% endif %}
+                                                                <img src="{{ asset('/template/images/liked-img.png')}}" alt="">
+                                                                <span id="likes_count-{{ publication.id }}" >{{publication.likesPublication}}</span>
+                                                            </li>
+                                                            <li><p id="show_comments-{{publication.id}}" class="com"><i class="fas fa-comment-alt"></i> Comments </p></li>
+                                                        </ul>
+                                                        <a id="views_count-{{ publication.id }}" ><i class="fas fa-eye"></i>Views {{publication.viewsPublication}}</a>
+                                                    </div>
+                                                </div><!--post-bar end-->
+                                                <div id="comments-{{publication.id}}" style="display:none">
+                                                    <div class="comment-section" >
+                                                        <a href="#" class="plus-ic">
+                                                            <i class="la la-plus"></i>
+                                                        </a>
+                                                        <ul>
+                                                            <div class="comment-sec" id="comment-sec-{{publication.id}}">
+                                                                {% for commentaire in commentaires %}
+                                                                    {%  if commentaire.Publicationid.id == publication.id %}
+                                                                        <li id="commentaire-{{ commentaire.id }}">
+                                                                            <div class="comment-list">
+                                                                                <div class="bg-img">
+                                                                                    <img src="{{ asset('/template/images/resources/bg-img1.png')}}" alt="">
+                                                                                </div>
+                                                                                <div class="comment">
+                                                                                    {% if user %}
+                                                                                        {% if commentaire.userIdPublication.id == user.id  %}
+                                                                                            <div class="col-lg-push-12 accept-feat">
+                                                                                                <button id="edit_comment-{{ commentaire.id }}" type="submit" class="close-req"><i class="la la-edit"></i></button>
+                                                                                                <button id="remove_comment-{{ commentaire.id }}" type="submit" class="close-req"><i class="la la-remove"></i></button>
+                                                                                            </div><!--accept-feat end-->
+                                                                                        {% endif %}
+                                                                                    {% endif %}
+                                                                                    <h3>{{ commentaire.userIdPublication.username }}</h3>
+                                                                                    <span><img src="{{ asset('/template/images/clock.png')}}" alt="">
+                                                                {% if "now" |date("U") + 3600 > commentaire.dateCommentaire |date("U") + 2592000 %}
+                                                                    {{ ("now" |date("U") + 3600 - commentaire.dateCommentaire |date("U") ) |date("m") }} Months Ago
+                                                                {% elseif "now" |date("U") + 3600 > commentaire.dateCommentaire |date("U") + 86400 %}
+                                                                    {{ ("now" |date("U") + 3600 - commentaire.dateCommentaire |date("U") ) |date("d") }} Days Ago
+                                                                {% elseif "now" |date("U") + 3600 > commentaire.dateCommentaire |date("U") + 3600  %}
+                                                                    {{ ("now" |date("U") + 3600 - commentaire.dateCommentaire |date("U") ) |date("H") }} Hours Ago
+                                                                {% elseif "now" |date("U") + 3600 > commentaire.dateCommentaire |date("U") + 60 %}
+                                                                    {{ ("now" |date("U") + 3600 - commentaire.dateCommentaire |date("U") ) |date("i") }} Minutes Ago
+                                                                {% elseif "now" |date("U") + 3600 > commentaire.dateCommentaire |date("U")  %}
+                                                                    {{ ("now" |date("U") + 3600 - commentaire.dateCommentaire |date("U") ) |date("s") }} Seconds Ago
+                                                                {% endif %}
+                                                            </span>
+                                                                                    <p id="comment_content-{{ commentaire.id }}">{{ commentaire.commentaire }}</p>
+                                                                                </div>
+                                                                            </div><!--comment-list end-->
+                                                                        </li>
+                                                                    {% endif %}
+                                                                {% endfor %}
+
+                                                            </div><!--comment-sec end-->
+                                                        </ul>
+                                                        <div class="post-comment">
+                                                            <div class="cm_img">
+                                                                <img src="{{ asset('/template/images/resources/bg-img4.png')}}" alt="">
+                                                            </div>
+                                                            <div class="comment_box">
+                                                                <form onsubmit="return false;">
+                                                                    <input id="new_comment-{{publication.id}}" type="text" placeholder="Post a comment">
+                                                                    {% if user %}
+                                                                        <button class="form"  id="submit_new_comment-{{publication.id}}" type="submit">Send</button>
+                                                                    {% else %}
+                                                                        <a href="{{ path('fos_user_security_login') }}" >Login !</a>
+                                                                    {% endif %}
+                                                                </form>
+                                                            </div>
+                                                        </div><!--post-comment end-->
+                                                    </div><!--comment-section end-->
+                                                </div>
+                                            </div><!--posty end-->
+                                        {% endif %}
+                                    {% dendfor %}
+                                    <div class="process-comm">
+                                        <div class="spinner">
+                                            <div class="bounce1"></div>
+                                            <div class="bounce2"></div>
+                                            <div class="bounce3"></div>
+                                        </div>
+                                    </div><!--process-comm end-->
+                                </div><!--posts-section end-->
+                            </div><!--main-ws-sec end-->
+                        </div>
+                        <div class="col-lg-3 pd-right-none no-pd">
+                            <div class="right-sidebar">
+                                <div class="widget widget-jobs">
+                                    <div class="sd-title">
+                                        <h3>Most Viewed</h3>
+                                        <i class="la la-ellipsis-v"></i>
+                                    </div>
+                                    <div class="jobs-list">
+                                        {% for top in topthree %}
+                                            <div class="job-info">
+                                                <div class="job-details">
+                                                    <h3>{{top.titrePublication}}</h3>
+                                                    <p>By {{ top.userIdPublication.username }} ❤️: {{top.likesPublication}} 👁️: {{top.viewsPublication}}</p>
+                                                </div>
+                                                <div class="view-more">
+                                                    <a href="/post/{{ top.id }}">View</a>
+                                                </div>
+                                            </div><!--job-info end-->
+                                        {% endfor %}
+                                    </div><!--jobs-list end-->
+                                </div><!--widget-jobs end-->
+                            </div><!--right-sidebar end-->
+                        </div>
+                    </div>
+                </div><!-- main-section-data end-->
+            </div>
+        </div>
+    </main>
+
+    <div class="post-popup pst-pj">
+        <div class="post-project">
+            <h3>Edit Post</h3>
+            <div class="post-project-fields">
+                <form id="edit_post_form" name="edit_publicationbundle_publication" method="post" enctype="multipart/form-data">
+                    <input type="hidden" value="" id="edit_form_id" />
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <input type="text" id="edit_publicationbundle_publication_titrePublication" name="publicationbundle_publication[titrePublication]" required="required" maxlength="255" placeholder="Title">
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="inp-field">
+                                <select id="edit_publicationbundle_publication_typePublication" name="publicationbundle_publication[typePublication]"><option value="audio">audio</option><option value="video">video</option><option value="text">text</option><option value="img">img</option></select>
+                            </div>
+                        </div>
+                        <div id="publication_input_type_edit" class="col-lg-12">
+                            <input type="text" id="edit_publicationbundle_publication_src" name="publicationbundle_publication[srcPublication]" required="required" placeholder="Your Post">                        </div>
+                        <div class="col-lg-12">
+                            <input type="text" id="edit_publicationbundle_publication_catPublication" name="publicationbundle_publication[catPublication]" required="required" maxlength="255" placeholder="Hashtags seperated with(,)">
+                        </div>
+                        <div class="col-lg-12">
+                            <ul>
+                                <li><button id="new_post" class="active" type="submit" value="post" >Post</button></li>
+                                <li><a id="close_post_2" title="">Cancel</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div><!--post-project-fields end-->
+            <a href="#" title=""><i class="la la-times-circle-o"></i></a>
+        </div><!--post-project end-->
+    </div><!--post-project-popup end-->
+    <div class="post-popup job_post">
+        <div class="post-project">
+            <h3>Post Something</h3>
+            <div class="post-project-fields">
+                <form id="new_post_form" action="/new" name="publicationbundle_publication" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <input type="text" id="publicationbundle_publication_titrePublication" name="publicationbundle_publication[titrePublication]" required="required" maxlength="255" placeholder="Title">
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="inp-field">
+                                <select id="publicationbundle_publication_typePublication" name="publicationbundle_publication[typePublication]"><option value="audio">audio</option><option value="video">video</option><option value="text">text</option><option value="img">img</option></select>
+                            </div>
+                        </div>
+                        <div id="publication_input_type" class="col-lg-12">
+                            <input type="file" id="publicationbundle_publication_src" name="publicationbundle_publication[src]" required="required">
+                        </div>
+                        <div class="col-lg-12">
+                            <input type="text" id="publicationbundle_publication_catPublication" name="publicationbundle_publication[catPublication]" required="required" maxlength="255" placeholder="Hashtags seperated with(,)">
+                        </div>
+                        <div class="col-lg-12">
+                            <ul>
+                                <li><button id="new_post_1" class="active" type="submit" value="post" disabled>Post</button></li>
+                                <li><a id="close_post" title="">Cancel</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div><!--post-project-fields end-->
+            <a href="#" title=""><i class="la la-times-circle-o"></i></a>
+        </div><!--post-project end-->
+    </div><!--post-project-popup end-->
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('template/js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('template/js/popper.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('template/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('template/js/jquery.mCustomScrollbar.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('template/lib/slick/slick.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('template/js/scrollbar.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('template/js/script.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('template/js/myscript.js')}}"></script>
+{% endblock %}

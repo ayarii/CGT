@@ -1,0 +1,935 @@
+{% extends 'baseLouay.html.twig' %}
+
+{% block body %}
+
+
+    <!-- CONTENT GRID -->
+    <div class="content-grid">
+    <!-- PROFILE HEADER -->
+    <div class="profile-header">
+        <!-- PROFILE HEADER COVER -->
+        <figure class="profile-header-cover liquid">
+            <img src="img/cover/01.jpg" alt="cover-01">
+        </figure>
+        <!-- /PROFILE HEADER COVER -->
+
+        <!-- PROFILE HEADER INFO -->
+        <div class="profile-header-info">
+            <!-- USER SHORT DESCRIPTION -->
+            <div class="user-short-description big">
+                <!-- USER SHORT DESCRIPTION AVATAR -->
+                <a class="user-short-description-avatar user-avatar big" href="profile-timeline.html">
+                    <!-- USER AVATAR BORDER -->
+                    <div class="user-avatar-border">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-148-164"></div>
+                        <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR BORDER -->
+
+                    <!-- USER AVATAR CONTENT -->
+                    <div class="user-avatar-content">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-image-100-110" data-src="img/avatar/01.jpg"></div>
+                        <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR CONTENT -->
+
+                    <!-- USER AVATAR PROGRESS -->
+                    <div class="user-avatar-progress">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-progress-124-136"></div>
+                        <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR PROGRESS -->
+
+                    <!-- USER AVATAR PROGRESS BORDER -->
+                    <div class="user-avatar-progress-border">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-border-124-136"></div>
+                        <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR PROGRESS BORDER -->
+
+                    <!-- USER AVATAR BADGE -->
+                    <div class="user-avatar-badge">
+                        <!-- USER AVATAR BADGE BORDER -->
+                        <div class="user-avatar-badge-border">
+                            <!-- HEXAGON -->
+                            <div class="hexagon-40-44"></div>
+                            <!-- /HEXAGON -->
+                        </div>
+                        <!-- /USER AVATAR BADGE BORDER -->
+
+                        <!-- USER AVATAR BADGE CONTENT -->
+                        <div class="user-avatar-badge-content">
+                            <!-- HEXAGON -->
+                            <div class="hexagon-dark-32-34"></div>
+                            <!-- /HEXAGON -->
+                        </div>
+                        <!-- /USER AVATAR BADGE CONTENT -->
+
+                        <!-- USER AVATAR BADGE TEXT -->
+                        <p class="user-avatar-badge-text">24</p>
+                        <!-- /USER AVATAR BADGE TEXT -->
+                    </div>
+                    <!-- /USER AVATAR BADGE -->
+                </a>
+                <!-- /USER SHORT DESCRIPTION AVATAR -->
+
+                <!-- USER SHORT DESCRIPTION AVATAR -->
+                <a class="user-short-description-avatar user-short-description-avatar-mobile user-avatar medium" href="profile-timeline.html">
+                    <!-- USER AVATAR BORDER -->
+                    <div class="user-avatar-border">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-120-132"></div>
+                        <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR BORDER -->
+
+                    <!-- USER AVATAR CONTENT -->
+                    <div class="user-avatar-content">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-image-82-90" data-src="{{ asset('template/img/avatar/'~app.user.imguser) }}"></div>
+                        <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR CONTENT -->
+
+                    <!-- USER AVATAR PROGRESS -->
+                    <div class="user-avatar-progress">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-progress-100-110"></div>
+                        <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR PROGRESS -->
+
+                    <!-- USER AVATAR PROGRESS BORDER -->
+                    <div class="user-avatar-progress-border">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-border-100-110"></div>
+                        <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR PROGRESS BORDER -->
+
+                    <!-- USER AVATAR BADGE -->
+                    <div class="user-avatar-badge">
+                        <!-- USER AVATAR BADGE BORDER -->
+                        <div class="user-avatar-badge-border">
+                            <!-- HEXAGON -->
+                            <div class="hexagon-32-36"></div>
+                            <!-- /HEXAGON -->
+                        </div>
+                        <!-- /USER AVATAR BADGE BORDER -->
+
+                        <!-- USER AVATAR BADGE CONTENT -->
+                        <div class="user-avatar-badge-content">
+                            <!-- HEXAGON -->
+                            <div class="hexagon-dark-26-28"></div>
+                            <!-- /HEXAGON -->
+                        </div>
+                        <!-- /USER AVATAR BADGE CONTENT -->
+
+                        <!-- USER AVATAR BADGE TEXT -->
+                        <p class="user-avatar-badge-text">24</p>
+                        <!-- /USER AVATAR BADGE TEXT -->
+                    </div>
+                    <!-- /USER AVATAR BADGE -->
+                </a>
+                <!-- /USER SHORT DESCRIPTION AVATAR -->
+
+                <!-- USER SHORT DESCRIPTION TITLE -->
+                <p class="user-short-description-title"><a href="profile-timeline.html">{{app.user.username}}</a></p>
+                <!-- /USER SHORT DESCRIPTION TITLE -->
+
+                <!-- USER SHORT DESCRIPTION TEXT -->
+                <p class="user-short-description-text"><a href="#">{{app.user.email}}</a></p>
+                <!-- /USER SHORT DESCRIPTION TEXT -->
+            </div>
+            <!-- /USER SHORT DESCRIPTION -->
+
+            <!-- PROFILE HEADER SOCIAL LINKS WRAP -->
+            <div class="profile-header-social-links-wrap">
+                <!-- PROFILE HEADER SOCIAL LINKS -->
+                <div id="profile-header-social-links-slider" class="profile-header-social-links">
+                    <div class="profile-header-social-link">
+                        <!-- SOCIAL LINK -->
+                        <a class="social-link facebook" href="#">
+                            <!-- ICON FACEBOOK -->
+                            <svg class="icon-facebook">
+                                <use xlink:href="#svg-facebook"></use>
+                            </svg>
+                            <!-- /ICON FACEBOOK -->
+                        </a>
+                        <!-- /SOCIAL LINK -->
+                    </div>
+
+                    <div class="profile-header-social-link">
+                        <!-- SOCIAL LINK -->
+                        <a class="social-link twitter" href="#">
+                            <!-- ICON TWITTER -->
+                            <svg class="icon-twitter">
+                                <use xlink:href="#svg-twitter"></use>
+                            </svg>
+                            <!-- /ICON TWITTER -->
+                        </a>
+                        <!-- /SOCIAL LINK -->
+                    </div>
+
+                    <div class="profile-header-social-link">
+                        <!-- SOCIAL LINK -->
+                        <a class="social-link instagram" href="#">
+                            <!-- ICON INSTAGRAM -->
+                            <svg class="icon-instagram">
+                                <use xlink:href="#svg-instagram"></use>
+                            </svg>
+                            <!-- /ICON INSTAGRAM -->
+                        </a>
+                        <!-- /SOCIAL LINK -->
+                    </div>
+
+                    <div class="profile-header-social-link">
+                        <!-- SOCIAL LINK -->
+                        <a class="social-link twitch" href="#">
+                            <!-- ICON TWITCH -->
+                            <svg class="icon-twitch">
+                                <use xlink:href="#svg-twitch"></use>
+                            </svg>
+                            <!-- /ICON TWITCH -->
+                        </a>
+                        <!-- /SOCIAL LINK -->
+                    </div>
+
+                    <div class="profile-header-social-link">
+                        <!-- SOCIAL LINK -->
+                        <a class="social-link youtube" href="#">
+                            <!-- ICON YOUTUBE -->
+                            <svg class="icon-youtube">
+                                <use xlink:href="#svg-youtube"></use>
+                            </svg>
+                            <!-- /ICON YOUTUBE -->
+                        </a>
+                        <!-- /SOCIAL LINK -->
+                    </div>
+
+                    <div class="profile-header-social-link">
+                        <!-- SOCIAL LINK -->
+                        <a class="social-link patreon" href="#">
+                            <!-- ICON PATREON -->
+                            <svg class="icon-patreon">
+                                <use xlink:href="#svg-patreon"></use>
+                            </svg>
+                            <!-- /ICON PATREON -->
+                        </a>
+                        <!-- /SOCIAL LINK -->
+                    </div>
+
+                    <div class="profile-header-social-link">
+                        <!-- SOCIAL LINK -->
+                        <a class="social-link discord" href="#">
+                            <!-- ICON DISCORD -->
+                            <svg class="icon-discord">
+                                <use xlink:href="#svg-discord"></use>
+                            </svg>
+                            <!-- /ICON DISCORD -->
+                        </a>
+                        <!-- /SOCIAL LINK -->
+                    </div>
+                </div>
+                <!-- /PROFILE HEADER SOCIAL LINKS -->
+
+                <!-- SLIDER CONTROLS -->
+                <div id="profile-header-social-links-slider-controls" class="slider-controls">
+                    <!-- SLIDER CONTROL -->
+                    <div class="slider-control left">
+                        <!-- SLIDER CONTROL ICON -->
+                        <svg class="slider-control-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                        </svg>
+                        <!-- /SLIDER CONTROL ICON -->
+                    </div>
+                    <!-- /SLIDER CONTROL -->
+
+                    <!-- SLIDER CONTROL -->
+                    <div class="slider-control right">
+                        <!-- SLIDER CONTROL ICON -->
+                        <svg class="slider-control-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                        </svg>
+                        <!-- /SLIDER CONTROL ICON -->
+                    </div>
+                    <!-- /SLIDER CONTROL -->
+                </div>
+                <!-- /SLIDER CONTROLS -->
+            </div>
+            <!-- /PROFILE HEADER SOCIAL LINKS WRAP -->
+
+            <!-- USER STATS -->
+            <div class="user-stats">
+                <!-- USER STAT -->
+                <div class="user-stat big">
+                    <!-- USER STAT TITLE -->
+                    <p class="user-stat-title">930</p>
+                    <!-- /USER STAT TITLE -->
+
+                    <!-- USER STAT TEXT -->
+                    <p class="user-stat-text">posts</p>
+                    <!-- /USER STAT TEXT -->
+                </div>
+                <!-- /USER STAT -->
+
+                <!-- USER STAT -->
+                <div class="user-stat big">
+                    <!-- USER STAT TITLE -->
+                    <p class="user-stat-title">82</p>
+                    <!-- /USER STAT TITLE -->
+
+                    <!-- USER STAT TEXT -->
+                    <p class="user-stat-text">friends</p>
+                    <!-- /USER STAT TEXT -->
+                </div>
+                <!-- /USER STAT -->
+
+                <!-- USER STAT -->
+                <div class="user-stat big">
+                    <!-- USER STAT TITLE -->
+                    <p class="user-stat-title">5.7k</p>
+                    <!-- /USER STAT TITLE -->
+
+                    <!-- USER STAT TEXT -->
+                    <p class="user-stat-text">visits</p>
+                    <!-- /USER STAT TEXT -->
+                </div>
+                <!-- /USER STAT -->
+
+                <!-- USER STAT -->
+                <div class="user-stat big">
+                    <!-- USER STAT IMAGE -->
+                    <img class="user-stat-image" src="img/flag/usa.png" alt="flag-usa">
+                    <!-- /USER STAT IMAGE -->
+
+                    <!-- USER STAT TEXT -->
+                    <p class="user-stat-text">usa</p>
+                    <!-- /USER STAT TEXT -->
+                </div>
+                <!-- /USER STAT -->
+            </div>
+            <!-- /USER STATS -->
+
+            <!-- PROFILE HEADER INFO ACTIONS -->
+            <div class="profile-header-info-actions">
+                <!-- PROFILE HEADER INFO ACTION -->
+                <p class="profile-header-info-action button secondary"><span class="hide-text-mobile">Add</span> Friend +</p>
+                <!-- /PROFILE HEADER INFO ACTION -->
+
+                <!-- PROFILE HEADER INFO ACTION -->
+                <p class="profile-header-info-action button primary"><span class="hide-text-mobile">Send</span> Message</p>
+                <!-- /PROFILE HEADER INFO ACTION -->
+            </div>
+            <!-- /PROFILE HEADER INFO ACTIONS -->
+        </div>
+        <!-- /PROFILE HEADER INFO -->
+    </div>
+    <!-- /PROFILE HEADER -->
+
+    <!-- SECTION NAVIGATION -->
+    <nav class="section-navigation">
+        <!-- SECTION MENU -->
+        <div id="section-navigation-slider" class="section-menu">
+            <!-- SECTION MENU ITEM -->
+            <a class="section-menu-item" href="profile-about.html">
+                <!-- SECTION MENU ITEM ICON -->
+                <svg class="section-menu-item-icon icon-profile">
+                    <use xlink:href="#svg-profile"></use>
+                </svg>
+                <!-- /SECTION MENU ITEM ICON -->
+
+                <!-- SECTION MENU ITEM TEXT -->
+                <p class="section-menu-item-text">About</p>
+                <!-- /SECTION MENU ITEM TEXT -->
+            </a>
+            <!-- /SECTION MENU ITEM -->
+
+            <!-- SECTION MENU ITEM -->
+            <a class="section-menu-item" href="profile-timeline.html">
+                <!-- SECTION MENU ITEM ICON -->
+                <svg class="section-menu-item-icon icon-timeline">
+                    <use xlink:href="#svg-timeline"></use>
+                </svg>
+                <!-- /SECTION MENU ITEM ICON -->
+
+                <!-- SECTION MENU ITEM TEXT -->
+                <p class="section-menu-item-text">Timeline</p>
+                <!-- /SECTION MENU ITEM TEXT -->
+            </a>
+            <!-- /SECTION MENU ITEM -->
+
+            <!-- SECTION MENU ITEM -->
+            <a class="section-menu-item active" href="profile-friends.html">
+                <!-- SECTION MENU ITEM ICON -->
+                <svg class="section-menu-item-icon icon-friend">
+                    <use xlink:href="#svg-friend"></use>
+                </svg>
+                <!-- /SECTION MENU ITEM ICON -->
+
+                <!-- SECTION MENU ITEM TEXT -->
+                <p class="section-menu-item-text">Friends</p>
+                <!-- /SECTION MENU ITEM TEXT -->
+            </a>
+            <!-- /SECTION MENU ITEM -->
+
+            <!-- SECTION MENU ITEM -->
+            <a class="section-menu-item" href="profile-groups.html">
+                <!-- SECTION MENU ITEM ICON -->
+                <svg class="section-menu-item-icon icon-group">
+                    <use xlink:href="#svg-group"></use>
+                </svg>
+                <!-- /SECTION MENU ITEM ICON -->
+
+                <!-- SECTION MENU ITEM TEXT -->
+                <p class="section-menu-item-text">Groups</p>
+                <!-- /SECTION MENU ITEM TEXT -->
+            </a>
+            <!-- /SECTION MENU ITEM -->
+
+            <!-- SECTION MENU ITEM -->
+            <a class="section-menu-item" href="profile-photos.html">
+                <!-- SECTION MENU ITEM ICON -->
+                <svg class="section-menu-item-icon icon-photos">
+                    <use xlink:href="#svg-photos"></use>
+                </svg>
+                <!-- /SECTION MENU ITEM ICON -->
+
+                <!-- SECTION MENU ITEM TEXT -->
+                <p class="section-menu-item-text">Photos</p>
+                <!-- /SECTION MENU ITEM TEXT -->
+            </a>
+            <!-- /SECTION MENU ITEM -->
+
+            <!-- SECTION MENU ITEM -->
+            <a class="section-menu-item" href="profile-videos.html">
+                <!-- SECTION MENU ITEM ICON -->
+                <svg class="section-menu-item-icon icon-videos">
+                    <use xlink:href="#svg-videos"></use>
+                </svg>
+                <!-- /SECTION MENU ITEM ICON -->
+
+                <!-- SECTION MENU ITEM TEXT -->
+                <p class="section-menu-item-text">Videos</p>
+                <!-- /SECTION MENU ITEM TEXT -->
+            </a>
+            <!-- /SECTION MENU ITEM -->
+
+            <!-- SECTION MENU ITEM -->
+            <a class="section-menu-item" href="profile-badges.html">
+                <!-- SECTION MENU ITEM ICON -->
+                <svg class="section-menu-item-icon icon-badges">
+                    <use xlink:href="#svg-badges"></use>
+                </svg>
+                <!-- /SECTION MENU ITEM ICON -->
+
+                <!-- SECTION MENU ITEM TEXT -->
+                <p class="section-menu-item-text">Badges</p>
+                <!-- /SECTION MENU ITEM TEXT -->
+            </a>
+            <!-- /SECTION MENU ITEM -->
+
+            <!-- SECTION MENU ITEM -->
+            <a class="section-menu-item" href="profile-stream.html">
+                <!-- SECTION MENU ITEM ICON -->
+                <svg class="section-menu-item-icon icon-streams">
+                    <use xlink:href="#svg-streams"></use>
+                </svg>
+                <!-- /SECTION MENU ITEM ICON -->
+
+                <!-- SECTION MENU ITEM TEXT -->
+                <p class="section-menu-item-text">Streams</p>
+                <!-- /SECTION MENU ITEM TEXT -->
+            </a>
+            <!-- /SECTION MENU ITEM -->
+
+            <!-- SECTION MENU ITEM -->
+            <a class="section-menu-item" href="profile-blog.html">
+                <!-- SECTION MENU ITEM ICON -->
+                <svg class="section-menu-item-icon icon-blog-posts">
+                    <use xlink:href="#svg-blog-posts"></use>
+                </svg>
+                <!-- /SECTION MENU ITEM ICON -->
+
+                <!-- SECTION MENU ITEM TEXT -->
+                <p class="section-menu-item-text">Blog</p>
+                <!-- /SECTION MENU ITEM TEXT -->
+            </a>
+            <!-- /SECTION MENU ITEM -->
+
+            <!-- SECTION MENU ITEM -->
+            <a class="section-menu-item" href="profile-forum.html">
+                <!-- SECTION MENU ITEM ICON -->
+                <svg class="section-menu-item-icon icon-forum">
+                    <use xlink:href="#svg-forum"></use>
+                </svg>
+                <!-- /SECTION MENU ITEM ICON -->
+
+                <!-- SECTION MENU ITEM TEXT -->
+                <p class="section-menu-item-text">Forum</p>
+                <!-- /SECTION MENU ITEM TEXT -->
+            </a>
+            <!-- /SECTION MENU ITEM -->
+
+            <!-- SECTION MENU ITEM -->
+            <a class="section-menu-item" href="profile-store.html">
+                <!-- SECTION MENU ITEM ICON -->
+                <svg class="section-menu-item-icon icon-store">
+                    <use xlink:href="#svg-store"></use>
+                </svg>
+                <!-- /SECTION MENU ITEM ICON -->
+
+                <!-- SECTION MENU ITEM TEXT -->
+                <p class="section-menu-item-text">Store</p>
+                <!-- /SECTION MENU ITEM TEXT -->
+            </a>
+            <!-- /SECTION MENU ITEM -->
+        </div>
+        <!-- /SECTION MENU -->
+
+        <!-- SLIDER CONTROLS -->
+        <div id="section-navigation-slider-controls" class="slider-controls">
+            <!-- SLIDER CONTROL -->
+            <div class="slider-control left">
+                <!-- SLIDER CONTROL ICON -->
+                <svg class="slider-control-icon icon-small-arrow">
+                    <use xlink:href="#svg-small-arrow"></use>
+                </svg>
+                <!-- /SLIDER CONTROL ICON -->
+            </div>
+            <!-- /SLIDER CONTROL -->
+
+            <!-- SLIDER CONTROL -->
+            <div class="slider-control right">
+                <!-- SLIDER CONTROL ICON -->
+                <svg class="slider-control-icon icon-small-arrow">
+                    <use xlink:href="#svg-small-arrow"></use>
+                </svg>
+                <!-- /SLIDER CONTROL ICON -->
+            </div>
+            <!-- /SLIDER CONTROL -->
+        </div>
+        <!-- /SLIDER CONTROLS -->
+    </nav>
+    <!-- /SECTION NAVIGATION -->
+
+
+
+    <!-- SECTION -->
+    <section class="section">
+    <!-- SECTION HEADER -->
+    <div class="section-header">
+        <!-- SECTION HEADER INFO -->
+        <div class="section-header-info">
+            <!-- SECTION PRETITLE -->
+            <p class="section-pretitle">Browse {{ app.user.username }}</p>
+            <!-- /SECTION PRETITLE -->
+
+            <!-- SECTION TITLE -->
+            <h2 class="section-title">Friends <span class="highlighted">{{(Friends1|length + Friends2|length)}}</span></h2>
+            <!-- /SECTION TITLE -->
+        </div>
+        <!-- /SECTION HEADER INFO -->
+    </div>
+    <!-- /SECTION HEADER -->
+
+    <!-- SECTION FILTERS BAR -->
+    <div class="section-filters-bar v1">
+        <!-- SECTION FILTERS BAR ACTIONS -->
+        <div class="section-filters-bar-actions">
+            <!-- FORM -->
+            <form class="form">
+                <!-- FORM INPUT -->
+                <div class="form-input small with-button">
+                    <label for="friends-search">Search Friends</label>
+                    <input type="text" id="friends-search" name="friends_search">
+                    <!-- BUTTON -->
+                    <button class="button primary">
+                        <!-- ICON MAGNIFYING GLASS -->
+                        <svg class="icon-magnifying-glass">
+                            <use xlink:href="#svg-magnifying-glass"></use>
+                        </svg>
+                        <!-- /ICON MAGNIFYING GLASS -->
+                    </button>
+                    <!-- /BUTTON -->
+                </div>
+                <!-- /FORM INPUT -->
+
+                <!-- FORM SELECT -->
+                <div class="form-select">
+                    <label for="friends-filter-category">Filter By</label>
+                    <select id="friends-filter-category" name="friends_filter_category">
+                        <option value="0">Recently Active</option>
+                        <option value="1">Newest Friends</option>
+                        <option value="2">Alphabetical</option>
+                    </select>
+                    <!-- FORM SELECT ICON -->
+                    <svg class="form-select-icon icon-small-arrow">
+                        <use xlink:href="#svg-small-arrow"></use>
+                    </svg>
+                    <!-- /FORM SELECT ICON -->
+                </div>
+                <!-- /FORM SELECT -->
+            </form>
+            <!-- /FORM -->
+
+            <!-- FILTER TABS -->
+            <div class="filter-tabs">
+                <!-- FILTER TAB -->
+                <div class="filter-tab active">
+                    <!-- FILTER TAB TEXT -->
+                    <p class="filter-tab-text">Recently Active</p>
+                    <!-- /FILTER TAB TEXT -->
+                </div>
+                <!-- /FILTER TAB -->
+
+                <!-- FILTER TAB -->
+                <div class="filter-tab">
+                    <!-- FILTER TAB TEXT -->
+                    <p class="filter-tab-text">Newest Friends</p>
+                    <!-- /FILTER TAB TEXT -->
+                </div>
+                <!-- /FILTER TAB -->
+
+                <!-- FILTER TAB -->
+                <div class="filter-tab">
+                    <!-- FILTER TAB TEXT -->
+                    <p class="filter-tab-text">Alphabetical</p>
+                    <!-- /FILTER TAB TEXT -->
+                </div>
+                <!-- /FILTER TAB -->
+            </div>
+            <!-- /FILTER TABS -->
+        </div>
+        <!-- /SECTION FILTERS BAR ACTIONS -->
+
+        <!-- SECTION FILTERS BAR ACTIONS -->
+        <div class="section-filters-bar-actions">
+            <!-- VIEW ACTIONS -->
+            <div class="view-actions">
+                <!-- VIEW ACTION -->
+                <a class="view-action text-tooltip-tft-medium" href="profile-friends.html" data-title="Big Grid">
+                    <!-- VIEW ACTION ICON -->
+                    <svg class="view-action-icon icon-big-grid-view">
+                        <use xlink:href="#svg-big-grid-view"></use>
+                    </svg>
+                    <!-- /VIEW ACTION ICON -->
+                </a>
+                <!-- /VIEW ACTION -->
+
+                <!-- VIEW ACTION -->
+                <a class="view-action text-tooltip-tft-medium active" href="profile-friends-small-grid.html" data-title="Small Grid">
+                    <!-- VIEW ACTION ICON -->
+                    <svg class="view-action-icon icon-small-grid-view">
+                        <use xlink:href="#svg-small-grid-view"></use>
+                    </svg>
+                    <!-- /VIEW ACTION ICON -->
+                </a>
+                <!-- /VIEW ACTION -->
+
+                <!-- VIEW ACTION -->
+                <a class="view-action text-tooltip-tft-medium" href="profile-friends-list.html" data-title="List">
+                    <!-- VIEW ACTION ICON -->
+                    <svg class="view-action-icon icon-list-grid-view">
+                        <use xlink:href="#svg-list-grid-view"></use>
+                    </svg>
+                    <!-- /VIEW ACTION ICON -->
+                </a>
+                <!-- /VIEW ACTION -->
+            </div>
+            <!-- /VIEW ACTIONS -->
+        </div>
+        <!-- /SECTION FILTERS BAR ACTIONS -->
+    </div>
+    <!-- /SECTION FILTERS BAR -->
+
+    <!-- GRID -->
+    <div class="grid grid-3-3-3-3 centered">
+
+     {% for f1 in Friends1 %}
+        <!-- USER PREVIEW -->
+        <div class="user-preview small">
+            <!-- USER PREVIEW COVER -->
+            <figure class="user-preview-cover liquid">
+                <img src="{{ asset('template/img/cover/18.jpg') }}img/cover/18.jpg" alt="cover-18">
+            </figure>
+            <!-- /USER PREVIEW COVER -->
+
+            <!-- USER PREVIEW INFO -->
+            <div class="user-preview-info">
+                <!-- USER SHORT DESCRIPTION -->
+                <div class="user-short-description small">
+                    <!-- USER SHORT DESCRIPTION AVATAR -->
+                    <a class="user-short-description-avatar user-avatar" href="profile-timeline.html">
+                        <!-- USER AVATAR BORDER -->
+                        <div class="user-avatar-border">
+                            <!-- HEXAGON -->
+                            <div class="hexagon-100-110"></div>
+                            <!-- /HEXAGON -->
+                        </div>
+                        <!-- /USER AVATAR BORDER -->
+
+                        <!-- USER AVATAR CONTENT -->
+                        <div class="user-avatar-content">
+                            <!-- HEXAGON -->
+                            <div class="hexagon-image-68-74" data-src="{{ asset('template/img/avatar/'~f1.iduser2.imguser) }}"></div>
+                            <!-- /HEXAGON -->
+                        </div>
+                        <!-- /USER AVATAR CONTENT -->
+
+                        <!-- USER AVATAR PROGRESS -->
+                        <div class="user-avatar-progress">
+                            <!-- HEXAGON -->
+                            <div class="hexagon-progress-84-92"></div>
+                            <!-- /HEXAGON -->
+                        </div>
+                        <!-- /USER AVATAR PROGRESS -->
+
+                        <!-- USER AVATAR PROGRESS BORDER -->
+                        <div class="user-avatar-progress-border">
+                            <!-- HEXAGON -->
+                            <div class="hexagon-border-84-92"></div>
+                            <!-- /HEXAGON -->
+                        </div>
+                        <!-- /USER AVATAR PROGRESS BORDER -->
+
+                        <!-- USER AVATAR BADGE -->
+                        <div class="user-avatar-badge">
+                            <!-- USER AVATAR BADGE BORDER -->
+                            <div class="user-avatar-badge-border">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-28-32"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR BADGE BORDER -->
+
+                            <!-- USER AVATAR BADGE CONTENT -->
+                            <div class="user-avatar-badge-content">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-dark-22-24"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR BADGE CONTENT -->
+
+                            <!-- USER AVATAR BADGE TEXT -->
+                            <p class="user-avatar-badge-text">13</p>
+                            <!-- /USER AVATAR BADGE TEXT -->
+                        </div>
+                        <!-- /USER AVATAR BADGE -->
+                    </a>
+                    <!-- /USER SHORT DESCRIPTION AVATAR -->
+
+                    <!-- USER SHORT DESCRIPTION TITLE -->
+                    <p class="user-short-description-title"><a href="profile-timeline.html">{{f1.iduser2.username}}</a></p>
+                    <!-- /USER SHORT DESCRIPTION TITLE -->
+
+                    <!-- USER SHORT DESCRIPTION TEXT -->
+                    <p class="user-short-description-text"><a href="#">{{f1.iduser2.email}}</a></p>
+                    <!-- /USER SHORT DESCRIPTION TEXT -->
+                </div>
+                <!-- /USER SHORT DESCRIPTION -->
+
+                <!-- BADGE LIST -->
+                <div class="badge-list small">
+                    <!-- BADGE ITEM -->
+                    <div class="badge-item">
+                        <img src="{{ asset('template/img/badge/gold-s.png') }}" alt="badge-gold-s">
+                    </div>
+                    <!-- /BADGE ITEM -->
+
+                    <!-- BADGE ITEM -->
+                    <div class="badge-item">
+                        <img src="{{ asset('template/img/badge/rmachine-s.png') }}" alt="badge-rmachine-s">
+                    </div>
+                    <!-- /BADGE ITEM -->
+
+                    <!-- BADGE ITEM -->
+                    <div class="badge-item">
+                        <img src="{{ asset('template/img/badge/globet-s.png') }}" alt="badge-globet-s">
+                    </div>
+                    <!-- /BADGE ITEM -->
+
+
+                </div>
+                <!-- /BADGE LIST -->
+
+                <!-- USER STATS -->
+                <div class="user-stats">
+                    <!-- USER STAT -->
+                    <div class="user-stat">
+                        <!-- USER STAT TITLE -->
+                        <p class="user-stat-title">1260</p>
+                        <!-- /USER STAT TITLE -->
+
+                        <!-- USER STAT TEXT -->
+                        <p class="user-stat-text">posts</p>
+                        <!-- /USER STAT TEXT -->
+                    </div>
+                    <!-- /USER STAT -->
+
+                    <!-- USER STAT -->
+                    <div class="user-stat">
+                        <!-- USER STAT TITLE -->
+                        <p class="user-stat-title">114</p>
+                        <!-- /USER STAT TITLE -->
+
+                        <!-- USER STAT TEXT -->
+                        <p class="user-stat-text">friends</p>
+                        <!-- /USER STAT TEXT -->
+                    </div>
+                    <!-- /USER STAT -->
+
+                    <!-- USER STAT -->
+                    <div class="user-stat">
+                        <!-- USER STAT TITLE -->
+                        <p class="user-stat-title">1.1k</p>
+                        <!-- /USER STAT TITLE -->
+
+                        <!-- USER STAT TEXT -->
+                        <p class="user-stat-text">visits</p>
+                        <!-- /USER STAT TEXT -->
+                    </div>
+                    <!-- /USER STAT -->
+                </div>
+                <!-- /USER STATS -->
+
+                <!-- USER PREVIEW SOCIAL LINKS WRAP -->
+                <div class="user-preview-social-links-wrap">
+                    <!-- USER PREVIEW SOCIAL LINKS -->
+                    <div id="user-preview-social-links-slider-02" class="user-preview-social-links">
+                        <!-- USER PREVIEW SOCIAL LINK -->
+                        <div class="user-preview-social-link">
+                            <!-- SOCIAL LINK -->
+                            <a class="social-link small facebook" href="#">
+                                <!-- SOCIAL LINK ICON -->
+                                <svg class="social-link-icon icon-facebook">
+                                    <use xlink:href="#svg-facebook"></use>
+                                </svg>
+                                <!-- /SOCIAL LINK ICON -->
+                            </a>
+                            <!-- /SOCIAL LINK -->
+                        </div>
+                        <!-- /USER PREVIEW SOCIAL LINK -->
+
+                        <!-- USER PREVIEW SOCIAL LINK -->
+                        <div class="user-preview-social-link">
+                            <!-- SOCIAL LINK -->
+                            <a class="social-link small twitter" href="#">
+                                <!-- SOCIAL LINK ICON -->
+                                <svg class="social-link-icon icon-twitter">
+                                    <use xlink:href="#svg-twitter"></use>
+                                </svg>
+                                <!-- /SOCIAL LINK ICON -->
+                            </a>
+                            <!-- /SOCIAL LINK -->
+                        </div>
+                        <!-- /USER PREVIEW SOCIAL LINK -->
+
+                        <!-- USER PREVIEW SOCIAL LINK -->
+                        <div class="user-preview-social-link">
+                            <!-- SOCIAL LINK -->
+                            <a class="social-link small instagram" href="#">
+                                <!-- SOCIAL LINK ICON -->
+                                <svg class="social-link-icon icon-instagram">
+                                    <use xlink:href="#svg-instagram"></use>
+                                </svg>
+                                <!-- /SOCIAL LINK ICON -->
+                            </a>
+                            <!-- /SOCIAL LINK -->
+                        </div>
+                        <!-- /USER PREVIEW SOCIAL LINK -->
+
+                        <!-- USER PREVIEW SOCIAL LINK -->
+                        <div class="user-preview-social-link">
+                            <!-- SOCIAL LINK -->
+                            <a class="social-link small twitch" href="#">
+                                <!-- SOCIAL LINK ICON -->
+                                <svg class="social-link-icon icon-twitch">
+                                    <use xlink:href="#svg-twitch"></use>
+                                </svg>
+                                <!-- /SOCIAL LINK ICON -->
+                            </a>
+                            <!-- /SOCIAL LINK -->
+                        </div>
+                        <!-- /USER PREVIEW SOCIAL LINK -->
+
+                        <!-- USER PREVIEW SOCIAL LINK -->
+                        <div class="user-preview-social-link">
+                            <!-- SOCIAL LINK -->
+                            <a class="social-link small discord" href="#">
+                                <!-- SOCIAL LINK ICON -->
+                                <svg class="social-link-icon icon-discord">
+                                    <use xlink:href="#svg-discord"></use>
+                                </svg>
+                                <!-- /SOCIAL LINK ICON -->
+                            </a>
+                            <!-- /SOCIAL LINK -->
+                        </div>
+                        <!-- /USER PREVIEW SOCIAL LINK -->
+                    </div>
+                    <!-- /USER PREVIEW SOCIAL LINKS -->
+
+                    <!-- SLIDER CONTROLS -->
+                    <div id="user-preview-social-links-slider-controls-02" class="slider-controls">
+                        <!-- SLIDER CONTROL -->
+                        <div class="slider-control left">
+                            <!-- SLIDER CONTROL ICON -->
+                            <svg class="slider-control-icon icon-small-arrow">
+                                <use xlink:href="#svg-small-arrow"></use>
+                            </svg>
+                            <!-- /SLIDER CONTROL ICON -->
+                        </div>
+                        <!-- /SLIDER CONTROL -->
+
+                        <!-- SLIDER CONTROL -->
+                        <div class="slider-control right">
+                            <!-- SLIDER CONTROL ICON -->
+                            <svg class="slider-control-icon icon-small-arrow">
+                                <use xlink:href="#svg-small-arrow"></use>
+                            </svg>
+                            <!-- /SLIDER CONTROL ICON -->
+                        </div>
+                        <!-- /SLIDER CONTROL -->
+                    </div>
+                    <!-- /SLIDER CONTROLS -->
+                </div>
+                <!-- /USER PREVIEW SOCIAL LINKS WRAP -->
+            </div>
+            <!-- /USER PREVIEW INFO -->
+
+            <!-- USER PREVIEW FOOTER -->
+            <div class="user-preview-footer">
+
+
+                <!-- USER PREVIEW FOOTER ACTION -->
+                <div class="user-preview-footer-action">
+                    <!-- BUTTON -->
+                    <p class="button void void-primary">
+                        <!-- BUTTON ICON -->
+                        <svg class="button-icon icon-comment">
+                            <use xlink:href="#svg-comment"></use>
+                        </svg>
+                        <!-- /BUTTON ICON -->
+                    </p>
+                    <!-- /BUTTON -->
+                </div>
+                <!-- /USER PREVIEW FOOTER ACTION -->
+            </div>
+            <!-- /USER PREVIEW FOOTER -->
+        </div>
+        <!-- /USER PREVIEW -->
+        {% endfor %}
+
+
+    </div>
+    <!-- /GRID -->
+    </div>
+    <!-- /GRID -->
+
+
+
+{% endblock %}

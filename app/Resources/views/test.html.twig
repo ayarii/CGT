@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+
+
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/css/styles.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/css/vendor/bootstrap.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/css/vendor/simplebar.css')}}">
+
+
+
+
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+{% block bodydef %}<body oncontextmenu="return false;">{% endblock %}
+
+
+
+
+{% block body %}{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('template/app.bundle.min.js')}}"></script>
+
+
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,4 @@
+services:
+#    fos.example:
+#        class: FOSBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -1,0 +1,39 @@
+messagerie_homepage:
+    path:     /
+    defaults: { _controller: MessagerieBundle:Default:index }
+    methods:  GET
+test:
+    path:     /try/{id}
+    defaults: { _controller: MessagerieBundle:Message:indext }
+    methods:  GET
+
+affich:
+    path:     /affichMessages/{id}
+    defaults: { _controller: MessagerieBundle:Message:affich }
+Ajout:
+    path:     /AjoutMessages/{id}
+    defaults: { _controller: MessagerieBundle:Message:ajout }
+    methods:  [GET, POST]
+
+
+supp:
+    path:     /suppMessages/{id}/{id1}
+    defaults: { _controller: MessagerieBundle:Message:supp }
+update:
+    path:     /updateMessages/{id}/{id1}
+    defaults: { _controller: MessagerieBundle:Message:update }
+affichC:
+    path:     /affichConversations
+    defaults: { _controller: MessagerieBundle:Conversation:affichConversation }
+AjoutC:
+    path:     /ajoutConversation
+    defaults: { _controller: MessagerieBundle:Conversation:AjoutConversation }
+suppC:
+    path:     /supprimerConversation/{id}
+    defaults: { _controller: MessagerieBundle:Conversation:suppConversation }
+updateC:
+    path:     /updateConversation/{id}
+    defaults: { _controller: MessagerieBundle:Conversation:updateConversation }
+ajax_search:
+    path:     /search
+    defaults: { _controller: MessagerieBundle:Conversation:search }

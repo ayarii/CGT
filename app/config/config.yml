@@ -1,0 +1,161 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: "@FOSBundle/Resources/config/services.yml" }
+    - { resource: "@CompetitionBundle/Resources/config/services.yml" }
+    - { resource: "@MessagerieBundle/Resources/config/services.yml" }
+    - { resource: "@PublicationBundle/Resources/config/services.yml" }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+
+framework:
+    #esi: ~
+    templating:
+        engines: ['twig']
+    translator: ~
+    secret: '%secret%'
+    router:
+        resource: '%kernel.project_dir%/app/config/routing.yml'
+        strict_requirements: ~
+    form: ~
+    csrf_protection: ~
+    validation: { enable_annotations: true }
+    #serializer: { enable_annotations: true }
+    default_locale: '%locale%'
+    trusted_hosts: ~
+    session:
+        # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id: session.handler.native_file
+        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+    fragments: ~
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+
+# Twig Configuration
+twig:
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver: pdo_mysql
+        host: '%database_host%'
+        port: '%database_port%'
+        dbname: '%database_name%'
+        user: '%database_user%'
+        password: '%database_password%'
+        charset: UTF8
+
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: '%kernel.project_dir%/var/data/data.sqlite'
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #path: '%database_path%'
+
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: '%mailer_transport%'
+    host: '%mailer_host%'
+    username: '%mailer_user%'
+    password: '%mailer_password%'
+    spool: { type: memory }
+
+sensio_framework_extra:
+   router:
+        annotations: false
+
+fos_user:
+  db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+  firewall_name: main
+  user_class: FOSBundle\Entity\User
+  service:
+    mailer: fos_user.mailer.twig_swift
+
+  from_email:
+    address: "%mailer_user%"
+    sender_name: "%mailer_user%"
+  registration:
+    form:
+      type: AppBundle\Form\RegistrationType
+
+endroid_qr_code:
+    writer: 'png'
+    size: 300
+    margin: 10
+    background_color: { r: 255, g: 255, b: 255 }
+    foreground_color: { r: 0, g: 0, b: 0 }
+    error_correction_level: low # low, medium, quartile or high
+    encoding: UTF-8
+    label: Scan the code
+    label_font_size: 20
+    label_alignment: left # left, center or right
+    label_margin: { b: 20 }
+    logo_path: "template/img/landing/vikinger-logo.png"
+    logo_width: 500
+    validate_result: false # checks if the result is readable
+
+doc_doc_doc_nexmo:
+  api_key: 534a32c6
+  api_secret: n3ibI7ekYJcZlkWS
+
+knp_paginator:
+  page_range: 5                       # number of links showed in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links to page 4, 5, 6)
+  default_options:
+    page_name: page                 # page query parameter name
+    sort_field_name: sort           # sort field query parameter name
+    sort_direction_name: direction  # sort direction query parameter name
+    distinct: true                  # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    filter_field_name: filterField  # filter field query parameter name
+    filter_value_name: filterValue  # filter value query parameter name
+  template:
+    pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig'
+    sortable: '@KnpPaginator/Pagination/sortable_link.html.twig' # sort link template
+    filtration: '@KnpPaginator/Pagination/filtration.html.twig'  # filters template
+
+nomaya_social:
+
+  buttons:
+    facebook:
+      url:            null
+      locale:         "fr_FR"
+      send:           false
+      width:          300
+      showFaces:      false
+      layout:         "button_count"
+    twitter:
+      url:            null
+      locale:         "fr"
+      message:        "Je veux partager ça avec vous"
+      text:           "Tweet"
+      via:            "L'Equipe cartedevisitevirtuelle.fr"
+      tag:            "ttot"
+    googleplus:
+      url:            null
+      locale :        "fr"
+      size :          "medium"
+      annotation :    "bubble"
+      width :         300
+    linkedin:
+      url:            null
+      locale:         "fr_FR"
+      counter:        "right"
+    pinterest:
+      url:            null
+  theme:                  'default' # optional
+
+
+
+

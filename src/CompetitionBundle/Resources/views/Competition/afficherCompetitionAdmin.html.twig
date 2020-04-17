@@ -1,0 +1,211 @@
+{% extends 'base1.html.twig' %}
+
+
+{% block body %}
+
+
+
+
+    <section class="content blog-page">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-7 col-md-6 col-sm-12">
+                    <h2>List de Competition
+                        <small>Welcome to DEVIT</small>
+                    </h2>
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-12">
+                    <ul class="breadcrumb float-md-right">
+                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> DEVIT</a></li>
+                        <li class="breadcrumb-item"><a href="blog-dashboard.html">Competition</a></li>
+                        <li class="breadcrumb-item active">List de Competition</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 col-md-12 left-box">
+
+
+                    {% for c in Competition %}
+                        <div class="card single_post">
+                            <div class="body">
+
+
+                                <ul class="meta list-unstyled team-info">
+
+                                    <li>
+                                        <img src="{{ asset('template/img/avatar/'~c.idUser.imguser) }}" alt="Avatar">
+                                    </li>
+                                    <li><a href="#">Posted By: {{ c.idUser }}</a></li>
+                                    <li><a href="#"><i class="zmdi zmdi-label col-green"></i>{{c.Typedetalent}}</a></li>
+                                </ul>
+                                <br>
+
+                                <h3 class="m-t-0 m-b-5"><a href="blog-details.html">{{ c.Titre }}</a></h3>
+
+                            </div>
+                            <div class="body">
+                                <div class="img-post m-b-15">
+                                    <img src="{{ asset('template/img/cover/'~c.imageC) }}" alt="Awesome Image">
+                                    <div class="social_share">
+                                        <button class="btn btn-primary btn-icon btn-icon-mini btn-round" data-type="cancel" ><a href="{{ path('supprimercompetitionAdmin', {'id':c.idCompetition})  }}"><i class="fa fa-trash" style="font-size:14px;color:white"></i></a></button>
+
+                                    </div>
+                                </div>
+
+                                <ul class="meta ">
+
+                                    <li><a href="#"><i class="fa fa-diamond" style="font-size:14px;color:deepskyblue"></i>{{c.Cout}}</a></li>
+                                </ul>
+                                <br>
+                                <p>{{ c.Description }}</p>
+
+
+
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                    <ul class="pagination pagination-primary">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-12 right-box">
+                    <div class="card">
+                        <div class="body search">
+                            <div class="input-group m-b-0">
+                                <input type="text" id='search'class="form-control" placeholder="Search...">
+                                <span class="input-group-addon">
+                                <i class="zmdi zmdi-search"></i>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="nav" id="side-menu">
+                        <li>
+
+                            <ul class="nav nav-second-level" id="entitiesNav">
+                            </ul>
+
+                        </li>
+                    </ul>
+                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function() {
+                            var searchRequest = null;
+                            $("#search").keyup(function() {
+                                var minlength = 1;
+                                var that = this;
+                                var value = $(this).val();
+                                var entitySelector = $("#entitiesNav").html('');
+                                if (value.length >= minlength ) {
+                                    if (searchRequest != null)
+                                        searchRequest.abort();
+                                    searchRequest = $.ajax({
+                                        type: "GET",
+                                        url: "{{ path('ajax_search') }}",
+                                        data: {
+                                            'q' : value
+                                        },
+                                        dataType: "text",
+                                        success: function(msg){
+                                            //we need to check if the value is the same
+                                            if (value===$(that).val()) {
+                                                var result = JSON.parse(msg);
+                                                $.each(result, function(key, arr) {
+                                                    $.each(arr, function(id, value) {
+                                                        if (key === 'Competition') {
+                                                            if (id !== 'error') {
+                                                                console.log(value[1]);
+
+                                                                entitySelector.append('<ul class="meta list-unstyled team-info"><li>'+value[1]+'<a href="/detailuser/'+id+'"><figure class="product-preview-image liquid"><img src="/template/img/cover/'+value[0]+'" style="width: 65px; height: 65px"/> </figure>'+'</a></li></ul>'+'&nbsp;&nbsp;&nbsp;');
+                                                            } else {
+                                                                entitySelector.append('<li class="errorLi"><img src="/template/img/reaction/sad.png"  style="width: 25px; height: 25px" >&nbsp;&nbsp;Aucune Competition trouvée</li>');
+
+                                                            }
+                                                        }
+                                                    });
+                                                });
+                                            }
+                                        }
+                                    });
+                                }
+                            });
+                        });
+                    </script>
+
+
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Top 3 nouvelles</strong> Competitions</h2>
+                        </div>
+                        {% for x in louay %}
+                            <div class="body widget popular-post">
+
+
+                                <ul class="list-unstyled m-b-0">
+
+                                    <li class="row">
+                                        <div class="icon-box col-4">
+                                            <img class="img-fluid img-thumbnail" src="{{ asset('template/img/cover/'~x.imageC) }}" alt="Awesome Image">
+                                        </div>
+                                        <div class="text-box col-8 p-l-0">
+                                            <h5 class="m-b-0"><a href="#">{{x.Titre}}</a></h5>
+                                            <small class="author-name">Posted By: <a href="#">{{ x.idUser }}</a></small>
+                                            <small class="date">{{ x.DateDebut|date('F, jS 2020 ') }}</small>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
+
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Hashtag</strong> Type de talent</h2>
+                        </div>
+                        <div class="body widget tag-clouds">
+                            <ul class="list-unstyled m-b-0">
+                                <li><a href="#" class="tag badge badge-default">Dance</a></li>
+                                <li><a href="#" class="tag badge badge-success">Comedie</a></li>
+                                <li><a href="#" class="tag badge badge-info">BeatBox</a></li>
+                                <li><a href="#" class="tag badge badge-success">Musique</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Image</strong> Cover</h2>
+                        </div>
+
+
+                        <div class="body widget">
+                            {% for c in Competition %}
+                                <ul class="list-unstyled instagram-plugin m-b-0">
+
+
+                                    <li><a href="#"><img src="{{ asset('template/img/cover/'~c.imageC) }}" alt="image description"></a></li>
+                                </ul>
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,64 @@
+competition_homepage:
+    path:     /
+    defaults: { _controller: CompetitionBundle:Default:index }
+ajoutercompetition:
+    path:     /ajoutercompetition
+    defaults: { _controller: CompetitionBundle:Competition:ajoutercompetition }
+    requirements: { _method: post }
+
+affichercompetition:
+    path:     /affichercompetition
+    defaults: { _controller: CompetitionBundle:Competition:afficherCompetition }
+
+affichercomp:
+    path:     /affichercomp
+    defaults: { _controller: CompetitionBundle:Competition:afficherComp }
+
+supprimercompetition:
+    path:     /supprimercompetition/{id}
+    defaults: { _controller: CompetitionBundle:Competition:supprimerCompetition }
+supprimerparticipation:
+    path:     /supprimerparticipation/{id}/{id1}
+    defaults: { _controller: CompetitionBundle:Participation:supprimerParticipation }
+
+supprimercompetitionAdmin:
+    path:     /supprimercompetitionAdmin/{id}
+    defaults: { _controller: CompetitionBundle:Competition:supprimerCompetitionAdmin }
+modifiercompetition:
+    path:     /modifiercompetition/{id}
+    defaults: { _controller: CompetitionBundle:Competition:modifierCompetition }
+ajouterticket:
+    path:     /ajouterTicket/{id}/{type}
+    defaults: { _controller: CompetitionBundle:Ticket:ajouterTicket }
+supprimerticket:
+    path:     /supprimerticket/{id}/{id1}
+    defaults: { _controller: CompetitionBundle:Ticket:supprimerTicket }
+ajouterparticipation:
+    path:     /ajouterparticipation/{id}/{type}
+    defaults: { _controller: CompetitionBundle:Participation:ajouterParticipation }
+affichercompetitionUser:
+    path:     /affichercompetitionUser
+    defaults: { _controller: CompetitionBundle:Competition:afficherCompetitionUser }
+affichercompetitionAdmin:
+    path:     /affichercompetitionAdmin
+    defaults: { _controller: CompetitionBundle:Competition:afficherCompetitionAdmin }
+Ticket:
+    path:     /Ticket/{id}/{type}
+    defaults: { _controller: CompetitionBundle:Ticket:afficherTicket }
+
+detailuser:
+    path:     /detailuser/{id}
+    defaults: { _controller: CompetitionBundle:Competition:detailuser }
+ajax_search:
+    path:     /search
+    defaults: { _controller: CompetitionBundle:Competition:search }
+pdf:
+    path:     /pdf/{id}
+    defaults: { _controller: CompetitionBundle:Ticket:pdf }
+pie:
+    path:     /pie
+    defaults: { _controller: CompetitionBundle:Competition:pie}
+
+can:
+    path:     /can
+    defaults: { _controller: CompetitionBundle:Competition:can}

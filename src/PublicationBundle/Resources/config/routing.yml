@@ -1,0 +1,78 @@
+publication_show:
+    path:     /show
+    defaults: { _controller: PublicationBundle:Post:affichagePost }
+publication_homepage:
+    path:     /newsfeed
+    defaults: { _controller: PublicationBundle:Post:AjouterPostVI }
+publication_edit:
+    path:    /{id_post}/edit
+    defaults: { _controller: PublicationBundle:Post:ModifierPost }
+publication_delete:
+    path:    /{id_post}/delete
+    defaults: { _controller: PublicationBundle:Post:DeletePost}
+publication_show_one1:
+    path:    /{id_post}/show1
+    defaults: { _controller: PublicationBundle:Post:showone }
+
+commentaire_add:
+    path:     /new/{post_id}
+    defaults: { _controller: PublicationBundle:commentaire:AjouterComment }
+    methods: [GET,POST]
+
+commentaire_modif:
+    path:     /{id}/editcom
+    defaults: { _controller: PublicationBundle:commentaire:editComment }
+
+commentaire_supprimer:
+    path:     /supprimercommentaire/{id_com}
+    defaults: { _controller: PublicationBundle:commentaire:deleteComment }
+
+vote_add:
+    path:     /{id_post}/voteup/{slug}
+    defaults: { _controller: PublicationBundle:Post:Vote }
+
+react_with:
+    path:     /{id_post}/reactwith/{type}
+    defaults: { _controller: PublicationBundle:Post:React }
+
+visit_profile:
+    path:      /{id_user}/profile
+    defaults: { _controller: PublicationBundle:Post:visitprofile }
+
+publication_share_one:
+    path:     /{id_post}/share
+    defaults: { _controller: PublicationBundle:Post:shareone }
+share:
+     path:    /sharenow
+     defaults: {_controller:PublicationBundle:Post:addpostaj}
+show_one_post:
+    path:    /showonepost/{id_post}
+    defaults: {_controller:PublicationBundle:Post:showPost1}
+
+show_Admin_posts:
+        path:    /showpostsadmin
+        defaults: {_controller:PublicationBundle:Post:showPostforadmin}
+
+show_Admin_post:
+            path:    /showonepostadmin/{id_post}
+            defaults: {_controller:PublicationBundle:Post:showPost1Adimin}
+
+commentaire_supprimera:
+    path:     /supprimercommentairea/{id_com}
+    defaults: { _controller: PublicationBundle:commentaire:deleteCommentA }
+commentaire_addad:
+    path:     /newad/{post_id}
+    defaults: { _controller: PublicationBundle:commentaire:AjouterCommentad }
+    methods: [GET,POST]
+
+publication_addelete:
+    path:    /{id_post}/deletead
+    defaults: { _controller: PublicationBundle:Post:DeletePostad }
+
+chatbotcomp:
+    path:     /{id_user}/yes
+    defaults: { _controller: PublicationBundle:Post:tooop1 }
+
+chatbotcomp23:
+    path:     /{id_user}/evens
+    defaults: { _controller: PublicationBundle:Post:chatbotcomp }

@@ -1,0 +1,532 @@
+
+{% extends 'baseLouay.html.twig' %}
+
+
+{% block body %}
+
+
+
+
+
+
+
+
+
+
+
+    <!-- CONTENT GRID -->
+    <div class="content-grid">
+        <!-- GRID -->
+        <div class="grid grid-9-3 mobile-prefer-content">
+
+
+
+            <div class="grid-column">
+                <!-- WIDGET BOX -->
+                <div class="widget-box no-padding">
+                    <!-- WIDGET BOX SETTINGS -->
+                    {% for c in comp %}
+                        <div class="widget-box-settings">
+                            <!-- POST SETTINGS WRAP -->
+                            <div class="post-settings-wrap">
+                                <!-- POST SETTINGS -->
+                                <div class="post-settings widget-box-post-settings-dropdown-trigger">
+                                    <!-- POST SETTINGS ICON -->
+                                    <svg class="post-settings-icon icon-more-dots">
+                                        <use xlink:href="#svg-more-dots"></use>
+                                    </svg>
+                                    <!-- /POST SETTINGS ICON -->
+                                </div>
+                                <!-- /POST SETTINGS -->
+
+                                <!-- SIMPLE DROPDOWN -->
+                                <div class="simple-dropdown widget-box-post-settings-dropdown">
+                                    <!-- SIMPLE DROPDOWN LINK -->
+                                    <p class="simple-dropdown-link">Edit Post</p>
+                                    <!-- /SIMPLE DROPDOWN LINK -->
+
+                                    <!-- SIMPLE DROPDOWN LINK -->
+                                    <p class="simple-dropdown-link">Delete Post</p>
+                                    <!-- /SIMPLE DROPDOWN LINK -->
+
+                                    <!-- SIMPLE DROPDOWN LINK -->
+                                    <p class="simple-dropdown-link">Make it Featured</p>
+                                    <!-- /SIMPLE DROPDOWN LINK -->
+
+                                    <!-- SIMPLE DROPDOWN LINK -->
+                                    <p class="simple-dropdown-link">Report Post</p>
+                                    <!-- /SIMPLE DROPDOWN LINK -->
+
+                                    <!-- SIMPLE DROPDOWN LINK -->
+                                    <p class="simple-dropdown-link">Report Author</p>
+                                    <!-- /SIMPLE DROPDOWN LINK -->
+                                </div>
+                                <!-- /SIMPLE DROPDOWN -->
+                            </div>
+                            <!-- /POST SETTINGS WRAP -->
+                        </div>
+                        <!-- /WIDGET BOX SETTINGS -->
+
+                        <!-- WIDGET BOX STATUS -->
+                        <div class="widget-box-status">
+                            <!-- WIDGET BOX STATUS CONTENT -->
+                            <div class="widget-box-status-content">
+                                <!-- USER STATUS -->
+                                <div class="user-status">
+                                    <!-- USER STATUS AVATAR -->
+                                    <a class="user-status-avatar" href="#">
+                                        <!-- USER AVATAR -->
+                                        <div class="user-avatar small no-outline">
+                                            <!-- USER AVATAR CONTENT -->
+                                            <div class="user-avatar-content">
+                                                <!-- HEXAGON -->
+                                                <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~c.iduser.imguser) }}"></div>
+                                                <!-- /HEXAGON -->
+                                            </div>
+                                            <!-- /USER AVATAR CONTENT -->
+
+                                            <!-- USER AVATAR PROGRESS -->
+                                            <div class="user-avatar-progress">
+                                                <!-- HEXAGON -->
+                                                <div class="hexagon-progress-40-44"></div>
+                                                <!-- /HEXAGON -->
+                                            </div>
+                                            <!-- /USER AVATAR PROGRESS -->
+
+                                            <!-- USER AVATAR PROGRESS BORDER -->
+                                            <div class="user-avatar-progress-border">
+                                                <!-- HEXAGON -->
+                                                <div class="hexagon-border-40-44"></div>
+                                                <!-- /HEXAGON -->
+                                            </div>
+                                            <!-- /USER AVATAR PROGRESS BORDER -->
+
+                                            <!-- USER AVATAR BADGE -->
+                                            <div class="user-avatar-badge">
+                                                <!-- USER AVATAR BADGE BORDER -->
+                                                <div class="user-avatar-badge-border">
+                                                    <!-- HEXAGON -->
+                                                    <div class="hexagon-22-24"></div>
+                                                    <!-- /HEXAGON -->
+                                                </div>
+                                                <!-- /USER AVATAR BADGE BORDER -->
+
+                                                <!-- USER AVATAR BADGE CONTENT -->
+                                                <div class="user-avatar-badge-content">
+                                                    <!-- HEXAGON -->
+                                                    <div class="hexagon-dark-16-18"></div>
+                                                    <!-- /HEXAGON -->
+                                                </div>
+                                                <!-- /USER AVATAR BADGE CONTENT -->
+
+                                                <!-- USER AVATAR BADGE TEXT -->
+                                                <p class="user-avatar-badge-text">24</p>
+                                                <!-- /USER AVATAR BADGE TEXT -->
+                                            </div>
+                                            <!-- /USER AVATAR BADGE -->
+                                        </div>
+                                        <!-- /USER AVATAR -->
+                                    </a>
+                                    <!-- /USER STATUS AVATAR -->
+
+                                    <!-- USER STATUS TITLE -->
+                                    <p class="user-status-title medium"><a class="bold" href="#">{{ c.iduser.username }}</a> a publié cette  <span class="bold">Competition</span></p>
+                                    <!-- /USER STATUS TITLE -->
+
+                                    <!-- USER STATUS TEXT -->
+                                    <p class="user-status-text small">{{ c.DateDebut|date('F jS ') }}</p>
+                                    <!-- /USER STATUS TEXT -->
+                                </div>
+                                <!-- /USER STATUS -->
+                            </div>
+                            <!-- /WIDGET BOX STATUS CONTENT -->
+
+                            <!-- POST PREVIEW -->
+                            <div class="post-preview medium">
+                                <!-- POST PREVIEW IMAGE -->
+                                <figure class="post-preview-image liquid">
+                                    <img src="{{ asset('template/img/cover/'~c.imageC) }}" alt="cover-19">
+                                </figure>
+                                <!-- /POST PREVIEW IMAGE -->
+
+                                <!-- POST PREVIEW INFO -->
+                                <div class="post-preview-info">
+                                    <!-- POST PREVIEW TIMESTAMP -->
+                                    <p class="post-preview-timestamp">{{ c.DateFin|date('F jS ') }}</p>
+                                    <!-- /POST PREVIEW TIMESTAMP -->
+
+                                    <!-- POST PREVIEW TITLE -->
+                                    <p class="post-preview-title">{{ c.Titre }}</p>
+                                    <!-- /POST PREVIEW TITLE -->
+
+                                    <!-- TAG LIST -->
+                                    <div class="tag-list">
+                                        <!-- TAG ITEM -->
+                                        <a class="tag-item secondary" >{{c.Typedetalent}}</a>
+                                        <!-- /TAG ITEM -->
+                                    </div>
+                                    <!-- /TAG LIST -->
+
+                                    <!-- POST PREVIEW TEXT -->
+                                    <p class="post-preview-text">{{ c.Description }}</p>
+                                    <!-- /POST PREVIEW TEXT -->
+                                    <br>
+
+                                    <!-- META LINE -->
+                                    <div class="meta-line">
+                                        <!-- META LINE LIST -->
+                                        <div class="meta-line-list user-avatar-list">
+                                            {% set total = 0 %}
+                                            {% for par in participation if (par.idCompetition.idCompetition == c.idCompetition)  %}
+                                                {% set total = total + 1 %}
+                                                <!-- USER AVATAR -->
+                                                <div class="user-avatar micro no-stats">
+                                                    <!-- USER AVATAR BORDER -->
+                                                    <div class="user-avatar-border">
+                                                        <!-- HEXAGON -->
+                                                        <div class="hexagon-22-24"></div>
+                                                        <!-- /HEXAGON -->
+                                                    </div>
+                                                    <!-- /USER AVATAR BORDER -->
+
+                                                    <!-- USER AVATAR CONTENT -->
+                                                    <div class="user-avatar-content">
+                                                        <!-- HEXAGON -->
+                                                        <a href="{{ path('profile', {'id':par.iduser.id})  }}">
+                                                        <div class="hexagon-image-18-20" data-src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}"></div>
+                                                        </a>
+                                                            <!-- /HEXAGON -->
+                                                    </div>
+                                                    <!-- /USER AVATAR CONTENT -->
+                                                </div>
+                                                <!-- /USER AVATAR -->
+
+                                            {% endfor %}
+                                        </div>
+                                        <!-- /META LINE LIST -->
+
+                                        <!-- META LINE TEXT -->
+                                        <p class="meta-line-text">&nbsp;{{total}} <span>will assist</span></p>
+                                        <!-- /META LINE TEXT -->
+                                    </div>
+                                    <!-- /META LINE -->
+
+                                    <!-- POST PREVIEW LINK -->
+                                    <a class="post-preview-link" href="{{ path('affichercompetitionUser')  }}">
+                                        <i class="fa fa-chevron-circle-left" style="font-size:14px;color:deepskyblue"></i>
+                                        Retour</a>
+                                    <!-- /POST PREVIEW LINK -->
+                                </div>
+                                <!-- /POST PREVIEW INFO -->
+                            </div>
+                            <!-- /POST PREVIEW -->
+
+
+                        </div>
+                        <!-- /WIDGET BOX STATUS -->
+
+
+                    {% endfor %}
+                </div>
+                <!-- /WIDGET BOX -->
+
+            </div>
+            <!-- /GRID COLUMN -->
+
+
+
+            <!-- GRID COLUMN -->
+            <div class="grid-column">
+                <!-- WIDGET BOX -->
+                <div class="widget-box">
+                    <!-- WIDGET BOX SETTINGS -->
+                    <div class="widget-box-settings">
+                        <!-- POST SETTINGS WRAP -->
+                        <div class="post-settings-wrap">
+                            <!-- POST SETTINGS -->
+                            <div class="post-settings widget-box-post-settings-dropdown-trigger">
+                                <!-- POST SETTINGS ICON -->
+                                <svg class="post-settings-icon icon-more-dots">
+                                    <use xlink:href="#svg-more-dots"></use>
+                                </svg>
+                                <!-- /POST SETTINGS ICON -->
+                            </div>
+                            <!-- /POST SETTINGS -->
+
+                            <!-- SIMPLE DROPDOWN -->
+                            <div class="simple-dropdown widget-box-post-settings-dropdown">
+                                <!-- SIMPLE DROPDOWN LINK -->
+                                <p class="simple-dropdown-link">Widget Settings</p>
+                                <!-- /SIMPLE DROPDOWN LINK -->
+                            </div>
+                            <!-- /SIMPLE DROPDOWN -->
+                        </div>
+                        <!-- /POST SETTINGS WRAP -->
+                    </div>
+                    <!-- /WIDGET BOX SETTINGS -->
+
+                    <!-- WIDGET BOX TITLE -->
+                    <p class="widget-box-title"> <i class="fa fa-qrcode" style="font-size:25px;color:deepskyblue"></i> &nbsp;  Votre ticket en QrCode  </p>
+                    <!-- /WIDGET BOX TITLE -->
+
+                    <!-- WIDGET BOX CONTENT -->
+                    <div class="widget-box-content">
+                        <!-- PRODUCT PREVIEW -->
+                        <div class="product-preview small">
+                            <!-- PRODUCT PREVIEW IMAGE -->
+                            {%  for t in Ticket %}
+                                <a >
+
+                                    <figure class="product-preview-image ">
+                                        <img src="{{ qrcode_data_uri( "Je vous souhaite la bienvenue Mr/Mme: -- "~app.user.username~" -- au sein de notre Competition intutilé: -- "~ t.idCompetition.Titre~"-- Voicie votre Mot de passe : " ~ t.MotDePasse, { writer: 'svg', size: 60 }) }}" alt="item-01">
+
+                                    </figure>
+
+
+                                </a>
+                                <!-- /PRODUCT PREVIEW IMAGE -->
+
+                                <!-- PRODUCT PREVIEW INFO -->
+                                <div class="product-preview-info">
+
+
+                                    <!-- PRODUCT PREVIEW TITLE -->
+                                    <p class="product-preview-title"><a href="#">Vous avez payer</a></p>
+                                    <!-- /PRODUCT PREVIEW TITLE -->
+                                    <br>
+
+                                    <div class="decorated-text">
+                                        <!-- DECORATED TEXT ICON -->
+                                        <i class="fa fa-diamond" style="font-size:15px;color:deepskyblue"></i>
+                                        <!-- /DECORATED TEXT ICON -->
+
+                                        <!-- DECORATED TEXT CONTENT -->
+                                        <p class="decorated-text-content"><a>&nbsp; {{ t.idcompetition.cout }} </a> </p>
+                                        <!-- /DECORATED TEXT CONTENT -->
+                                    </div>
+                                    <!-- /DECORATED TEXT -->
+                                    <br>
+
+                                    <!-- PRODUCT PREVIEW TITLE -->
+                                    <p class="product-preview-title"><a href="#">Il vous reste</a></p>
+                                    <!-- /PRODUCT PREVIEW TITLE -->
+
+                                    <br>
+                                    <div class="decorated-text">
+                                        <!-- DECORATED TEXT ICON -->
+                                        <i class="fa fa-diamond" style="font-size:15px;color:deepskyblue"></i>
+                                        <!-- /DECORATED TEXT ICON -->
+
+                                        <!-- DECORATED TEXT CONTENT -->
+                                        <p class="decorated-text-content"><a>&nbsp; {{ app.user.nbdiament }} </a> </p>
+                                        <!-- /DECORATED TEXT CONTENT -->
+                                    </div>
+                                    <!-- /DECORATED TEXT -->
+
+                                </div>
+                                <!-- /PRODUCT PREVIEW INFO -->
+                            {% endfor %}
+                        </div>
+                        <!-- /PRODUCT PREVIEW -->
+                    </div>
+                    <!-- /WIDGET BOX CONTENT -->
+                </div>
+                <!-- /WIDGET BOX -->
+
+
+
+                <!-- WIDGET BOX -->
+                <div class="widget-box">
+                    <!-- WIDGET BOX SETTINGS -->
+                    <div class="widget-box-settings">
+                        <!-- POST SETTINGS WRAP -->
+                        <div class="post-settings-wrap">
+                            <!-- POST SETTINGS -->
+                            <div class="post-settings widget-box-post-settings-dropdown-trigger">
+                                <!-- POST SETTINGS ICON -->
+                                <svg class="post-settings-icon icon-more-dots">
+                                    <use xlink:href="#svg-more-dots"></use>
+                                </svg>
+                                <!-- /POST SETTINGS ICON -->
+                            </div>
+                            <!-- /POST SETTINGS -->
+
+                            <!-- SIMPLE DROPDOWN -->
+                            <div class="simple-dropdown widget-box-post-settings-dropdown">
+                                <!-- SIMPLE DROPDOWN LINK -->
+                                <p class="simple-dropdown-link">Widget Settings</p>
+                                <!-- /SIMPLE DROPDOWN LINK -->
+                            </div>
+                            <!-- /SIMPLE DROPDOWN -->
+                        </div>
+                        <!-- /POST SETTINGS WRAP -->
+                    </div>
+                    <!-- /WIDGET BOX SETTINGS -->
+
+
+                    <!-- WIDGET BOX TITLE -->
+                    <p class="widget-box-title">Recomendation pour le type de talent <span class="highlighted">{{  comptype[0].Typedetalent}} :</span> {{ comptype|length }}</p>
+                    <!-- /WIDGET BOX TITLE -->
+
+                    <!-- WIDGET BOX CONTENT -->
+                    <div class="widget-box-content">
+
+
+                        <!-- USER STATUS LIST -->
+                        <div class="user-status-list">
+                            {% for l in comptype %}
+                                <!-- USER STATUS -->
+                                <div class="user-status request-small">
+                                    <!-- USER STATUS AVATAR -->
+
+                                    <a class="user-status-avatar" href="#">
+                                        <!-- USER AVATAR -->
+                                        <div class="user-avatar small no-border">
+                                            <!-- USER AVATAR CONTENT -->
+                                            <div class="user-avatar-content">
+                                                <!-- HEXAGON -->
+                                                <div class="hexagon-image-40-44" data-src="{{ asset('template/img/cover/'~l.imageC) }}"></div>
+                                                <!-- /HEXAGON -->
+                                            </div>
+                                            <!-- /USER AVATAR CONTENT -->
+                                        </div>
+                                        <!-- /USER AVATAR -->
+
+                                        <!-- META LINE -->
+                                        <div class="meta-line">
+                                            <!-- META LINE LIST -->
+                                            <div class="meta-line-list user-avatar-list">
+                                                {% set total = 0 %}
+                                                {% for par in participation if (par.idCompetition.idCompetition == l.idCompetition)  %}
+                                                    {% set total = total + 1 %}
+                                                    <!-- USER AVATAR -->
+                                                    <div class="user-avatar micro no-stats">
+                                                        <!-- USER AVATAR BORDER -->
+                                                        <div class="user-avatar-border">
+                                                            <!-- HEXAGON -->
+                                                            <div class="hexagon-22-24"></div>
+                                                            <!-- /HEXAGON -->
+                                                        </div>
+                                                        <!-- /USER AVATAR BORDER -->
+
+                                                        <!-- USER AVATAR CONTENT -->
+                                                        <div class="user-avatar-content">
+                                                            <!-- HEXAGON -->
+                                                            <div class="hexagon-image-18-20" data-src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}"></div>
+                                                            <!-- /HEXAGON -->
+                                                        </div>
+                                                        <!-- /USER AVATAR CONTENT -->
+                                                    </div>
+                                                    <!-- /USER AVATAR -->
+
+                                                {% endfor %}
+                                            </div>
+                                            <!-- /META LINE LIST -->
+
+                                            <!-- META LINE TEXT -->
+                                            <p class="meta-line-text">&nbsp;{{total}} <span>will assist</span></p>
+                                            <!-- /META LINE TEXT -->
+                                        </div>
+                                        <!-- /META LINE -->
+                                    </a>
+                                    <!-- /USER STATUS AVATAR -->
+
+
+                                    <!-- USER STATUS TITLE -->
+                                    <p class="user-status-title"><a class="bold" href="#">{{ l.Titre }}</a></p>
+                                    <!-- /USER STATUS TITLE -->
+
+                                    <!-- USER STATUS TEXT -->
+                                    <p class="user-status-text small"><i class="fa fa-diamond" style="font-size:10px;color:deepskyblue"></i>&nbsp;{{l.Cout}} </p>
+
+
+                                    <!-- /USER STATUS TEXT -->
+
+
+
+
+
+
+                                    {% if (l.participe == false) and (l.Cout <= app.user.nbdiament)%}
+                                        <!-- ACTION REQUEST LIST -->
+                                        <div class="action-request-list" href="{{ path('ajouterparticipation', {'id':l.idCompetition,'type':l.Typedetalent})  }}" >
+                                            <!-- ACTION REQUEST -->
+                                            <div class="action-request accept" >
+                                                <!-- ACTION REQUEST ICON -->
+                                                <a href="{{ path('ajouterparticipation', {'id':l.idCompetition,'type':l.Typedetalent})  }}">
+
+                                                    <svg class="action-request-icon icon-join-group" >
+                                                        <use xlink:href="#svg-join-group"></use>
+                                                    </svg>
+                                                    <!-- /ACTION REQUEST ICON -->
+                                                </a>
+                                            </div>
+                                            <!-- /ACTION REQUEST -->
+                                        </div>
+                                        <!-- ACTION REQUEST LIST -->
+                                    {% elseif l.participe == true %}
+                                        <!-- ACTION REQUEST LIST -->
+                                        <div class="action-request-list">
+                                            <!-- ACTION REQUEST -->
+                                            <div class="action-request accept">
+                                                <!-- ACTION REQUEST ICON -->
+                                                <a ><i class="fa fa-ban" style="font-size:15px;color:red"></i></a>
+
+                                                <!-- /ACTION REQUEST ICON -->
+                                            </div>
+                                            <!-- /ACTION REQUEST -->
+                                        </div>
+
+                                    {% elseif l.Cout > app.user.nbdiament %}
+
+
+
+                                        <!-- ACTION REQUEST LIST -->
+                                        <div class="action-request-list">
+                                            <!-- ACTION REQUEST -->
+                                            <div class="action-request accept">
+                                                <!-- ACTION REQUEST ICON -->
+                                                <a href="#"><i class="fa fa-diamond" style="font-size:15px;color:deepskyblue"></i></a>
+
+                                                <!-- /ACTION REQUEST ICON -->
+                                            </div>
+                                            <!-- /ACTION REQUEST -->
+                                        </div>
+
+
+                                    {% endif %}
+
+
+                                </div>
+                                <!-- /USER STATUS -->
+                                <br><br>
+                            {% endfor %}
+
+                        </div>
+                        <!-- /USER STATUS LIST -->
+                    </div>
+                    <!-- WIDGET BOX CONTENT -->
+
+
+                </div>
+                <!-- /WIDGET BOX -->
+
+
+
+            </div>
+            <!-- /GRID COLUMN -->
+        </div>
+        <!-- /GRID -->
+    </div>
+    <!-- CONTENT GRID -->
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

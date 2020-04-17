@@ -1,0 +1,4 @@
+services:
+#    messagerie.example:
+#        class: MessagerieBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

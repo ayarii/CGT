@@ -1,0 +1,550 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    {% block form %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        <!-- Begin emoji-picker Stylesheets -->
+        <link href="../../../../../Fos/vendor/onesignal/emoji-picker/lib/css/nanoscroller.css" rel="stylesheet">
+        <link href="../../../../../Fos/vendor/onesignal/emoji-picker/lib/css/emoji.css" rel="stylesheet">
+
+
+
+    <!-- CONTENT GRID -->
+    <div class="content-grid">
+    <!-- SECTION BANNER -->
+    <div class="section-banner">
+        <!-- SECTION BANNER ICON -->
+        <img class="section-banner-icon" src="{{ asset('template/img/banner/members-icon.png') }}" alt="messages-icon">
+        <!-- /SECTION BANNER ICON -->
+
+        <!-- SECTION BANNER TITLE -->
+        <p class="section-banner-title">Your Texts</p>
+        <!-- /SECTION BANNER TITLE -->
+        <!-- SECTION BANNER TEXT -->
+        <p class="section-banner-text">Easy Connection with your friends!</p>
+        <!-- /SECTION BANNER TEXT -->
+
+    </div>
+
+
+    {%  for flashMessage in app.session.flashbag.get('succes') %}
+        <div class="alert-success">
+            {{ flashMessage   }}
+
+
+        </div>
+    {% endfor %}
+    <!-- SECTION HEADER -->
+    <div class="section-header">
+        <!-- SECTION HEADER INFO -->
+        <div class="section-header-info">
+            <!-- SECTION PRETITLE -->
+            <p class="section-pretitle">My Profile</p>
+            <!-- /SECTION PRETITLE -->
+
+            <!-- SECTION TITLE -->
+            <h2 class="section-title">Chat</h2>
+            <!-- /SECTION TITLE -->
+        </div>
+        <!-- /SECTION HEADER INFO -->
+
+        <!-- SECTION HEADER ACTIONS -->
+        <div class="section-header-actions">
+            <!-- SECTION HEADER ACTION -->
+            <p class="section-header-action">Mark all as Read</p>
+            <!-- /SECTION HEADER ACTION -->
+
+            <!-- SECTION HEADER ACTION -->
+            <p class="section-header-action">Settings</p>
+            <!-- /SECTION HEADER ACTION -->
+        </div>
+        <!-- /SECTION HEADER ACTIONS -->
+    </div>
+    <!-- /SECTION HEADER -->
+
+
+
+
+
+
+
+<!-- CHAT WIDGET -->
+<div style="margin-left: 100px ; width: 1000px " class="chat-widget">
+    <!-- CHAT WIDGET HEADER -->
+    <div class="chat-widget-header">
+        <!-- CHAT WIDGET SETTINGS -->
+        <div class="chat-widget-settings">
+            <!-- POST SETTINGS WRAP -->
+            <div class="post-settings-wrap">
+                <!-- POST SETTINGS -->
+                <div class="post-settings widget-box-post-settings-dropdown-trigger">
+                    <!-- POST SETTINGS ICON -->
+                    <svg class="post-settings-icon icon-more-dots">
+                        <use xlink:href="#svg-more-dots"></use>
+                    </svg>
+                    <!-- /POST SETTINGS ICON -->
+                </div>
+                <!-- /POST SETTINGS -->
+
+                <!-- SIMPLE DROPDOWN -->
+                <div class="simple-dropdown widget-box-post-settings-dropdown">
+                    <button onclick='ouvrir_camera()' >ouvrir camera</button>
+                    <button onclick='fermer()' >fermer camera</button>
+                    <br>
+                    <button onclick='photo()' >prise de photo</button>
+                    <button onclick='sauver()' >sauvegarder</button>
+
+
+                </div>
+                <!-- /SIMPLE DROPDOWN -->
+            </div>
+            <!-- /POST SETTINGS WRAP -->
+        </div>
+        <!-- CHAT WIDGET SETTINGS -->
+
+        <!-- USER STATUS -->
+        <div class="user-status">
+            {%  for c in Conversation %}
+            <!-- USER STATUS AVATAR -->
+            <div class="user-status-avatar">
+                <!-- USER AVATAR -->
+                <div class="user-avatar small no-outline online">
+                    <!-- USER AVATAR CONTENT -->
+                    <div class="user-avatar-content">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~c.idUFriend.imguser ) }}"></div>
+                        <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR CONTENT -->
+
+                    <!-- USER AVATAR PROGRESS -->
+                    <div class="user-avatar-progress">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-progress-40-44"></div>
+                        <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR PROGRESS -->
+
+                    <!-- USER AVATAR PROGRESS BORDER -->
+                    <div class="user-avatar-progress-border">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-border-40-44"></div>
+                        <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR PROGRESS BORDER -->
+
+                    <!-- USER AVATAR BADGE -->
+                    <div class="user-avatar-badge">
+                        <!-- USER AVATAR BADGE BORDER -->
+                        <div class="user-avatar-badge-border">
+                            <!-- HEXAGON -->
+                            <div class="hexagon-22-24"></div>
+                            <!-- /HEXAGON -->
+                        </div>
+                        <!-- /USER AVATAR BADGE BORDER -->
+
+                        <!-- USER AVATAR BADGE CONTENT -->
+                        <div class="user-avatar-badge-content">
+                            <!-- HEXAGON -->
+                            <div class="hexagon-dark-16-18"></div>
+                            <!-- /HEXAGON -->
+                        </div>
+                        <!-- /USER AVATAR BADGE CONTENT -->
+
+                        <!-- USER AVATAR BADGE TEXT -->
+                        <p class="user-avatar-badge-text"></p>
+                        <!-- /USER AVATAR BADGE TEXT -->
+                    </div>
+                    <!-- /USER AVATAR BADGE -->
+                </div>
+                <!-- /USER AVATAR -->
+            </div>
+            <!-- /USER STATUS AVATAR -->
+
+            <!-- USER STATUS TITLE -->
+            <p class="user-status-title"><span class="bold">{{ c.idUFriend }}</span></p>
+            <!-- /USER STATUS TITLE -->
+
+            <!-- USER STATUS TAG -->
+            <p class="user-status-tag online">Online</p>
+            <!-- /USER STATUS TAG -->
+            {%endfor%}
+        </div>
+        <!-- /USER STATUS -->
+    </div>
+    <!-- /CHAT WIDGET HEADER -->
+
+    <!-- CHAT WIDGET CONVERSATION -->
+    <div class="chat-widget-conversation" data-simplebar>
+
+        {%  for c in Conversation %}
+         {% for m in Message  %}
+
+
+
+        <!-- CHAT WIDGET SPEAKER -->
+        {% if (m.idReceiver == app.user.username) %}
+
+
+        <div class="chat-widget-speaker left">
+
+            <!-- CHAT WIDGET SPEAKER AVATAR -->
+            <div class="chat-widget-speaker-avatar">
+                <!-- USER AVATAR -->
+                <div class="user-avatar tiny no-border">
+                    <!-- USER AVATAR CONTENT -->
+                    <div class="user-avatar-content">
+                        <!-- HEXAGON -->
+                        <div class="hexagon-image-24-26" data-src="{{ asset('template/img/avatar/'~m.idSender.imguser) }}"></div>
+                        <!-- /HEXAGON -->
+                    </div>
+                    <!-- /USER AVATAR CONTENT -->
+                </div>
+                <!-- /USER AVATAR -->
+            </div>
+            <!-- /CHAT WIDGET SPEAKER AVATAR -->
+
+            <!-- CHAT WIDGET SPEAKER MESSAGE -->
+            <p onclick="location.href='{{path('update', {'id':m.idMessage,'id1':c.idConversation})}}'" class="chat-widget-speaker-message">{{ m.Contenu }}</p>
+
+
+            <!-- /CHAT WIDGET SPEAKER MESSAGE -->
+
+            <!-- CHAT WIDGET SPEAKER TIMESTAMP -->
+            <p class="chat-widget-speaker-timestamp">
+                {% if "now" |date("U") + 3600 > m.DateMessage |date("U") + 2592000 %}
+                    {{ ("now" |date("U") + 3600 - m.DateMessage |date("U") ) |date("m") }} Months Ago
+                {% elseif "now" |date("U") + 3600 > m.DateMessage |date("U") + 86400 %}
+                    {{ ("now" |date("U") + 3600 - m.DateMessage |date("U") ) |date("d") }} Days Ago
+                {% elseif "now" |date("U") + 3600 > m.DateMessage |date("U") + 3600  %}
+                    {{ ("now" |date("U") + 3600 - m.DateMessage |date("U") ) |date("H") }} Hours Ago
+                {% elseif "now" |date("U") + 3600 > m.DateMessage |date("U") + 60 %}
+                    {{ ("now" |date("U") + 3600 - m.DateMessage |date("U") ) |date("i") }} Minutes Ago
+                {% elseif "now" |date("U") + 3600 > m.DateMessage |date("U")  %}
+                    {{ ("now" |date("U") + 3600 - m.DateMessage |date("U") ) |date("s") }} Seconds Ago
+                {% endif %}
+
+
+                :  {{ m.etat }}</p>
+            <a style="height: 50px ; margin-left: 800px" onclick="return confirm('confirm deleting Message !')" href="{{ path('supp', {'id':m.idMessage,'id1':c.idConversation}) }}">☠</a>
+            <!-- /CHAT WIDGET SPEAKER TIMESTAMP -->
+        </div>
+        {%endif%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <!-- /CHAT WIDGET SPEAKER -->
+        {%  if (m.idSender == app.user.username)  %}
+        <!-- CHAT WIDGET SPEAKER -->
+        <div class="chat-widget-speaker right">
+            <!-- CHAT WIDGET SPEAKER MESSAGE -->
+            <p class="chat-widget-speaker-message">{{ m.Contenu }}</p>
+
+
+
+            <!-- /CHAT WIDGET SPEAKER MESSAGE -->
+
+
+
+            <!-- CHAT WIDGET SPEAKER TIMESTAMP -->
+            <p class="chat-widget-speaker-timestamp">
+                {% if "now" |date("U") + 3600 > m.DateMessage |date("U") + 2592000 %}
+                    {{ ("now" |date("U") + 3600 - m.DateMessage |date("U") ) |date("m") }} Months Ago
+                {% elseif "now" |date("U") + 3600 > m.DateMessage |date("U") + 86400 %}
+                    {{ ("now" |date("U") + 3600 - m.DateMessage |date("U") ) |date("d") }} Days Ago
+                {% elseif "now" |date("U") + 3600 > m.DateMessage |date("U") + 3600  %}
+                    {{ ("now" |date("U") + 3600 - m.DateMessage |date("U") ) |date("H") }} Hours Ago
+                {% elseif "now" |date("U") + 3600 > m.DateMessage |date("U") + 60 %}
+                    {{ ("now" |date("U") + 3600 - m.DateMessage |date("U") ) |date("i") }} Minutes Ago
+                {% elseif "now" |date("U") + 3600 > m.DateMessage |date("U")  %}
+                    {{ ("now" |date("U") + 3600 - m.DateMessage |date("U") ) |date("s") }} Seconds Ago
+                {% endif %}
+
+
+               :  {{ m.etat }}</p>
+            <a style="height: 50px ;" onclick="return confirm('confirm deleting Message !')" href="{{ path('supp', {'id':m.idMessage,'id1':c.idConversation}) }}">☠</a>
+
+            <!-- /CHAT WIDGET SPEAKER TIMESTAMP -->
+
+        </div>
+
+        {%endif%}
+        {%endfor%}
+        {%endfor%}
+
+    </div>
+
+
+
+
+
+
+
+    <!-- /CHAT WIDGET CONVERSATION -->
+    {%  for c in Conversation %}
+    <!-- CHAT WIDGET FORM -->
+    <form id="new_post_form" action="{{ path('Ajout', {'id':c.idConversation})  }}" name="messageriebundle_message" method="post" class="chat-widget-form">
+
+
+        <!-- FORM ROW -->
+        <div class="form-row split">
+            <!-- FORM ITEM -->
+            <div class="form-item">
+                <input type="hidden"  name="messageriebundle_message[idReceiver]" value="{{ c.idUFriend.id }}" required="required">
+                <input type="hidden"  name="messageriebundle_message[idConversation]" value="{{ c.idConversation }}" required="required">
+
+                <!-- INTERACTIVE INPUT -->
+                <div class="interactive-input small">
+                    <input type="text"  name="messageriebundle_message[Contenu]" required="required" id="chat-widget-message-text" placeholder="Write a message..." data-emojiable="true" data-emoji-input="unicode">
+                    <!-- INTERACTIVE INPUT ICON WRAP -->
+                    <div class="interactive-input-icon-wrap">
+                        <!-- INTERACTIVE INPUT ICON -->
+
+                        <svg class="interactive-input-icon icon-send-message">
+
+                            <use xlink:href="#svg-send-message"></use>
+                        </svg>
+                        <!-- /INTERACTIVE INPUT ICON -->
+                    </div>
+
+                    <!-- /INTERACTIVE INPUT ICON WRAP -->
+
+                    <!-- INTERACTIVE INPUT ACTION -->
+                    <div class="interactive-input-action">
+                        <!-- INTERACTIVE INPUT ACTION ICON -->
+
+                        <svg class="interactive-input-action-icon icon-cross-thin">
+
+                            <use xlink:href="#svg-cross-thin"></use>
+                        </svg>
+                        <!-- /INTERACTIVE INPUT ACTION ICON -->
+                    </div>
+                    <!-- /INTERACTIVE INPUT ACTION -->
+                </div>
+
+                <!-- /INTERACTIVE INPUT -->
+            </div>
+            <!-- /FORM ITEM -->
+
+            <!-- FORM ITEM -->
+            <div class="form-item auto-width">
+                <!-- BUTTON -->
+                <p class="button primary padded">
+
+                    <button style="width: 150px ; height: 50px ;" id="new_Message" class="active" type="submit" value="post" >Reply 🕊</button>
+                    <!-- BUTTON ICON -->
+                    <svg class="button-icon no-space icon-send-message">
+
+                        <use xlink:href="#svg-send-message"></use>
+
+                    </svg>
+
+
+                    <!-- /BUTTON ICON -->
+                </p>
+                <!-- /BUTTON -->
+            </div>
+            <!-- /FORM ITEM -->
+        </div>
+        <!-- /FORM ROW -->
+
+    </form>
+
+
+        <div style='display:inline-block'>
+
+            <video id="sourcevid" width='400' autoplay="true"></video>
+
+            <div id="message" style='height:20px;width:35px;margin:5px;'></div>
+        </div>
+        <canvas id="cvs" style='display:inline-block'></canvas>
+
+        <div>
+
+
+        </div>
+
+
+        <script>
+
+            function ouvrir_camera() {
+
+                navigator.mediaDevices.getUserMedia({ audio: false, video: { width: 200 } }).then(function(mediaStream) {
+
+                    var video = document.getElementById('sourcevid');
+                    video.srcObject = mediaStream;
+
+                    var tracks = mediaStream.getTracks();
+
+                    document.getElementById("message").innerHTML="message: "+tracks[0].label+" connecté"
+
+                    console.log(tracks[0].label)
+                    console.log(mediaStream)
+
+                    video.onloadedmetadata = function(e) {
+                        video.play();
+                    };
+
+                }).catch(function(err) { console.log(err.name + ": " + err.message);
+
+                    document.getElementById("message").innerHTML="message: connection refusé"});
+            }
+
+            function photo(){
+
+                var vivi = document.getElementById('sourcevid');
+                //var canvas1 = document.createElement('canvas');
+                var canvas1 = document.getElementById('cvs')
+                var ctx =canvas1.getContext('2d');
+                canvas1.height=vivi.videoHeight
+                canvas1.width=vivi.videoWidth
+                console.log(vivi.videoWidth)
+                ctx.drawImage(vivi, 0,0, vivi.videoWidth, vivi.videoHeight);
+
+                //var base64=canvas1.toDataURL("image/png"); //l'image au format base 64
+                //document.getElementById('tar').value='';
+                //document.getElementById('tar').value=base64;
+            }
+
+            function sauver(){
+
+                if(navigator.msSaveOrOpenBlob){
+
+                    var blobObject=document.getElementById("cvs").msToBlob()
+
+                    window.navigator.msSaveOrOpenBlob(blobObject, "image.png");
+                }
+
+                else{
+
+                    var canvas = document.getElementById("cvs");
+                    var elem = document.createElement('a');
+                    elem.href = canvas.toDataURL("image/png");
+                    elem.download = "capture.png";
+                    var evt = new MouseEvent("click", { bubbles: true,cancelable: true,view: window,});
+                    elem.dispatchEvent(evt);
+                }
+            }
+
+            function prepare_envoi(){
+
+                var canvas = document.getElementById('cvs');
+                canvas.toBlob(function(blob){envoi(blob)}, 'image/jpeg');
+            }
+
+
+            function envoi(blob){
+
+                console.log(blob.type)
+
+                var formImage = new FormData();
+                formImage.append('image_a', blob, 'image_a.jpg');
+
+                var ajax = new XMLHttpRequest();
+
+                ajax.open("POST","http://scriptevol.free.fr/contenu/reception/upload_camera.php",true);
+
+                ajax.onreadystatechange=function(){
+
+                    if (ajax.readyState == 4 && ajax.status==200){
+
+                        document.getElementById("jaxa").innerHTML+=(ajax.responseText);
+                    }
+                }
+
+                ajax.onerror=function(){
+
+                    alert("la requette a échoué")
+                }
+
+                ajax.send(formImage);
+                console.log("ok")
+            }
+
+
+            function fermer(){
+
+                var video = document.getElementById('sourcevid');
+                var mediaStream=video.srcObject;
+                console.log(mediaStream)
+                var tracks = mediaStream.getTracks();
+                console.log(tracks[0])
+                tracks.forEach(function(track) {
+                    track.stop();
+                    document.getElementById("message").innerHTML="message: "+tracks[0].label+" déconnecté"
+                });
+
+                video.srcObject = null;
+            }
+
+
+        </script>
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+        <!-- Begin emoji-picker JavaScript -->
+        <script src="../../../../../Fos/vendor/onesignal/emoji-picker/lib/js/nanoscroller.min.js"></script>
+        <script src="../../../../../Fos/vendor/onesignal/emoji-picker/lib/js/tether.min.js"></script>
+        <script src="../../../../../Fos/vendor/onesignal/emoji-picker/lib/js/config.js"></script>
+        <script src="../../../../../Fos/vendor/onesignal/emoji-picker//lib/js/util.js"></script>
+        <script src="../../../../../Fos/vendor/onesignal/emoji-picker/lib/js/jquery.emojiarea.js"></script>
+        <script src="../../../../../Fos/vendor/onesignal/emoji-picker/lib/js/emoji-picker.js"></script>
+        <!-- End emoji-picker JavaScript -->
+
+        <script>
+            $(function() {
+                // Initializes and creates emoji set from sprite sheet
+                window.emojiPicker = new EmojiPicker({
+                    emojiable_selector: '[data-emojiable=true]',
+                    assetsPath: '../../../../../Fos/vendor/onesignal/emoji-picker/lib/img/',
+                    popupButtonClasses: 'fa fa-smile-o'
+                });
+                // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+                // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+                // It can be called as many times as necessary; previously converted input fields will not be converted again
+                window.emojiPicker.discover();
+            });
+        </script>
+        <script>
+            // Google Analytics
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-49610253-3', 'auto');
+            ga('send', 'pageview');
+        </script>
+
+
+    {%endfor%}
+    <!-- /CHAT WIDGET FORM -->
+
+</div>
+        <!-- /CHAT WIDGET WRAP -->
+    </div>
+    <!-- /GRID COLUMN -->
+    </div>
+    <!-- /GRID -->
+    </div>
+    <!-- /CONTENT GRID -->
+
+
+    {% endblock %}
+
+{% endblock %}
+

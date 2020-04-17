@@ -1,0 +1,1209 @@
+{% extends 'baseLouay.html.twig' %}
+
+
+{% block body %}
+
+    {% if app.user.typecompte == 'Simple Utilisateur' %}
+
+        <!-- CONTENT GRID -->
+        <div class="content-grid">
+            <!-- SECTION BANNER -->
+            <div class="section-banner">
+                <!-- SECTION BANNER ICON -->
+                <img class="section-banner-icon" src="{{ asset('template/img/banner/events-icon.png') }}" alt="events-icon">
+                <!-- /SECTION BANNER ICON -->
+
+                <!-- SECTION BANNER TITLE -->
+                <p class="section-banner-title">Compétitions</p>
+                <!-- /SECTION BANNER TITLE -->
+
+                <!-- SECTION BANNER TEXT -->
+                <p class="section-banner-text">Ici vous pouvez créer et gérer vos Compétitions facillement !</p>
+                <!-- /SECTION BANNER TEXT -->
+            </div>
+            <!-- /SECTION BANNER -->
+
+
+            <!-- SECTION FILTERS BAR -->
+            <div class="section-filters-bar v6">
+                <!-- SECTION FILTERS BAR ACTIONS -->
+                <div class="section-filters-bar-actions">
+                    <!-- FORM -->
+                    <form class="form">
+                        <!-- FORM ITEM -->
+                        <div class="form-item split">
+                            <!-- FORM INPUT -->
+                            <div class="form-input small">
+                                <label for="events-search">Chercher une compétition</label>
+                                <input type="text" id="search" name="events_search">
+                            </div>
+                            <!-- /FORM INPUT -->
+
+                            <!-- BUTTON -->
+                            <button class="button primary">
+                                <!-- ICON MAGNIFYING GLASS -->
+                                <svg class="icon-magnifying-glass">
+                                    <use xlink:href="#svg-magnifying-glass"></use>
+                                </svg>
+                                <!-- /ICON MAGNIFYING GLASS -->
+                            </button>
+                            <!-- /BUTTON -->
+                        </div>
+                        <!-- /FORM ITEM -->
+                    </form>
+                    <!-- /FORM -->
+                </div>
+                <!-- /SECTION FILTERS BAR ACTIONS -->
+            </div>
+            <!-- /SECTION FILTERS BAR -->
+            <ul class="nav" id="side-menu">
+                <li>
+
+                    <ul class="nav nav-second-level" id="entitiesNav">
+                    </ul>
+
+                </li>
+            </ul>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    var searchRequest = null;
+                    $("#search").keyup(function() {
+                        var minlength = 1;
+                        var that = this;
+                        var value = $(this).val();
+                        var entitySelector = $("#entitiesNav").html('');
+                        if (value.length >= minlength ) {
+                            if (searchRequest != null)
+                                searchRequest.abort();
+                            searchRequest = $.ajax({
+                                type: "GET",
+                                url: "{{ path('ajax_search') }}",
+                                data: {
+                                    'q' : value
+                                },
+                                dataType: "text",
+                                success: function(msg){
+                                    //we need to check if the value is the same
+                                    if (value===$(that).val()) {
+                                        var result = JSON.parse(msg);
+                                        $.each(result, function(key, arr) {
+                                            $.each(arr, function(id, value) {
+                                                if (key === 'Competition') {
+                                                    if (id !== 'error') {
+                                                        console.log(value[1]);
+
+
+
+
+                                                        entitySelector.append('' +
+                                                            '<li class="badge-item-stat-title" >'+value[1]+'<a href="/detailuser/'+id+'">'+' &nbsp; '+' <figure class="product-preview-image liquid"><img src="/template/img/cover/'+value[0]+'" style="width: 100px; height: 100px"/> </figure>'+'</a></li>'+'&nbsp;&nbsp;&nbsp;');
+                                                    } else {
+                                                        entitySelector.append('<li class="errorLi">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/template/img/reaction/sad.png"  style="width: 25px; height: 25px" >&nbsp;&nbsp;Aucune Competition trouvée</li>');
+
+                                                    }
+                                                }
+                                            });
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                });
+            </script>
+            <br>
+
+
+
+
+
+            {% if Ticket|length !=0 %}
+                <!-- GRID COLUMN -->
+                <div class="account-hub-sidebar">
+                    <!-- SIDEBAR BOX -->
+                    <div class="sidebar-box no-padding">
+                        <!-- SIDEBAR MENU -->
+                        <div class="sidebar-menu">
+
+                            <!-- SIDEBAR MENU ITEM -->
+                            <div class="sidebar-menu-item">
+                                <!-- SIDEBAR MENU HEADER -->
+                                <div class="sidebar-menu-header accordion-trigger-linked">
+
+                                    <!-- SIDEBAR MENU HEADER CONTROL ICON -->
+                                    <div class="sidebar-menu-header-control-icon">
+                                        <!-- SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+                                        <svg class="sidebar-menu-header-control-icon-open icon-minus-small">
+                                            <use xlink:href="#svg-minus-small"></use>
+                                        </svg>
+                                        <!-- /SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+
+                                        <!-- SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                                        <svg class="sidebar-menu-header-control-icon-closed icon-plus-small">
+                                            <use xlink:href="#svg-plus-small"></use>
+                                        </svg>
+                                        <!-- /SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                                    </div>
+                                    <!-- /SIDEBAR MENU HEADER CONTROL ICON -->
+
+                                    <!-- SIDEBAR MENU HEADER TITLE -->
+                                    <p class="sidebar-menu-header-title">
+                                        <i class="fa fa-ticket" style="font-size:17px;color:deepskyblue"></i>
+                                        Vos Ticket</p>
+                                    <!-- /SIDEBAR MENU HEADER TITLE -->
+                                    <br>
+
+                                    <!-- SIDEBAR MENU HEADER TEXT -->
+                                    <p class="sidebar-menu-header-text">Ici vous pouvez consulter vos ticket pour tous les derniers compétition que vous avez deja participer</p>
+                                    <!-- /SIDEBAR MENU HEADER TEXT -->
+                                </div>
+                                <!-- /SIDEBAR MENU HEADER -->
+
+                                <!-- SIDEBAR MENU BODY -->
+                                <div class="sidebar-menu-body accordion-content-linked">
+
+
+                                    <!-- WIDGET BOX -->
+                                    <div class="widget-box no-padding">
+
+
+                                        <!-- WIDGET BOX CONTENT -->
+                                        <div class="widget-box-content padded-for-scroll" data-simplebar>
+                                            <!-- GRID -->
+                                            <div class="grid grid-3-3-3-3 top-space centered ">
+
+                                                {% for tic in Ticket %}
+                                                    <!-- BADGE ITEM STAT -->
+                                                    <div class="badge-item-stat padded-for-scroll" >
+                                                        <!-- TEXT STICKER -->
+                                                        <p class="text-sticker">
+                                                            {% if tic.idCompetition.Cout ==0 %}
+
+                                                                Gratuit
+                                                                <i class="fa fa-diamond" style="font-size:13px;color:deepskyblue"></i>
+
+                                                            {% else %}
+                                                                <!-- TEXT STICKER ICON -->
+                                                                <i class="fa fa-minus" style="font-size:10px;color:deepskyblue"></i>
+                                                                <!-- TEXT STICKER ICON -->
+                                                                {{ tic.idCompetition.Cout }}
+                                                                <i class="fa fa-diamond" style="font-size:13px;color:deepskyblue"></i>
+                                                            {% endif %}
+
+
+                                                        </p>
+                                                        <!-- /TEXT STICKER -->
+
+
+                                                        <!-- BADGE ITEM STAT IMAGE PREVIEW -->
+                                                        <a href="{{ path('pdf',{'id':tic.idTicket}) }}"><img class="badge-item-stat-image-preview"  src="{{ asset('template/img/badge/pdf.png') }}" height="30" width="30" alt="badge-bronze-s"></a>
+                                                        <!-- /BADGE ITEM STAT IMAGE PREVIEW -->
+
+
+                                                        <!-- BADGE ITEM STAT IMAGE -->
+                                                        <img class="badge-item-stat-image" src="{{ qrcode_data_uri( "Je vous souhaite la bienvenue Mr/Mme: -- "~app.user.username~" -- au sein de notre Competition intutilé: -- "~ tic.idCompetition.Titre~"-- Voicie votre Mot de passe : " ~ tic.MotDePasse, { writer: 'svg', size: 100 }) }}" alt="badge-bronze-b">
+                                                        <!-- /BADGE ITEM STAT IMAGE -->
+
+                                                        <!-- BADGE ITEM STAT TITLE -->
+                                                        <p class="badge-item-stat-title">
+                                                            <i class="fa fa-clock-o" style="font-size:18px;color:deepskyblue"></i>
+                                                            {% if "now" |date("U") + 3600  > tic.dateemission |date("U") + 31104000 %}
+                                                                il ya {{ ("now" |date("U") + 3600  - tic.dateemission |date("U") ) |date("Y") }} ans
+                                                            {% elseif "now" |date("U") + 3600  > tic.dateemission |date("U") + 2592000 %}
+                                                                il ya  {{ ("now" |date("U") + 3600  - tic.dateemission |date("U") ) |date("m") }} moiss
+                                                            {% elseif "now" |date("U") + 3600  > tic.dateemission |date("U") + 86400 %}
+                                                                il ya {{ ("now" |date("U") + 3600  - tic.dateemission |date("U") ) |date("d") }} jours
+                                                            {% elseif "now" |date("U") + 3600  > tic.dateemission |date("U") + 3600  %}
+                                                                il ya {{ ("now" |date("U") + 3600  - tic.dateemission |date("U") ) |date("H") }} heures
+                                                            {% elseif "now" |date("U") + 3600  > tic.dateemission |date("U") + 60 %}
+                                                                il ya {{ ("now" |date("U") + 3600  - tic.dateemission |date("U") ) |date("i") }} minutes
+                                                            {% elseif "now" |date("U") + 3600  > tic.dateemission |date("U")  %}
+                                                                il ya  {{ ("now" |date("U") + 3600  - tic.dateemission |date("U") ) |date("s") }} secondes
+                                                            {% endif %}
+
+                                                        </p>
+                                                        <!-- /BADGE ITEM STAT TITLE -->
+
+                                                        <!-- BADGE ITEM STAT TEXT -->
+                                                        <p class="badge-item-stat-text">N'hesiter pas de scanner votre ticket pour la competition <span  class="badge-item-stat-title" style="color: #0aabed">{{ tic.idCompetition.Titre }} </span></p>
+                                                        <!-- /BADGE ITEM STAT TEXT -->
+                                                        <!-- BADGE ITEM STAT TEXT -->
+
+
+
+                                                    </div>
+                                                    <!-- /BADGE ITEM STAT -->
+                                                {% endfor %}
+
+                                            </div>
+                                            <!-- /BADGE ITEM STAT -->
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <!-- /SIDEBAR MENU BODY -->
+                            </div>
+                            <!-- /SIDEBAR MENU BODY -->
+                        </div>
+                        <!-- /SIDEBAR MENU BODY -->
+                    </div>
+                    <!-- /SIDEBAR MENU BODY -->
+                </div>
+                <!-- /SIDEBAR MENU BODY -->
+
+
+            {% else %}
+
+                <!-- GRID COLUMN -->
+                <div class="account-hub-sidebar">
+                    <!-- SIDEBAR BOX -->
+                    <div class="sidebar-box no-padding">
+                        <!-- SIDEBAR MENU -->
+                        <div class="sidebar-menu">
+
+                            <!-- SIDEBAR MENU ITEM -->
+                            <div class="sidebar-menu-item">
+                                <!-- SIDEBAR MENU HEADER -->
+                                <div class="sidebar-menu-header accordion-trigger-linked">
+
+
+                                    <!-- SIDEBAR MENU HEADER CONTROL ICON -->
+                                    <div class="sidebar-menu-header-control-icon">
+                                        <!-- SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+                                        <svg class="sidebar-menu-header-control-icon-open icon-minus-small">
+                                            <use xlink:href="#svg-minus-small"></use>
+                                        </svg>
+                                        <!-- /SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+
+                                        <!-- SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                                        <svg class="sidebar-menu-header-control-icon-closed icon-plus-small">
+                                            <use xlink:href="#svg-plus-small"></use>
+                                        </svg>
+                                        <!-- /SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                                    </div>
+                                    <!-- /SIDEBAR MENU HEADER CONTROL ICON -->
+                                    <!-- SIDEBAR MENU HEADER TITLE -->
+                                    <p class="sidebar-menu-header-title">
+                                        <i class="fa fa-ticket" style="font-size:17px;color:deepskyblue"></i>
+                                        Vos Ticket</p>
+                                    <!-- /SIDEBAR MENU HEADER TITLE -->
+                                    <br>
+                                    <!-- SIDEBAR MENU HEADER TEXT -->
+                                    <p class="sidebar-menu-header-text">Ici vous pouvez consulter vos ticket pour tous les derniers compétition que vous avez deja participer</p>
+                                    <!-- /SIDEBAR MENU HEADER TEXT -->
+                                </div>
+                                <!-- /SIDEBAR MENU HEADER -->
+
+                                <!-- SIDEBAR MENU BODY -->
+                                <div class="sidebar-menu-body accordion-content-linked">
+
+                                    <!-- SIDEBAR MENU LINK -->
+                                    <a class="sidebar-menu-link"><span><img src="{{ asset('/template/img/reaction/sad.png')}}" alt="">&nbsp;&nbsp;Vous n'avez pas encore participer a aucune Competition pour le moment</span></a>
+                                    <!-- /SIDEBAR MENU LINK -->
+
+                                </div>
+                                <!-- /SIDEBAR MENU BODY -->
+                            </div>
+                            <!-- /SIDEBAR MENU BODY -->
+                        </div>
+                        <!-- /SIDEBAR MENU BODY -->
+                    </div>
+                    <!-- /SIDEBAR MENU BODY -->
+                </div>
+                <!-- /SIDEBAR MENU BODY -->
+
+            {% endif %}
+
+
+            <br><br>
+
+            {% if Trending|length ==0 %}
+
+
+
+                <!-- GRID COLUMN -->
+                <div class="account-hub-sidebar">
+                    <!-- SIDEBAR BOX -->
+                    <div class="sidebar-box no-padding">
+                        <!-- SIDEBAR MENU -->
+                        <div class="sidebar-menu">
+
+                            <!-- SIDEBAR MENU ITEM -->
+                            <div class="sidebar-menu-item">
+                                <!-- SIDEBAR MENU HEADER -->
+                                <div class="sidebar-menu-header accordion-trigger-linked">
+
+                                    <!-- SIDEBAR MENU HEADER CONTROL ICON -->
+                                    <div class="sidebar-menu-header-control-icon">
+                                        <!-- SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+                                        <svg class="sidebar-menu-header-control-icon-open icon-minus-small">
+                                            <use xlink:href="#svg-minus-small"></use>
+                                        </svg>
+                                        <!-- /SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+
+                                        <!-- SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                                        <svg class="sidebar-menu-header-control-icon-closed icon-plus-small">
+                                            <use xlink:href="#svg-plus-small"></use>
+                                        </svg>
+                                        <!-- /SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                                    </div>
+                                    <!-- /SIDEBAR MENU HEADER CONTROL ICON -->
+
+                                    <!-- SIDEBAR MENU HEADER TITLE -->
+                                    <p class="sidebar-menu-header-title">
+
+                                        <i class="fa fa-calendar" style="font-size:17px;color:deepskyblue"></i>
+                                        Les Compétitions d'aujourd'hui : {{ now|date("l d F - H:i")}}</p>
+
+                                    </p>
+                                    <!-- /SIDEBAR MENU HEADER TITLE -->
+                                    <br>
+
+                                    <!-- SIDEBAR MENU HEADER TEXT -->
+                                    <p class="sidebar-menu-header-text">Ici vous pouvez consulter les compétition qui ont une date de debut meme qu'aujourd'hui</p>
+                                    <!-- /SIDEBAR MENU HEADER TEXT -->
+                                </div>
+                                <!-- /SIDEBAR MENU HEADER -->
+
+                                <!-- SIDEBAR MENU BODY -->
+                                <div class="sidebar-menu-body accordion-content-linked">
+
+                                    <!-- SIDEBAR MENU LINK -->
+                                    <a class="sidebar-menu-link"><span><img src="{{ asset('/template/img/reaction/sad.png')}}" alt="">&nbsp;&nbsp;Aucune compétition disponible pour aujourd'hui :( </span></a>
+                                    <!-- /SIDEBAR MENU LINK -->
+
+
+                                </div>
+                                <!-- /SIDEBAR MENU BODY -->
+                            </div>
+                            <!-- /SIDEBAR MENU BODY -->
+                        </div>
+                        <!-- /SIDEBAR MENU BODY -->
+                    </div>
+                    <!-- /SIDEBAR MENU BODY -->
+                </div>
+                <!-- /SIDEBAR MENU BODY -->
+
+
+            {% else %}
+
+                <!-- GRID COLUMN -->
+                <div class="account-hub-sidebar">
+                    <!-- SIDEBAR BOX -->
+                    <div class="sidebar-box no-padding">
+                        <!-- SIDEBAR MENU -->
+                        <div class="sidebar-menu">
+
+                            <!-- SIDEBAR MENU ITEM -->
+                            <div class="sidebar-menu-item">
+                                <!-- SIDEBAR MENU HEADER -->
+                                <div class="sidebar-menu-header accordion-trigger-linked">
+
+                                    <!-- SIDEBAR MENU HEADER CONTROL ICON -->
+                                    <div class="sidebar-menu-header-control-icon">
+                                        <!-- SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+                                        <svg class="sidebar-menu-header-control-icon-open icon-minus-small">
+                                            <use xlink:href="#svg-minus-small"></use>
+                                        </svg>
+                                        <!-- /SIDEBAR MENU HEADER CONTROL ICON OPEN -->
+
+                                        <!-- SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                                        <svg class="sidebar-menu-header-control-icon-closed icon-plus-small">
+                                            <use xlink:href="#svg-plus-small"></use>
+                                        </svg>
+                                        <!-- /SIDEBAR MENU HEADER CONTROL ICON CLOSED -->
+                                    </div>
+                                    <!-- /SIDEBAR MENU HEADER CONTROL ICON -->
+
+                                    <!-- SIDEBAR MENU HEADER TITLE -->
+                                    <p class="sidebar-menu-header-title">
+                                        <i class="fa fa-calendar" style="font-size:17px;color:deepskyblue"></i>
+                                        Les Compétitions d'aujourd'hui : {{ now|date("l d F - H:i")}}</p>
+                                    <!-- /SIDEBAR MENU HEADER TITLE -->
+                                    <br>
+                                    <!-- SIDEBAR MENU HEADER TEXT -->
+                                    <p class="sidebar-menu-header-text">Ici vous pouvez consulter les compétition qui ont une date de debut meme qu'aujourd'hui</p>
+                                    <!-- /SIDEBAR MENU HEADER TEXT -->
+                                </div>
+                                <!-- /SIDEBAR MENU HEADER -->
+
+                                <!-- SIDEBAR MENU BODY -->
+                                <div class="sidebar-menu-body accordion-content-linked">
+
+                                    {# <!-- CALENDAR EVENT PREVIEW LIST -->
+                                     <div class="calendar-event-preview-list">
+                                         {% for t in Trending %}
+
+
+
+                                             <!-- USER STATUS LIST -->
+                                             <div class="user-status-list scroll-content">
+                                                 <!-- USER STATUS -->
+                                                 <div class="user-status notification">
+                                                     <!-- USER STATUS AVATAR -->
+                                                     <a class="user-status-avatar" href="profile-timeline.html">
+                                                         <!-- USER AVATAR -->
+                                                         <div class="user-avatar small no-outline">
+                                                             <!-- USER AVATAR CONTENT -->
+                                                             <div class="user-avatar-content">
+                                                                 <!-- HEXAGON -->
+                                                                 <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~t.idUser.imguser) }}"></div>
+                                                                 <!-- /HEXAGON -->
+                                                             </div>
+                                                             <!-- /USER AVATAR CONTENT -->
+
+                                                             <!-- USER AVATAR PROGRESS -->
+                                                             <div class="user-avatar-progress">
+                                                                 <!-- HEXAGON -->
+                                                                 <div class="hexagon-progress-40-44"></div>
+                                                                 <!-- /HEXAGON -->
+                                                             </div>
+                                                             <!-- /USER AVATAR PROGRESS -->
+
+                                                             <!-- USER AVATAR PROGRESS BORDER -->
+                                                             <div class="user-avatar-progress-border">
+                                                                 <!-- HEXAGON -->
+                                                                 <div class="hexagon-border-40-44"></div>
+                                                                 <!-- /HEXAGON -->
+                                                             </div>
+                                                             <!-- /USER AVATAR PROGRESS BORDER -->
+
+                                                         </div>
+                                                         <!-- /USER AVATAR -->
+                                                     </a>
+                                                     <!-- /USER STATUS AVATAR -->
+                                                     <!-- USER STATUS TITLE -->
+                                                     <p class="user-status-title"><a class="bold" href="#">{{ t.idUser.username }}</a> a ajouter la compétition <a class="highlighted" href="#"><strong>{{ t.Titre }}</strong></a></p>
+                                                     <!-- /USER STATUS TITLE -->
+                                                 </div>
+                                                 <!-- /USER AVATAR BADGE -->
+                                             </div>
+                                             <!-- /USER AVATAR -->
+
+
+
+                                             <!-- CALENDAR EVENT PREVIEW -->
+                                             <div class="calendar-event-preview secondary">
+                                                 <!-- CALENDAR EVENT PREVIEW INFO -->
+                                                 <div class="calendar-event-preview-info">
+                                                     <!-- CALENDAR EVENT PREVIEW TEXT -->
+                                                     <p class="calendar-event-preview-text">{{ t.Description }}</p>
+                                                     <!-- /CALENDAR EVENT PREVIEW TEXT -->
+
+                                                     <!-- CALENDAR EVENT PREVIEW TITLE -->
+                                                     <p class="calendar-event-preview-time">
+                                                         <i class="fa fa-clock-o" style="font-size:15px;color:deepskyblue"></i>
+                                                         <span class="bold">{{t.DateDebut|date('F jS ') }}</span>  -
+                                                         <i class="fa fa-clock-o" style="font-size:15px;color:red"></i>
+                                                         <span class="bold">{{t.DateFin|date('F jS ') }}</span> </p>
+                                                     <!-- /CALENDAR EVENT PREVIEW TITLE -->
+                                                 </div>
+                                                 <!-- /CALENDAR EVENT PREVIEW INFO -->
+                                             </div>
+                                             <!-- /CALENDAR EVENT PREVIEW -->
+                                         {% endfor %}
+                                     </div>
+                                     <!-- /CALENDAR EVENT PREVIEW LIST -->#}
+
+
+
+                                    <!-- GRID -->
+                                    <div class="grid">
+                                        {% for t in Trending %}
+                                            <!-- USER PREVIEW -->
+                                            <div class="user-preview landscape">
+                                                <!-- USER PREVIEW COVER -->
+                                                <figure class="user-preview-cover liquid">
+                                                    <img src="{{ asset('template/img/cover/'~t.imageC) }}" alt="cover-29">
+                                                </figure>
+                                                <!-- /USER PREVIEW COVER -->
+
+                                                <!-- USER PREVIEW INFO -->
+                                                <div class="user-preview-info">
+                                                    <!-- USER SHORT DESCRIPTION -->
+                                                    <div class="user-short-description landscape tiny">
+                                                        <!-- USER SHORT DESCRIPTION AVATAR -->
+                                                        <a class="user-short-description-avatar user-avatar small no-stats" href="#">
+                                                            <!-- USER AVATAR BORDER -->
+                                                            <div class="user-avatar-border">
+                                                                <!-- HEXAGON -->
+                                                                <div class="hexagon-50-56"></div>
+                                                                <!-- /HEXAGON -->
+                                                            </div>
+                                                            <!-- /USER AVATAR BORDER -->
+
+                                                            <!-- USER AVATAR CONTENT -->
+                                                            <div class="user-avatar-content">
+                                                                <!-- HEXAGON -->
+                                                                <div class="hexagon-image-40-44" data-src="{{ asset('template/img/avatar/'~t.idUser.imguser) }}"></div>
+                                                                <!-- /HEXAGON -->
+                                                            </div>
+                                                            <!-- /USER AVATAR CONTENT -->
+                                                        </a>
+                                                        <!-- /USER SHORT DESCRIPTION AVATAR -->
+
+                                                        <!-- USER SHORT DESCRIPTION TITLE -->
+                                                        <p class="user-short-description-title"><a href="#">{{ t.Titre }}</a></p>
+                                                        <!-- /USER SHORT DESCRIPTION TITLE -->
+
+                                                        <!-- USER SHORT DESCRIPTION TEXT -->
+                                                        <p class="user-short-description-text"><i class="fa fa-user" style="font-size:13px;color:teal"></i> &nbsp; By   {{ t.idUser.username }}</p>
+                                                        <!-- /USER SHORT DESCRIPTION TEXT -->
+                                                    </div>
+                                                    <!-- /USER SHORT DESCRIPTION -->
+
+
+                                                    <!-- USER STATS -->
+                                                    <div class="user-stats">
+                                                        <!-- USER STAT -->
+                                                        <div class="user-stat">
+                                                            <!-- USER STAT TITLE -->
+                                                            <p class="user-stat-title">{{t.Cout}}</p>
+                                                            <!-- /USER STAT TITLE -->
+
+                                                            <!-- USER STAT TEXT -->
+                                                            <p class="user-stat-text"> <i class="fa fa-diamond" style="font-size:10px;color:deepskyblue"></i>&nbsp;  Diamond</p>
+                                                            <!-- /USER STAT TEXT -->
+                                                        </div>
+                                                        <!-- /USER STAT -->
+
+                                                        <!-- USER STAT -->
+                                                        <div class="user-stat">
+                                                            <!-- USER STAT TITLE -->
+                                                            <p class="user-stat-title">{{t.Typedetalent }}</p>
+                                                            <!-- /USER STAT TITLE -->
+
+                                                            <!-- USER STAT TEXT -->
+                                                            <p class="user-stat-text"> <i class="fa fa-slack" style="font-size:10px;color:deepskyblue"></i>&nbsp; Talent</p>
+                                                            <!-- /USER STAT TEXT -->
+                                                        </div>
+                                                        <!-- /USER STAT -->
+
+                                                        <!-- USER STAT -->
+                                                        <div class="user-stat">
+                                                            <!-- USER STAT TITLE -->
+                                                            <p class="user-stat-title">{{t.DateFin|date('d/m/2020') }}</p>
+                                                            <!-- /USER STAT TITLE -->
+
+                                                            <!-- USER STAT TEXT -->
+                                                            <p class="user-stat-text"> <i class="fa fa-clock-o" style="font-size:10px;color:red"></i>&nbsp;  Date Fin</p>
+                                                            <!-- /USER STAT TEXT -->
+                                                        </div>
+                                                        <!-- /USER STAT -->
+                                                    </div>
+                                                    <!-- /USER STATS -->
+
+                                                    <!-- USER AVATAR LIST -->
+                                                    <div class="user-avatar-list medium reverse centered">
+                                                        {% set total = 0 %}
+                                                        {% for par in Participation if (par.idCompetition.idCompetition == t.idCompetition)  %}
+                                                            {% set total = total + 1 %}
+                                                            <!-- USER AVATAR -->
+                                                            <div class="user-avatar smaller no-stats">
+                                                                <!-- USER AVATAR BORDER -->
+                                                                <div class="user-avatar-border">
+                                                                    <!-- HEXAGON -->
+                                                                    <div class="hexagon-34-36"></div>
+                                                                    <!-- /HEXAGON -->
+                                                                </div>
+                                                                <!-- /USER AVATAR BORDER -->
+
+                                                                <!-- USER AVATAR CONTENT -->
+                                                                <div class="user-avatar-content">
+                                                                    <!-- HEXAGON -->
+                                                                    <a href="{{ path('profile', {'id':par.iduser.id})  }}">
+                                                                    <div class="hexagon-image-30-32"  data-src="{{ asset('template/img/avatar/'~par.idUser.imguser) }}"></div>
+                                                                    </a>
+                                                                        <!-- /HEXAGON -->
+                                                                </div>
+                                                                <!-- /USER AVATAR CONTENT -->
+
+                                                            </div>
+                                                            <!-- /USER AVATAR -->
+
+                                                        {% endfor %}
+
+                                                        <!-- USER AVATAR -->
+                                                        <a class="user-avatar smaller no-stats" href="#">
+                                                            <!-- USER AVATAR BORDER -->
+                                                            <div class="user-avatar-border">
+                                                                <!-- HEXAGON -->
+                                                                <div class="hexagon-34-36"></div>
+                                                                <!-- /HEXAGON -->
+                                                            </div>
+                                                            <!-- /USER AVATAR BORDER -->
+
+                                                            <!-- USER AVATAR CONTENT -->
+                                                            <div class="user-avatar-content">
+                                                                <!-- HEXAGON -->
+                                                                <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/23.jpg') }}"></div>
+                                                                <!-- /HEXAGON -->
+                                                            </div>
+                                                            <!-- /USER AVATAR CONTENT -->
+
+                                                            <!-- USER AVATAR OVERLAY -->
+                                                            <div class="user-avatar-overlay">
+                                                                <!-- HEXAGON -->
+                                                                <div class="hexagon-overlay-30-32"></div>
+                                                                <!-- /HEXAGON -->
+                                                            </div>
+                                                            <!-- /USER AVATAR OVERLAY -->
+
+                                                            <!-- USER AVATAR OVERLAY CONTENT -->
+                                                            <div class="user-avatar-overlay-content">
+                                                                <!-- USER AVATAR OVERLAY CONTENT TEXT -->
+                                                                <p class="user-avatar-overlay-content-text">{{total}}</p>
+                                                                <!-- /USER AVATAR OVERLAY CONTENT TEXT -->
+                                                            </div>
+                                                            <!-- /USER AVATAR OVERLAY CONTENT -->
+                                                        </a>
+                                                        <!-- /USER AVATAR -->
+                                                    </div>
+                                                    <!-- /USER AVATAR LIST -->
+
+                                                    <!-- USER PREVIEW ACTIONS -->
+                                                    <div class="user-preview-actions">
+                                                        {% if (t.participe == false) and (t.Cout <= app.user.nbdiament)%}
+                                                            <!-- BUTTON -->
+                                                            <p class="button secondary">
+                                                                <!-- BUTTON ICON -->
+                                                                <a href="{{ path('ajouterparticipation', {'id':t.idCompetition,'type':t.Typedetalent})  }}">
+                                                                    <svg class="button-icon icon-join-group">
+                                                                        <use xlink:href="#svg-join-group"></use>
+                                                                    </svg>
+                                                                </a>
+                                                                <!-- /BUTTON ICON -->
+                                                            </p>
+                                                            <!-- /BUTTON -->
+                                                        {% elseif t.participe == true %}
+                                                            <!-- BUTTON -->
+                                                            <p class="button white white-tertiary">
+                                                                <!-- BUTTON ICON -->
+                                                                <a href="{{ path('supprimerparticipation', {'id':t.idCompetition,'id1':app.user.id})  }}">
+                                                                    <svg class="button-icon icon-leave-group">
+                                                                        <use xlink:href="#svg-leave-group"></use>
+                                                                    </svg>
+                                                                </a>
+                                                                <!-- /BUTTON ICON -->
+                                                            </p>
+                                                            <!-- /BUTTON -->
+
+                                                        {% elseif t.Cout > app.user.nbdiament %}
+                                                            <!-- BUTTON -->
+                                                            <p class="button white white-tertiary">
+                                                                <!-- BUTTON ICON -->
+
+                                                                <i class="fa fa-diamond" style="font-size:17px;color:grey"></i>
+
+                                                                <!-- /BUTTON ICON -->
+                                                            </p>
+                                                            <!-- /BUTTON -->
+                                                        {% endif %}
+
+
+                                                    </div>
+                                                    <!-- /USER PREVIEW ACTIONS -->
+                                                </div>
+                                                <!-- /USER PREVIEW INFO -->
+                                            </div>
+                                            <!-- /USER PREVIEW -->
+                                        {% endfor %}
+                                    </div>
+                                    <!-- /GRID -->
+
+
+
+
+
+                                </div>
+                                <!-- /SIDEBAR MENU BODY -->
+                            </div>
+                            <!-- /SIDEBAR MENU BODY -->
+                        </div>
+                        <!-- /SIDEBAR MENU BODY -->
+                    </div>
+                    <!-- /SIDEBAR MENU BODY -->
+                </div>
+                <!-- /SIDEBAR MENU BODY -->
+
+
+            {% endif %}
+
+
+            <!-- SECTION HEADER -->
+            <div class="section-header">
+                <!-- SECTION HEADER INFO -->
+                <div class="section-header-info">
+                    <!-- SECTION PRETITLE -->
+                    <p class="section-pretitle">Découvre les nouveautés!</p>
+                    <!-- /SECTION PRETITLE -->
+
+                    <!-- SECTION TITLE -->
+                    <h2 class="section-title">Nouvelles Competitions</h2>
+                    <!-- /SECTION TITLE -->
+                </div>
+                <!-- /SECTION HEADER INFO -->
+
+                <!-- SECTION HEADER ACTIONS -->
+                <div class="section-header-actions">
+                    <!-- SECTION HEADER ACTION -->
+                    <a class="section-header-action" href="#">Browse All Latest</a>
+                    <!-- /SECTION HEADER ACTION -->
+                </div>
+                <!-- /SECTION HEADER ACTIONS -->
+            </div>
+            <!-- /SECTION HEADER -->
+
+
+
+
+
+            <!-- GRID -->
+            <div class="grid grid-3-3-3-3 centered">
+                {%  for c in Competition %}
+                    <!-- EVENT PREVIEW -->
+                    <div class="event-preview">
+                        <!-- EVENT PREVIEW COVER -->
+                        <a href="{{ path('detailuser', {'id':c.idCompetition})  }}">
+                            <figure class="event-preview-cover liquid">
+                                <img src="{{ asset('template/img/cover/'~c.imageC ) }}" alt="cover-33">
+                            </figure>
+                        </a>
+                        <!-- /EVENT PREVIEW COVER -->
+
+                        <!-- EVENT PREVIEW INFO -->
+                        <div class="event-preview-info">
+                            <!-- EVENT PREVIEW INFO TOP -->
+                            <div class="event-preview-info-top">
+                                <!-- DATE STICKER -->
+                                <div class="date-sticker">
+                                    <!-- DATE STICKER DAY -->
+                                    <p class="date-sticker-day">{{ c.DateDebut|date('d') }}</p>
+                                    <!-- /DATE STICKER DAY -->
+
+                                    <!-- DATE STICKER MONTH -->
+                                    <p class="date-sticker-month">{{ c.DateDebut|date('F ') }}</p>
+                                    <!-- /DATE STICKER MONTH -->
+
+                                </div>
+                                <!-- /DATE STICKER -->
+
+                                <!-- EVENT PREVIEW TITLE -->
+                                <p class="event-preview-title popup-event-information-trigger">{{c.Titre}}</p>
+                                <!-- /EVENT PREVIEW TITLE -->
+                                {% if c.Typedetalent=="Dance" %}
+                                    <!-- EVENT PREVIEW TIMESTAMP -->
+                                    <p class="event-preview-timestamp"><i class="fa fa-tag" style="font-size:13px;color:deepskyblue"></i><span class="bold">&nbsp;{{ c.Typedetalent }}</span> </p>
+                                    <!-- /EVENT PREVIEW TIMESTAMP -->
+                                {% elseif c.Typedetalent=="Musique" %}
+                                    <!-- EVENT PREVIEW TIMESTAMP -->
+                                    <p class="event-preview-timestamp"><i class="fa fa-tag" style="font-size:13px;color:red"></i><span class="bold">&nbsp;{{ c.Typedetalent }}</span> </p>
+                                    <!-- /EVENT PREVIEW TIMESTAMP -->
+                                {% elseif c.Typedetalent=="BeatBox" %}
+                                    <!-- EVENT PREVIEW TIMESTAMP -->
+                                    <p class="event-preview-timestamp"><i class="fa fa-tag" style="font-size:13px;color:darkviolet"></i><span class="bold">&nbsp;{{ c.Typedetalent }}</span> </p>
+                                    <!-- /EVENT PREVIEW TIMESTAMP -->
+                                {% elseif c.Typedetalent=="Comédie" %}
+                                    <!-- EVENT PREVIEW TIMESTAMP -->
+                                    <p class="event-preview-timestamp"><i class="fa fa-tag" style="font-size:13px;color:green"></i><span class="bold">&nbsp;{{ c.Typedetalent }}</span> </p>
+                                    <!-- /EVENT PREVIEW TIMESTAMP -->
+                                {% endif %}
+
+                                <!-- EVENT PREVIEW TEXT -->
+                                <p class="event-preview-text">{{ c.Description }}</p>
+                                <!-- /EVENT PREVIEW TEXT -->
+                            </div>
+                            <!-- /EVENT PREVIEW INFO TOP -->
+
+                            <!-- EVENT PREVIEW INFO BOTTOM -->
+                            <div class="event-preview-info-bottom">
+                                <!-- DECORATED TEXT -->
+                                <div class="decorated-text">
+
+                                    {% if c.Cout == 0 %}
+                                        <!-- DECORATED TEXT CONTENT -->
+                                        <p class="event-preview-timestamp">
+                                            <i class="fa fa-diamond" style="font-size:11px;color:deepskyblue"></i>
+                                            <span class="bold">Gratuit</span></p>
+                                        <!-- /DECORATED TEXT CONTENT -->
+                                    {% else %}
+                                        <!-- DECORATED TEXT CONTENT -->
+                                        <p class="event-preview-timestamp">
+                                            <i class="fa fa-diamond" style="font-size:11px;color:deepskyblue"></i>
+                                            <span class="bold"> {{c.Cout}}</span></p>
+                                        <!-- /DECORATED TEXT CONTENT -->
+                                    {% endif %}
+                                </div>
+                                <!-- /DECORATED TEXT -->
+
+                                <!-- META LINE -->
+                                <div class="meta-line">
+                                    <!-- META LINE LIST -->
+                                    <div class="meta-line-list user-avatar-list">
+                                        {% set total = 0 %}
+                                        {% for par in Participation if (par.idCompetition.idCompetition == c.idCompetition)  %}
+                                            {% set total = total + 1 %}
+
+
+                                            <!-- USER AVATAR -->
+                                            <div class="user-avatar micro no-stats ">
+                                                <!-- USER AVATAR BORDER -->
+                                                <div class="user-avatar-border">
+                                                    <!-- HEXAGON -->
+                                                    <div class="hexagon-22-24"></div>
+                                                    <!-- /HEXAGON -->
+                                                </div>
+                                                <!-- /USER AVATAR BORDER -->
+
+                                                <!-- USER AVATAR CONTENT -->
+                                                <div class="user-avatar-content"  >
+                                                    <!-- HEXAGON -->
+                                                    <a href="{{ path('profile', {'id':par.iduser.id})  }}">
+                                                    <div class="hexagon-image-18-20"  data-src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}" ></div>
+                                                    </a>
+                                                        <!-- /HEXAGON -->
+                                                </div>
+                                                <!-- /USER AVATAR CONTENT -->
+                                            </div>
+                                            <!-- /USER AVATAR -->
+                                        {% endfor %}
+                                    </div>
+                                    <!-- /META LINE LIST -->
+
+                                    <!-- META LINE TEXT -->
+                                    <p class="meta-line-text">{{total}} will assist</p>
+                                    <!-- /META LINE TEXT -->
+                                </div>
+                                <!-- /META LINE -->
+
+
+
+                                {% if (c.participe == false) and (c.Cout <= app.user.nbdiament)%}
+
+                                    <!-- BUTTON -->
+                                    <a href="{{ path('ajouterparticipation', {'id':c.idCompetition,'type':c.Typedetalent})  }}">
+                                        <p class="button primary">
+
+
+                                            <!-- BUTTON ICON -->
+                                            <svg class="button-icon icon-join-group">
+                                                <use xlink:href="#svg-join-group"></use>
+                                            </svg>
+                                            <!-- /BUTTON ICON -->
+                                            &nbsp; Participer
+
+                                        </p>
+                                    </a>
+                                    <!-- /BUTTON -->
+
+                                {% elseif c.participe == true %}
+                                    <a href="{{ path('supprimerparticipation', {'id':c.idCompetition,'id1':app.user.id})  }}">
+                                        <button  class="button white white-tertiary">
+
+                                            <!-- BUTTON ICON -->
+                                            <svg class="button-icon icon-leave-group">
+                                                <use xlink:href="#svg-leave-group"></use>
+                                            </svg>
+                                            <!-- /BUTTON ICON -->
+                                            &nbsp; Supprimer Participation
+                                        </button>
+                                    </a>
+
+
+                                {% elseif c.Cout > app.user.nbdiament %}
+
+                                    <button  class="button secondary">
+
+                                        <!-- BUTTON ICON -->
+                                        <svg class="button-icon icon-cross">
+                                            <use xlink:href="#svg-cross"></use>
+                                        </svg>
+                                        <!-- /BUTTON ICON -->
+                                        &nbsp; gagner plus de diament
+                                    </button>
+
+
+
+                                {% endif %}
+
+
+
+                            </div>
+                            <!-- /EVENT PREVIEW INFO BOTTOM -->
+                        </div>
+                        <!-- /EVENT PREVIEW INFO -->
+                    </div>
+                    <!-- /EVENT PREVIEW -->
+                {% endfor %}
+
+            </div>
+            <!-- /GRID -->
+
+
+            {# <!-- GRID -->
+             <div class="grid grid-3-3-3-3 centered">
+
+                 {%  for c in Competition %}
+
+                 <!-- PRODUCT PREVIEW -->
+                 <div class="product-preview">
+                     <!-- PRODUCT PREVIEW IMAGE -->
+                     <a href="{{ path('detailuser', {'id':c.idCompetition})  }}">
+                         <figure class="product-preview-image liquid">
+                             <img src="{{ asset('template/img/cover/'~c.imageC ) }}" alt="item-01">
+                         </figure>
+                     </a>
+                     <!-- /PRODUCT PREVIEW IMAGE -->
+
+                     <!-- PRODUCT PREVIEW INFO -->
+                     <div class="product-preview-info">
+                         {% if c.Cout ==0 %}
+                         <!-- TEXT STICKER -->
+                         <p class="text-sticker"><span class="highlighted">diamond:  </span>Gratuit</p>
+                         <!-- /TEXT STICKER -->
+
+                         {% else %}
+
+                         <!-- TEXT STICKER -->
+                         <p class="text-sticker"><span class="highlighted">diamond:  </span>{{c.Cout}}</p>
+                         <!-- /TEXT STICKER -->
+                         {% endif %}
+
+                         <!-- PRODUCT PREVIEW TITLE -->
+                         <p class="product-preview-title"><a href="{{ path('detailuser', {'id':c.idCompetition})  }}" >{{c.Titre}}</a></p>
+                         <!-- /PRODUCT PREVIEW TITLE -->
+
+                         <!-- PRODUCT PREVIEW CATEGORY -->
+                         <p class="product-preview-category digital"><a href="#">{{c.typedetalent}}</a></p>
+                         <!-- /PRODUCT PREVIEW CATEGORY -->
+
+                         <!-- PRODUCT PREVIEW TEXT -->
+                         <p class="product-preview-text" li>{{ c.Description }}</p>
+                         <!-- /PRODUCT PREVIEW TEXT -->
+                         <br>
+
+
+                         <!-- CONTENT ACTIONS -->
+                         <div class="content-actions">
+                             <!-- CONTENT ACTION -->
+                             <div class="content-action">
+                                 <!-- META LINE -->
+                                 <div class="meta-line">
+                                     <!-- META LINE LIST -->
+                                     <div class="meta-line-list reaction-item-list">
+                                         {% set total = 0 %}
+                                         {% for par in Participation if (par.idCompetition.idCompetition == c.idCompetition)  %}
+                                             {% set total = total + 1 %}
+
+                                             <!-- REACTION ITEM -->
+                                             <div class="reaction-item">
+                                                 <!-- REACTION IMAGE -->
+                                                 <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}" alt="reaction-happy">
+                                                 <!-- /REACTION IMAGE -->
+
+                                                 <!-- SIMPLE DROPDOWN -->
+                                                 <div class="simple-dropdown padded reaction-item-dropdown">
+                                                     <!-- SIMPLE DROPDOWN TEXT -->
+                                                     <p class="simple-dropdown-text"><img class="reaction" src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}" alt="reaction-happy"> <span class="bold">{{ par.iduser.username}}</span></p>
+                                                     <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                                     <!-- SIMPLE DROPDOWN TEXT -->
+                                                     <p class="simple-dropdown-text">
+                                                         <i class="fa fa-at" style="font-size:10px;color:deepskyblue"></i>
+                                                         {{ par.iduser.email}}
+                                                     </p>
+                                                     <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                                     <!-- SIMPLE DROPDOWN TEXT -->
+                                                     <p class="simple-dropdown-text">
+                                                         <i class="fa fa-diamond" style="font-size:10px;color:deepskyblue"></i>
+                                                         {{ par.iduser.nbdiament}}
+                                                     </p>
+                                                     <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                                 </div>
+                                                 <!-- /SIMPLE DROPDOWN -->
+                                             </div>
+                                             <!-- /REACTION ITEM -->
+                                         {% endfor %}
+
+
+
+
+
+                                     </div>
+                                     <!-- /META LINE LIST -->
+
+                                     <!-- META LINE TEXT -->
+                                     <p class="meta-line-text">{{total}} <span>will assist</span></p>
+                                     <!-- /META LINE TEXT -->
+                                 </div>
+                                 <!-- /META LINE -->
+                             </div>
+                             <!-- /META LINE -->
+                         </div>
+                         <!-- /META LINE -->
+
+                     </div>
+                     <!-- /PRODUCT PREVIEW INFO -->
+
+
+                         {% if (c.participe == false) and (c.Cout <= app.user.nbdiament)%}
+
+                             <!-- BUTTON -->
+                             <a href="{{ path('ajouterparticipation', {'id':c.idCompetition,'type':c.Typedetalent})  }}">
+                             <p class="button secondary full">
+
+
+                                 <!-- BUTTON ICON -->
+                                 <svg class="button-icon icon-join-group">
+                                     <use xlink:href="#svg-join-group"></use>
+                                 </svg>
+                                 <!-- /BUTTON ICON -->
+                                 &nbsp; Participer
+
+                         </p>
+                             </a>
+                             <!-- /BUTTON -->
+
+                         {% elseif c.participe == true %}
+                             <a href="{{ path('supprimerparticipation', {'id':c.idCompetition,'id1':app.user.id})  }}">
+                             <button  class="button white white-tertiary">
+
+                                 <!-- BUTTON ICON -->
+                                 <svg class="button-icon icon-leave-group">
+                                     <use xlink:href="#svg-leave-group"></use>
+                                 </svg>
+                                 <!-- /BUTTON ICON -->
+                                     &nbsp; Supprimer Participation
+                             </button>
+                             </a>
+
+
+                         {% elseif c.Cout > app.user.nbdiament %}
+
+                             <button class="button white white-tertiary">
+                                 <a href="#" > <i class="fa fa-diamond" style="font-size:14px;color:deepskyblue"></i> &nbsp; gagner plus de diament</a>
+                             </button>
+
+                         {% endif %}
+
+
+
+
+
+
+                     <!-- PRODUCT PREVIEW META -->
+                     <div class="product-preview-meta">
+                         <!-- PRODUCT PREVIEW AUTHOR -->
+                         <div class="product-preview-author">
+                             <!-- PRODUCT PREVIEW AUTHOR IMAGE -->
+                             <a class="product-preview-author-image user-avatar micro no-border" href="profile-timeline.html">
+                                 <!-- USER AVATAR CONTENT -->
+                                 <div class="user-avatar-content">
+                                     <!-- HEXAGON -->
+                                     <div class="hexagon-image-18-20" data-src="{{ asset('template/img/avatar/'~c.idUser.imguser) }}"></div>
+                                     <!-- /HEXAGON -->
+                                 </div>
+                                 <!-- /USER AVATAR CONTENT -->
+                             </a>
+                             <!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
+
+                             <!-- PRODUCT PREVIEW AUTHOR TITLE -->
+                             <p class="product-preview-author-title">Posted By</p>
+                             <!-- /PRODUCT PREVIEW AUTHOR TITLE -->
+
+                             <!-- PRODUCT PREVIEW AUTHOR TEXT -->
+                             <p class="product-preview-author-text"><a href="profile-timeline.html">{{ c.iduser }}</a></p>
+                             <!-- /PRODUCT PREVIEW AUTHOR TEXT -->
+                         </div>
+                         <!-- /PRODUCT PREVIEW AUTHOR -->
+
+
+                     </div>
+                     <!-- /PRODUCT PREVIEW META -->
+                 </div>
+                 <!-- /PRODUCT PREVIEW -->
+
+
+                 {% endfor %}
+
+             </div>
+             <!-- /GRID -->#}
+
+            <!-- SECTION PAGER BAR -->
+            <div class="section-pager-bar">
+                <!-- SECTION PAGER -->
+                <div class="section-pager">
+                    {{ knp_pagination_render(Competition) }}
+                </div>
+                <!-- /SECTION PAGER -->
+
+                <!-- SECTION PAGER CONTROLS -->
+                <div class="section-pager-controls">
+                    <!-- SLIDER CONTROL -->
+                    <div class="slider-control left disabled">
+                        <!-- SLIDER CONTROL ICON -->
+                        <svg class="slider-control-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                        </svg>
+                        <!-- /SLIDER CONTROL ICON -->
+                    </div>
+                    <!-- /SLIDER CONTROL -->
+
+                    <!-- SLIDER CONTROL -->
+                    <div class="slider-control right">
+                        <!-- SLIDER CONTROL ICON -->
+                        <svg class="slider-control-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                        </svg>
+                        <!-- /SLIDER CONTROL ICON -->
+                    </div>
+                    <!-- /SLIDER CONTROL -->
+                </div>
+                <!-- /SECTION PAGER CONTROLS -->
+            </div>
+            <!-- /SECTION PAGER BAR -->
+
+
+
+        </div>
+        <!-- /CONTENT GRID -->
+    {% else %}
+        <script>
+            window.alert("Seulement le Simple Utilisateur peut voir cette page");
+
+        </script>
+        <br><br><br>
+        <!-- ERROR SECTION -->
+        <div class="error-section">
+            <!-- ERROR SECTION TITLE -->
+            <p class="error-section-title">404</p>
+            <!-- /ERROR SECTION TITLE -->
+
+            <!-- ERROR SECTION INFO -->
+            <div class="error-section-info">
+                <!-- ERROR SECTION SUBTITLE -->
+                <p class="error-section-subtitle">Oops!!...</p>
+                <!-- /ERROR SECTION SUBTITLE -->
+
+                <!-- ERROR SECTION TEXT -->
+                <p class="error-section-text">Seulement le Simple Utilisateur peut voir cette page !!!</p>
+                <!-- /ERROR SECTION TEXT -->
+
+
+
+                <!-- BUTTON -->
+                <a class="button medium primary" href="affichercompetition">Retour</a>
+                <!-- /BUTTON -->
+            </div>
+            <!-- /ERROR SECTION INFO -->
+        </div>
+        <!-- /ERROR SECTION -->
+
+    {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yout ticket</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700|Kreon:700|Audiowide&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <!-- <link rel="stylesheet" href="styles/main.css" media="screen" charset="utf-8"/> -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="content-type" content="text-html; charset=utf-8">
+</head>
+
+<style>
+
+    @page {
+        page_width: 200mm;
+        page_height: 60mm;
+
+        size: 20cm 8.7cm;
+        margin: 0;
+
+    }
+    body {
+        margin: 0;
+        color: #ffffff;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 300;
+        font-size: 25px;
+    }
+
+    .container {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    section {
+        position: relative;
+        height: 300px;
+        width: 100%;
+        background-image: url(https://htmlpdfapi.com/uploads/images/568b96887261690f6dbe0000/content_background-concert-3.jpg?1451988615);
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+    section .left {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        float: left;
+        width: 400px;
+        padding: 35px 0 0 60px;
+    }
+    section .right {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        float: right;
+        width: 400px;
+        padding: 35px 0 0 60px;
+    }
+    section .event {
+        margin-bottom: 40px;
+        font-weight: 700;
+        font-size: 1.6em;
+        line-height: 35px;
+        text-transform: uppercase;
+    }
+    section .title {
+        margin-bottom: 35px;
+        color: #F5A623;
+        font-family: "Audiowide", cursive;
+        font-size: 4em;
+        line-height: 72px;
+    }
+    section .info {
+        font-size: 0.8em;
+        text-transform: uppercase;
+    }
+    section .seats {
+        margin-bottom: 35px;
+        font-size: 0.36em;
+        text-transform: uppercase;
+        text-align: right;
+    }
+    section .seats:last-child {
+        margin-bottom: 0;
+    }
+    section .seats span {
+        display: inline-block;
+        width: 60px;
+        margin-left: 30px;
+        padding: 10px 0;
+        color: #F5A623;
+        background: rgba(255, 255, 255, 0.5);
+        font-family: "Kreon", serif;
+        font-size: 2.777em;
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+
+<body>
+<div class="container">
+    <section>
+        <div class="left">
+            <div class="event">{{ ticket.idCompetition.Titre }}</div>
+            <div class="title">{{ app.user.username }}</div>
+            <div class="info">Date Emission : {{ ticket.dateemission|date('Y-m-d')  }}</div>
+
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+
+</html>

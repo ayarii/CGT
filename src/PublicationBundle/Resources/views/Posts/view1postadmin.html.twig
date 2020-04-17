@@ -1,0 +1,200 @@
+{% extends 'base1.html.twig' %}
+{% block body %}
+{% if user %}
+    <section class="content blog-page">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-7 col-md-6 col-sm-12">
+                    <h2>PostDetail
+                        <small>Welcome to Tunisian Got Talent</small>
+                    </h2>
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-12">
+                    <ul class="breadcrumb float-md-right">
+                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Oreo</a></li>
+                        <li class="breadcrumb-item"><a href="blog-dashboard.html">Post</a></li>
+                        <li class="breadcrumb-item active">Post Detail</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="card single_post">
+                        <div class="body">
+                            <h3 class="m-t-0 m-b-5"><a href="blog-details.html">{{ post.titre }}</a></h3>
+                            <ul class="meta">
+                                <li><a href="#"><i class="zmdi zmdi-account col-blue"></i>Posted By: {{ post.idauthor.username }}</a></li>
+                                <li><a href="#"><i class="zmdi zmdi-label col-red"></i>{{ post.type }}</a></li>
+                                <li><a href="#"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: {{ post.nbcomments }}</a></li>
+                                <li><a href="#"><i class="zmdi zmdi-comment-text col-blue"></i>Reactions: {{ post.ReactionPost }}</a></li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            {% if post.type == "img" %}
+                                <img class="img-responsive" alt="photo" width="304" height="236"src="{{ asset('/uploads/img/') ~ post.contenue }}" alt="photo-preview-10">
+                                <!-- /IFRAME WRAP -->
+                            {% elseif post.type == "video" %}
+                                <video class="video-fluid" width="304" height="236" src="{{ asset('/uploads/video/') ~ post.contenue }}" ></video>
+                            {% elseif post.type == "shared" %}
+                                {% set trv=0 %}
+                                {%for popo in posts  %}
+                                    {%if popo.id==post.contenue|number_format%}
+                                        {% set trv=1 %}
+                                        <div class="body">
+                                            <h3 class="m-t-0 m-b-5"><a href="blog-details.html">{{ popo.titre }}</a></h3>
+                                            <ul class="meta">
+                                                <li><a href="#"><i class="zmdi zmdi-account col-blue"></i>Posted By:{{ popo.idauthor.username }}</a></li>
+                                                <li><a href="#"><i class="zmdi zmdi-label col-red"></i>{{ popo.type }}</a></li>
+                                                <li><a href="#"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: {{ popo.nbcomments }}</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="body">
+                                            {% if popo.type == "img" %}
+                                                <img class="img-responsive" alt="photo" width="304" height="236"src="{{ asset('/uploads/img/') ~ popo.contenue }}" alt="photo-preview-10">
+                                                <!-- /IFRAME WRAP -->
+                                            {% elseif popo.type == "video" %}
+                                                <video class="video-fluid" width="304" height="236" src="{{ asset('/uploads/video/') ~ popo.contenue }}" ></video>
+                                            {% endif %}
+                                            <p>{{ popo.titre }}</p>
+                                            <a href="blog-details.html" title="read more" class="btn btn-round btn-info">Read More</a>
+                                        </div>
+                                    {% endif %}
+
+                                {% endfor %}
+                                {% if trv==0 %}
+                                    <div class="card text-white bg-danger mb-3" style="max-width: 18rem;" id="tfol-{{ post.id }}">
+                                        <div class="card-header">Not Available</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">not found</h5>
+                                            <p class="card-text">this content isn't available !</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+
+
+                            {% endif %}
+                            <p>{{ post.titre }}</p>
+                            <a href="#" title="Votes" class="btn btn-round btn-info">Votes:{{ post.VotesPost }}</a>
+                            <a href="{{ path('publication_addelete',{id_post:post.id}) }}" title="Delete" class="btn btn-round btn-info">Delete</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Comments</strong> {{ post.nbcomments }}</h2>
+                        </div>
+                        <div class="body">
+                            <ul class="comment-reply list-unstyled">
+                                {% for comment in comments %}
+                                    {% if comment.post.id==post.id %}
+                                     <li class="row">
+                                    <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="{{ asset('template/img/avatar/'~comment.idUser.imguser) }}" alt="Awesome Image"></div>
+                                    <div class="text-box col-md-10 col-8 p-l-0 p-r0">
+                                        <h5 class="m-b-0">{{ comment.idUser.username }}</h5>
+                                        <p>{{ comment.contenue }}</p>
+                                        <ul class="list-inline">
+                                            <li><a href="#">{% if "now" |date("U") + 3600  > comment.date|date("U") + 31104000 %}
+                                                        {{ ("now" |date("U") + 3600  - comment.date |date("U") ) |date("Y") }} Years Ago
+                                                    {% elseif "now" |date("U") + 3600  > comment.date |date("U") + 2592000 %}
+                                                        {{ ("now" |date("U") + 3600  - comment.date |date("U") ) |date("m") }} Months Ago
+                                                    {% elseif "now" |date("U") + 3600  > comment.date |date("U") + 86400 %}
+                                                        {{ ("now" |date("U") + 3600  - comment.date|date("U") ) |date("d") }} Days Ago
+                                                    {% elseif "now" |date("U") + 3600  >comment.date |date("U") + 3600  %}
+                                                        {{ ("now" |date("U") + 3600  -comment.date |date("U") ) |date("H") }} Hours Ago
+                                                    {% elseif "now" |date("U") + 3600  >comment.date |date("U") + 60 %}
+                                                        {{ ("now" |date("U") + 3600  - comment.date |date("U") ) |date("i") }} Minutes Ago
+                                                    {% elseif "now" |date("U") + 3600  > comment.date |date("U")  %}
+                                                        {{ ("now" |date("U") + 3600  - comment.date |date("U") ) |date("s") }} Seconds Ago
+                                                    {% endif %}</a></li>
+                                            <li><a href="{{ path('commentaire_supprimera',{ id_com: comment.id})}}">Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Leave</strong> a reply <small> Required fields are marked*</small></h2>
+                        </div>
+                        <div class="body">
+                            <div class="comment-form">
+                                <form class="row"  action="{{ path('commentaire_addad',{'post_id':post.id}) }}">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Your Name" value="{{ app.user.username }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <textarea rows="4" class="form-control no-resize" placeholder="Please type what you want..." name="contenue"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn btn-primary btn-round">SUBMIT</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 right-box">
+                    <div class="card">
+                        <div class="body search">
+                            <div class="input-group m-b-0">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-addon">
+                                <i class="zmdi zmdi-search"></i>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Popular</strong> Posts</h2>
+                        </div>
+                        <div class="body widget popular-post">
+                            <ul class="list-unstyled m-b-0">
+                                {% for t in tp3 %}
+                                    {% if t.type!='shared' %}
+                                <li class="row">
+                                    <div class="icon-box col-4">
+                                        {% if t.type=='img' %}
+                                        <img class="img-fluid img-thumbnail" src="{{ asset('/uploads/img/'~t.contenue) }}" alt="{{ t.titre }}">
+                                         {% else %}
+                                             <video class="img-fluid img-thumbnail" src="{{ asset('/uploads/img/'~t.contenue) }}" alt="{{ t.titre }}">  </video>
+                                          {% endif %}
+                                    </div>
+                                    <div class="text-box col-8 p-l-0">
+                                        <h5 class="m-b-0"><a href="#">{{ t.idauthor.typetalent }}</a></h5>
+                                        <small class="author-name">By: <a href="#">{{ t.idauthor.username }}</a></small>
+                                        <small class="date">{{ t.date|date }}</small>
+                                    </div>
+                                </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Email</strong> Newsletter <small>Get our products/news earlier than others, let’s get in touch.</small></h2>
+                        </div>
+                        <div class="body widget newsletter">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Enter Email">
+                                <span class="input-group-addon">
+                                <i class="zmdi zmdi-mail-send"></i>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+{% endblock %}

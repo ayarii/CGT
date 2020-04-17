@@ -1,0 +1,2195 @@
+﻿{% extends 'baseamine.html.twig' %}
+
+{% block body %}
+    </br>
+    {% set postid='' %}
+<div class="content-grid">
+
+    <div class="section-banner">
+        <!-- SECTION BANNER ICON -->
+        <img class="section-banner-icon" src="{{ asset('template/img/banner/newsfeed-icon.png')}}" alt="newsfeed-icon">
+        <!-- /SECTION BANNER ICON -->
+
+        <!-- SECTION BANNER TITLE -->
+        <p class="section-banner-title">Acceuil</p>
+        <!-- /SECTION BANNER TITLE -->
+
+        <!-- SECTION BANNER TEXT -->
+        <p class="section-banner-text">Check what your friends have been up to!</p>
+        <!-- /SECTION BANNER TEXT -->
+    </div>
+    <div class="grid grid-3-6-3 mobile-prefer-content">
+
+        <!-- GRID COLUMN -->
+        <div class="grid-column">
+            <!-- WIDGET BOX -->
+            {% set postcount=0 %}
+            {% set nbcommentstot=0 %}
+            {% set nblikes=0 %}
+            {% set nblove=0 %}
+            {% set nbdislikes=0 %}
+            {% for p in posts %}
+            {% if p.idauthor.id==app.user.id %}
+             {% set postcount=postcount+1 %}
+             {% set nbcommentstot=nbcommentstot+p.nbcomments %}
+             {% for r in reactions %}
+             {% if r.post.idauthor.id==app.user.id %}
+             {% if r.type==1 %}
+             {% set nblikes=nblikes+1 %}
+             {% elseif  r.type==2  %}
+             {% set nblove=nblove+1 %}
+             {% elseif  r.type==3  %}
+             {% set nbdislikes=nbdislikes+1 %}
+             {% endif %}
+             {% endif %}
+             {% endfor %}
+            {% endif %}
+            {% endfor %}
+            <div class="widget-box">
+                <!-- WIDGET BOX SETTINGS -->
+                <div class="widget-box-settings">
+                    <!-- POST SETTINGS WRAP -->
+                    <div class="post-settings-wrap">
+                        <!-- POST SETTINGS -->
+                        <div class="post-settings widget-box-post-settings-dropdown-trigger">
+                            <!-- POST SETTINGS ICON -->
+                            <svg class="post-settings-icon icon-more-dots">
+                                <use xlink:href="#svg-more-dots"></use>
+                            </svg>
+                            <!-- /POST SETTINGS ICON -->
+                        </div>
+                        <!-- /POST SETTINGS -->
+
+                        <!-- SIMPLE DROPDOWN -->
+                        <div class="simple-dropdown widget-box-post-settings-dropdown">
+                            <!-- SIMPLE DROPDOWN LINK -->
+                            <p class="simple-dropdown-link">Widget Settings</p>
+                            <!-- /SIMPLE DROPDOWN LINK -->
+                        </div>
+                        <!-- /SIMPLE DROPDOWN -->
+                    </div>
+                    <!-- /POST SETTINGS WRAP -->
+                </div>
+                <!-- /WIDGET BOX SETTINGS -->
+
+                <!-- WIDGET BOX TITLE -->
+                <p class="widget-box-title">VirtUal Assistant</p>
+                <!-- /WIDGET BOX TITLE -->
+                        <!-- CHAT WIDGET CONVERSATION -->
+                        <div class="chat-widget-conversation" id="container" data-simplebar="init" style="height: 400px;"><div class="simplebar-wrapper" style="margin: -35px -28px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden;"><div class="simplebar-content" style="padding: 35px 28px;">
+                                                <!-- CHAT WIDGET SPEAKER -->
+                                                <div class="chat-widget-speaker left chat-container">
+
+                                                    <!-- CHAT WIDGET SPEAKER MESSAGE -->
+                                                    <p class="chat-widget-speaker-message voice2text">Salut! comment je peux vous aider? </p>
+                                                    <!-- /CHAT WIDGET SPEAKER MESSAGE -->
+
+                                                </div>
+                                                <!-- /CHAT WIDGET SPEAKER -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="simplebar-placeholder" style="width: auto; height: 542px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; transform: translate3d(0px, 0px, 0px); display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; transform: translate3d(0px, 0px, 0px); display: none;"></div></div></div>
+                        <!-- /CHAT WIDGET CONVERSATION -->
+                        <!-- CHAT WIDGET FORM -->
+                        <div class="chat-widget-form">
+                            <!-- INTERACTIVE INPUT -->
+                            <div class="interactive-input small">
+                                <input type="text" id="chat-widget-message-text1" name="chat_widget_message_text" placeholder="Write a message...">
+                                <!-- INTERACTIVE INPUT ICON WRAP -->
+                                <div class="interactive-input-icon-wrap">
+                                    <!-- INTERACTIVE INPUT ICON --><!-- /INTERACTIVE INPUT ICON -->
+                                </div>
+                                <!-- /INTERACTIVE INPUT ICON WRAP -->
+                                <button id="myBtn"class="btn"></button>
+                                <!-- INTERACTIVE INPUT ACTION -->
+                                <div class="interactive-input-action">
+                                    <!-- INTERACTIVE INPUT ACTION ICON -->
+                                    <svg class="interactive-input-action-icon icon-cross-thin">
+                                        <use xlink:href="#svg-cross-thin"></use>
+                                    </svg>
+                                    <!-- /INTERACTIVE INPUT ACTION ICON -->
+                                </div>
+                                <!-- /INTERACTIVE INPUT ACTION -->
+                            </div>
+                            <!-- /INTERACTIVE INPUT -->
+                        </div>
+                        <!-- /CHAT WIDGET FORM -->
+                        <a class="btn voice" href="#"  data-id="{{ app.user.id }}"><i class="fa fa-microphone" aria-hidden="true"></i>Activer Voix</a>
+
+                <!-- WIDGET BOX CONTENT -->
+            </div>
+            <!-- /WIDGET BOX -->
+            <!-- STATS BOX SLIDER -->
+            <div class="stats-box-slider">
+                <!-- STATS BOX SLIDER CONTROLS -->
+                <div class="stats-box-slider-controls">
+                    <!-- STATS BOX SLIDER CONTROLS TITLE -->
+                    <p class="stats-box-slider-controls-title">Stats Box</p>
+                    <!-- /STATS BOX SLIDER CONTROLS TITLE -->
+
+                    <!-- SLIDER CONTROLS -->
+                    <div id="stats-box-slider-controls" class="slider-controls">
+                        <!-- SLIDER CONTROL -->
+                        <div class="slider-control negative left">
+                            <!-- SLIDER CONTROL ICON -->
+                            <svg class="slider-control-icon icon-small-arrow">
+                                <use xlink:href="#svg-small-arrow"></use>
+                            </svg>
+                            <!-- /SLIDER CONTROL ICON -->
+                        </div>
+                        <!-- /SLIDER CONTROL -->
+
+                        <!-- SLIDER CONTROL -->
+                        <div class="slider-control negative right">
+                            <!-- SLIDER CONTROL ICON -->
+                            <svg class="slider-control-icon icon-small-arrow">
+                                <use xlink:href="#svg-small-arrow"></use>
+                            </svg>
+                            <!-- /SLIDER CONTROL ICON -->
+                        </div>
+                        <!-- /SLIDER CONTROL -->
+                    </div>
+                    <!-- /SLIDER CONTROLS -->
+                </div>
+                <!-- /STATS BOX SLIDER CONTROLS -->
+
+                <!-- STATS BOX SLIDER ITEMS -->
+                <div class="stats-box-slider-items">
+                    <!-- STATS BOX -->
+                    <div class="stats-box stat-posts-created">
+                        <!-- STATS BOX VALUE WRAP -->
+                        <div class="stats-box-value-wrap">
+                            <!-- STATS BOX VALUE -->
+                            <p class="stats-box-value">{{ postcount }}</p>
+                            <!-- /STATS BOX VALUE -->
+
+                            <!-- STATS BOX DIFF -->
+                            <div class="stats-box-diff">
+                                <!-- STATS BOX DIFF ICON -->
+                                <div class="stats-box-diff-icon positive">
+                                    <!-- ICON PLUS SMALL -->
+                                    <svg class="icon-plus-small">
+                                        <use xlink:href="#svg-plus-small"></use>
+                                    </svg>
+                                    <!-- /ICON PLUS SMALL -->
+                                </div>
+                                <!-- /STATS BOX DIFF ICON -->
+
+                                <!-- STATS BOX DIFF VALUE -->
+                                <p class="stats-box-diff-value">0.4%</p>
+                                <!-- /STATS BOX DIFF VALUE -->
+                            </div>
+                            <!-- /STATS BOX DIFF -->
+                        </div>
+                        <!-- /STATS BOX VALUE WRAP -->
+
+                        <!-- STATS BOX TITLE -->
+                        <p class="stats-box-title">Posts Created</p>
+                        <!-- /STATS BOX TITLE -->
+
+                        <!-- STATS BOX TEXT -->
+                        <p class="stats-box-text">In the last month</p>
+                        <!-- /STATS BOX TEXT -->
+                    </div>
+                    <!-- /STATS BOX -->
+
+                    <!-- STATS BOX -->
+                    <div class="stats-box stat-comments-received">
+                        <!-- STATS BOX VALUE WRAP -->
+                        <div class="stats-box-value-wrap">
+                            <!-- STATS BOX VALUE -->
+                            <p class="stats-box-value">{{ nbcommentstot}}</p>
+                            <!-- /STATS BOX VALUE -->
+
+                            <!-- STATS BOX DIFF -->
+                            <div class="stats-box-diff">
+                                <!-- STATS BOX DIFF ICON -->
+                                <div class="stats-box-diff-icon positive">
+                                    <!-- ICON PLUS SMALL -->
+                                    <svg class="icon-plus-small">
+                                        <use xlink:href="#svg-plus-small"></use>
+                                    </svg>
+                                    <!-- /ICON PLUS SMALL -->
+                                </div>
+                                <!-- /STATS BOX DIFF ICON -->
+
+                                <!-- STATS BOX DIFF VALUE -->
+                                <p class="stats-box-diff-value">4.5%</p>
+                                <!-- /STATS BOX DIFF VALUE -->
+                            </div>
+                            <!-- /STATS BOX DIFF -->
+                        </div>
+                        <!-- /STATS BOX VALUE WRAP -->
+
+                        <!-- STATS BOX TITLE -->
+                        <p class="stats-box-title">Comments Received</p>
+                        <!-- /STATS BOX TITLE -->
+
+                        <!-- STATS BOX TEXT -->
+                        <p class="stats-box-text">In the last month</p>
+                        <!-- /STATS BOX TEXT -->
+                    </div>
+                    <!-- /STATS BOX -->
+                </div>
+                <!-- /STATS BOX SLIDER ITEMS -->
+            </div>
+            <!-- /STATS BOX SLIDER -->
+
+            <!-- WIDGET BOX -->
+            <div class="widget-box">
+                <!-- WIDGET BOX CONTROLS -->
+                <div class="widget-box-controls">
+                    <!-- SLIDER CONTROLS -->
+                    <div id="reaction-stat-slider-controls" class="slider-controls">
+                        <!-- SLIDER CONTROL -->
+                        <div class="slider-control left">
+                            <!-- SLIDER CONTROL ICON -->
+                            <svg class="slider-control-icon icon-small-arrow">
+                                <use xlink:href="#svg-small-arrow"></use>
+                            </svg>
+                            <!-- /SLIDER CONTROL ICON -->
+                        </div>
+                        <!-- /SLIDER CONTROL -->
+
+                        <!-- SLIDER CONTROL -->
+                        <div class="slider-control right">
+                            <!-- SLIDER CONTROL ICON -->
+                            <svg class="slider-control-icon icon-small-arrow">
+                                <use xlink:href="#svg-small-arrow"></use>
+                            </svg>
+                            <!-- /SLIDER CONTROL ICON -->
+                        </div>
+                        <!-- /SLIDER CONTROL -->
+                    </div>
+                    <!-- /SLIDER CONTROLS -->
+                </div>
+                <!-- /WIDGET BOX CONTROLS -->
+
+                <!-- WIDGET BOX TITLE -->
+                <p class="widget-box-title">Reactions Received</p>
+                <!-- /WIDGET BOX TITLE -->
+
+                <!-- WIDGET BOX CONTENT -->
+                <div class="widget-box-content">
+                    <!-- WIDGET BOX CONTENT SLIDER -->
+                    <div id="reaction-stat-slider-items" class="widget-box-content-slider">
+                        <!-- WIDGET BOX CONTENT SLIDER ITEM -->
+                        <div class="widget-box-content-slider-item">
+                            <!-- REACTION STATS -->
+                            <div class="reaction-stats">
+                                <!-- REACTION STAT -->
+                                <div class="reaction-stat">
+                                    <!-- REACTION STAT IMAGE -->
+                                    <img class="reaction-stat-image" src="{{ asset('template/img/reaction/like.png') }}" alt="reaction-like">
+                                    <!-- /REACTION STAT IMAGE -->
+
+                                    <!-- REACTION STAT TITLE -->
+                                    <p class="reaction-stat-title">{{nblikes/postcount}}</p>
+                                    <!-- /REACTION STAT TITLE -->
+
+                                    <!-- REACTION STAT TEXT -->
+                                    <p class="reaction-stat-text">Likes</p>
+                                    <!-- /REACTION STAT TEXT -->
+                                </div>
+                                <!-- /REACTION STAT -->
+
+                                <!-- REACTION STAT -->
+                                <div class="reaction-stat">
+                                    <!-- REACTION STAT IMAGE -->
+                                    <img class="reaction-stat-image" src="{{ asset('template/img/reaction/love.png') }}" alt="reaction-love">
+                                    <!-- /REACTION STAT IMAGE -->
+
+                                    <!-- REACTION STAT TITLE -->
+                                    <p class="reaction-stat-title">{{nblove/postcount}}</p>
+                                    <!-- /REACTION STAT TITLE -->
+
+                                    <!-- REACTION STAT TEXT -->
+                                    <p class="reaction-stat-text">Loves</p>
+                                    <!-- /REACTION STAT TEXT -->
+                                </div>
+                                <!-- /REACTION STAT -->
+                            </div>
+                            <!-- REACTION STATS -->
+
+                            <!-- REACTION STATS -->
+                            <div class="reaction-stats">
+                                <!-- REACTION STAT -->
+                                <div class="reaction-stat">
+                                    <!-- REACTION STAT IMAGE -->
+                                    <img class="reaction-stat-image" src="{{ asset('template/img/reaction/dislike.png') }}" alt="reaction-dislike">
+                                    <!-- /REACTION STAT IMAGE -->
+
+                                    <!-- REACTION STAT TITLE -->
+                                    <p class="reaction-stat-title">{{nbdislikes/postcount}}</p>
+                                    <!-- /REACTION STAT TITLE -->
+
+                                    <!-- REACTION STAT TEXT -->
+                                    <p class="reaction-stat-text">Dislikes</p>
+                                    <!-- /REACTION STAT TEXT -->
+                                </div>
+                                <!-- /REACTION STAT -->
+
+                                <!-- REACTION STAT -->
+
+                                <!-- /REACTION STAT -->
+                            </div>
+                            <!-- REACTION STATS -->
+                        </div>
+                        <!-- /WIDGET BOX CONTENT SLIDER ITEM -->
+
+                        <!-- WIDGET BOX CONTENT SLIDER ITEM -->
+
+                        <!-- /WIDGET BOX CONTENT SLIDER ITEM -->
+                    </div>
+                    <!-- /WIDGET BOX CONTENT SLIDER -->
+                </div>
+                <!-- /WIDGET BOX CONTENT -->
+            </div>
+            <!-- /WIDGET BOX -->
+
+            <!-- WIDGET BOX -->
+            <div class="widget-box no-padding">
+                <!-- WIDGET BOX CONTROLS -->
+                <div class="widget-box-controls">
+                    <!-- SLIDER CONTROLS -->
+                    <div class="slider-controls">
+                        <!-- SLIDER CONTROL -->
+                        <div class="slider-control left">
+                            <!-- SLIDER CONTROL ICON -->
+                            <svg class="slider-control-icon icon-small-arrow">
+                                <use xlink:href="#svg-small-arrow"></use>
+                            </svg>
+                            <!-- /SLIDER CONTROL ICON -->
+                        </div>
+                        <!-- /SLIDER CONTROL -->
+
+                        <!-- SLIDER CONTROL -->
+                        <div class="slider-control right">
+                            <!-- SLIDER CONTROL ICON -->
+                            <svg class="slider-control-icon icon-small-arrow">
+                                <use xlink:href="#svg-small-arrow"></use>
+                            </svg>
+                            <!-- /SLIDER CONTROL ICON -->
+                        </div>
+                        <!-- /SLIDER CONTROL -->
+                    </div>
+                    <!-- /SLIDER CONTROLS -->
+                </div>
+                <!-- /WIDGET BOX CONTROLS -->
+
+                <!-- WIDGET BOX TITLE -->
+                <p class="widget-box-title">August 2019</p>
+                <!-- /WIDGET BOX TITLE -->
+
+                <!-- WIDGET BOX CONTENT -->
+                <div class="widget-box-content">
+                    <!-- CALENDAR -->
+                    <div class="calendar small">
+                        <!-- CALENDAR WEEK -->
+                        <div class="calendar-week">
+                            <!-- CALENDAR WEEK DAY -->
+                            <p class="calendar-week-day"><span class="week-day-short">Sun</span><span class="week-day-long">Sunday</span></p>
+                            <!-- /CALENDAR WEEK DAY -->
+
+                            <!-- CALENDAR WEEK DAY -->
+                            <p class="calendar-week-day"><span class="week-day-short">Mon</span><span class="week-day-long">Monday</span></p>
+                            <!-- /CALENDAR WEEK DAY -->
+
+                            <!-- CALENDAR WEEK DAY -->
+                            <p class="calendar-week-day"><span class="week-day-short">Tue</span><span class="week-day-long">Tuesday</span></p>
+                            <!-- /CALENDAR WEEK DAY -->
+
+                            <!-- CALENDAR WEEK DAY -->
+                            <p class="calendar-week-day"><span class="week-day-short">Wed</span><span class="week-day-long">Wednesday</span></p>
+                            <!-- /CALENDAR WEEK DAY -->
+
+                            <!-- CALENDAR WEEK DAY -->
+                            <p class="calendar-week-day"><span class="week-day-short">Thu</span><span class="week-day-long">Thursday</span></p>
+                            <!-- /CALENDAR WEEK DAY -->
+
+                            <!-- CALENDAR WEEK DAY -->
+                            <p class="calendar-week-day"><span class="week-day-short">Fri</span><span class="week-day-long">Friday</span></p>
+                            <!-- /CALENDAR WEEK DAY -->
+
+                            <!-- CALENDAR WEEK DAY -->
+                            <p class="calendar-week-day"><span class="week-day-short">Sat</span><span class="week-day-long">Saturday</span></p>
+                            <!-- /CALENDAR WEEK DAY -->
+                        </div>
+                        <!-- /CALENDAR WEEK -->
+
+                        <!-- CALENDAR DAYS -->
+                        <div class="calendar-days">
+                            <!-- CALENDAR DAY ROW -->
+                            <div class="calendar-day-row">
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day inactive">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">29</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day inactive">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">30</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day inactive">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">31</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">1</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">2</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+
+                                    <!-- CALENDARY DAY EVENTS -->
+                                    <div class="calendar-day-events">
+                                        <!-- CALENDAR DAY EVENT -->
+                                        <p class="calendar-day-event primary"><span class="calendar-day-event-text">Dex's Birthday</span></p>
+                                        <!-- /CALENDAR DAY EVENT -->
+
+                                        <!-- CALENDAR DAY EVENT -->
+                                        <p class="calendar-day-event secondary"><span class="calendar-day-event-text">Sara's Big Stream</span></p>
+                                        <!-- /CALENDAR DAY EVENT -->
+
+                                        <!-- CALENDAR DAY EVENT -->
+                                        <p class="calendar-day-event secondary"><span class="calendar-day-event-text">Striker GO Release</span></p>
+                                        <!-- /CALENDAR DAY EVENT -->
+                                    </div>
+                                    <!-- /CALENDARY DAY EVENTS -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">3</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">4</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+                            </div>
+                            <!-- /CALENDAR DAY ROW -->
+
+                            <!-- CALENDAR DAY ROW -->
+                            <div class="calendar-day-row">
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">5</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">6</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day current">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">7</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">8</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">9</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">10</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">11</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+                            </div>
+                            <!-- /CALENDAR DAY ROW -->
+
+                            <!-- CALENDAR DAY ROW -->
+                            <div class="calendar-day-row">
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">12</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day active">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">13</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+
+                                    <!-- CALENDARY DAY EVENTS -->
+                                    <div class="calendar-day-events">
+                                        <!-- CALENDAR DAY EVENT -->
+                                        <p class="calendar-day-event secondary"><span class="calendar-day-event-text">Breakfast with Neko</span></p>
+                                        <!-- /CALENDAR DAY EVENT -->
+
+                                        <!-- CALENDAR DAY EVENT -->
+                                        <p class="calendar-day-event primary"><span class="calendar-day-event-text">Streaming Party</span></p>
+                                        <!-- /CALENDAR DAY EVENT -->
+                                    </div>
+                                    <!-- /CALENDAR DAY EVENTS -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">14</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">15</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">16</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">17</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">18</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+                            </div>
+                            <!-- /CALENDAR DAY ROW -->
+
+                            <!-- CALENDAR DAY ROW -->
+                            <div class="calendar-day-row">
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">19</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">20</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">21</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">22</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">23</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">24</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">25</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+                            </div>
+                            <!-- /CALENDAR DAY ROW -->
+
+                            <!-- CALENDAR DAY ROW -->
+                            <div class="calendar-day-row">
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">26</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+
+                                    <!-- CALENDARY DAY EVENTS -->
+                                    <div class="calendar-day-events">
+                                        <!-- CALENDAR DAY EVENT -->
+                                        <p class="calendar-day-event primary"><span class="calendar-day-event-text">CosWorld 2019 After...</span></p>
+                                        <!-- /CALENDAR DAY EVENT -->
+                                    </div>
+                                    <!-- /CALENDARY DAY EVENTS -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">27</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">28</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">29</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">30</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day inactive">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">1</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+
+                                <!-- CALENDAR DAY -->
+                                <div class="calendar-day inactive">
+                                    <!-- CALENDAR DAY NUMBER -->
+                                    <p class="calendar-day-number">2</p>
+                                    <!-- /CALENDAR DAY NUMBER -->
+                                </div>
+                                <!-- /CALENDAR DAY -->
+                            </div>
+                            <!-- /CALENDAR DAY ROW -->
+                        </div>
+                        <!-- /CALENDAR DAYS -->
+                    </div>
+                    <!-- /CALENDAR -->
+
+                    <!-- CALENDAR EVENTS PREVIEW -->
+                    <div class="calendar-events-preview small">
+                        <!-- CALENDAR EVENTS PREVIEW TITLE -->
+                        <p class="calendar-events-preview-title">Monday 13th</p>
+                        <!-- /CALENDAR EVENTS PREVIEW TITLE -->
+
+                        <!-- CALENDAR EVENT PREVIEW LIST -->
+                        <div class="calendar-event-preview-list">
+                            <!-- CALENDAR EVENT PREVIEW -->
+                            <div class="calendar-event-preview small secondary">
+                                <!-- CALENDAR EVENT PREVIEW START TIME -->
+                                <div class="calendar-event-preview-start-time">
+                                    <!-- CALENDAR EVENT PREVIEW START TIME TITLE -->
+                                    <p class="calendar-event-preview-start-time-title">8:30</p>
+                                    <!-- /CALENDAR EVENT PREVIEW START TIME TITLE -->
+
+                                    <!-- CALENDAR EVENT PREVIEW START TIME TEXT -->
+                                    <p class="calendar-event-preview-start-time-text">AM</p>
+                                    <!-- /CALENDAR EVENT PREVIEW START TIME TEXT -->
+                                </div>
+                                <!-- /CALENDAR EVENT PREVIEW START TIME -->
+
+                                <!-- CALENDAR EVENT PREVIEW INFO -->
+                                <div class="calendar-event-preview-info">
+                                    <!-- CALENDAR EVENT PREVIEW TITLE -->
+                                    <p class="calendar-event-preview-title">Breakfast with Neko</p>
+                                    <!-- /CALENDAR EVENT PREVIEW TITLE -->
+
+                                    <!-- CALENDAR EVENT PREVIEW TEXT -->
+                                    <p class="calendar-event-preview-text">Hi Neko! I'm creating this event to invite you to have breakfast before work. Meet me at Coffebucks.</p>
+                                    <!-- /CALENDAR EVENT PREVIEW TEXT -->
+                                </div>
+                                <!-- /CALENDAR EVENT PREVIEW INFO -->
+                            </div>
+                            <!-- /CALENDAR EVENT PREVIEW -->
+
+                            <!-- CALENDAR EVENT PREVIEW -->
+                            <div class="calendar-event-preview small primary">
+                                <!-- CALENDAR EVENT PREVIEW START TIME -->
+                                <div class="calendar-event-preview-start-time">
+                                    <!-- CALENDAR EVENT PREVIEW START TIME TITLE -->
+                                    <p class="calendar-event-preview-start-time-title">10:00</p>
+                                    <!-- /CALENDAR EVENT PREVIEW START TIME TITLE -->
+
+                                    <!-- CALENDAR EVENT PREVIEW START TIME TEXT -->
+                                    <p class="calendar-event-preview-start-time-text">PM</p>
+                                    <!-- /CALENDAR EVENT PREVIEW START TIME TEXT -->
+                                </div>
+                                <!-- /CALENDAR EVENT PREVIEW START TIME -->
+
+                                <!-- CALENDAR EVENT PREVIEW INFO -->
+                                <div class="calendar-event-preview-info">
+                                    <!-- CALENDAR EVENT PREVIEW TITLE -->
+                                    <p class="calendar-event-preview-title">Streaming Party</p>
+                                    <!-- /CALENDAR EVENT PREVIEW TITLE -->
+
+                                    <!-- CALENDAR EVENT PREVIEW TEXT -->
+                                    <p class="calendar-event-preview-text">The biggest party for Twitch streamers! Come and join us at Shenron Arena.</p>
+                                    <!-- /CALENDAR EVENT PREVIEW TEXT -->
+                                </div>
+                                <!-- /CALENDAR EVENT PREVIEW INFO -->
+                            </div>
+                            <!-- /CALENDAR EVENT PREVIEW -->
+                        </div>
+                        <!-- /CALENDAR EVENT PREVIEW LIST -->
+                    </div>
+                    <!-- /CALENDAR EVENTS PREVIEW -->
+                </div>
+                <!-- /WIDGET BOX CONTENT -->
+            </div>
+            <!-- /WIDGET BOX -->
+
+        </div>
+        <!-- /GRID COLUMN -->
+
+        <div class="grid-column">
+
+            <div class="quick-post">
+                {{ form_start(form) }}
+                <div class="quick-post-header">
+                    <!-- OPTION ITEMS -->
+                    <div class="option-items">
+                        <!-- OPTION ITEM -->
+                        <div class="option-item active">
+                            <!-- OPTION ITEM ICON -->
+                            <svg class="option-item-icon icon-status">
+                                <use xlink:href="#svg-status"></use>
+                            </svg>
+                            <!-- /OPTION ITEM ICON -->
+
+                            <!-- OPTION ITEM TITLE -->
+                            <p class="option-item-title" >Statut</p>
+                            <!-- /OPTION ITEM TITLE -->
+                        </div>
+                        <!-- /OPTION ITEM -->
+
+                    </div>
+                    <!-- /OPTION ITEMS -->
+                </div>
+                <!-- /QUICK POST HEADER -->
+
+                <!-- QUICK POST BODY -->
+                <div class="quick-post-body">
+                    <!-- FORM -->
+                    {{ form_widget(form.type,{'attr':{ 'class':'custom-select mr-sm-2'}}) }}
+                    <!-- FORM ROW -->
+                    <div class="form-row">
+                        <!-- FORM ITEM -->
+                        <div class="form-item">
+                            <!-- FORM TEXTAREA -->
+                            <div class="form-textarea">
+                               {{ form_widget(form.titre,{'attr':{'id':"textpublication",'maxlength':"255",'placeholder':"hi "~app.user.username ~" what's on your mind !" }}) }}
+                                <span class="form-textarea-limit-text" id="compteur"></span>
+                                <!-- /FORM TEXTAREA LIMIT TEXT -->
+                            </div>
+                            <!-- /FORM TEXTAREA -->
+                        </div>
+                        <!-- /FORM ITEM -->
+                    </div>
+                    <!-- /FORM ROW -->
+                </div>
+                <!-- /QUICK POST BODY -->
+
+                <!-- QUICK POST FOOTER -->
+                <div class="quick-post-footer">
+                    <!-- QUICK POST FOOTER ACTIONS -->
+                    <div class="quick-post-footer-actions">
+                        <!-- QUICK POST FOOTER ACTION -->
+                        <div  class="quick-post-footer-action text-tooltip-tft-medium" data-title="Inserer Une photo Ou un Vidéo">
+                            <!-- QUICK POST FOOTER ACTION ICON -->
+
+                            {{ form_widget(form.contenue,{'attr':{ 'class':'custom-file-input'}}) }}
+
+                            <!-- /QUICK POST FOOTER ACTION ICON -->
+                        </div>
+
+                    </div>
+                    <!-- /QUICK POST FOOTER ACTIONS -->
+
+                    <!-- QUICK POST FOOTER ACTIONS -->
+                    <div class="quick-post-footer-actions">
+                        <!-- BUTTON -->
+                        <p class="button small void">Discard</p>
+                        <!-- /BUTTON -->
+
+                        <!-- BUTTON -->
+                        {{form_widget(form.Publier,{'attr':{ 'class':'btn btn-success'}})}}
+                        <!-- /BUTTON -->
+                    </div>
+                    <!-- /QUICK POST FOOTER ACTIONS -->
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+            <div class="simple-tab-items">
+
+                <form class="form">
+
+                    <div class="form-select">
+                        <select id="newsfeed-filter-category" name="newsfeed_filter_category">
+                            <option value="0">Fil d'Actualités</option>
+                        </select>
+                        <!-- FORM SELECT ICON -->
+                        <svg class="form-select-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                        </svg>
+                        <!-- /FORM SELECT ICON -->
+                    </div>
+                    <!-- /FORM SELECT -->
+                </form>
+                <!-- /FORM -->
+
+                <!-- SIMPLE TAB ITEM -->
+                <p class="simple-tab-item active">Fil d'Actualités</p>
+                <!-- /SIMPLE TAB ITEM -->
+            </div>
+            <!-- /SIMPLE TAB ITEMS -->
+            {% for post in posts %}
+                <!-- WIDGET BOX -->
+                <div class="widget-box no-padding" id="post-{{ post.id }}">
+                    <!-- WIDGET BOX SETTINGS -->
+                    <div class="widget-box-settings">
+                        <!-- POST SETTINGS WRAP -->
+                        <div class="post-settings-wrap">
+                            {% if user %}
+                            <!-- POST SETTINGS -->
+                            <div class="post-settings widget-box-post-settings-dropdown-trigger">
+                                <!-- POST SETTINGS ICON -->
+                                <svg class="post-settings-icon icon-more-dots">
+                                    <use xlink:href="#svg-more-dots"></use>
+                                </svg>
+                                <!-- /POST SETTINGS ICON -->
+                            </div>
+                            <!-- /POST SETTINGS -->
+
+                            <!-- SIMPLE DROPDOWN -->
+                            <div class="simple-dropdown widget-box-post-settings-dropdown">
+                                <!-- SIMPLE DROPDOWN LINK -->
+
+                                {% if post.idauthor.id==user.id %}
+                                    <a class="simple-dropdown-link btn btn-default" onclick="affichierpub(this)" id="ModifierPost-{{ post.id }}" data-toggle="modal" data-target="#Postedit" data-whatever="{{ post.id }}" ><i class='fa fa-pencil'></i>Edit</a>
+                                    <!-- /SIMPLE DROPDOWN LINK -->
+                                    {% if post.type=="shared" %}
+                                        {% set f=0 %}
+                                        {% for po in posts %}
+                                        {% if post.contenue|number_format==po.id %}
+                                            {% set f=1 %}
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% if f==1 %}
+                                        <a class="simple-dropdown-link btn btn-default"  data_but="btn-xs"  onclick="showpubforshare(this)" data-toggle="modal" data-target="#Postforshare" data-whatever="{{ post.contenue|number_format}}"><i class="fa fa-share-square-o" aria-hidden="true"></i>Share</a>
+                                        {% else %}
+                                            <a class="simple-dropdown-link disabled btn btn-default"  data_but="btn-xs"  onclick="showpubforshare(this)" data-toggle="modal" data-target="#Postforshare" data-whatever="{{ post.contenue|number_format}}"><i class="fa fa-share-square-o" aria-hidden="true" disabled ></i>Share</a>
+                                         {% endif %}
+                                        {% else %}
+                                    <a class="simple-dropdown-link btn btn-default"  data_but="btn-xs"  onclick="showpubforshare(this)" data-toggle="modal" data-target="#Postforshare" data-whatever="{{ post.id }}"><i class="fa fa-share-square-o" aria-hidden="true"></i>Share</a>
+                                    <!-- SIMPLE DROPDOWN LINK -->
+                                        {% endif %}
+                                    <a class="simple-dropdown-link  btn btn-default"  data_but="btn-xs" href="{{ path('publication_delete',{ id_post: post.id})}}"><i class='fa fa-trash'></i>Delete</a>
+                                    <a class="simple-dropdown-link  btn btn-default" data-toggle="collapse" href="#socialbuttons-{{ post.id }}" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-share-alt"></i>Social Media</a>
+
+                                {% else %}
+                                    <!-- SIMPLE DROPDOWN LINK -->
+                                    <p class="simple-dropdown-link">Make it Featured</p>
+                                    <!-- /SIMPLE DROPDOWN LINK -->
+                                    <a class="simple-dropdown-link btn btn-default"  data_but="btn-xs"  onclick="showpubforshare(this)"><i class='glyphicon glyphicon-share-alt'></i>share</a>
+                                    <!-- SIMPLE DROPDOWN LINK -->
+                                    <p class="simple-dropdown-link">Report Post</p>
+                                    <!-- /SIMPLE DROPDOWN LINK -->
+                                    <!-- SIMPLE DROPDOWN LINK -->
+                                    <p class="simple-dropdown-link">Report Author</p>
+                                    <!-- /SIMPLE DROPDOWN LINK -->
+                                {% endif %}
+
+
+                            </div>
+                            <!-- /SIMPLE DROPDOWN -->
+                            {% endif %}
+                        </div>
+                        <!-- /POST SETTINGS WRAP -->
+                    </div>
+                    <!-- /WIDGET BOX SETTINGS -->
+
+                    <!-- WIDGET BOX STATUS -->
+                    <div class="widget-box-status">
+                        <!-- WIDGET BOX STATUS CONTENT -->
+                        <div class="widget-box-status-content">
+                            <!-- USER STATUS -->
+                            <div class="user-status">
+                                <!-- USER STATUS AVATAR -->
+                                <a class="user-status-avatar" href="{{ path('visit_profile',{id_user:post.idauthor.id}) }}">
+                                    <!-- USER AVATAR -->
+                                    <div class="user-avatar small no-outline">
+                                        <!-- USER AVATAR CONTENT -->
+                                        <div class="user-avatar-content">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~post.idauthor.imguser) }}"></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR CONTENT -->
+
+                                        <!-- USER AVATAR PROGRESS -->
+                                        <div class="user-avatar-progress">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-progress-40-44"></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR PROGRESS -->
+
+                                        <!-- USER AVATAR PROGRESS BORDER -->
+                                        <div class="user-avatar-progress-border">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-border-40-44"></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR PROGRESS BORDER -->
+
+                                        <!-- USER AVATAR BADGE -->
+                                        <div class="user-avatar-badge">
+                                            <!-- USER AVATAR BADGE BORDER -->
+                                            <div class="user-avatar-badge-border">
+                                                <!-- HEXAGON -->
+                                                <div class="hexagon-22-24"></div>
+                                                <!-- /HEXAGON -->
+                                            </div>
+                                            <!-- /USER AVATAR BADGE BORDER -->
+
+                                            <!-- USER AVATAR BADGE CONTENT -->
+                                            <div class="user-avatar-badge-content">
+                                                <!-- HEXAGON -->
+                                                <div class="hexagon-dark-16-18"></div>
+                                                <!-- /HEXAGON -->
+                                            </div>
+                                            <!-- /USER AVATAR BADGE CONTENT -->
+
+                                            <!-- USER AVATAR BADGE TEXT -->
+                                            <p class="user-avatar-badge-text">12</p>
+                                            <!-- /USER AVATAR BADGE TEXT -->
+                                        </div>
+                                        <!-- /USER AVATAR BADGE -->
+                                    </div>
+                                    <!-- /USER AVATAR -->
+                                </a>
+                                <!-- /USER STATUS AVATAR -->
+
+                                <!-- USER STATUS TITLE -->
+                                <p class="user-status-title medium"><a class="bold" href="{{ path('visit_profile',{id_user:post.idauthor.id}) }}">{{post.idauthor.username}}</a> uploaded<span class="bold">a/an~{{ post.type }}~post</span></p>
+                                <!-- /USER STATUS TITLE -->
+
+                                <!-- USER STATUS TEXT -->
+                                <p class="user-status-text small">{% if "now" |date("U") + 3600  > post.date|date("U") + 31104000 %}
+                                        {{ ("now" |date("U") + 3600  - post.date |date("U") ) |date("Y") }} Years Ago
+                                    {% elseif "now" |date("U") + 3600  > post.date |date("U") + 2592000 %}
+                                        {{ ("now" |date("U") + 3600  - post.date |date("U") ) |date("m") }} Months Ago
+                                    {% elseif "now" |date("U") + 3600  > post.date |date("U") + 86400 %}
+                                        {{ ("now" |date("U") + 3600  - post.date|date("U") ) |date("d") }} Days Ago
+                                    {% elseif "now" |date("U") + 3600  > post.date |date("U") + 3600  %}
+                                        {{ ("now" |date("U") + 3600  - post.date |date("U") ) |date("H") }} Hours Ago
+                                    {% elseif "now" |date("U") + 3600  > post.date |date("U") + 60 %}
+                                        {{ ("now" |date("U") + 3600  - post.date |date("U") ) |date("i") }} Minutes Ago
+                                    {% elseif "now" |date("U") + 3600  > post.date |date("U")  %}
+                                        {{ ("now" |date("U") + 3600  - post.date |date("U") ) |date("s") }} Seconds Ago
+                                    {% endif %}</p>
+                                <!-- /USER STATUS TEXT -->
+                            </div>
+                            <!-- /USER STATUS -->
+
+                            <!-- WIDGET BOX STATUS TEXT -->
+                            <p class="widget-box-status-text">{{ post.titre }}</p>
+                            <!-- /WIDGET BOX STATUS TEXT -->
+                        </div>
+                        <!-- /WIDGET BOX STATUS CONTENT -->
+                        {% if post.type == "img" %}
+                            <img class="img-responsive" alt="photo" width="304" height="236"src="{{ asset('/uploads/img/') ~ post.contenue }}" alt="photo-preview-10">
+                            <!-- /IFRAME WRAP -->
+                        {% elseif post.type == "video" %}
+                            <video class="video-fluid" width="304" height="236" src="{{ asset('/uploads/video/') ~ post.contenue }}" ></video>
+                        {% elseif post.type == "shared" %}
+                            {% set trv=0 %}
+                            {%for popo in posts  %}
+                            {%if popo.id==post.contenue|number_format%}
+                                {% set trv=1 %}
+                                <div class="widget-box-status-content" id="tfol-{{ post.id }}">
+                                    <!-- USER STATUS -->
+                                    <div class="user-status">
+                                        <!-- USER STATUS AVATAR -->
+                                        <a class="user-status-avatar" href="{{ path('visit_profile',{id_user:popo.idauthor.id}) }}">
+                                            <!-- USER AVATAR -->
+                                            <div class="user-avatar small no-outline">
+                                                <!-- USER AVATAR CONTENT -->
+                                                <div class="user-avatar-content">
+                                                    <!-- HEXAGON -->
+                                                    <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~post.idauthor.imguser) }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                                    <!-- /HEXAGON -->
+                                                </div>
+                                                <!-- /USER AVATAR CONTENT -->
+
+                                                <!-- USER AVATAR PROGRESS -->
+                                                <div class="user-avatar-progress">
+                                                    <!-- HEXAGON -->
+                                                    <div class="hexagon-progress-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                                    <!-- /HEXAGON -->
+                                                </div>
+                                                <!-- /USER AVATAR PROGRESS -->
+
+                                                <!-- USER AVATAR PROGRESS BORDER -->
+                                                <div class="user-avatar-progress-border">
+                                                    <!-- HEXAGON -->
+                                                    <div class="hexagon-border-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                                    <!-- /HEXAGON -->
+                                                </div>
+                                                <!-- /USER AVATAR PROGRESS BORDER -->
+
+                                                <!-- USER AVATAR BADGE -->
+                                                <div class="user-avatar-badge">
+                                                    <!-- USER AVATAR BADGE BORDER -->
+                                                    <div class="user-avatar-badge-border">
+                                                        <!-- HEXAGON -->
+                                                        <div class="hexagon-22-24" style="width: 22px; height: 24px; position: relative;"><canvas width="22" height="24" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                                        <!-- /HEXAGON -->
+                                                    </div>
+                                                    <!-- /USER AVATAR BADGE BORDER -->
+
+                                                    <!-- USER AVATAR BADGE CONTENT -->
+                                                    <div class="user-avatar-badge-content">
+                                                        <!-- HEXAGON -->
+                                                        <div class="hexagon-dark-16-18" style="width: 16px; height: 18px; position: relative;"><canvas width="16" height="18" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                                        <!-- /HEXAGON -->
+                                                    </div>
+                                                    <!-- /USER AVATAR BADGE CONTENT -->
+
+                                                    <!-- USER AVATAR BADGE TEXT -->
+                                                    <p class="user-avatar-badge-text">1</p>
+                                                    <!-- /USER AVATAR BADGE TEXT -->
+                                                </div>
+                                                <!-- /USER AVATAR BADGE -->
+                                            </div>
+                                            <!-- /USER AVATAR -->
+                                        </a>
+                                        <!-- /USER STATUS AVATAR -->
+
+                                        <!-- USER STATUS TITLE -->
+                                        <p class="user-status-title medium"><a class="bold" href="{{ path('visit_profile',{id_user:popo.idauthor.id}) }}">{{ popo.idauthor.username }}</a></p>
+                                        <!-- /USER STATUS TITLE -->
+
+                                        <!-- USER STATUS TEXT -->
+                                        <p class="user-status-text small">{% if "now" |date("U") + 3600  > popo.date|date("U") + 31104000 %}
+                                                {{ ("now" |date("U") + 3600  - popo.date |date("U") ) |date("Y") }} Years Ago
+                                            {% elseif "now" |date("U") + 3600  > popo.date |date("U") + 2592000 %}
+                                                {{ ("now" |date("U") + 3600  - popo.date |date("U") ) |date("m") }} Months Ago
+                                            {% elseif "now" |date("U") + 3600  > popo.date |date("U") + 86400 %}
+                                                {{ ("now" |date("U") + 3600  - popo.date|date("U") ) |date("d") }} Days Ago
+                                            {% elseif "now" |date("U") + 3600  > popo.date |date("U") + 3600  %}
+                                                {{ ("now" |date("U") + 3600  - popo.date |date("U") ) |date("H") }} Hours Ago
+                                            {% elseif "now" |date("U") + 3600  > popo.date |date("U") + 60 %}
+                                                {{ ("now" |date("U") + 3600  - popo.date |date("U") ) |date("i") }} Minutes Ago
+                                            {% elseif "now" |date("U") + 3600  > popo.date |date("U")  %}
+                                                {{ ("now" |date("U") + 3600  - popo.date |date("U") ) |date("s") }} Seconds Ago
+                                            {% endif %}</p>
+                                        <!-- /USER STATUS TEXT -->
+                                    </div>
+                                    <!-- /USER STATUS -->
+
+                                    <!-- WIDGET BOX STATUS TEXT -->
+                                    <p class="widget-box-status-text">{{ popo.titre }}</p>
+                                    <!-- /WIDGET BOX STATUS TEXT -->
+                                    {% if popo.type == "img" %}
+                                    <img class="img-responsive" alt="photo" width="304" height="236"src="{{ asset('/uploads/img/') ~ popo.contenue }}" alt="photo-preview-10">
+                                    <!-- /IFRAME WRAP -->
+                                    {% elseif popo.type == "video" %}
+
+                                    <video class="video-fluid" width="304" height="236" src="{{ asset('/uploads/video/') ~ popo.contenue }}" ></video>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% if trv==0 %}
+                                <div class="card text-white bg-danger mb-3" style="max-width: 18rem;" id="tfol-{{ post.id }}">
+                                    <div class="card-header">Not Available</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">not found</h5>
+                                        <p class="card-text">this content isn't available !</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+
+                        <!-- WIDGET BOX STATUS CONTENT -->
+                        <div class="widget-box-status-content">
+                            <div class="collapse tag-list" id="socialbuttons-{{ post.id }}">
+                                {{ facebookButton() }}
+                                {{ socialButtons() }}
+                            </div>
+                            <!-- CONTENT ACTIONS -->
+                            <div class="content-actions">
+                                <!-- CONTENT ACTION -->
+                                <div class="content-action">
+                                    <!-- META LINE -->
+                                    <div class="meta-line">
+                                        <!-- META LINE LIST -->
+                                        <div class="meta-line-list reaction-item-list">
+                                            {% for r in reactions %}
+                                                {% if r.post.id==post.id %}
+                                                    {% if r.type==2 %}
+                                                        <!-- REACTION ITEM -->
+                                                        <div class="reaction-item">
+                                                            <!-- REACTION IMAGE -->
+                                                            <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/reaction/love.png') }}" alt="reaction-love">
+                                                            <!-- /REACTION IMAGE -->
+
+
+                                                            <!-- SIMPLE DROPDOWN -->
+                                                            <div class="simple-dropdown padded reaction-item-dropdown">
+                                                                <!-- SIMPLE DROPDOWN TEXT -->
+                                                                <p class="simple-dropdown-text"><img class="reaction" src="{{ asset('template/img/reaction/love.png') }}"  alt="reaction-love"> <span class="bold">Love</span></p>
+                                                                <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                                                <!-- SIMPLE DROPDOWN TEXT -->
+                                                                <p class="simple-dropdown-text">{{ r.idUser.username }}</p>
+
+                                                            </div>
+                                                            <!-- /SIMPLE DROPDOWN -->
+                                                        </div>
+                                                    {% endif %}
+                                                    <!-- /REACTION ITEM -->
+                                                    {% if r.type==1 %}
+
+                                                        <!-- REACTION ITEM -->
+                                                        <div class="reaction-item">
+                                                            <!-- REACTION IMAGE -->
+                                                            <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/reaction/like.png')}}" alt="reaction-like">
+                                                            <!-- /REACTION IMAGE -->
+
+                                                            <!-- SIMPLE DROPDOWN -->
+                                                            <div class="simple-dropdown padded reaction-item-dropdown">
+                                                                <!-- SIMPLE DROPDOWN TEXT -->
+                                                                <p class="simple-dropdown-text"><img class="reaction"src="{{ asset('template/img/reaction/like.png')}}" alt="reaction-like"> <span class="bold">Like</span></p>
+                                                                <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                                                <!-- SIMPLE DROPDOWN TEXT -->
+                                                                <p class="simple-dropdown-text">{{ r.idUser.username }}</p>
+
+                                                            </div>
+                                                            <!-- /SIMPLE DROPDOWN -->
+                                                        </div>
+                                                        <!-- /REACTION ITEM -->
+                                                    {% endif %}
+                                                    {% if r.type==3 %}
+                                                        <!-- REACTION ITEM -->
+                                                        <div class="reaction-item">
+                                                            <!-- REACTION IMAGE -->
+                                                            <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/reaction/dislike.png')}}" alt="reaction-like">
+                                                            <!-- /REACTION IMAGE -->
+
+                                                            <!-- SIMPLE DROPDOWN -->
+                                                            <div class="simple-dropdown padded reaction-item-dropdown">
+                                                                <!-- SIMPLE DROPDOWN TEXT -->
+                                                                <p class="simple-dropdown-text"><img class="reaction"src="{{ asset('template/img/reaction/dislike.png')}}" alt="reaction-like"> <span class="bold">Like</span></p>
+                                                                <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                                                <!-- SIMPLE DROPDOWN TEXT -->
+                                                                <p class="simple-dropdown-text">{{ r.idUser.username }}</p>
+
+                                                            </div>
+                                                            <!-- /SIMPLE DROPDOWN -->
+                                                        </div>
+                                                        <!-- /REACTION ITEM -->
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                        <!-- /META LINE LIST -->
+
+                                        <!-- META LINE TEXT -->
+                                        <p class="meta-line-text">{{ post.ReactionPost }}</p>
+                                        <!-- /META LINE TEXT -->
+                                    </div>
+                                    <!-- /META LINE -->
+                                    {% for v in votes %}
+                                    <!-- META LINE -->
+                                    <div class="meta-line">
+                                        <!-- META LINE LIST -->
+                                        <div class="meta-line-list user-avatar-list">
+
+                                            {% set compt=0 %}
+                                            {% if v.post.id==post.id %}
+                                                <!-- USER AVATAR -->
+                                                <div class="user-avatar micro no-stats">
+                                                    <!-- USER AVATAR BORDER -->
+                                                    <div class="user-avatar-border">
+                                                        <!-- HEXAGON -->
+                                                        <div class="hexagon-22-24"></div>
+                                                        <!-- /HEXAGON -->
+                                                    </div>
+                                                    <!-- /USER AVATAR BORDER -->
+
+                                                    <!-- USER AVATAR CONTENT -->
+                                                    <div class="user-avatar-content">
+                                                        <!-- HEXAGON -->
+                                                        <div class="hexagon-image-18-20" data-src="{{ asset('template/img/avatar/'~ v.idUser.imguser)}}"></div>
+                                                        <!-- /HEXAGON -->
+                                                    </div>
+                                                    <!-- /USER AVATAR CONTENT -->
+                                                </div>
+                                                <!-- /USER AVATAR -->
+                                                {% set compt =compt+1%}
+                                            {% endif %}
+                                        </div>
+                                        <!-- /META LINE LIST -->
+
+                                        <!-- META LINE TEXT -->
+                                        <p class="meta-line-text">{{ compt }} voters </p>
+                                        <!-- /META LINE TEXT -->
+                                    </div>
+                                    <!-- /META LINE -->
+                                    {% endfor %}
+                                </div>
+                                <!-- /CONTENT ACTION -->
+                                <!-- CONTENT ACTION -->
+                                <div class="content-action">
+                                    <!-- META LINE -->
+                                    <div class="meta-line">
+                                        <!-- META LINE LINK -->
+                                        <p class="meta-line-link">{{ post.nbcomments }}Comments</p>
+                                        <!-- /META LINE LINK -->
+                                    </div>
+                                    <!-- /META LINE -->
+
+                                    <!-- META LINE -->
+                                    <div class="meta-line">
+                                        <!-- META LINE TEXT -->
+                                        <p class="meta-line-text">{{ post.votesPost }}~stars</p>
+                                        <!-- /META LINE TEXT -->
+                                    </div>
+                                    <!-- /META LINE -->
+                                </div>
+                                <!-- /CONTENT ACTION -->
+                            </div>
+                            <!-- /CONTENT ACTIONS -->
+                        </div>
+                        <!-- /WIDGET BOX STATUS CONTENT -->
+                    </div>
+                    <!-- /WIDGET BOX STATUS -->
+
+                    <!-- POST OPTIONS -->
+                    <div class="post-options">
+                        <!-- POST OPTION WRAP -->
+                        <div class="post-option-wrap">
+                            <!-- POST OPTION -->
+                            <div class="post-option reaction-options-dropdown-trigger">
+                                <!-- POST OPTION ICON -->
+                                <svg class="post-option-icon icon-thumbs-up">
+                                    <use xlink:href="#svg-thumbs-up"></use>
+                                </svg>
+                                <!-- /POST OPTION ICON -->
+
+                                <!-- POST OPTION TEXT -->
+                                <p class="post-option-text">React!</p>
+                                <!-- /POST OPTION TEXT -->
+                            </div>
+                            <!-- /POST OPTION -->
+
+                            <!-- REACTION OPTIONS -->
+                            <div class="reaction-options reaction-options-dropdown">
+                                <!-- REACTION OPTION -->
+                                <div class="reaction-option text-tooltip-tft" data-title="Like">
+                                    <!-- REACTION OPTION IMAGE -->
+                                    <a href="{{ path('react_with',{id_post:post.id,type:1}) }}"><img class="reaction-option-image" src="{{ asset('template/img/reaction/like.png')}}" alt="reaction-like"></a>
+                                    <!-- /REACTION OPTION IMAGE -->
+                                </div>
+                                <!-- /REACTION OPTION -->
+
+                                <!-- REACTION OPTION -->
+                                <div class="reaction-option text-tooltip-tft" data-title="Love">
+                                    <!-- REACTION OPTION IMAGE -->
+                                    <a href="{{ path('react_with',{id_post:post.id,type:2}) }}"><img class="reaction-option-image" src="{{ asset('template/img/reaction/love.png')}}" alt="reaction-love"></a>
+                                    <!-- /REACTION OPTION IMAGE -->
+                                </div>
+                                <!-- /REACTION OPTION -->
+
+                                <!-- REACTION OPTION -->
+                                <div class="reaction-option text-tooltip-tft" data-title="Dislike">
+                                    <!-- REACTION OPTION IMAGE -->
+                                    <a href="{{ path('react_with',{id_post:post.id,type:3}) }}"><img class="reaction-option-image" src="{{ asset('template/img/reaction/dislike.png')}}" alt="reaction-dislike"></a>
+                                    <!-- /REACTION OPTION IMAGE -->
+                                </div>
+                                <!-- /REACTION OPTION -->
+
+                            </div>
+                            <!-- /REACTION OPTIONS -->
+                        </div>
+                        <!-- /POST OPTION WRAP -->
+
+                        <!-- POST OPTION -->
+                        <div class="post-option">
+                            <!-- POST OPTION ICON -->
+                            <svg class="post-option-icon icon-comment">
+                                <use xlink:href="#svg-comment"></use>
+                            </svg>
+                            <!-- /POST OPTION ICON -->
+
+                            <!-- POST OPTION TEXT -->
+                            <a class="post-option-text" data-target="post-comment-form">Commenter</a>
+                            <!-- /POST OPTION TEXT -->
+                        </div>
+                        <!-- /POST OPTION -->
+                        <!-- /POST OPTION -->
+                        <div class="post-option">
+                            <div class="post-settings-wrap" style="position: relative;">
+                                <!-- POST SETTINGS -->
+                                <div class="post-settings widget-box-post-settings-dropdown-trigger">
+                                    <!-- POST SETTINGS ICON -->
+                                    <svg class="post-settings-icon icon-more-dots">
+                                        <use xlink:href="#svg-more-dots"></use>
+                                    </svg>
+                                    <!-- /POST SETTINGS ICON -->
+                                </div>
+                                <!-- /POST SETTINGS -->
+
+                                <!-- SIMPLE DROPDOWN -->
+                                <div class="simple-dropdown widget-box-post-settings-dropdown" style="position: absolute; z-index: 9999; top: 30px; right: 9px; opacity: 0; visibility: hidden; transform: translate(0px, -20px); transition: transform 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s;">
+                                    <!-- SIMPLE DROPDOWN LINK -->
+                                    <a class="simple-dropdown-link btn btn-success" href="{{path('vote_add',{id_post:post.id,slug:5})}}" value="5">&#10032 &#10032 &#10032 &#10032 &#10032</a>
+                                    <!-- /SIMPLE DROPDOWN LINK -->
+
+                                    <!-- SIMPLE DROPDOWN LINK -->
+                                    <a class="simple-dropdown-link btn btn-success" href="{{path('vote_add',{id_post:post.id,slug:4})}}" value="4">&#10032 &#10032 &#10032 &#10032</a>
+                                    <!-- /SIMPLE DROPDOWN LINK -->
+
+                                    <!-- SIMPLE DROPDOWN LINK -->
+                                    <a class="simple-dropdown-link btn btn-info" href="{{path('vote_add',{id_post:post.id,slug:3})}}" name="3">&#10032 &#10032 &#10032</a>
+                                    <!-- /SIMPLE DROPDOWN LINK -->
+
+                                    <!-- SIMPLE DROPDOWN LINK -->
+                                    <a class="simple-dropdown-link btn btn-info" href="{{path('vote_add',{id_post:post.id,slug:2})}}" value="2">&#10032 &#10032</a>
+                                    <!-- /SIMPLE DROPDOWN LINK -->
+
+                                    <!-- SIMPLE DROPDOWN LINK -->
+                                    <a class="simple-dropdown-link btn btn-danger" href="{{path('vote_add',{id_post:post.id,slug:1})}}" value="1">&#10032</a>
+                                    <!-- /SIMPLE DROPDOWN LINK -->
+                                </div>
+                                <!-- /SIMPLE DROPDOWN -->
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- /POST OPTIONS -->
+                    {% for comment in comments %}
+                        {% if comment.post.id==post.id %}
+                            <div class="post-comment">
+                                <!-- USER AVATAR -->
+                                <a class="user-avatar small no-outline" href="{{ path('visit_profile',{id_user:comment.idUser.id}) }}">
+                                    <!-- USER AVATAR CONTENT -->
+                                    <div class="user-avatar-content">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-image-30-32" data-src="{{ 'template/img/avatar/'~comment.idUser.imguser }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR CONTENT -->
+
+                                    <!-- USER AVATAR PROGRESS -->
+                                    <div class="user-avatar-progress">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-progress-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR PROGRESS -->
+
+                                    <!-- USER AVATAR PROGRESS BORDER -->
+                                    <div class="user-avatar-progress-border">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-border-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR PROGRESS BORDER -->
+
+                                    <!-- USER AVATAR BADGE -->
+                                    <div class="user-avatar-badge">
+                                        <!-- USER AVATAR BADGE BORDER -->
+                                        <div class="user-avatar-badge-border">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-22-24" style="width: 22px; height: 24px; position: relative;"><canvas width="22" height="24" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR BADGE BORDER -->
+
+                                        <!-- USER AVATAR BADGE CONTENT -->
+                                        <div class="user-avatar-badge-content">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-dark-16-18" style="width: 16px; height: 18px; position: relative;"><canvas width="16" height="18" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR BADGE CONTENT -->
+
+                                        <!-- USER AVATAR BADGE TEXT -->
+                                        <p class="user-avatar-badge-text">26</p>
+                                        <!-- /USER AVATAR BADGE TEXT -->
+                                    </div>
+                                    <!-- /USER AVATAR BADGE -->
+                                </a>
+                                <!-- /USER AVATAR -->
+
+                                <!-- POST COMMENT TEXT -->
+                                <p class="post-comment-text"><a class="post-comment-text-author" href="{{ path('visit_profile',{id_user:comment.idUser.id}) }}">{{ comment.idUser.username }}</a>{{ comment.contenue }}</p>
+                                <!-- /POST COMMENT TEXT -->
+
+                                <!-- CONTENT ACTIONS -->
+                                <div class="content-actions">
+                                    <!-- CONTENT ACTION -->
+                                    <div class="content-action">
+
+                                        <!-- META LINE -->
+                                        <div class="meta-line">
+                                            <!-- META LINE TIMESTAMP -->
+                                            <p class="meta-line-timestamp">{% if "now" |date("U") + 3600  > comment.date|date("U") + 31104000 %}
+                                                    {{ ("now" |date("U") + 3600  - comment.date |date("U") ) |date("Y") }} Years Ago
+                                                {% elseif "now" |date("U") + 3600  > comment.date |date("U") + 2592000 %}
+                                                    {{ ("now" |date("U") + 3600  - comment.date |date("U") ) |date("m") }} Months Ago
+                                                {% elseif "now" |date("U") + 3600  > comment.date |date("U") + 86400 %}
+                                                    {{ ("now" |date("U") + 3600  - comment.date|date("U") ) |date("d") }} Days Ago
+                                                {% elseif "now" |date("U") + 3600  >comment.date |date("U") + 3600  %}
+                                                    {{ ("now" |date("U") + 3600  -comment.date |date("U") ) |date("H") }} Hours Ago
+                                                {% elseif "now" |date("U") + 3600  >comment.date |date("U") + 60 %}
+                                                    {{ ("now" |date("U") + 3600  - comment.date |date("U") ) |date("i") }} Minutes Ago
+                                                {% elseif "now" |date("U") + 3600  > comment.date |date("U")  %}
+                                                    {{ ("now" |date("U") + 3600  - comment.date |date("U") ) |date("s") }} Seconds Ago
+                                                {% endif %}</p>
+                                            <!-- /META LINE TIMESTAMP -->
+                                        </div>
+                                        <!-- /META LINE -->
+
+                                        <!-- META LINE -->
+                                        <div class="meta-line settings">
+                                            <!-- POST SETTINGS WRAP -->
+                                            <div class="post-settings-wrap" style="position: relative;">
+                                                <!-- POST SETTINGS -->
+                                                <div class="post-settings post-settings-dropdown-trigger active">
+                                                    <!-- POST SETTINGS ICON -->
+                                                    <svg class="post-settings-icon icon-more-dots">
+                                                        <use xlink:href="#svg-more-dots"></use>
+                                                    </svg>
+                                                    <!-- /POST SETTINGS ICON -->
+                                                </div>
+                                                <!-- /POST SETTINGS -->
+
+                                                <!-- SIMPLE DROPDOWN -->
+                                                <div id="12" class="simple-dropdown post-settings-dropdown" style="position: absolute;width: 250px; z-index: 9999; bottom: 30px; right: 0px; opacity: 1; visibility: visible; transform: translate(0px, 0px); transition: transform 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s;">
+                                                    <!-- SIMPLE DROPDOWN LINK -->
+                                                    {% if user %}
+                                                        {% if comment.idUser.id==user.id  %}
+                                                            <a class="simple-dropdown-link btn btn-default"  data_but="btn-xs" id="comment_delete-{{ comment.id }}" href="{{ path('commentaire_supprimer',{ id_com: comment.id})}}"><i class='fa fa-trash'></i>Delete comment</a>
+                                                            <a class="simple-dropdown-link btn btn-default" id="modifiercomment" onclick="affichecomm(this)" data-toggle="modal" data-target="#myModal" data-whatever="{{ comment.id }}"><i class='fa fa-pencil'></i>Edit comment</a>
+                                                        {% elseif comment.idUser.id==post.idauthor.id  %}
+                                                            <a class="simple-dropdown-link btn btn-default"  data_but="btn-xs" id="comment_delete-{{ post.id }}" href="{{ path('commentaire_supprimer',{ id_com: comment.id})}}"><i class='fa fa-trash'></i>Delete Comment</a>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    <!-- /SIMPLE DROPDOWN LINK -->
+                                                </div>
+                                                <!-- /SIMPLE DROPDOWN -->
+                                            </div>
+                                            <!-- /POST SETTINGS WRAP -->
+                                        </div>
+
+                                        <!-- /META LINE -->
+                                    </div>
+                                    <!-- /CONTENT ACTION -->
+                                </div>
+                                <!-- /CONTENT ACTIONS -->
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    <div class="post-comment-form" id="post-comment-form" >
+                        <!-- USER AVATAR -->
+                        <div class="user-avatar small no-outline">
+                            <!-- USER AVATAR CONTENT -->
+                            <div class="user-avatar-content">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-image-30-32" data-src="{{asset('template/img/avatar/')~app.user.imguser}}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR CONTENT -->
+
+                            <!-- USER AVATAR PROGRESS -->
+                            <div class="user-avatar-progress">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-progress-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR PROGRESS -->
+
+                            <!-- USER AVATAR PROGRESS BORDER -->
+                            <div class="user-avatar-progress-border">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-border-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR PROGRESS BORDER -->
+
+                            <!-- USER AVATAR BADGE -->
+                            <div class="user-avatar-badge">
+                                <!-- USER AVATAR BADGE BORDER -->
+                                <div class="user-avatar-badge-border">
+                                    <!-- HEXAGON -->
+                                    <div class="hexagon-22-24" style="width: 22px; height: 24px; position: relative;"><canvas width="22" height="24" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                    <!-- /HEXAGON -->
+                                </div>
+                                <!-- /USER AVATAR BADGE BORDER -->
+
+                                <!-- USER AVATAR BADGE CONTENT -->
+                                <div class="user-avatar-badge-content">
+                                    <!-- HEXAGON -->
+                                    <div class="hexagon-dark-16-18" style="width: 16px; height: 18px; position: relative;"><canvas width="16" height="18" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                    <!-- /HEXAGON -->
+                                </div>
+                                <!-- /USER AVATAR BADGE CONTENT -->
+
+                                <!-- USER AVATAR BADGE TEXT -->
+                                <p class="user-avatar-badge-text">24</p>
+                                <!-- /USER AVATAR BADGE TEXT -->
+                            </div>
+                            <!-- /USER AVATAR BADGE -->
+                        </div>
+
+                        <form action="{{ path('commentaire_add',{'post_id':post.id}) }}" >
+                            <!-- FORM ROW -->
+                            <div class="form-row">
+                                <!-- FORM ITEM -->
+                                <div class="form-item">
+                                    <!-- FORM INPUT -->
+                                    <div class="form-input small">
+                                        <label for="contenue">Your Reply</label>
+                                        <input type="text" id="commentaire_add_contenue" name="contenue" required>
+                                        {% if user %}
+                                            <button class="form btn btn-outline-dark"  type="submit">Reply</button>
+                                        {% else %}
+                                            <a href="{{ path('fos_user_security_login') }}" >Login !</a>
+                                        {% endif %}
+                                    </div>
+
+                                </div>
+                                <!-- /FORM ITEM -->
+                            </div>
+                            <!-- /FORM ROW -->
+                        </form>
+                        <!-- /FORM -->
+                    </div>
+                </div>
+                <!-- /WIDGET BOX -->
+            {% endfor %}
+
+        </div>
+        <!-- /GRID COLUMN -->
+
+    </div>
+</div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Modification Commentaire</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="f" >
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">Votre nouveau Commentaire</label>
+                            <textarea class="form-control" id="cont" name="contenue"  required></textarea>
+                        </div>
+                        <input type="submit" class="btn btn-primary">
+                    </form >
+                </div>
+                <div class="modal-footer">
+                    <button type="button"  id="close"class="btn btn-default" data-dismiss="modal">Fermer</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="Postedit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modification de Publication </h4>
+                </div>
+                <div class="modal-body">
+                 <form id="Posteditt" >
+                     <div class="form-group">
+                         <label for="message-text" class="control-label">Titre de Publication</label>
+                         <textarea class="form-control" id="titlepub" name="titre"  required></textarea>
+                     </div>
+                     <div class="form-group" id="content">
+                         <label for="message-text" class="control-label">Contenu</label>
+
+
+                     </div>
+                     <div class="form-group">
+                         <label for="message-text" class="control-label">Changer le Contenue</label>
+                         <div class="input-group">
+                             <div class="input-group-prepend">
+                                 <span class="input-group-text" id="inputGroupFileAddon01" name="contenue">Upload</span>
+                             </div>
+                             <div class="custom-file">
+                                 <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                        aria-describedby="inputGroupFileAddon01" name="contenue">
+                                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="form-group">
+                         <label for="message-text" class="control-label">Changer le Type</label>
+                         <select title="choisir le type de contenue" class="selectpicker" name="type">
+                             <option value="texte" >Texte</option>
+                             <option data-icon="glyphicon glyphicon-picture" data-subtext="petrification" value="img">Image</option>
+                             <option data-icon="glyphicon glyphicon-facetime-video" data-subtext="area damage" value="video">video</option>
+                         </select>
+                     </div>
+
+                     <button type="submit" class="btn btn-primary" >Enregistrer</button>
+                 </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="fermm" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="Postforshare" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Partager</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formulaire" >
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">Texte</label>
+                            <textarea class="form-control" id="cont" name="titre"  required placeholder="Que Pensez-Vous?"></textarea>
+                            <input id="idpost" name="contenue" type="hidden">
+                        </div>
+                        <div id= "postforshare" name="contenuex" class="widget-box no-padding">
+                        <!-- WIDGET BOX STATUS -->
+                        <div class="widget-box-status">
+                            <!-- WIDGET BOX STATUS CONTENT -->
+                            <div id="pp"class="widget-box-status-content">
+                                <!-- USER STATUS -->
+                                <div class="user-status">
+                                    <!-- USER STATUS AVATAR -->
+                                    <a class="user-status-avatar" >
+                                        <!-- USER AVATAR -->
+                                        <div class="user-avatar small no-outline">
+                                            <!-- USER AVATAR CONTENT -->
+                                            <div class="user-avatar-content">
+                                                <!-- HEXAGON -->
+                                                <div id="usersh" class="hexagon-image-30-32" data-src="" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                                <!-- /HEXAGON -->
+                                            </div>
+                                            <!-- /USER AVATAR CONTENT -->
+
+                                            <!-- USER AVATAR PROGRESS -->
+                                            <div class="user-avatar-progress">
+                                                <!-- HEXAGON -->
+                                                <div class="hexagon-progress-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                                <!-- /HEXAGON -->
+                                            </div>
+                                            <!-- /USER AVATAR PROGRESS -->
+
+                                            <!-- USER AVATAR PROGRESS BORDER -->
+                                            <div class="user-avatar-progress-border">
+                                                <!-- HEXAGON -->
+                                                <div class="hexagon-border-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                                <!-- /HEXAGON -->
+                                            </div>
+                                            <!-- /USER AVATAR PROGRESS BORDER -->
+
+                                            <!-- USER AVATAR BADGE -->
+                                            <div class="user-avatar-badge">
+                                                <!-- USER AVATAR BADGE BORDER -->
+                                                <div class="user-avatar-badge-border">
+                                                    <!-- HEXAGON -->
+                                                    <div class="hexagon-22-24" style="width: 22px; height: 24px; position: relative;"><canvas width="22" height="24" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                                    <!-- /HEXAGON -->
+                                                </div>
+                                                <!-- /USER AVATAR BADGE BORDER -->
+
+                                                <!-- USER AVATAR BADGE CONTENT -->
+                                                <div class="user-avatar-badge-content">
+                                                    <!-- HEXAGON -->
+                                                    <div class="hexagon-dark-16-18" style="width: 16px; height: 18px; position: relative;"><canvas width="16" height="18" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                                    <!-- /HEXAGON -->
+                                                </div>
+                                                <!-- /USER AVATAR BADGE CONTENT -->
+
+                                                <!-- USER AVATAR BADGE TEXT -->
+                                                <p class="user-avatar-badge-text">1</p>
+                                                <!-- /USER AVATAR BADGE TEXT -->
+                                            </div>
+                                            <!-- /USER AVATAR BADGE -->
+                                        </div>
+                                        <!-- /USER AVATAR -->
+                                    </a>
+                                    <!-- /USER STATUS AVATAR -->
+
+                                    <!-- USER STATUS TITLE -->
+                                    <p class="user-status-title medium" id="usernsh"><a class="bold" href=""></a></p>
+                                    <!-- /USER STATUS TITLE -->
+                                </div>
+                                <!-- /USER STATUS -->
+                                <!-- WIDGET BOX STATUS TEXT -->
+                                <p class="widget-box-status-text" id="titlepubshare"></p>
+
+
+                                <!-- /WIDGET BOX STATUS TEXT -->
+
+
+                            </div>
+                            <!-- /WIDGET BOX STATUS CONTENT -->
+                        </div>
+                        <!-- /WIDGET BOX STATUS -->
+                    </div>
+                        <button type="submit" class="btn btn-primary">Partager</button>
+                    </form >
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="kaka">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="Aiijwkm.js"></script>
+<script  type="text/javascript">
+     function affichecomm(elem){
+         let idc = $(elem).attr('data-whatever');
+         let url ="{{ path('commentaire_modif',{'id':'idcomment'})}}";
+         url = url.replace("idcomment", idc);
+         var contenue=$("#cont").val();
+         var data='contenue='+contenue;
+         $('#f').submit(function (e) {
+             e.preventDefault();
+             $.ajax({
+                 type:"POST",
+                 url:url,
+                 data:data,
+                 dataType: "json",
+                 processData: true,
+
+             });
+
+         });
+
+     }
+
+    $("#close").on("click",function () {
+        location.reload(true);
+    });
+  function affichierpub (elem)
+    {
+
+
+        var idc = $(elem).attr('data-whatever');
+        var url ="{{ path('publication_show_one1',{'id_post':'idpub'})}}";
+        url = url.replace("idpub", idc);
+        $.ajax({
+            type:"GET",
+            url:url,
+            dataType: "json",
+            processData: true,
+            success:function(data)
+            {
+                 var src1="/uploads/video/"+data['contenue'];
+                 var src2="/uploads/img/"+data['contenue'];
+            $('#titlepub').html(data['titre']);
+                if(data['type'].localeCompare("video")==0)
+                {  $("#content").append('     <video  id=vid" class="video-fluid" autoplay loop muted>\n' +
+                        '          <source src="" type="video/mp4" />\n' +
+                        '        </video>');
+                document.getElementById('vid').src =src1;}
+                else {
+                    if (data['type'].localeCompare("img") == 0) {
+                        $("#content").append('<img id="img" src="" class="img-thumbnail" alt="contenue" width="304" height="236">');
+                        document.getElementById('img').src = src2;
+                    }
+                    else
+                    {   var nouty="#tfol-"+idc;
+                        var clonebobo=$(nouty).clone();
+                        $("#content").append(clonebobo);
+
+                    }
+                }
+
+
+
+
+
+            }
+        });
+        $("#Posteditt").submit(function(){
+            let posturl ="{{ path('publication_edit',{'id_post':'idpub'})}}";
+            posturl =posturl.replace("idpub", idc);
+            var form=$("#Posteditt")[0];
+            $.ajax({
+                type:"POST",
+                url:posturl,
+                data:new FormData(form),
+                contentType:false,
+                processData:false,
+                cache:false,
+                dataType:"json",
+                error:function(err){
+                    console.error(err);
+                },
+                success:function(data){
+                    console.log(data);
+                },
+                complete:function(){
+                    console.log("Request finished.");
+
+                }
+
+            });
+
+        });
+
+
+    }
+     var divClone = $("#content").clone();
+     $("#fermm").on("click",function(){$("#content").replaceWith(divClone.clone());});
+     var divClone12 = $("#formulaire").clone();
+     $("#kaka").on("click",function(){$("#formulaire").replaceWith(divClone12.clone());});
+     function showpubforshare(elem) {
+        var idc = $(elem).attr('data-whatever');
+        var url ="{{ path('publication_share_one',{'id_post':'idpub'})}}";
+        url = url.replace("idpub", idc);
+        $.ajax({
+            type:"GET",
+            url:url,
+            dataType: "json",
+            processData: true,
+            success:function(data)
+            {   $("#idpost").val(idc);
+                var imguser="/template/img/avatar/"+data['imguser'];
+                var source="{{ asset('imguser') }}";
+                $('#usersh').attr("data-src",imguser);
+                var username=data['nameuser'];
+                $('#usernsh').html(username);
+                var src1="/uploads/video/"+data['contenue'];
+                var src2="/uploads/img/"+data['contenue'];
+                $('#titlepubshare').html(data['titre']);
+                if(data['type'].localeCompare("video")==0)
+                {  $("#pp").append('     <video  id=vid" class="video-fluid" autoplay loop muted>\n' +
+                    '          <source src="" type="video/mp4" />\n' +
+                    '        </video>');
+                    document.getElementById('vid').src =src1;}
+                else{
+                    $("#pp").append('<img id="img" src="" class="img-thumbnail" alt="contenue" width="304" height="236">');
+                    document.getElementById('img').src =src2;}
+
+            }
+
+
+
+    });
+        $("#formulaire").submit(function() {
+            let posturl = "{{ path('share') }}";
+            var form = $("#formulaire")[0];
+            $.ajax({
+                type: "POST",
+                url: posturl,
+                data: new FormData(form),
+                contentType: false,
+                processData: false,
+                cache: false,
+                dataType: "json",
+                error: function (err) {
+                    console.error(err);
+                },
+                success: function (data) {
+                    console.log(data);
+                },
+                complete: function () {
+                    console.log("Request finished.");
+
+                }
+
+            });
+        });}
+
+     function addhahText(text) {
+         const chatContainer = document.createElement("div");
+         chatContainer.classList.add("chat-widget-speaker");
+         chatContainer.classList.add("left");
+         chatContainer.classList.add("chat-container");
+         const chatBox = document.createElement("p");
+         chatBox.classList.add("chat-widget-speaker-message");
+         chatBox.classList.add("voice2text");
+         const chatText = document.createTextNode(text);
+         chatBox.appendChild(chatText);
+         chatContainer.appendChild(chatBox);
+         return chatContainer;
+     }
+     $("#myBtn").on("click",function () {
+        var text= $("#chat-widget-message-text1").val();
+        var haha=addhahText(text);
+         var element = document.getElementById("container");
+         element.appendChild(haha);
+         botVoice(text);
+     })
+     var input = document.getElementById("chat-widget-message-text");
+     input.addEventListener("keyup", function(event) {
+
+         if (event.keyCode === 13) {
+             event.preventDefault();
+             document.getElementById("myBtn").click();
+         }
+     });
+     function botVoice(message) {
+
+         const speech = new SpeechSynthesisUtterance();
+         speech.text="je n'arrive pas à vous comprendre"
+         var haha=addBotText(speech.text);
+         var coca=$(".voice").attr('data-id');
+         if (message.includes('salut')) {
+             speech.text = "salut, heureuse de te parler une autre fois!";
+             haha=addBotText(speech.text);
+         }
+         if (message.includes('ça va')) {
+             speech.text = "ça va bien et vous ";
+             haha=addBotText(speech.text);
+         }
+         if (message.includes('bien')) {
+             speech.text = "heureuse de savoir ça ,Comment je peux vous aider";
+             haha=addBotText(speech.text);
+         }
+         if (message.includes('vote')) {
+             speech.text = "VoiLa la publication qui a rempoté le plus de votes !";
+             haha=addBotText(speech.text);
+             var url = coca+"/yes";
+             $.ajax({
+                 type:"GET",
+                 url:url,
+                 dataType: "json",
+                 processData: true,
+                 success:function(data){
+                     var card=document.createElement("div");
+                     card.classList.add("card");
+                     card.style.width="170px";
+                     var img=document.createElement("img");
+                     img.classList.add("card-img-top");
+                     var card1=document.createElement("div");
+                     card1.classList.add("card-body");
+                     var h5=document.createElement("h5");
+                     h5.classList.add("card-title");
+                     h5.classList.add("mama");
+                     var p=document.createElement("p");
+                     p.classList.add("card-text");
+                     p.classList.add("details");
+                     var texte='Titre: '+data['titre']+"Nb Votes: " +data['Votes'];
+                     const info = document.createTextNode(texte);
+                     p.appendChild(info);
+                     card1.appendChild(h5);
+                     card1.appendChild(p);
+                     card.appendChild(img);
+                     card.appendChild(card1);
+                     img.src ='/uploads/img/'+data['contenue'];
+                     $('.mama').html('POST');
+                     haha.append(card);
+
+                 }
+             });}
+         if (message.includes('événement')) {
+             speech.text = "Voila Les evenement qui pourrait vous interesser ";
+             var haha=addBotText(speech.text);
+             var url = coca+"/evens";
+             $.ajax({
+                 type:"GET",
+                 url:url,
+                 dataType: "json",
+                 processData: true,
+                 success:function(data){
+                     if(data['cout']!=null)
+                     {
+                         var card=document.createElement("div");
+                         card.classList.add("card");
+                         card.style.width="170px";
+                         var img=document.createElement("img");
+                         img.classList.add("card-img-top");
+                         var card1=document.createElement("div");
+                         card1.classList.add("card-body");
+                         var h5=document.createElement("h5");
+                         h5.classList.add("card-title");
+                         h5.classList.add("mama");
+                         var p=document.createElement("p");
+                         p.classList.add("card-text");
+                         p.classList.add("details");
+                         var texte='date limite:' +data['datef']+"cout:" +data['cout'];
+                         const info = document.createTextNode(texte);
+                         p.appendChild(info);
+                         card1.appendChild(h5);
+                         card1.appendChild(p);
+                         card.appendChild(img);
+                         card.appendChild(card1);
+                         img.src ='template/img/cover/'+data['imgc'];
+                         haha.append(card);
+
+                     }
+                     else
+                     {
+                         var card=document.createElement("div");
+                         card.classList.add("card");
+                         card.style.width="170px";
+                         var img=document.createElement("img");
+                         img.classList.add("card-img-top");
+                         var card1=document.createElement("div");
+                         card1.classList.add("card-body");
+                         var h5=document.createElement("h5");
+                         h5.classList.add("card-title");
+                         h5.classList.add("mama");
+                         var p=document.createElement("p");
+                         p.classList.add("card-text");
+                         p.classList.add("details");
+                         var texte='Aucun evenement Disponible Pour le moments ';
+                         const info = document.createTextNode(texte);
+                         p.appendChild(info);
+                         card1.appendChild(h5);
+                         card1.appendChild(p);
+                         card.appendChild(img);
+                         card.appendChild(card1);
+                         img.src ='template/img/landing/404-bg.png';
+                         haha.append(card);
+                     }
+                 }
+
+             });
+         }
+         if (message.includes('Bonjour')) {
+             speech.text = "Bounjour, heureuse de te parler une autre fois!";
+             haha=addBotText(speech.text);
+         }
+
+
+         speech.volume = 1;
+         speech.rate = 1;
+         speech.pitch = 1;
+         window.speechSynthesis.speak(speech);
+         var element = document.getElementById("container");
+         element.appendChild(haha);
+     }
+     function addBotText(text) {
+         const chatContainer1 = document.createElement("div");
+         chatContainer1.classList.add("chat-widget-speaker");
+         chatContainer1.classList.add("right");
+         chatContainer1.classList.add("chat-container");
+         chatContainer1.classList.add("darker");
+         const chatBox1 = document.createElement("p");
+         chatBox1.classList.add("chat-widget-speaker-message");
+         chatBox1.classList.add("voice2text");
+         const chatText1 = document.createTextNode(text);
+         chatBox1.appendChild(chatText1);
+         chatContainer1.appendChild(chatBox1);
+         return chatContainer1;
+     }
+</script>
+
+{% endblock %}

@@ -1,0 +1,405 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<link rel="stylesheet" href="{{ asset('template/css/vendor/bootstrap.min.css') }}">
+<!-- styles -->
+<link rel="stylesheet" href="{{ asset('template/css/styles.min.css') }}">
+<!-- favicon -->
+<link rel="icon" href="{{ asset('template/img/favicon.ico') }}">
+<title>Vikinger | Home</title>
+
+
+<img class="form-box-decoration" src="img/landing/404-bg.png" alt="rocket">
+
+
+
+<!-- LANDING -->
+<div class="landing">
+    <!-- LANDING DECORATION -->
+    <div class="landing-decoration"></div>
+    <!-- /LANDING DECORATION -->
+
+    <!-- LANDING INFO -->
+    <div class="landing-info">
+        <!-- LOGO -->
+        <div class="logo">
+            <!-- ICON LOGO VIKINGER -->
+            <svg class="icon-logo-vikinger">
+                <use xlink:href="#svg-logo-vikinger"></use>
+            </svg>
+            <!-- /ICON LOGO VIKINGER -->
+        </div>
+        <!-- /LOGO -->
+
+        <!-- LANDING INFO PRETITLE -->
+        <h2 class="landing-info-pretitle">Welcome to</h2>
+        <!-- /LANDING INFO PRETITLE -->
+
+        <!-- LANDING INFO TITLE -->
+        <h1 class="landing-info-title">Vikinger</h1>
+        <!-- /LANDING INFO TITLE -->
+
+        <!-- LANDING INFO TEXT -->
+        <p class="landing-info-text">The next generation social network &amp; community! Connect with your friends and play with our quests and badges gamification system!</p>
+        <!-- /LANDING INFO TEXT -->
+
+        <!-- TAB SWITCH -->
+        <div class="tab-switch">
+
+
+            <!-- TAB SWITCH BUTTON -->
+            <p class="tab-switch-button login-register-form-trigger">Register</p>
+            <!-- /TAB SWITCH BUTTON -->
+        </div>
+        <!-- /TAB SWITCH -->
+    </div>
+    <!-- /LANDING INFO -->
+
+    <!-- LANDING FORM -->
+    <div class="landing-form">
+        <!-- FORM BOX -->
+        <div class="form-box login-register-form-element">
+            <!-- FORM BOX DECORATION -->
+            <img class="form-box-decoration overflowing" src="img/landing/rocket.png" alt="rocket">
+            <!-- /FORM BOX DECORATION -->
+
+            <!-- FORM BOX TITLE -->
+            <h2 class="form-box-title">Account Login</h2>
+            <!-- /FORM BOX TITLE -->
+
+            <!-- FORM -->
+            <form class="form">
+                <!-- FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input">
+                            <label for="login-username">Username or Email</label>
+                        </div>
+                        <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+
+                <!-- FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" name="login_password">
+                        </div>
+                        <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+
+
+
+
+                <!-- FORM ROW -->
+                <div class="form-row space-between">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- CHECKBOX WRAP -->
+                        <div class="checkbox-wrap">
+                            <input type="checkbox" id="login-remember" name="login_remember" checked>
+                            <!-- CHECKBOX BOX -->
+                            <div class="checkbox-box">
+                                <!-- ICON CROSS -->
+                                <svg class="icon-cross">
+                                    <use xlink:href="#svg-cross"></use>
+                                </svg>
+                                <!-- /ICON CROSS -->
+                            </div>
+                            <!-- /CHECKBOX BOX -->
+                            <label for="login-remember">Remember Me</label>
+                        </div>
+                        <!-- /CHECKBOX WRAP -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM LINK -->
+                        <a class="form-link" href="#">Forgot Password?</a>
+                        <!-- /FORM LINK -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+
+                <!-- FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- BUTTON -->
+                        <button class="button medium secondary">Login to your Account!</button>
+                        <!-- /BUTTON -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+            </form>
+            <!-- /FORM -->
+
+            <!-- LINED TEXT -->
+            <p class="lined-text">Login with your Social Account</p>
+            <!-- /LINED TEXT -->
+
+            <!-- SOCIAL LINKS -->
+            <div class="social-links">
+                <!-- SOCIAL LINK -->
+                <a class="social-link facebook" href="#">
+                    <!-- ICON FACEBOOK -->
+                    <svg class="icon-facebook">
+                        <use xlink:href="#svg-facebook"></use>
+                    </svg>
+                    <!-- /ICON FACEBOOK -->
+                </a>
+                <!-- /SOCIAL LINK -->
+
+                <!-- SOCIAL LINK -->
+                <a class="social-link twitter" href="#">
+                    <!-- ICON TWITTER -->
+                    <svg class="icon-twitter">
+                        <use xlink:href="#svg-twitter"></use>
+                    </svg>
+                    <!-- /ICON TWITTER -->
+                </a>
+                <!-- /SOCIAL LINK -->
+
+                <!-- SOCIAL LINK -->
+                <a class="social-link twitch" href="#">
+                    <!-- ICON TWITCH -->
+                    <svg class="icon-twitch">
+                        <use xlink:href="#svg-twitch"></use>
+                    </svg>
+                    <!-- /ICON TWITCH -->
+                </a>
+                <!-- /SOCIAL LINK -->
+
+                <!-- SOCIAL LINK -->
+                <a class="social-link youtube" href="#">
+                    <!-- ICON YOUTUBE -->
+                    <svg class="icon-youtube">
+                        <use xlink:href="#svg-youtube"></use>
+                    </svg>
+                    <!-- /ICON YOUTUBE -->
+                </a>
+                <!-- /SOCIAL LINK -->
+            </div>
+            <!-- /SOCIAL LINKS -->
+        </div>
+        <!-- /FORM BOX -->
+
+
+
+
+
+
+
+
+
+
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+        <!-- FORM BOX -->
+        <div class="form-box login-register-form-element">
+            <!-- FORM BOX DECORATION -->
+            <img class="form-box-decoration" src="img/landing/rocket.png" alt="rocket">
+            <!-- /FORM BOX DECORATION -->
+
+            <!-- FORM BOX TITLE -->
+            <h2 class="form-box-title">Create your Account!</h2>
+            <!-- /FORM BOX TITLE -->
+            <br><br>
+
+            <!-- FORM -->
+            <form class="form">
+                <!-- FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input">
+                            <label for="register-username">Email</label>
+
+                            {{ form_widget(form.email, {'attr':{'id':"register-email",'name':"register_email"}}) }}
+
+
+                        </div>
+                        <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+
+                <!-- FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input">
+                            <label for="register-username">Username</label>
+
+
+                            {{ form_widget(form.username, {'attr':{'id':"register-username",'name':"register_username"}}) }}
+
+                        </div>
+                        <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+
+                <br>
+
+                <!-- FORM SELECT -->
+                <div class="form-select">
+                    <label for="downloads-filter-category">Type de Compte</label>
+                    {{ form_widget(form.typecompte, {'attr':{'id':"downloads-filter-category",'name':"downloads_filter_category"}}) }}
+
+                    <!-- FORM SELECT ICON -->
+                    <svg class="form-select-icon icon-small-arrow">
+                        <use xlink:href="#svg-small-arrow"></use>
+                    </svg>
+                    <!-- /FORM SELECT ICON -->
+                </div>
+                <!-- /FORM SELECT -->
+
+
+                <br>
+                <!-- FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input">
+                            <label for="register-password-repeat">Password</label>
+
+                            {{ form_row(form.plainPassword.first, { 'attr': {'placeholder': ''|trans}, 'label': false }) }}
+
+                        </div>
+                        <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+
+                <!-- FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input">
+                            <label for="register-password-repeat">Repeat Password</label>
+
+
+                            {{ form_row(form.plainPassword.second, { 'attr': {'placeholder': ''|trans}, 'label': false }) }}
+                        </div>
+                        <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+
+                <!-- FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <div class="custom-file">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            {{ form_widget(form.file,{'attr':{ 'id':'customFile','class':'custom-file-input'}})}}
+                        </div>
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+
+                <!-- FORM ROW -->
+                <div class="form-row space-between">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM LINK -->
+                        <a class="form-link" href="/login">Already Have An Account ?</a>
+                        <!-- /FORM LINK -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+
+
+
+
+                <!-- FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- BUTTON -->
+                        <button class="button medium primary">Register Now!</button>
+                        <!-- /BUTTON -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+            </form>
+            <!-- /FORM -->
+            {{ form_end(form) }}
+
+
+            <!-- FORM TEXT -->
+            <p class="form-text">You'll receive a confirmation email in your inbox with a link to activate your account. If you have any problems, <a href="#">contact us</a>!</p>
+            <!-- /FORM TEXT -->
+        </div>
+        <!-- /FORM BOX -->
+    </div>
+    <!-- /LANDING FORM -->
+</div>
+<!-- /LANDING -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- app -->
+<script src="{{ asset('template/app.bundle.min.js') }}"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
