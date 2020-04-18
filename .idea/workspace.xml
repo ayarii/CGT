@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62e544ca-5f8d-467c-b7f4-712d77a8da7e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Composer_15_04_2020_13_17_c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/commandlinetools/Composer_18_04_2020_6_11_PM_c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_15_04_2020_13_19_s.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/untitled.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/untitled.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/console" beforeDir="false" afterPath="$PROJECT_DIR$/bin/console" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +166,6 @@
       <command value="s doctrine:generate:form CompetitionBundle:Competition" />
       <command value="s fos:user:promote test ROLE_SUPER_ADMIN" />
       <command value="s doctrine:generate:form MessagerieBundle:Message" />
-      <command value="s generate:controller" />
       <command value="s doctrine:generate:entity" />
       <command value="s doctrine:generate:form" />
       <command value="s doctrine:generate:form MessagerieBundle:Conversation" />
@@ -218,6 +211,7 @@
       <command value="s doctrine:schema:update --force" />
       <command value="s server:run" />
       <command value="s generate:bundle" />
+      <command value="s generate:controller" />
     </option>
   </component>
   <component name="RunManager">
@@ -290,12 +284,24 @@
       <workItem from="1587161408535" duration="9000" />
       <workItem from="1587166505928" duration="122000" />
       <workItem from="1587216942222" duration="1880000" />
-      <workItem from="1587230379555" duration="820000" />
+      <workItem from="1587230379555" duration="1161000" />
     </task>
+    <task id="LOCAL-00001" summary="oussema">
+      <created>1587231391634</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1587231391634</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="oussema" />
+    <option name="LAST_COMMIT_MESSAGE" value="oussema" />
   </component>
   <component name="WindowStateProjectService">
     <state x="380" y="36" width="620" height="656" key="#Fos" timestamp="1584072685168">
@@ -324,10 +330,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="484" y="230" key="#com.jetbrains.php.framework.ui.FailedToParseDialog/0.0.1366.728@0.0.1366.728" timestamp="1587231107684" />
-    <state x="218" y="0" key="CommitChangelistDialog2" timestamp="1587231246711">
+    <state x="218" y="0" key="CommitChangelistDialog2" timestamp="1587231389638">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="218" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587231246711" />
+    <state x="218" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587231389638" />
     <state x="407" y="256" key="ComposerCompositePathDialog" timestamp="1587229913229">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -338,25 +344,25 @@
     </state>
     <state x="462" y="109" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587231171301" />
     <state x="519" y="123" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585189446351" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1587231303526">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1587231541143">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587231303526" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587231541143" />
     <state width="1493" height="183" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1587231303525">
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1587231541143">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587231303525" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587231541143" />
     <state width="1493" height="183" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1587231303524">
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1587231541143">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587231303524" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587231541143" />
     <state width="1493" height="183" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1587231303525">
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1587231541143">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587231303525" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587231541143" />
     <state width="1493" height="183" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
     <state x="468" y="199" key="NewPhpClassDialog" timestamp="1587122121363">
       <screen x="0" y="0" width="1366" height="728" />
