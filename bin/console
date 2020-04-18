@@ -11,8 +11,12 @@ use Symfony\Component\Debug\Debug;
 //umask(0000);
 
 set_time_limit(0);
-
-require __DIR__.'/../vendor/autoload.php';
+if( isset($argv[1]) && $argv[1] == 'list' &&
+    isset($argv[2]) && $argv[2] == '--xml' ) {
+    $argv[2] = '--format=xml';
+    $_SERVER['argv'] = $argv;
+}
+require __DIR__.'\..\vendor\autoload.php';
 
 $input = new ArgvInput();
 $env = $input->getParameterOption(['--env', '-e'], getenv('SYMFONY_ENV') ?: 'dev', true);
