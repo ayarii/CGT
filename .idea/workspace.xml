@@ -3,23 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="62e544ca-5f8d-467c-b7f4-712d77a8da7e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/ChangePassword/change_password_content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/ChangePassword/change_password_content.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/show_content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/show_content.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/baseLouay.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/baseAll.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/baseamine.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/Ticket.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/Ticket.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/afficherCompetition.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/afficherCompetition.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/afficherCompetitionUser.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/afficherCompetitionUser.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/ajouterCompetition.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/ajouterCompetition.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/can.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/can.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/detailComp.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/detailComp.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/modifierCompetition.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/modifierCompetition.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/profile.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FOSBundle/Resources/views/Default/invitations.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/FOSBundle/Resources/views/Default/invitations.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FOSBundle/Resources/views/Default/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/FOSBundle/Resources/views/Default/profile.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/Acceuil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/Acceuil.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/onepost.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/onepost.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/profile.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,7 +285,7 @@
       <workItem from="1587166505928" duration="122000" />
       <workItem from="1587216942222" duration="1880000" />
       <workItem from="1587230379555" duration="1161000" />
-      <workItem from="1587320517682" duration="10434000" />
+      <workItem from="1587320517682" duration="10689000" />
     </task>
     <task id="LOCAL-00001" summary="oussema">
       <created>1587231391634</created>
@@ -325,7 +308,21 @@
       <option name="project" value="LOCAL" />
       <updated>1587336719642</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="une seul base.html.twig non pas baseLouay et baseAmine -_-">
+      <created>1587338025683</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1587338025683</updated>
+    </task>
+    <task id="LOCAL-00005" summary="une seul base.html.twig non pas baseLouay et baseAmine -_-">
+      <created>1587338071253</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1587338071253</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,7 +332,8 @@
     <MESSAGE value="oussema" />
     <MESSAGE value="Deleting ReclamationBundle" />
     <MESSAGE value="supression des fichier inutiles et modification d l'upload d'image du user" />
-    <option name="LAST_COMMIT_MESSAGE" value="supression des fichier inutiles et modification d l'upload d'image du user" />
+    <MESSAGE value="une seul base.html.twig non pas baseLouay et baseAmine -_-" />
+    <option name="LAST_COMMIT_MESSAGE" value="une seul base.html.twig non pas baseLouay et baseAmine -_-" />
   </component>
   <component name="WindowStateProjectService">
     <state x="380" y="36" width="620" height="656" key="#Fos" timestamp="1584072685168">
@@ -368,10 +366,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="484" y="230" key="#com.jetbrains.php.framework.ui.FailedToParseDialog/0.0.1366.728@0.0.1366.728" timestamp="1587324654188" />
-    <state x="282" y="0" key="CommitChangelistDialog2" timestamp="1587338017030">
+    <state x="282" y="0" key="CommitChangelistDialog2" timestamp="1587338068687">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="282" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587338017030" />
+    <state x="282" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587338068687" />
     <state x="407" y="256" key="ComposerCompositePathDialog" timestamp="1587325214186">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -416,10 +414,10 @@
     </state>
     <state x="454" y="279" key="SymfonyPathDialog/0.0.1366.728@0.0.1366.728" timestamp="1587325223510" />
     <state x="511" y="316" key="SymfonyPathDialog/0.0.1536.824@0.0.1536.824" timestamp="1584849486228" />
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1587338028925">
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1587338079509">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587338028925" />
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587338079509" />
     <state x="391" y="193" width="530" height="350" key="com.intellij.ide.util.TipDialog" timestamp="1587153835355">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
