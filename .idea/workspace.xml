@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="62e544ca-5f8d-467c-b7f4-712d77a8da7e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="62e544ca-5f8d-467c-b7f4-712d77a8da7e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -285,6 +283,7 @@
       <workItem from="1587166505928" duration="122000" />
       <workItem from="1587216942222" duration="1880000" />
       <workItem from="1587230379555" duration="1161000" />
+      <workItem from="1587320517682" duration="241000" />
     </task>
     <task id="LOCAL-00001" summary="oussema">
       <created>1587231391634</created>
@@ -391,10 +390,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="462" y="10" width="613" height="804" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1586270789578" />
-    <state x="609" y="123" width="672" height="400" key="run.anything.popup" timestamp="1587231303562">
+    <state x="609" y="123" width="672" height="400" key="run.anything.popup" timestamp="1587320823799">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="609" y="123" width="672" height="400" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1587231303562" />
+    <state x="609" y="123" width="672" height="400" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1587320823799" />
     <state x="685" y="138" width="756" height="767" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1586783257557" />
     <state x="389" y="55" width="756" height="768" key="search.everywhere.popup" timestamp="1586281561981">
       <screen x="0" y="0" width="1536" height="824" />

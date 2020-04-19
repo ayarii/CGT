@@ -6,7 +6,7 @@ imports:
     - { resource: "@CompetitionBundle/Resources/config/services.yml" }
     - { resource: "@MessagerieBundle/Resources/config/services.yml" }
     - { resource: "@PublicationBundle/Resources/config/services.yml" }
-    - { resource: "@ReclamationBundle/Resources/config/services.yml" }
+
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed

@@ -1,6 +1,4 @@
-reclamation:
-    resource: "@ReclamationBundle/Resources/config/routing.yml"
-    prefix:   /
+
 
 
 messagerie:
