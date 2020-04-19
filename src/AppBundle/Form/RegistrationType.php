@@ -17,8 +17,8 @@ class RegistrationType extends AbstractType
                 'Chasseur du talent'=>'Chasseur du talent'
             )
 
-        ))
-            ->add('file');
+        ));
+
 
 
 

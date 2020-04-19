@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Mgilet\NotificationBundle\Annotation\Notifiable;
 use Mgilet\NotificationBundle\NotifiableInterface;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 
 class CompetitionController extends Controller
@@ -25,6 +26,17 @@ class CompetitionController extends Controller
 
         #$Competition->setIduser( $user->getId());
         $form = $this->createForm(CompetitionType::class, $Competition);
+        $form->add('imagec', FileType::class, [
+
+            'mapped' => false,
+            'required' => false,
+            'constraints' => [
+                new \Symfony\Component\Validator\Constraints\File([
+                    'maxSize' => '1024M',
+                    'mimeTypesMessage' => 'Please upload a valid document',
+                ])
+            ],
+        ]);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
         #affichage de TOP 3 #
@@ -37,9 +49,22 @@ class CompetitionController extends Controller
 
 
 
+            $srcFile = $form->get('imagec')->getData();
+            if ($srcFile) {
+                $originalFilename = pathinfo($srcFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$srcFile->guessExtension();
 
+                try {
+                    $srcFile->move('uploads/' . $Competition->getImagec(), $newFilename);
+                } catch (FileException $e) {
+                    print $e->getMessage();
+                }
+                $Competition->setImagec($newFilename);
+
+            }
             $Competition->setIduser($user);
-            $Competition->upload();
+            //$Competition->upload();
 
             $em->persist($Competition);
             $em->flush();
@@ -235,11 +260,37 @@ class CompetitionController extends Controller
         $louay = $em->getRepository('CompetitionBundle:Competition')->findBy(array('iduser' => $user->getId()));
         $Participation=$em->getRepository("CompetitionBundle:Participation")->findAll();
 
+        $form->add('imagec', FileType::class, [
+
+            'mapped' => false,
+            'required' => false,
+            'constraints' => [
+                new \Symfony\Component\Validator\Constraints\File([
+                    'maxSize' => '1024M',
+                    'mimeTypesMessage' => 'Please upload a valid document',
+                ])
+            ],
+        ]);
 
         $form->handleRequest($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $Competition->upload();
+
+            $srcFile = $form->get('imagec')->getData();
+
+            if ($srcFile) {
+                $originalFilename = pathinfo($srcFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$srcFile->guessExtension();
+
+                try {
+                    $srcFile->move('uploads/' . $Competition->getImagec(), $newFilename);
+                } catch (FileException $e) {
+                    print $e->getMessage();
+                }
+                $Competition->setImagec($newFilename);
+
+            }
             $em->persist($Competition);
             $em->flush();
             return $this->redirectToRoute('affichercompetition');

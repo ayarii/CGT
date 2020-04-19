@@ -132,7 +132,7 @@
                                             if (id !== 'error') {
                                                 console.log(value[1]);
 
-                                                entitySelector.append('<li class="badge-item-stat-title" >'+value[1]+'<a href="/detailuser/'+id+'">'+' &nbsp; '+' <figure class="product-preview-image liquid"><img src="/template/img/cover/'+value[0]+'" style="width: 100px; height: 100px"/> </figure>'+'</a></li>'+'&nbsp;&nbsp;&nbsp;');
+                                                entitySelector.append('<li class="badge-item-stat-title" >'+value[1]+'<a href="/detailuser/'+id+'">'+' &nbsp; '+' <figure class="product-preview-image liquid"><img src="/uploads/'+value[0]+'" style="width: 100px; height: 100px"/> </figure>'+'</a></li>'+'&nbsp;&nbsp;&nbsp;');
                                             } else {
                                                 entitySelector.append('<li class="errorLi"><img src="/template/img/reaction/sad.png"  style="width: 25px; height: 25px" >&nbsp;&nbsp;Aucune Competition trouvée</li>');
 
@@ -388,7 +388,7 @@
                                                     <!-- USER AVATAR CONTENT -->
                                                     <div class="user-avatar-content">
                                                         <!-- HEXAGON -->
-                                                        <div class="hexagon-image-18-20" data-src="{{ asset('template/img/avatar/'~t.iduser.imguser) }}"></div>
+                                                        <div class="hexagon-image-18-20" data-src="{{ asset('uploads/'~t.iduser.imguser) }}"></div>
                                                         <!-- /HEXAGON -->
                                                     </div>
                                                     <!-- /USER AVATAR CONTENT -->
@@ -416,7 +416,7 @@
                                                 <div class="event-preview small">
                                                     <!-- EVENT PREVIEW COVER -->
                                                     <figure class="event-preview-cover liquid">
-                                                        <img src="{{ asset('template/img/cover/'~t.imageC) }}" alt="cover-33">
+                                                        <img src="{{ asset('uploads/'~t.imageC) }}" alt="cover-33">
                                                     </figure>
                                                     <!-- /EVENT PREVIEW COVER -->
 
@@ -471,7 +471,7 @@
                                                                         <div class="user-avatar-content">
                                                                             <!-- HEXAGON -->
                                                                             <a href="{{ path('profile', {'id':par.iduser.id})  }}">
-                                                                            <div class="hexagon-image-18-20" data-src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}"></div>
+                                                                            <div class="hexagon-image-18-20" data-src="{{ asset('uploads/'~par.iduser.imguser) }}"></div>
                                                                             </a>
                                                                             <!-- /HEXAGON -->
                                                                         </div>
@@ -547,7 +547,7 @@
         <div class="event-preview" >
             <!-- EVENT PREVIEW COVER -->
             <figure class="event-preview-cover liquid" >
-                <img src="{{ asset('template/img/cover/'~c.imageC ) }}" alt="cover-47">
+                <img src="{{ asset('uploads/'~c.imageC ) }}" alt="cover-47">
             </figure>
             <!-- /EVENT PREVIEW COVER -->
 
@@ -621,66 +621,43 @@
                         <!-- /DECORATED TEXT -->
                         {% endif %}
 
-                        <!-- CONTENT ACTIONS -->
-                        <div class="content-actions">
-                            <!-- CONTENT ACTION -->
-                            <div class="content-action">
-                                <!-- META LINE -->
-                                <div class="meta-line">
-                                    <!-- META LINE LIST -->
-                                    <div class="meta-line-list reaction-item-list">
-                                        {% set total = 0 %}
-                                        {% for par in Participation if (par.idCompetition.idCompetition == c.idCompetition)  %}
-                                            {% set total = total + 1 %}
-
-                                            <!-- REACTION ITEM -->
-                                            <div class="reaction-item">
-                                                <!-- REACTION IMAGE -->
-                                                <a href="{{ path('profile', {'id':par.iduser.id})  }}">
-                                                <img class="reaction-image reaction-item-dropdown-trigger"   src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}" alt="reaction-happy">
-                                                </a>
-                                                <!-- /REACTION IMAGE -->
-
-                                                <!-- SIMPLE DROPDOWN -->
-                                                <div class="simple-dropdown padded reaction-item-dropdown">
-                                                    <!-- SIMPLE DROPDOWN TEXT -->
-                                                    <p class="simple-dropdown-text"><img class="reaction" src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}" alt="reaction-happy"> <span class="bold">{{ par.iduser.username}}</span></p>
-                                                    <!-- /SIMPLE DROPDOWN TEXT -->
-
-                                                    <!-- SIMPLE DROPDOWN TEXT -->
-                                                    <p class="simple-dropdown-text">
-                                                        <i class="fa fa-at" style="font-size:10px;color:deepskyblue"></i>
-                                                        {{ par.iduser.email}}
-                                                    </p>
-                                                    <!-- /SIMPLE DROPDOWN TEXT -->
-
-                                                    <!-- SIMPLE DROPDOWN TEXT -->
-                                                    <p class="simple-dropdown-text">
-                                                        <i class="fa fa-diamond" style="font-size:10px;color:deepskyblue"></i>
-                                                        {{ par.iduser.nbdiament}}
-                                                    </p>
-                                                    <!-- /SIMPLE DROPDOWN TEXT -->
-
-                                                </div>
-                                                <!-- /SIMPLE DROPDOWN -->
-                                            </div>
-                                            <!-- /REACTION ITEM -->
-                                        {% endfor %}
+                        <!-- META LINE -->
+                        <div class="meta-line">
+                            <!-- META LINE LIST -->
+                            <div class="meta-line-list user-avatar-list">
+                                {% set total = 0 %}
+                                {% for par in Participation if (par.idCompetition.idCompetition == c.idCompetition)  %}
+                                    {% set total = total + 1 %}
 
 
+                                    <!-- USER AVATAR -->
+                                    <div class="user-avatar micro no-stats ">
+                                        <!-- USER AVATAR BORDER -->
+                                        <div class="user-avatar-border">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-22-24"></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR BORDER -->
 
-
-
+                                        <!-- USER AVATAR CONTENT -->
+                                        <div class="user-avatar-content"  >
+                                            <!-- HEXAGON -->
+                                            <a href="{{ path('profile', {'id':par.iduser.id})  }}">
+                                                <div class="hexagon-image-18-20"  data-src="{{ asset('uploads/'~par.iduser.imguser) }}" ></div>
+                                            </a>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR CONTENT -->
                                     </div>
-                                    <!-- /META LINE LIST -->
-
-                                    <!-- META LINE TEXT -->
-                                    <p class="meta-line-text">{{total}} <span>will assist</span></p>
-                                    <!-- /META LINE TEXT -->
-                                </div>
-                                <!-- /META LINE -->
+                                    <!-- /USER AVATAR -->
+                                {% endfor %}
                             </div>
-                            <!-- /META LINE -->
+                            <!-- /META LINE LIST -->
+
+                            <!-- META LINE TEXT -->
+                            <p class="meta-line-text">{{total}} will assist</p>
+                            <!-- /META LINE TEXT -->
                         </div>
                         <!-- /META LINE -->
 
@@ -746,7 +723,7 @@
                                         <!-- USER AVATAR CONTENT -->
                                         <div class="user-avatar-content">
                                             <!-- HEXAGON -->
-                                            <div class="hexagon-image-18-20" data-src="{{ asset('template/img/avatar/'~c.idUser.imguser) }}"></div>
+                                            <div class="hexagon-image-18-20" data-src="{{ asset('uploads/'~c.idUser.imguser) }}"></div>
                                             <!-- /HEXAGON -->
                                         </div>
                                         <!-- /USER AVATAR CONTENT -->

@@ -36,7 +36,7 @@
                                 <ul class="meta list-unstyled team-info">
 
                                     <li>
-                                        <img src="{{ asset('template/img/avatar/'~c.idUser.imguser) }}" alt="Avatar">
+                                        <img src="{{ asset('uploads/'~c.idUser.imguser) }}" alt="Avatar">
                                     </li>
                                     <li><a href="#">Posted By: {{ c.idUser }}</a></li>
                                     <li><a href="#"><i class="zmdi zmdi-label col-green"></i>{{c.Typedetalent}}</a></li>
@@ -48,7 +48,7 @@
                             </div>
                             <div class="body">
                                 <div class="img-post m-b-15">
-                                    <img src="{{ asset('template/img/cover/'~c.imageC) }}" alt="Awesome Image">
+                                    <img src="{{ asset('uploads/'~c.imageC) }}" alt="Awesome Image">
                                     <div class="social_share">
                                         <button class="btn btn-primary btn-icon btn-icon-mini btn-round" data-type="cancel" ><a href="{{ path('supprimercompetitionAdmin', {'id':c.idCompetition})  }}"><i class="fa fa-trash" style="font-size:14px;color:white"></i></a></button>
 
@@ -124,7 +124,7 @@
                                                             if (id !== 'error') {
                                                                 console.log(value[1]);
 
-                                                                entitySelector.append('<ul class="meta list-unstyled team-info"><li>'+value[1]+'<a href="/detailuser/'+id+'"><figure class="product-preview-image liquid"><img src="/template/img/cover/'+value[0]+'" style="width: 65px; height: 65px"/> </figure>'+'</a></li></ul>'+'&nbsp;&nbsp;&nbsp;');
+                                                                entitySelector.append('<ul class="meta list-unstyled team-info"><li>'+value[1]+'<a href="/detailuser/'+id+'"><figure class="product-preview-image liquid"><img src="/uploads/'+value[0]+'" style="width: 65px; height: 65px"/> </figure>'+'</a></li></ul>'+'&nbsp;&nbsp;&nbsp;');
                                                             } else {
                                                                 entitySelector.append('<li class="errorLi"><img src="/template/img/reaction/sad.png"  style="width: 25px; height: 25px" >&nbsp;&nbsp;Aucune Competition trouvée</li>');
 
@@ -153,7 +153,7 @@
 
                                     <li class="row">
                                         <div class="icon-box col-4">
-                                            <img class="img-fluid img-thumbnail" src="{{ asset('template/img/cover/'~x.imageC) }}" alt="Awesome Image">
+                                            <img class="img-fluid img-thumbnail" src="{{ asset('uploads/'~x.imageC) }}" alt="Awesome Image">
                                         </div>
                                         <div class="text-box col-8 p-l-0">
                                             <h5 class="m-b-0"><a href="#">{{x.Titre}}</a></h5>
@@ -194,7 +194,7 @@
                                 <ul class="list-unstyled instagram-plugin m-b-0">
 
 
-                                    <li><a href="#"><img src="{{ asset('template/img/cover/'~c.imageC) }}" alt="image description"></a></li>
+                                    <li><a href="#"><img src="{{ asset('uploads/'~c.imageC) }}" alt="image description"></a></li>
                                 </ul>
                             {% endfor %}
 

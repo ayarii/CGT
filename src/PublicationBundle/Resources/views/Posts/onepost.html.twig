@@ -6,7 +6,7 @@
         <article class="post-open">
             <!-- POST OPEN COVER -->
             <figure class="post-open-cover liquid">
-                <img src="{{ asset('template/img/avatar/'~app.user.imguser) }}" alt="cover-19">
+                <img src="{{ asset('uploads/'~app.user.imguser) }}" alt="cover-19">
             </figure>
             <!-- /POST OPEN COVER -->
 
@@ -45,7 +45,7 @@
                             <!-- USER AVATAR CONTENT -->
                             <div class="user-avatar-content">
                                 <!-- HEXAGON -->
-                                <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~app.user.imguser) }}"></div>
+                                <div class="hexagon-image-30-32" data-src="{{ asset('uploads/'~app.user.imguser) }}"></div>
                                 <!-- /HEXAGON -->
                             </div>
                             <!-- /USER AVATAR CONTENT -->
@@ -142,7 +142,7 @@
                                                     <!-- USER AVATAR CONTENT -->
                                                     <div class="user-avatar-content">
                                                         <!-- HEXAGON -->
-                                                        <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~post.idauthor.imguser) }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                                        <div class="hexagon-image-30-32" data-src="{{ asset('uploads/'~post.idauthor.imguser) }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
                                                         <!-- /HEXAGON -->
                                                     </div>
                                                     <!-- /USER AVATAR CONTENT -->
@@ -429,7 +429,7 @@
                                     <!-- USER AVATAR CONTENT -->
                                     <div class="user-avatar-content">
                                         <!-- HEXAGON -->
-                                        <div class="hexagon-image-30-32" data-src="{{ 'template/img/avatar/'~comment.idUser.imguser }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                        <div class="hexagon-image-30-32" data-src="{{ 'uploads/'~comment.idUser.imguser }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
                                         <!-- /HEXAGON -->
                                     </div>
                                     <!-- /USER AVATAR CONTENT -->
@@ -528,7 +528,7 @@
                                                             <a class="simple-dropdown-link" id="ModifierCommentaire" >Edit comment</a>
                                                             <div class="popup12"  style="display: none;">
                                                                 <form action="{{ path('commentaire_modif',{ id: comment.id} ) }}" class="popup12-content">
-                                                                    <img src="{{ asset('template/img/avatar/'~app.user.imguser) }}" alt="utilisateur">
+                                                                    <img src="{{ asset('uploads/'~app.user.imguser) }}" alt="utilisateur">
                                                                     <input type="text" id="commentaire_modif_contenue" name="contenue" >
                                                                     <button type="submit">Edit</button>
                                                                 </form>
@@ -568,7 +568,7 @@
                             <!-- USER AVATAR CONTENT -->
                             <div class="user-avatar-content">
                                 <!-- HEXAGON -->
-                                <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~app.user.imguser) }}"></div>
+                                <div class="hexagon-image-30-32" data-src="{{ asset('uploads/'~app.user.imguser) }}"></div>
                                 <!-- /HEXAGON -->
                             </div>
                             <!-- /USER AVATAR CONTENT -->

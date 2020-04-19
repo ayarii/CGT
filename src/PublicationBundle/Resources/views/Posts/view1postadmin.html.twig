@@ -89,7 +89,7 @@
                                 {% for comment in comments %}
                                     {% if comment.post.id==post.id %}
                                      <li class="row">
-                                    <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="{{ asset('template/img/avatar/'~comment.idUser.imguser) }}" alt="Awesome Image"></div>
+                                    <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="{{ asset('uploads/'~comment.idUser.imguser) }}" alt="Awesome Image"></div>
                                     <div class="text-box col-md-10 col-8 p-l-0 p-r0">
                                         <h5 class="m-b-0">{{ comment.idUser.username }}</h5>
                                         <p>{{ comment.contenue }}</p>

@@ -26,7 +26,7 @@
                         <!-- USER AVATAR CONTENT -->
                         <div class="user-avatar-content">
                             <!-- HEXAGON -->
-                            <div class="hexagon-image-100-110" data-src="{{ asset('template/img/avatar/'~utilisateur.imguser) }}"></div>
+                            <div class="hexagon-image-100-110" data-src="{{ asset('uploads/'~utilisateur.imguser) }}"></div>
                             <!-- /HEXAGON -->
                         </div>
                         <!-- /USER AVATAR CONTENT -->
@@ -86,7 +86,7 @@
                         <!-- USER AVATAR CONTENT -->
                         <div class="user-avatar-content">
                             <!-- HEXAGON -->
-                            <div class="hexagon-image-82-90" data-src="{{ asset('template/img/avatar/'~utilisateur.imguser) }}"></div>
+                            <div class="hexagon-image-82-90" data-src="{{ asset('uploads/'~utilisateur.imguser) }}"></div>
                             <!-- /HEXAGON -->
                         </div>
                         <!-- /USER AVATAR CONTENT -->
@@ -545,7 +545,7 @@
                                                 <!-- USER AVATAR CONTENT -->
                                                 <div class="user-avatar-content">
                                                     <!-- HEXAGON -->
-                                                    <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~post.idauthor.imguser) }}"></div>
+                                                    <div class="hexagon-image-30-32" data-src="{{ asset('uploads/'~post.idauthor.imguser) }}"></div>
                                                     <!-- /HEXAGON -->
                                                 </div>
                                                 <!-- /USER AVATAR CONTENT -->
@@ -641,7 +641,7 @@
                                                             <!-- USER AVATAR CONTENT -->
                                                             <div class="user-avatar-content">
                                                                 <!-- HEXAGON -->
-                                                                <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~post.idauthor.imguser) }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                                                <div class="hexagon-image-30-32" data-src="{{ asset('uploads/'~post.idauthor.imguser) }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
                                                                 <!-- /HEXAGON -->
                                                             </div>
                                                             <!-- /USER AVATAR CONTENT -->
@@ -848,7 +848,7 @@
                                                                 <!-- USER AVATAR CONTENT -->
                                                                 <div class="user-avatar-content">
                                                                     <!-- HEXAGON -->
-                                                                    <div class="hexagon-image-18-20" data-src="{{ asset('template/img/avatar/'~ v.idUser.imguser)}}"></div>
+                                                                    <div class="hexagon-image-18-20" data-src="{{ asset('uploads/'~ v.idUser.imguser)}}"></div>
                                                                     <!-- /HEXAGON -->
                                                                 </div>
                                                                 <!-- /USER AVATAR CONTENT -->
@@ -1005,7 +1005,7 @@
                                             <!-- USER AVATAR CONTENT -->
                                             <div class="user-avatar-content">
                                                 <!-- HEXAGON -->
-                                                <div class="hexagon-image-30-32" data-src="{{ 'template/img/avatar/'~comment.idUser.imguser }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                                <div class="hexagon-image-30-32" data-src="{{ 'uploads/'~comment.idUser.imguser }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
                                                 <!-- /HEXAGON -->
                                             </div>
                                             <!-- /USER AVATAR CONTENT -->
@@ -1127,7 +1127,7 @@
                                     <!-- USER AVATAR CONTENT -->
                                     <div class="user-avatar-content">
                                         <!-- HEXAGON -->
-                                        <div class="hexagon-image-30-32" data-src="{{asset('template/img/avatar/')~app.user.imguser}}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                        <div class="hexagon-image-30-32" data-src="{{asset('uploads/')~app.user.imguser}}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
                                         <!-- /HEXAGON -->
                                     </div>
                                     <!-- /USER AVATAR CONTENT -->
@@ -1497,7 +1497,7 @@
                 processData: true,
                 success:function(data)
                 {   $("#idpost").val(idc);
-                    var imguser="/template/img/avatar/"+data['imguser'];
+                    var imguser="/uploads/"+data['imguser'];
                     var source="{{ asset('imguser') }}";
                     $('#usersh').attr("data-src",imguser);
                     var username=data['nameuser'];
