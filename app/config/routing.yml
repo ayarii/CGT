@@ -1,6 +1,4 @@
 
-
-
 messagerie:
     resource: "@MessagerieBundle/Resources/config/routing.yml"
     prefix:   /

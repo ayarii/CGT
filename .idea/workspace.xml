@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="62e544ca-5f8d-467c-b7f4-712d77a8da7e" name="Default Changelist" comment="" />
+    <list default="true" id="62e544ca-5f8d-467c-b7f4-712d77a8da7e" name="Default Changelist" comment="ReclamationBundle">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/AppKernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/AppKernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/routing.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ReclamationBundle/Resources/views/Reclamation/ajouterReclamation.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ReclamationBundle/Resources/views/Reclamation/consultReclamation.html.twig" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -164,7 +171,6 @@
       <command value="s doctrine:generate:form CompetitionBundle:Competition" />
       <command value="s fos:user:promote test ROLE_SUPER_ADMIN" />
       <command value="s doctrine:generate:form MessagerieBundle:Message" />
-      <command value="s doctrine:generate:entity" />
       <command value="s doctrine:generate:form" />
       <command value="s doctrine:generate:form MessagerieBundle:Conversation" />
       <command value="open console" />
@@ -196,8 +202,6 @@
       <command value="composer self-update" />
       <command value="c install" />
       <command value="c self-update" />
-      <command value="s doctrine:database:create" />
-      <command value="s doctrine:schema:create" />
       <command value="c update" />
       <command value="s cache:clear" />
       <command value="c dump-autoload" />
@@ -206,10 +210,14 @@
       <command value="s doctrine:mapping:import AppBundle Entity annotation" />
       <command value="s doctrine:mapping:import AppBundle : Entity" />
       <command value="s doctrine:mapping:import AppBundle annotation" />
-      <command value="s doctrine:schema:update --force" />
-      <command value="s server:run" />
       <command value="s generate:bundle" />
+      <command value="s doctrine:generate:entity" />
+      <command value="s doctrine:schema:create" />
+      <command value="s doctrine:database:create" />
+      <command value="s doctrine:schema:update --force" />
       <command value="s generate:controller" />
+      <command value="s fos:user:create" />
+      <command value="s server:run" />
     </option>
   </component>
   <component name="RunManager">
@@ -282,8 +290,7 @@
       <workItem from="1587161408535" duration="9000" />
       <workItem from="1587166505928" duration="122000" />
       <workItem from="1587216942222" duration="1880000" />
-      <workItem from="1587230379555" duration="1161000" />
-      <workItem from="1587320517682" duration="241000" />
+      <workItem from="1587230379555" duration="9516000" />
     </task>
     <task id="LOCAL-00001" summary="oussema">
       <created>1587231391634</created>
@@ -292,7 +299,28 @@
       <option name="project" value="LOCAL" />
       <updated>1587231391634</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="oussema">
+      <created>1587231571276</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1587231571276</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ReclamationBundle">
+      <created>1587231714237</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1587231714237</updated>
+    </task>
+    <task id="LOCAL-00004" summary="ReclamationBundle">
+      <created>1587309038668</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1587309038668</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,7 +328,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="oussema" />
-    <option name="LAST_COMMIT_MESSAGE" value="oussema" />
+    <MESSAGE value="ReclamationBundle" />
+    <option name="LAST_COMMIT_MESSAGE" value="ReclamationBundle" />
   </component>
   <component name="WindowStateProjectService">
     <state x="380" y="36" width="620" height="656" key="#Fos" timestamp="1584072685168">
@@ -315,53 +344,53 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="453" y="175" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1583269837964" />
-    <state x="485" y="84" key="#com.intellij.ide.util.MemberChooser" timestamp="1587130697174">
+    <state x="485" y="84" key="#com.intellij.ide.util.MemberChooser" timestamp="1587243487004">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="485" y="84" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1587130697174" />
+    <state x="485" y="84" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1587243487004" />
     <state x="545" y="95" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585182253459" />
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587127958056">
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587244924976">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1587127958056" />
+    <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1587244924976" />
     <state x="464" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585282518919" />
     <state x="484" y="230" key="#com.jetbrains.php.framework.ui.FailedToParseDialog" timestamp="1587231107684">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="484" y="230" key="#com.jetbrains.php.framework.ui.FailedToParseDialog/0.0.1366.728@0.0.1366.728" timestamp="1587231107684" />
-    <state x="218" y="0" key="CommitChangelistDialog2" timestamp="1587231389638">
+    <state x="218" y="0" key="CommitChangelistDialog2" timestamp="1587309363929">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="218" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587231389638" />
+    <state x="218" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587309363929" />
     <state x="407" y="256" key="ComposerCompositePathDialog" timestamp="1587229913229">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="407" y="256" key="ComposerCompositePathDialog/0.0.1366.728@0.0.1366.728" timestamp="1587229913229" />
     <state x="458" y="290" key="ComposerCompositePathDialog/0.0.1536.824@0.0.1536.824" timestamp="1584849465720" />
-    <state x="462" y="109" key="FileChooserDialogImpl" timestamp="1587231171301">
+    <state x="462" y="109" key="FileChooserDialogImpl" timestamp="1587245908588">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="462" y="109" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587231171301" />
+    <state x="462" y="109" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587245908588" />
     <state x="519" y="123" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585189446351" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1587231541143">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1587321098996">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587231541143" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587321098996" />
     <state width="1493" height="183" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1587231541143">
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1587321098996">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587231541143" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587321098996" />
     <state width="1493" height="183" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1587231541143">
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1587321098996">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587231541143" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587321098996" />
     <state width="1493" height="183" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1587231541143">
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1587321098996">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587231541143" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587321098996" />
     <state width="1493" height="183" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
     <state x="468" y="199" key="NewPhpClassDialog" timestamp="1587122121363">
       <screen x="0" y="0" width="1366" height="728" />
@@ -377,23 +406,27 @@
     </state>
     <state x="454" y="279" key="SymfonyPathDialog/0.0.1366.728@0.0.1366.728" timestamp="1587231175031" />
     <state x="511" y="316" key="SymfonyPathDialog/0.0.1536.824@0.0.1536.824" timestamp="1584849486228" />
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1587309041669">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587309041669" />
     <state x="391" y="193" width="530" height="350" key="com.intellij.ide.util.TipDialog" timestamp="1587153835355">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="391" y="193" width="530" height="350" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1587153835355" />
     <state x="440" y="218" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586779967101" />
-    <state x="492" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587228987246">
+    <state x="492" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587321135875">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1587228987246" />
+    <state x="492" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1587321135875" />
     <state x="462" y="10" width="613" height="804" key="find.popup" timestamp="1586270789578">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="462" y="10" width="613" height="804" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1586270789578" />
-    <state x="609" y="123" width="672" height="400" key="run.anything.popup" timestamp="1587320823799">
+    <state x="609" y="123" width="672" height="400" key="run.anything.popup" timestamp="1587321099016">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="609" y="123" width="672" height="400" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1587320823799" />
+    <state x="609" y="123" width="672" height="400" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1587321099016" />
     <state x="685" y="138" width="756" height="767" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1586783257557" />
     <state x="389" y="55" width="756" height="768" key="search.everywhere.popup" timestamp="1586281561981">
       <screen x="0" y="0" width="1536" height="824" />
