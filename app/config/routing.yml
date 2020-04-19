@@ -1,7 +1,7 @@
 reclamation:
-    resource: "@ReclamationBundle/Controller/"
-    type:     annotation
+    resource: "@ReclamationBundle/Resources/config/routing.yml"
     prefix:   /
+
 
 messagerie:
     resource: "@MessagerieBundle/Resources/config/routing.yml"
