@@ -2,46 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62e544ca-5f8d-467c-b7f4-712d77a8da7e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/Composer_19_04_2020_20_40_c.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_19_04_2020_20_40_s.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Composer_18_04_2020_6_11_PM_c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/commandlinetools/Composer_18_04_2020_6_11_PM_c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_18_04_2020_6_32_PM_s.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_18_04_2020_6_32_PM_s.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/Controller/ChangePasswordController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/Controller/GroupController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/Controller/ProfileController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/Controller/RegistrationController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/Controller/ResettingController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/Controller/SecurityController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/baseLouay.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/baseLouay.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/baseamine.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/baseamine.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/default/admin.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/test.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bootstrap.php.cache" beforeDir="false" afterPath="$PROJECT_DIR$/app/bootstrap.php.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Form/RegistrationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Form/RegistrationType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Controller/CompetitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Controller/CompetitionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Form/CompetitionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Form/CompetitionType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/ChangePassword/change_password_content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/ChangePassword/change_password_content.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/show_content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/show_content.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/baseLouay.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/baseAll.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/baseamine.html.twig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/Ticket.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/Ticket.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/afficherCompetition.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/afficherCompetition.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/afficherCompetitionAdmin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/afficherCompetitionAdmin.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/afficherCompetitionUser.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/afficherCompetitionUser.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/ajouterCompetition.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/ajouterCompetition.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/detail.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/can.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/can.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/detailComp.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/detailComp.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/modifierCompetition.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/modifierCompetition.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FOSBundle/Resources/views/Default/friends.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/profile.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FOSBundle/Resources/views/Default/invitations.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/FOSBundle/Resources/views/Default/invitations.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessagerieBundle/Resources/views/Messagerie/affichConversation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/MessagerieBundle/Resources/views/Messagerie/affichConversation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessagerieBundle/Resources/views/Messagerie/affichMessage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/MessagerieBundle/Resources/views/Messagerie/affichMessage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FOSBundle/Resources/views/Default/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/FOSBundle/Resources/views/Default/profile.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/Acceuil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/Acceuil.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/edit-post.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/edit-post.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/onepost.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/onepost.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/profile.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/view1postadmin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/view1postadmin.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/template/img/cover/15.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,7 +302,7 @@
       <workItem from="1587166505928" duration="122000" />
       <workItem from="1587216942222" duration="1880000" />
       <workItem from="1587230379555" duration="1161000" />
-      <workItem from="1587320517682" duration="8948000" />
+      <workItem from="1587320517682" duration="10434000" />
     </task>
     <task id="LOCAL-00001" summary="oussema">
       <created>1587231391634</created>
@@ -340,7 +318,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587320870260</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="supression des fichier inutiles et modification d l'upload d'image du user">
+      <created>1587336719642</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1587336719642</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,7 +334,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="oussema" />
     <MESSAGE value="Deleting ReclamationBundle" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleting ReclamationBundle" />
+    <MESSAGE value="supression des fichier inutiles et modification d l'upload d'image du user" />
+    <option name="LAST_COMMIT_MESSAGE" value="supression des fichier inutiles et modification d l'upload d'image du user" />
   </component>
   <component name="WindowStateProjectService">
     <state x="380" y="36" width="620" height="656" key="#Fos" timestamp="1584072685168">
@@ -369,10 +355,10 @@
     </state>
     <state x="485" y="84" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1587130697174" />
     <state x="545" y="95" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585182253459" />
-    <state x="413" y="112" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587335503926">
+    <state x="413" y="112" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587337748113">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="112" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1587335503926" />
+    <state x="413" y="112" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1587337748113" />
     <state x="413" y="120" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587332732317">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -382,10 +368,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="484" y="230" key="#com.jetbrains.php.framework.ui.FailedToParseDialog/0.0.1366.728@0.0.1366.728" timestamp="1587324654188" />
-    <state x="218" y="0" key="CommitChangelistDialog2" timestamp="1587320866243">
+    <state x="282" y="0" key="CommitChangelistDialog2" timestamp="1587336709921">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="218" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587320866243" />
+    <state x="282" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587336709921" />
     <state x="407" y="256" key="ComposerCompositePathDialog" timestamp="1587325214186">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -396,25 +382,25 @@
     </state>
     <state x="462" y="109" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587325221367" />
     <state x="519" y="123" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585189446351" />
-    <state width="1323" height="140" key="GridCell.Tab.0.bottom" timestamp="1587336415727">
+    <state width="1323" height="140" key="GridCell.Tab.0.bottom" timestamp="1587337771439">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587336415727" />
+    <state width="1323" height="140" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587337771439" />
     <state width="1493" height="183" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
-    <state width="1323" height="140" key="GridCell.Tab.0.center" timestamp="1587336415726">
+    <state width="1323" height="140" key="GridCell.Tab.0.center" timestamp="1587337771438">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587336415726" />
+    <state width="1323" height="140" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587337771438" />
     <state width="1493" height="183" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
-    <state width="1323" height="140" key="GridCell.Tab.0.left" timestamp="1587336415725">
+    <state width="1323" height="140" key="GridCell.Tab.0.left" timestamp="1587337771438">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587336415725" />
+    <state width="1323" height="140" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587337771438" />
     <state width="1493" height="183" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
-    <state width="1323" height="140" key="GridCell.Tab.0.right" timestamp="1587336415726">
+    <state width="1323" height="140" key="GridCell.Tab.0.right" timestamp="1587337771439">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587336415726" />
+    <state width="1323" height="140" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587337771439" />
     <state width="1493" height="183" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
     <state x="468" y="199" key="NewPhpClassDialog" timestamp="1587122121363">
       <screen x="0" y="0" width="1366" height="728" />
@@ -430,10 +416,10 @@
     </state>
     <state x="454" y="279" key="SymfonyPathDialog/0.0.1366.728@0.0.1366.728" timestamp="1587325223510" />
     <state x="511" y="316" key="SymfonyPathDialog/0.0.1536.824@0.0.1536.824" timestamp="1584849486228" />
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1587320877123">
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1587336786343">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587320877123" />
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587336786343" />
     <state x="391" y="193" width="530" height="350" key="com.intellij.ide.util.TipDialog" timestamp="1587153835355">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
