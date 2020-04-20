@@ -1,7 +1,6 @@
 ﻿{% extends 'baseAll.html.twig' %}
 
 {% block body %}
-    </br>
     {% set postid='' %}
 <div class="content-grid">
 
@@ -1094,10 +1093,18 @@
                         </div>
                         <!-- /WIDGET BOX STATUS CONTENT -->
                         {% if post.type == "img" %}
-                            <img class="img-responsive" alt="photo" width="304" height="236"src="{{ asset('/uploads/img/') ~ post.contenue }}" alt="photo-preview-10">
-                            <!-- /IFRAME WRAP -->
+
+                            <!-- WIDGET BOX PICTURE -->
+                            <figure class="widget-box-picture popup-picture-trigger">
+                                <img src="{{ asset('/uploads/img/') ~ post.contenue }}" alt="cover-04">
+                            </figure>
+                            <!-- /WIDGET BOX PICTURE -->
                         {% elseif post.type == "video" %}
-                            <video class="video-fluid" width="304" height="236" src="{{ asset('/uploads/video/') ~ post.contenue }}" ></video>
+                            <!-- IFRAME WRAP -->
+                            <div class="iframe-wrap">
+                                <iframe src="{{ asset('/uploads/video/') ~ post.contenue }}" allowfullscreen></iframe>
+                            </div>
+                            <!-- /IFRAME WRAP -->
                         {% elseif post.type == "shared" %}
                             {% set trv=0 %}
                             {%for popo in posts  %}
@@ -1655,7 +1662,7 @@
                                         <label for="contenue">Your Reply</label>
                                         <input type="text" id="commentaire_add_contenue" name="contenue" required>
                                         {% if user %}
-                                            <button class="form btn btn-outline-dark"  type="submit">Reply</button>
+
                                         {% else %}
                                             <a href="{{ path('fos_user_security_login') }}" >Login !</a>
                                         {% endif %}
