@@ -36,7 +36,7 @@ class CompetitionType extends AbstractType
                 'format' => 'yyyy-MM-dd',
             ])
             ->add('cout')
-            ->add('file')
+
             ->add('valider',SubmitType::class);
 
     }/**

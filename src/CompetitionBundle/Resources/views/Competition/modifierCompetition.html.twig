@@ -1,4 +1,4 @@
-{% extends 'baseLouay.html.twig' %}
+{% extends 'baseAll.html.twig' %}
 
 {% block body %}
 
@@ -151,7 +151,7 @@
 
                         <div class="custom-file">
                             <label class="custom-file-label" for="customFile">Choose file</label>
-                            {{ form_widget(form.file,{'attr':{ 'id':'customFile','class':'custom-file-input'}})}}
+                            {{ form_widget(form.imagec,{'attr':{ 'id':'customFile','class':'custom-file-input'}})}}
                         </div>
 
 
@@ -247,7 +247,7 @@
                             <div class="event-preview small">
                                 <!-- EVENT PREVIEW COVER -->
                                 <figure class="event-preview-cover liquid">
-                                    <img src="{{ asset('template/img/cover/'~c.imageC) }}" alt="cover-33">
+                                    <img src="{{ asset('uploads/'~c.imageC) }}" alt="cover-33">
                                 </figure>
                                 <!-- /EVENT PREVIEW COVER -->
 
@@ -300,7 +300,7 @@
                                                     <!-- USER AVATAR CONTENT -->
                                                     <div class="user-avatar-content">
                                                         <!-- HEXAGON -->
-                                                        <div class="hexagon-image-18-20" data-src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}"></div>
+                                                        <div class="hexagon-image-18-20" data-src="{{ asset('uploads/'~par.iduser.imguser) }}"></div>
                                                         <!-- /HEXAGON -->
                                                     </div>
                                                     <!-- /USER AVATAR CONTENT -->

@@ -33,48 +33,6 @@
 
 {% block header %}
 
-    <!-- PAGE LOADER -->
-    <div class="page-loader">
-        <!-- PAGE LOADER DECORATION -->
-        <div class="page-loader-decoration">
-            <!-- ICON LOGO -->
-            <svg class="icon-logo" viewBox="0 0 28 40" preserveAspectRatio="xMinYMin meet">
-                <img src="{{ asset('template/img/landing/vikinger-logo.png') }}" alt="">
-            </svg>
-            <!-- /ICON LOGO -->
-        </div>
-        <!-- /PAGE LOADER DECORATION -->
-
-        <!-- PAGE LOADER INFO -->
-        <div class="page-loader-info">
-            <!-- PAGE LOADER INFO TITLE -->
-            <p class="page-loader-info-title">Tunisian Got Talent </p>
-            <!-- /PAGE LOADER INFO TITLE -->
-
-            <!-- PAGE LOADER INFO TEXT -->
-            <p class="page-loader-info-text">Loading...</p>
-            <!-- /PAGE LOADER INFO TEXT -->
-        </div>
-        <!-- /PAGE LOADER INFO -->
-
-        <!-- PAGE LOADER INDICATOR -->
-        <div class="page-loader-indicator loader-bars">
-            <div class="loader-bar"></div>
-            <div class="loader-bar"></div>
-            <div class="loader-bar"></div>
-            <div class="loader-bar"></div>
-            <div class="loader-bar"></div>
-            <div class="loader-bar"></div>
-            <div class="loader-bar"></div>
-            <div class="loader-bar"></div>
-        </div>
-        <!-- /PAGE LOADER INDICATOR -->
-    </div>
-    <!-- /PAGE LOADER -->
-
-
-
-
     <!-- NAVIGATION WIDGET -->
     <nav id="navigation-widget-small" class="navigation-widget navigation-widget-desktop closed sidebar left delayed">
         <!-- USER AVATAR -->
@@ -82,7 +40,7 @@
             <!-- USER AVATAR CONTENT -->
             <div class="user-avatar-content">
                 <!-- HEXAGON -->
-                <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~app.user.imguser) }}"></div>
+                <div class="hexagon-image-30-32" data-src="{{ asset('uploads/'~app.user.imguser) }}"></div>
                 <!-- /HEXAGON -->
             </div>
             <!-- /USER AVATAR CONTENT -->
@@ -288,7 +246,7 @@
                 <!-- USER AVATAR CONTENT -->
                 <div class="user-avatar-content">
                     <!-- HEXAGON -->
-                    <div class="hexagon-image-82-90"  data-src="{{ asset('template/img/avatar/'~app.user.imguser) }}"></div>
+                    <div class="hexagon-image-82-90"  data-src="{{ asset('uploads/'~app.user.imguser) }}"></div>
                     <!-- /HEXAGON -->
                 </div>
                 <!-- /USER AVATAR CONTENT -->
@@ -4020,7 +3978,7 @@
                                     <!-- USER AVATAR CONTENT -->
                                     <div class="user-avatar-content">
                                         <!-- HEXAGON -->
-                                        <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~app.user.imguser) }}"></div>
+                                        <div class="hexagon-image-30-32" data-src="{{ asset('uploads/'~app.user.imguser) }}"></div>
                                         <!-- /HEXAGON -->
                                     </div>
                                     <!-- /USER AVATAR CONTENT -->
@@ -4114,10 +4072,10 @@
 
                     <!-- DROPDOWN NAVIGATION BUTTON -->
                     <a href="{{ path('fos_user_security_logout') }}" title="">
-                        <p class="dropdown-navigation-button button small secondary">
-                            Logout
+                    <p class="dropdown-navigation-button button small secondary">
+                        Logout
 
-                        </p>s
+                    </p>
                     </a>
                     <!-- /DROPDOWN NAVIGATION BUTTON -->
                 </div>

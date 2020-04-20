@@ -1,4 +1,4 @@
-{% extends 'baseLouay.html.twig' %}
+{% extends 'baseAll.html.twig' %}
 
 
 {% block body %}
@@ -97,7 +97,7 @@
 
 
                                                         entitySelector.append('' +
-                                                            '<li class="badge-item-stat-title" >'+value[1]+'<a href="/detailuser/'+id+'">'+' &nbsp; '+' <figure class="product-preview-image liquid"><img src="/template/img/cover/'+value[0]+'" style="width: 100px; height: 100px"/> </figure>'+'</a></li>'+'&nbsp;&nbsp;&nbsp;');
+                                                            '<li class="badge-item-stat-title" >'+value[1]+'<a href="/detailuser/'+id+'">'+' &nbsp; '+' <figure class="product-preview-image liquid"><img src="/uploads/'+value[0]+'" style="width: 100px; height: 100px"/> </figure>'+'</a></li>'+'&nbsp;&nbsp;&nbsp;');
                                                     } else {
                                                         entitySelector.append('<li class="errorLi">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/template/img/reaction/sad.png"  style="width: 25px; height: 25px" >&nbsp;&nbsp;Aucune Competition trouvée</li>');
 
@@ -432,81 +432,6 @@
                                 <!-- SIDEBAR MENU BODY -->
                                 <div class="sidebar-menu-body accordion-content-linked">
 
-                                    {# <!-- CALENDAR EVENT PREVIEW LIST -->
-                                     <div class="calendar-event-preview-list">
-                                         {% for t in Trending %}
-
-
-
-                                             <!-- USER STATUS LIST -->
-                                             <div class="user-status-list scroll-content">
-                                                 <!-- USER STATUS -->
-                                                 <div class="user-status notification">
-                                                     <!-- USER STATUS AVATAR -->
-                                                     <a class="user-status-avatar" href="profile-timeline.html">
-                                                         <!-- USER AVATAR -->
-                                                         <div class="user-avatar small no-outline">
-                                                             <!-- USER AVATAR CONTENT -->
-                                                             <div class="user-avatar-content">
-                                                                 <!-- HEXAGON -->
-                                                                 <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~t.idUser.imguser) }}"></div>
-                                                                 <!-- /HEXAGON -->
-                                                             </div>
-                                                             <!-- /USER AVATAR CONTENT -->
-
-                                                             <!-- USER AVATAR PROGRESS -->
-                                                             <div class="user-avatar-progress">
-                                                                 <!-- HEXAGON -->
-                                                                 <div class="hexagon-progress-40-44"></div>
-                                                                 <!-- /HEXAGON -->
-                                                             </div>
-                                                             <!-- /USER AVATAR PROGRESS -->
-
-                                                             <!-- USER AVATAR PROGRESS BORDER -->
-                                                             <div class="user-avatar-progress-border">
-                                                                 <!-- HEXAGON -->
-                                                                 <div class="hexagon-border-40-44"></div>
-                                                                 <!-- /HEXAGON -->
-                                                             </div>
-                                                             <!-- /USER AVATAR PROGRESS BORDER -->
-
-                                                         </div>
-                                                         <!-- /USER AVATAR -->
-                                                     </a>
-                                                     <!-- /USER STATUS AVATAR -->
-                                                     <!-- USER STATUS TITLE -->
-                                                     <p class="user-status-title"><a class="bold" href="#">{{ t.idUser.username }}</a> a ajouter la compétition <a class="highlighted" href="#"><strong>{{ t.Titre }}</strong></a></p>
-                                                     <!-- /USER STATUS TITLE -->
-                                                 </div>
-                                                 <!-- /USER AVATAR BADGE -->
-                                             </div>
-                                             <!-- /USER AVATAR -->
-
-
-
-                                             <!-- CALENDAR EVENT PREVIEW -->
-                                             <div class="calendar-event-preview secondary">
-                                                 <!-- CALENDAR EVENT PREVIEW INFO -->
-                                                 <div class="calendar-event-preview-info">
-                                                     <!-- CALENDAR EVENT PREVIEW TEXT -->
-                                                     <p class="calendar-event-preview-text">{{ t.Description }}</p>
-                                                     <!-- /CALENDAR EVENT PREVIEW TEXT -->
-
-                                                     <!-- CALENDAR EVENT PREVIEW TITLE -->
-                                                     <p class="calendar-event-preview-time">
-                                                         <i class="fa fa-clock-o" style="font-size:15px;color:deepskyblue"></i>
-                                                         <span class="bold">{{t.DateDebut|date('F jS ') }}</span>  -
-                                                         <i class="fa fa-clock-o" style="font-size:15px;color:red"></i>
-                                                         <span class="bold">{{t.DateFin|date('F jS ') }}</span> </p>
-                                                     <!-- /CALENDAR EVENT PREVIEW TITLE -->
-                                                 </div>
-                                                 <!-- /CALENDAR EVENT PREVIEW INFO -->
-                                             </div>
-                                             <!-- /CALENDAR EVENT PREVIEW -->
-                                         {% endfor %}
-                                     </div>
-                                     <!-- /CALENDAR EVENT PREVIEW LIST -->#}
-
 
 
                                     <!-- GRID -->
@@ -516,7 +441,7 @@
                                             <div class="user-preview landscape">
                                                 <!-- USER PREVIEW COVER -->
                                                 <figure class="user-preview-cover liquid">
-                                                    <img src="{{ asset('template/img/cover/'~t.imageC) }}" alt="cover-29">
+                                                    <img src="{{ asset('uploads/'~t.imageC) }}" alt="cover-29">
                                                 </figure>
                                                 <!-- /USER PREVIEW COVER -->
 
@@ -537,7 +462,7 @@
                                                             <!-- USER AVATAR CONTENT -->
                                                             <div class="user-avatar-content">
                                                                 <!-- HEXAGON -->
-                                                                <div class="hexagon-image-40-44" data-src="{{ asset('template/img/avatar/'~t.idUser.imguser) }}"></div>
+                                                                <div class="hexagon-image-40-44" data-src="{{ asset('uploads/'~t.idUser.imguser) }}"></div>
                                                                 <!-- /HEXAGON -->
                                                             </div>
                                                             <!-- /USER AVATAR CONTENT -->
@@ -614,7 +539,7 @@
                                                                 <div class="user-avatar-content">
                                                                     <!-- HEXAGON -->
                                                                     <a href="{{ path('profile', {'id':par.iduser.id})  }}">
-                                                                    <div class="hexagon-image-30-32"  data-src="{{ asset('template/img/avatar/'~par.idUser.imguser) }}"></div>
+                                                                    <div class="hexagon-image-30-32"  data-src="{{ asset('uploads/'~par.idUser.imguser) }}"></div>
                                                                     </a>
                                                                         <!-- /HEXAGON -->
                                                                 </div>
@@ -768,7 +693,7 @@
                         <!-- EVENT PREVIEW COVER -->
                         <a href="{{ path('detailuser', {'id':c.idCompetition})  }}">
                             <figure class="event-preview-cover liquid">
-                                <img src="{{ asset('template/img/cover/'~c.imageC ) }}" alt="cover-33">
+                                <img src="{{ asset('uploads/'~c.imageC ) }}" alt="cover-33">
                             </figure>
                         </a>
                         <!-- /EVENT PREVIEW COVER -->
@@ -861,7 +786,7 @@
                                                 <div class="user-avatar-content"  >
                                                     <!-- HEXAGON -->
                                                     <a href="{{ path('profile', {'id':par.iduser.id})  }}">
-                                                    <div class="hexagon-image-18-20"  data-src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}" ></div>
+                                                    <div class="hexagon-image-18-20"  data-src="{{ asset('uploads/'~par.iduser.imguser) }}" ></div>
                                                     </a>
                                                         <!-- /HEXAGON -->
                                                 </div>
@@ -942,196 +867,7 @@
             <!-- /GRID -->
 
 
-            {# <!-- GRID -->
-             <div class="grid grid-3-3-3-3 centered">
 
-                 {%  for c in Competition %}
-
-                 <!-- PRODUCT PREVIEW -->
-                 <div class="product-preview">
-                     <!-- PRODUCT PREVIEW IMAGE -->
-                     <a href="{{ path('detailuser', {'id':c.idCompetition})  }}">
-                         <figure class="product-preview-image liquid">
-                             <img src="{{ asset('template/img/cover/'~c.imageC ) }}" alt="item-01">
-                         </figure>
-                     </a>
-                     <!-- /PRODUCT PREVIEW IMAGE -->
-
-                     <!-- PRODUCT PREVIEW INFO -->
-                     <div class="product-preview-info">
-                         {% if c.Cout ==0 %}
-                         <!-- TEXT STICKER -->
-                         <p class="text-sticker"><span class="highlighted">diamond:  </span>Gratuit</p>
-                         <!-- /TEXT STICKER -->
-
-                         {% else %}
-
-                         <!-- TEXT STICKER -->
-                         <p class="text-sticker"><span class="highlighted">diamond:  </span>{{c.Cout}}</p>
-                         <!-- /TEXT STICKER -->
-                         {% endif %}
-
-                         <!-- PRODUCT PREVIEW TITLE -->
-                         <p class="product-preview-title"><a href="{{ path('detailuser', {'id':c.idCompetition})  }}" >{{c.Titre}}</a></p>
-                         <!-- /PRODUCT PREVIEW TITLE -->
-
-                         <!-- PRODUCT PREVIEW CATEGORY -->
-                         <p class="product-preview-category digital"><a href="#">{{c.typedetalent}}</a></p>
-                         <!-- /PRODUCT PREVIEW CATEGORY -->
-
-                         <!-- PRODUCT PREVIEW TEXT -->
-                         <p class="product-preview-text" li>{{ c.Description }}</p>
-                         <!-- /PRODUCT PREVIEW TEXT -->
-                         <br>
-
-
-                         <!-- CONTENT ACTIONS -->
-                         <div class="content-actions">
-                             <!-- CONTENT ACTION -->
-                             <div class="content-action">
-                                 <!-- META LINE -->
-                                 <div class="meta-line">
-                                     <!-- META LINE LIST -->
-                                     <div class="meta-line-list reaction-item-list">
-                                         {% set total = 0 %}
-                                         {% for par in Participation if (par.idCompetition.idCompetition == c.idCompetition)  %}
-                                             {% set total = total + 1 %}
-
-                                             <!-- REACTION ITEM -->
-                                             <div class="reaction-item">
-                                                 <!-- REACTION IMAGE -->
-                                                 <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}" alt="reaction-happy">
-                                                 <!-- /REACTION IMAGE -->
-
-                                                 <!-- SIMPLE DROPDOWN -->
-                                                 <div class="simple-dropdown padded reaction-item-dropdown">
-                                                     <!-- SIMPLE DROPDOWN TEXT -->
-                                                     <p class="simple-dropdown-text"><img class="reaction" src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}" alt="reaction-happy"> <span class="bold">{{ par.iduser.username}}</span></p>
-                                                     <!-- /SIMPLE DROPDOWN TEXT -->
-
-                                                     <!-- SIMPLE DROPDOWN TEXT -->
-                                                     <p class="simple-dropdown-text">
-                                                         <i class="fa fa-at" style="font-size:10px;color:deepskyblue"></i>
-                                                         {{ par.iduser.email}}
-                                                     </p>
-                                                     <!-- /SIMPLE DROPDOWN TEXT -->
-
-                                                     <!-- SIMPLE DROPDOWN TEXT -->
-                                                     <p class="simple-dropdown-text">
-                                                         <i class="fa fa-diamond" style="font-size:10px;color:deepskyblue"></i>
-                                                         {{ par.iduser.nbdiament}}
-                                                     </p>
-                                                     <!-- /SIMPLE DROPDOWN TEXT -->
-
-                                                 </div>
-                                                 <!-- /SIMPLE DROPDOWN -->
-                                             </div>
-                                             <!-- /REACTION ITEM -->
-                                         {% endfor %}
-
-
-
-
-
-                                     </div>
-                                     <!-- /META LINE LIST -->
-
-                                     <!-- META LINE TEXT -->
-                                     <p class="meta-line-text">{{total}} <span>will assist</span></p>
-                                     <!-- /META LINE TEXT -->
-                                 </div>
-                                 <!-- /META LINE -->
-                             </div>
-                             <!-- /META LINE -->
-                         </div>
-                         <!-- /META LINE -->
-
-                     </div>
-                     <!-- /PRODUCT PREVIEW INFO -->
-
-
-                         {% if (c.participe == false) and (c.Cout <= app.user.nbdiament)%}
-
-                             <!-- BUTTON -->
-                             <a href="{{ path('ajouterparticipation', {'id':c.idCompetition,'type':c.Typedetalent})  }}">
-                             <p class="button secondary full">
-
-
-                                 <!-- BUTTON ICON -->
-                                 <svg class="button-icon icon-join-group">
-                                     <use xlink:href="#svg-join-group"></use>
-                                 </svg>
-                                 <!-- /BUTTON ICON -->
-                                 &nbsp; Participer
-
-                         </p>
-                             </a>
-                             <!-- /BUTTON -->
-
-                         {% elseif c.participe == true %}
-                             <a href="{{ path('supprimerparticipation', {'id':c.idCompetition,'id1':app.user.id})  }}">
-                             <button  class="button white white-tertiary">
-
-                                 <!-- BUTTON ICON -->
-                                 <svg class="button-icon icon-leave-group">
-                                     <use xlink:href="#svg-leave-group"></use>
-                                 </svg>
-                                 <!-- /BUTTON ICON -->
-                                     &nbsp; Supprimer Participation
-                             </button>
-                             </a>
-
-
-                         {% elseif c.Cout > app.user.nbdiament %}
-
-                             <button class="button white white-tertiary">
-                                 <a href="#" > <i class="fa fa-diamond" style="font-size:14px;color:deepskyblue"></i> &nbsp; gagner plus de diament</a>
-                             </button>
-
-                         {% endif %}
-
-
-
-
-
-
-                     <!-- PRODUCT PREVIEW META -->
-                     <div class="product-preview-meta">
-                         <!-- PRODUCT PREVIEW AUTHOR -->
-                         <div class="product-preview-author">
-                             <!-- PRODUCT PREVIEW AUTHOR IMAGE -->
-                             <a class="product-preview-author-image user-avatar micro no-border" href="profile-timeline.html">
-                                 <!-- USER AVATAR CONTENT -->
-                                 <div class="user-avatar-content">
-                                     <!-- HEXAGON -->
-                                     <div class="hexagon-image-18-20" data-src="{{ asset('template/img/avatar/'~c.idUser.imguser) }}"></div>
-                                     <!-- /HEXAGON -->
-                                 </div>
-                                 <!-- /USER AVATAR CONTENT -->
-                             </a>
-                             <!-- /PRODUCT PREVIEW AUTHOR IMAGE -->
-
-                             <!-- PRODUCT PREVIEW AUTHOR TITLE -->
-                             <p class="product-preview-author-title">Posted By</p>
-                             <!-- /PRODUCT PREVIEW AUTHOR TITLE -->
-
-                             <!-- PRODUCT PREVIEW AUTHOR TEXT -->
-                             <p class="product-preview-author-text"><a href="profile-timeline.html">{{ c.iduser }}</a></p>
-                             <!-- /PRODUCT PREVIEW AUTHOR TEXT -->
-                         </div>
-                         <!-- /PRODUCT PREVIEW AUTHOR -->
-
-
-                     </div>
-                     <!-- /PRODUCT PREVIEW META -->
-                 </div>
-                 <!-- /PRODUCT PREVIEW -->
-
-
-                 {% endfor %}
-
-             </div>
-             <!-- /GRID -->#}
 
             <!-- SECTION PAGER BAR -->
             <div class="section-pager-bar">

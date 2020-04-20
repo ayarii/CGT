@@ -3,6 +3,7 @@
 
 namespace AppBundle\Controller;
 
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 use FOS\UserBundle\FOSUserEvents;
@@ -10,6 +11,8 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use Symfony\Component\HttpFoundation\Request;
+
+
 
 class RegistrationController extends BaseController
 {
@@ -35,12 +38,39 @@ class RegistrationController extends BaseController
 
         $form = $formFactory->createForm();
         $form->setData($user);
+        $form->add('imguser', FileType::class, [
+
+            'mapped' => false,
+            'required' => false,
+            'constraints' => [
+                new \Symfony\Component\Validator\Constraints\File([
+                    'maxSize' => '1024M',
+                    'mimeTypesMessage' => 'Please upload a valid document',
+                ])
+            ],
+        ]);
 
         $form->handleRequest($request);
-        $user->upload();
+
 
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
+
+                $srcFile = $form->get('imguser')->getData();
+                if ($srcFile) {
+                    $originalFilename = pathinfo($srcFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                    $newFilename = $safeFilename.'-'.uniqid().'.'.$srcFile->guessExtension();
+
+                    try {
+                        $srcFile->move('uploads/' . $user->getImguser(), $newFilename);
+                    } catch (FileException $e) {
+                        print $e->getMessage();
+                    }
+                    $user->setImguser($newFilename);
+
+                }
+
                 $event = new FormEvent($form, $request);
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 

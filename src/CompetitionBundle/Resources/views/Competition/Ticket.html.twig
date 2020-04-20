@@ -1,5 +1,5 @@
 
-{% extends 'baseLouay.html.twig' %}
+{% extends 'baseAll.html.twig' %}
 
 
 {% block body %}
@@ -80,7 +80,7 @@
                                             <!-- USER AVATAR CONTENT -->
                                             <div class="user-avatar-content">
                                                 <!-- HEXAGON -->
-                                                <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~c.iduser.imguser) }}"></div>
+                                                <div class="hexagon-image-30-32" data-src="{{ asset('uploads/'~c.iduser.imguser) }}"></div>
                                                 <!-- /HEXAGON -->
                                             </div>
                                             <!-- /USER AVATAR CONTENT -->
@@ -145,7 +145,7 @@
                             <div class="post-preview medium">
                                 <!-- POST PREVIEW IMAGE -->
                                 <figure class="post-preview-image liquid">
-                                    <img src="{{ asset('template/img/cover/'~c.imageC) }}" alt="cover-19">
+                                    <img src="{{ asset('uploads/'~c.imageC) }}" alt="cover-19">
                                 </figure>
                                 <!-- /POST PREVIEW IMAGE -->
 
@@ -193,7 +193,7 @@
                                                     <div class="user-avatar-content">
                                                         <!-- HEXAGON -->
                                                         <a href="{{ path('profile', {'id':par.iduser.id})  }}">
-                                                        <div class="hexagon-image-18-20" data-src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}"></div>
+                                                        <div class="hexagon-image-18-20" data-src="{{ asset('uploads/'~par.iduser.imguser) }}"></div>
                                                         </a>
                                                             <!-- /HEXAGON -->
                                                     </div>
@@ -385,7 +385,7 @@
                                             <!-- USER AVATAR CONTENT -->
                                             <div class="user-avatar-content">
                                                 <!-- HEXAGON -->
-                                                <div class="hexagon-image-40-44" data-src="{{ asset('template/img/cover/'~l.imageC) }}"></div>
+                                                <div class="hexagon-image-40-44" data-src="{{ asset('uploads/'~l.imageC) }}"></div>
                                                 <!-- /HEXAGON -->
                                             </div>
                                             <!-- /USER AVATAR CONTENT -->
@@ -412,7 +412,7 @@
                                                         <!-- USER AVATAR CONTENT -->
                                                         <div class="user-avatar-content">
                                                             <!-- HEXAGON -->
-                                                            <div class="hexagon-image-18-20" data-src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}"></div>
+                                                            <div class="hexagon-image-18-20" data-src="{{ asset('uploads/'~par.iduser.imguser) }}"></div>
                                                             <!-- /HEXAGON -->
                                                         </div>
                                                         <!-- /USER AVATAR CONTENT -->

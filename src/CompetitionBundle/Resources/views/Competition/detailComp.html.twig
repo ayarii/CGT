@@ -1,4 +1,4 @@
-{% extends 'baseLouay.html.twig' %}
+{% extends 'baseAll.html.twig' %}
 
 
 {% block body %}
@@ -11,7 +11,7 @@
 
             <!-- POST OPEN COVER -->
             <figure class="post-open-cover liquid">
-                <img src="{{ asset('template/img/cover/'~Competition.imageC) }}" alt="cover-19">
+                <img src="{{ asset('uploads/'~Competition.imageC) }}" alt="cover-19">
             </figure>
             <!-- /POST OPEN COVER -->
 
@@ -91,7 +91,7 @@
                                         <!-- USER AVATAR CONTENT -->
                                         <div class="user-avatar-content">
                                             <!-- HEXAGON -->
-                                            <div class="hexagon-image-18-20" data-src="{{ asset('template/img/avatar/'~par.iduser.imguser) }}"></div>
+                                            <div class="hexagon-image-18-20" data-src="{{ asset('uploads/'~par.iduser.imguser) }}"></div>
                                             <!-- /HEXAGON -->
                                         </div>
                                         <!-- /USER AVATAR CONTENT -->
