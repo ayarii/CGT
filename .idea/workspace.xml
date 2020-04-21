@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e929965-b3b3-4987-aff9-2775e6979b9d" name="Default Changelist" comment="photo de couerture du profile">
-      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/Composer_21_04_2020_14_18_c.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_21_04_2020_14_19_s.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Composer_18_04_2020_6_11_PM_c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/commandlinetools/Composer_18_04_2020_6_11_PM_c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_18_04_2020_6_32_PM_s.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_18_04_2020_6_32_PM_s.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="8e929965-b3b3-4987-aff9-2775e6979b9d" name="Default Changelist" comment="éviter les erreurs du Acceuil.html.twig ...">
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/untitled.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/untitled.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/baseAll.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/baseAll.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bootstrap.php.cache" beforeDir="false" afterPath="$PROJECT_DIR$/app/bootstrap.php.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/afficherCompetitionUser.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/afficherCompetitionUser.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CompetitionBundle/Resources/views/Competition/profile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/Acceuil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/Acceuil.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/newsfeed.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/newsfeed.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,18 +146,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
     <property name="settings.editor.splitter.proportion" value="0.25281474" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\CGT\web" />
       <recent name="C:\wamp64\www\CGT\app\config" />
       <recent name="C:\wamp64\www\Intégration_Web\src\FOSBundle\Entity" />
       <recent name="C:\wamp64\www\Intégration_Web\src\CompetitionBundle\Resources\views\Competition" />
       <recent name="C:\wamp64\www\Intégration_Web\src\FOSBundle\Controller" />
-      <recent name="C:\wamp64\www\Intégration_Web\app\Resources\FOSUserBundle\views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\Intégration_Web\src\AppBundle\Controller" />
@@ -359,7 +358,8 @@
     <MESSAGE value="supression des fichier inutiles et modification d l'upload d'image du user" />
     <MESSAGE value="une seul base.html.twig non pas baseLouay et baseAmine -_-" />
     <MESSAGE value="photo de couerture du profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="photo de couerture du profile" />
+    <MESSAGE value="éviter les erreurs du Acceuil.html.twig ..." />
+    <option name="LAST_COMMIT_MESSAGE" value="éviter les erreurs du Acceuil.html.twig ..." />
   </component>
   <component name="WindowStateProjectService">
     <state x="380" y="36" width="620" height="656" key="#Fos" timestamp="1584072685168">
@@ -392,15 +392,19 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="484" y="230" key="#com.jetbrains.php.framework.ui.FailedToParseDialog/0.0.1366.728@0.0.1366.728" timestamp="1587475069415" />
-    <state x="282" y="0" key="CommitChangelistDialog2" timestamp="1587431316372">
+    <state x="282" y="0" key="CommitChangelistDialog2" timestamp="1587509916251">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="282" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587431316372" />
+    <state x="282" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587509916251" />
     <state x="407" y="256" key="ComposerCompositePathDialog" timestamp="1587475131693">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="407" y="256" key="ComposerCompositePathDialog/0.0.1366.728@0.0.1366.728" timestamp="1587475131693" />
     <state x="458" y="290" key="ComposerCompositePathDialog/0.0.1536.824@0.0.1536.824" timestamp="1584849465720" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1587509493467">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1587509493467" />
     <state x="462" y="109" key="FileChooserDialogImpl" timestamp="1587475143870">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

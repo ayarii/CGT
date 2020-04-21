@@ -22,7 +22,7 @@
                 <!-- USER SHORT DESCRIPTION -->
                 <div class="user-short-description big">
                     <!-- USER SHORT DESCRIPTION AVATAR -->
-                    <a class="user-short-description-avatar user-avatar big" href="profile-timeline.html">
+                    <a class="user-short-description-avatar user-avatar big" href="{{ path('visit_profile',{id_user:app.user.id}) }}">
                         <!-- USER AVATAR BORDER -->
                         <div class="user-avatar-border">
                             <!-- HEXAGON -->
@@ -83,7 +83,7 @@
                     <!-- /USER SHORT DESCRIPTION AVATAR -->
 
                     <!-- USER SHORT DESCRIPTION AVATAR -->
-                    <a class="user-short-description-avatar user-short-description-avatar-mobile user-avatar medium" href="profile-timeline.html">
+                    <a class="user-short-description-avatar user-short-description-avatar-mobile user-avatar medium" href="{{ path('visit_profile',{id_user:app.user.id}) }}">
                         <!-- USER AVATAR BORDER -->
                         <div class="user-avatar-border">
                             <!-- HEXAGON -->
@@ -95,7 +95,7 @@
                         <!-- USER AVATAR CONTENT -->
                         <div class="user-avatar-content">
                             <!-- HEXAGON -->
-                            <div class="hexagon-image-82-90" data-src="img/avatar/01.jpg"></div>
+                            <div class="hexagon-image-82-90" data-src="#"></div>
                             <!-- /HEXAGON -->
                         </div>
                         <!-- /USER AVATAR CONTENT -->
@@ -143,7 +143,7 @@
                     <!-- /USER SHORT DESCRIPTION AVATAR -->
 
                     <!-- USER SHORT DESCRIPTION TITLE -->
-                    <p class="user-short-description-title"><a href="profile-timeline.html">{{Profile.username}}</a></p>
+                    <p class="user-short-description-title"><a href="{{ path('visit_profile',{id_user:app.user.id}) }}">{{Profile.username}}</a></p>
                     <!-- /USER SHORT DESCRIPTION TITLE -->
 
                     <!-- USER SHORT DESCRIPTION TEXT -->
