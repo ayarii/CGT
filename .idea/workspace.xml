@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="62e544ca-5f8d-467c-b7f4-712d77a8da7e" name="Default Changelist" comment="">
+    <list default="true" id="8e929965-b3b3-4987-aff9-2775e6979b9d" name="Default Changelist" comment="photo de couerture du profile">
+      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Composer_18_04_2020_6_11_PM_c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/commandlinetools/Composer_18_04_2020_6_11_PM_c.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Composer_19_04_2020_20_40_c.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_18_04_2020_6_32_PM_s.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_18_04_2020_6_32_PM_s.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_19_04_2020_20_40_s.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/Acceuil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/Acceuil.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/profile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/PublicationBundle/Resources/views/Posts/profile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/AppKernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/AppKernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/baseAll.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/baseAll.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,23 +147,23 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/config" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Intégration_Web" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
     <property name="settings.editor.splitter.proportion" value="0.25281474" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\Intégration_Web\src\AppBundle\Controller" />
-      <recent name="C:\wamp64\www\Rana_Web\app\Resources\views" />
-      <recent name="C:\wamp64\www\Fos\app\Resources\FOSUserBundle\views" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\CGT\app\config" />
       <recent name="C:\wamp64\www\Intégration_Web\src\FOSBundle\Entity" />
       <recent name="C:\wamp64\www\Intégration_Web\src\CompetitionBundle\Resources\views\Competition" />
       <recent name="C:\wamp64\www\Intégration_Web\src\FOSBundle\Controller" />
       <recent name="C:\wamp64\www\Intégration_Web\app\Resources\FOSUserBundle\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Intégration_Web\src\AppBundle\Controller" />
+      <recent name="C:\wamp64\www\Rana_Web\app\Resources\views" />
+      <recent name="C:\wamp64\www\Fos\app\Resources\FOSUserBundle\views" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -201,7 +206,6 @@
       <command value="composer self-update" />
       <command value="c install" />
       <command value="c self-update" />
-      <command value="s doctrine:database:create" />
       <command value="s doctrine:schema:create" />
       <command value="c update" />
       <command value="s doctrine:mapping:import AppBundle Entity " />
@@ -209,11 +213,12 @@
       <command value="s doctrine:mapping:import AppBundle Entity annotation" />
       <command value="s doctrine:mapping:import AppBundle : Entity" />
       <command value="s doctrine:mapping:import AppBundle annotation" />
-      <command value="s doctrine:schema:update --force" />
       <command value="s generate:bundle" />
       <command value="s generate:controller" />
       <command value="c dump-autoload" />
       <command value="s cache:clear" />
+      <command value="s doctrine:database:create" />
+      <command value="s doctrine:schema:update --force" />
       <command value="s server:run" />
     </option>
   </component>
@@ -385,39 +390,39 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="484" y="230" key="#com.jetbrains.php.framework.ui.FailedToParseDialog/0.0.1366.728@0.0.1366.728" timestamp="1587324654188" />
-    <state x="282" y="0" key="CommitChangelistDialog2" timestamp="1587338843327">
+    <state x="282" y="0" key="CommitChangelistDialog2" timestamp="1587431316372">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="282" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587338843327" />
+    <state x="282" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587431316372" />
     <state x="407" y="256" key="ComposerCompositePathDialog" timestamp="1587325214186">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="407" y="256" key="ComposerCompositePathDialog/0.0.1366.728@0.0.1366.728" timestamp="1587325214186" />
     <state x="458" y="290" key="ComposerCompositePathDialog/0.0.1536.824@0.0.1536.824" timestamp="1584849465720" />
-    <state x="462" y="109" key="FileChooserDialogImpl" timestamp="1587325221367">
+    <state x="462" y="109" key="FileChooserDialogImpl" timestamp="1587427745338">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="462" y="109" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587325221367" />
+    <state x="462" y="109" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587427745338" />
     <state x="519" y="123" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585189446351" />
-    <state width="1323" height="140" key="GridCell.Tab.0.bottom" timestamp="1587379913412">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1587427983407">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587379913412" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587427983407" />
     <state width="1493" height="183" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
-    <state width="1323" height="140" key="GridCell.Tab.0.center" timestamp="1587379913411">
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1587427983407">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587379913411" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587427983407" />
     <state width="1493" height="183" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
-    <state width="1323" height="140" key="GridCell.Tab.0.left" timestamp="1587379913411">
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1587427983407">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587379913411" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587427983407" />
     <state width="1493" height="183" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
-    <state width="1323" height="140" key="GridCell.Tab.0.right" timestamp="1587379913412">
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1587427983407">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587379913412" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587427983407" />
     <state width="1493" height="183" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
     <state x="468" y="199" key="NewPhpClassDialog" timestamp="1587122121363">
       <screen x="0" y="0" width="1366" height="728" />
@@ -442,18 +447,18 @@
     </state>
     <state x="391" y="193" width="530" height="350" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1587153835355" />
     <state x="440" y="218" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586779967101" />
-    <state x="492" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587228987246">
+    <state x="492" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587421939565">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1587228987246" />
+    <state x="492" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1587421939565" />
     <state x="462" y="10" width="613" height="804" key="find.popup" timestamp="1586270789578">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="462" y="10" width="613" height="804" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1586270789578" />
-    <state x="609" y="123" width="672" height="400" key="run.anything.popup" timestamp="1587379914916">
+    <state x="609" y="123" width="672" height="400" key="run.anything.popup" timestamp="1587428007275">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="609" y="123" width="672" height="400" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1587379914916" />
+    <state x="609" y="123" width="672" height="400" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1587428007275" />
     <state x="685" y="138" width="756" height="767" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1586783257557" />
     <state x="389" y="55" width="756" height="768" key="search.everywhere.popup" timestamp="1586281561981">
       <screen x="0" y="0" width="1536" height="824" />
