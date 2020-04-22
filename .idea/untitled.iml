@@ -105,5 +105,8 @@
     <orderEntry type="library" name="font-awesome" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="all" level="application" />
+    <orderEntry type="library" name="font-awesome" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="jquery-3.2.1" level="application" />
   </component>
 </module>
