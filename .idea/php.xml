@@ -94,6 +94,7 @@
       <path value="$PROJECT_DIR$/vendor/anacona16/sonata-media-webcam-provider-bundle" />
       <path value="$PROJECT_DIR$/vendor/cmen/google-charts-bundle" />
       <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/ckeditor-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.5.0" />

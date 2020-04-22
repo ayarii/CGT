@@ -6,6 +6,7 @@ imports:
     - { resource: "@CompetitionBundle/Resources/config/services.yml" }
     - { resource: "@MessagerieBundle/Resources/config/services.yml" }
     - { resource: "@PublicationBundle/Resources/config/services.yml" }
+    - { resource: "@BlogBundle/Resources/config/services.yml" }
 
 
 

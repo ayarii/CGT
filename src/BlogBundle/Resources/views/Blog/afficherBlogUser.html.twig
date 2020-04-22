@@ -1,0 +1,200 @@
+{% extends 'baseAll.html.twig' %}
+{% block body %}
+
+
+
+<!-- CONTENT GRID -->
+<div class="content-grid">
+    <!-- SECTION BANNER -->
+
+    <div class="section-banner">
+        <!-- SECTION BANNER ICON -->
+        <img class="section-banner-icon" src="{{ asset('template/img/banner/groups-icon.png') }}" alt="events-icon">
+        <!-- /SECTION BANNER ICON -->
+
+        <!-- SECTION BANNER TITLE -->
+        <p class="section-banner-title">Blog</p>
+        <!-- /SECTION BANNER TITLE -->
+
+        <!-- SECTION BANNER TEXT -->
+        <p class="section-banner-text">Ici vous pouvez consulter tous nos articles facillement !</p>
+        <!-- /SECTION BANNER TEXT -->
+    </div>
+    <!-- /SECTION BANNER -->
+
+    <!-- SECTION -->
+    <section class="section">
+        <!-- SECTION HEADER -->
+        <div class="section-header">
+            <!-- SECTION HEADER INFO -->
+            <div class="section-header-info">
+                <!-- SECTION PRETITLE -->
+                <p class="section-pretitle">Browse {{app.user}}</p>
+                <!-- /SECTION PRETITLE -->
+
+                <!-- SECTION TITLE -->
+                <h2 class="section-title">Blog <span class="highlighted">{{ Article|length }}</span></h2>
+                <!-- /SECTION TITLE -->
+            </div>
+            <!-- /SECTION HEADER INFO -->
+        </div>
+        <!-- /SECTION HEADER -->
+
+        <!-- SECTION FILTERS BAR -->
+        <div class="section-filters-bar v2">
+            <!-- FORM -->
+            <form class="form">
+                <!-- FORM ITEM -->
+                <div class="form-item split medium">
+                    <!-- FORM SELECT -->
+                    <div class="form-select">
+                        <label for="post-filter-category">Filter By</label>
+                        <select id="post-filter-category" name="post_filter_category">
+                            <option value="0">Reactions Received</option>
+                            <option value="1">Comment Count</option>
+                            <option value="2">Share Count</option>
+                        </select>
+                        <!-- FORM SELECT ICON -->
+                        <svg class="form-select-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                        </svg>
+                        <!-- /FORM SELECT ICON -->
+                    </div>
+                    <!-- /FORM SELECT -->
+
+                    <!-- FORM SELECT -->
+                    <div class="form-select">
+                        <label for="post-filter-order">Order By</label>
+                        <select id="post-filter-order" name="post_filter_order">
+                            <option value="0">Highest to Lowest</option>
+                            <option value="1">Lowest to Highest</option>
+                        </select>
+                        <!-- FORM SELECT ICON -->
+                        <svg class="form-select-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                        </svg>
+                        <!-- /FORM SELECT ICON -->
+                    </div>
+                    <!-- /FORM SELECT -->
+
+                    <!-- FORM SELECT -->
+                    <div class="form-select">
+                        <label for="post-filter-show">Show</label>
+                        <select id="post-filter-show" name="post_filter_show">
+                            <option value="0">12 Posts per Page</option>
+                            <option value="1">24 Posts per Page</option>
+                        </select>
+                        <!-- FORM SELECT ICON -->
+                        <svg class="form-select-icon icon-small-arrow">
+                            <use xlink:href="#svg-small-arrow"></use>
+                        </svg>
+                        <!-- /FORM SELECT ICON -->
+                    </div>
+                    <!-- /FORM SELECT -->
+
+                    <!-- BUTTON -->
+                    <button class="button primary">Filter Posts</button>
+                    <!-- /BUTTON -->
+                </div>
+                <!-- /FORM ITEM -->
+            </form>
+            <!-- /FORM -->
+        </div>
+        <!-- /SECTION FILTERS BAR -->
+
+        <!-- GRID -->
+        <div class="grid grid-4-4-4 centered">
+            {% for a in Article %}
+            <!-- POST PREVIEW -->
+            <div class="post-preview">
+                <!-- POST PREVIEW IMAGE -->
+                <figure class="post-preview-image liquid">
+                    <img src="{{asset('uploads/'~a.photo)}}" alt="cover-19">
+                </figure>
+                <!-- /POST PREVIEW IMAGE -->
+
+                <!-- POST PREVIEW INFO -->
+                <div class="post-preview-info fixed-height">
+                    <!-- POST PREVIEW INFO TOP -->
+                    <div class="post-preview-info-top">
+                        <!-- POST PREVIEW TIMESTAMP -->
+                        <p class="post-preview-timestamp">
+                            {% if "now" |date("U") + 3600  > a.datecreation |date("U") + 31104000 %}
+                                il ya {{ ("now" |date("U") + 3600  - a.datecreation |date("U") ) |date("Y") }} ans
+                            {% elseif "now" |date("U") + 3600  > a.datecreation |date("U") + 2592000 %}
+                                il ya  {{ ("now" |date("U") + 3600  - a.datecreation |date("U") ) |date("m") }} moiss
+                            {% elseif "now" |date("U") + 3600  > a.datecreation |date("U") + 86400 %}
+                                il ya {{ ("now" |date("U") + 3600  - a.datecreation |date("U") ) |date("d") }} jours
+                            {% elseif "now" |date("U") + 3600  > a.datecreation |date("U") + 3600  %}
+                                il ya {{ ("now" |date("U") + 3600  - a.datecreation |date("U") ) |date("H") }} heures
+                            {% elseif "now" |date("U") + 3600  > a.datecreation |date("U") + 60 %}
+                                il ya {{ ("now" |date("U") + 3600  - a.datecreation |date("U") ) |date("i") }} minutes
+                            {% elseif "now" |date("U") + 3600  > a.datecreation |date("U")  %}
+                                il ya  {{ ("now" |date("U") + 3600  - a.datecreation |date("U") ) |date("s") }} secondes
+                            {% endif %}
+                        </p>
+                        <!-- /POST PREVIEW TIMESTAMP -->
+
+                        <!-- POST PREVIEW TITLE -->
+                        <p class="post-preview-title">{{a.sujet}}</p>
+                        <!-- /POST PREVIEW TITLE -->
+                    </div>
+                    <!-- /POST PREVIEW INFO TOP -->
+
+                    <!-- POST PREVIEW INFO BOTTOM -->
+                    <div class="post-preview-info-bottom">
+                        <!-- POST PREVIEW TEXT -->
+                        <p class="post-preview-text">{{ a.contenue|striptags|slice(0,222) }} ... </p>
+                        <!-- /POST PREVIEW TEXT -->
+                        <a  href="{{ path('detailBlogUser', {'id':a.id})  }}">
+                        <!-- POST PREVIEW LINK -->
+                        <a class="post-preview-link" href="{{ path('detailBlogUser', {'id':a.id})  }}">savoir plus...</a>
+                        <!-- /POST PREVIEW LINK -->
+                        </a>
+                    </div>
+                    <!-- /POST PREVIEW INFO BOTTOM -->
+                </div>
+                <!-- /POST PREVIEW INFO -->
+
+                <!-- CONTENT ACTIONS -->
+                <div class="content-actions">
+
+
+                    <!-- CONTENT ACTION -->
+                    <div class="content-action">
+                        <!-- META LINE -->
+                        <div class="meta-line">
+                            {% set totalComment = 0 %}
+                            {% for c in Comment if (c.idArticle.id == a.id)  %}
+                            {% set totalComment = totalComment + 1 %}
+                            {% endfor %}
+                            <!-- META LINE LINK -->
+                            <a class="meta-line-link" href="profile-post.html#comments">{{ totalComment  }}  Comments</a>
+                            <!-- /META LINE LINK -->
+                        </div>
+                        <!-- /META LINE -->
+
+                        <!-- META LINE -->
+                        <div class="meta-line">
+                            <!-- META LINE TEXT -->
+                            <p class="meta-line-text">0 Shares</p>
+                            <!-- /META LINE TEXT -->
+                        </div>
+                        <!-- /META LINE -->
+                    </div>
+                    <!-- /CONTENT ACTION -->
+                </div>
+                <!-- /CONTENT ACTIONS -->
+            </div>
+            <!-- /POST PREVIEW -->
+
+{% endfor %}
+        </div>
+        <!-- /GRID -->
+    </section>
+    <!-- /SECTION -->
+</div>
+    <!-- /GRID -->
+
+
+{% endblock %}

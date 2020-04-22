@@ -1,0 +1,41 @@
+blog_homepage:
+    path:     /
+    defaults: { _controller: BlogBundle:Default:index }
+ajouterBlog:
+    path:     /ajouterBlog
+    defaults: { _controller: BlogBundle:Article:ajouterArticle }
+afficherBlogAdmin:
+    path:     /afficherBlogAdmin
+    defaults: { _controller: BlogBundle:Article:afficheArticle }
+afficherBlogUser:
+    path:     /afficherBlogUser
+    defaults: { _controller: BlogBundle:Article:afficheArticleUser }
+modifBlog:
+    path:     /modifBlog/{id}
+    defaults: { _controller: BlogBundle:Article:modifierArticle }
+suppBlog:
+    path:     /suppBlog/{id}
+    defaults: { _controller: BlogBundle:Article:supprimerArticle }
+detailBlogAdmin:
+    path:     /detailBlogAdmin/{id}
+    defaults: { _controller: BlogBundle:Article:detailBlogAdmin }
+detailBlogUser:
+    path:     /detailBlogUser/{id}
+    defaults: { _controller: BlogBundle:Article:detailBlogUser }
+
+affComment:
+    path:     /affComment/{id}
+    defaults: { _controller: BlogBundle:Comment:afficherComment }
+
+suppComment:
+    path:     /suppComment/{id}/{id2}
+    defaults: { _controller: BlogBundle:Comment:supprimerComment }
+ajouterComment:
+    path:     /ajouterComment/{id}
+    defaults: { _controller: BlogBundle:Comment:AjouterComment }
+modifComment:
+    path:     /modifComment/{id}
+    defaults: { _controller: BlogBundle:Comment:modifierComment }
+
+
+

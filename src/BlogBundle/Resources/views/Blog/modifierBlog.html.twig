@@ -1,0 +1,57 @@
+{% extends 'base1.html.twig' %}
+{% block body %}
+
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <section class="content blog-page">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-7 col-md-6 col-sm-12">
+                    <h2>New Blog
+                        <small>Welcome to Tunisian Got Talent</small>
+                    </h2>
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-12">
+                    <ul class="breadcrumb float-md-right">
+                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> DevIt</a></li>
+                        <li class="breadcrumb-item"><a href="blog-dashboard.html">Blog</a></li>
+                        <li class="breadcrumb-item active">New Blog</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="body">
+                            {{ form_start(form) }}
+                            <div class="form-group">
+                                <label for="recipient-name" class="form-control-label">Sujet:</label>
+                                {{ form_widget(form.sujet,{'attr':{'class':'form-control'}} ) }}
+                            </div>
+
+                            <div class="fallback">
+                                <div class="form-group">
+                                    {{ form_widget(form.photo,{'attr':{'class':'form-group'}} ) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="body">
+                            <div class="form-group">
+                                <label for="recipient-name" class="form-control-label">Contenu:</label>
+                                {{ form_widget(form.contenue,{'attr':{'class':'form-control'}} ) }}
+                            </div>
+                            {{ form_row(form.valider,{'attr':{'class':'btn btn-primary btn-round waves-effect m-t-20','style':'margin-top:10px'}}) }}
+                            {{ form_rest(form) }}
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    </div>
+{% endblock %}

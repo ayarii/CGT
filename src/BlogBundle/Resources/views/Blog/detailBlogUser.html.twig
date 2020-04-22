@@ -1,0 +1,616 @@
+{% extends 'baseAll.html.twig' %}
+
+
+{% block body %}
+
+
+    <!-- CONTENT GRID -->
+    <div class="content-grid full">
+        <!-- POST OPEN -->
+        <article class="post-open">
+            <!-- POST OPEN COVER -->
+            <figure class="post-open-cover liquid">
+                <img src="{{asset('uploads/'~article.photo)}}" alt="cover-19">
+            </figure>
+            <!-- /POST OPEN COVER -->
+
+            <!-- POST OPEN BODY -->
+            <div class="post-open-body">
+                <!-- POST OPEN HEADING -->
+                <div class="post-open-heading">
+                    <!-- POST OPEN TIMESTAMP -->
+                    <p class="post-open-timestamp">
+                        {% if "now" |date("U") + 3600  > article.datecreation |date("U") + 31104000 %}
+                            il ya {{ ("now" |date("U") + 3600  - article.datecreation |date("U") ) |date("Y") }} ans
+                        {% elseif "now" |date("U") + 3600  > article.datecreation |date("U") + 2592000 %}
+                            il ya  {{ ("now" |date("U") + 3600  - article.datecreation |date("U") ) |date("m") }} moiss
+                        {% elseif "now" |date("U") + 3600  > article.datecreation |date("U") + 86400 %}
+                            il ya {{ ("now" |date("U") + 3600  - article.datecreation |date("U") ) |date("d") }} jours
+                        {% elseif "now" |date("U") + 3600  > article.datecreation |date("U") + 3600  %}
+                            il ya {{ ("now" |date("U") + 3600  - article.datecreation |date("U") ) |date("H") }} heures
+                        {% elseif "now" |date("U") + 3600  > article.datecreation |date("U") + 60 %}
+                            il ya {{ ("now" |date("U") + 3600  - article.datecreation |date("U") ) |date("i") }} minutes
+                        {% elseif "now" |date("U") + 3600  > article.datecreation |date("U")  %}
+                            il ya  {{ ("now" |date("U") + 3600  - article.datecreation |date("U") ) |date("s") }} secondes
+                        {% endif %}
+                    </p>
+                    <!-- /POST OPEN TIMESTAMP -->
+
+                    <!-- POST OPEN TITLE -->
+                    <h2 class="post-open-title">{{article.sujet}}</h2>
+                    <!-- /POST OPEN TITLE -->
+                </div>
+                <!-- /POST OPEN HEADING -->
+
+                <!-- POST OPEN CONTENT -->
+                <div class="post-open-content">
+                    <!-- POST OPEN CONTENT SIDEBAR -->
+                    <div class="post-open-content-sidebar">
+
+
+                        <!-- POST OPEN SIDEBAR TITLE -->
+                        <p class="post-open-sidebar-title">Partager !</p>
+                        <!-- /POST OPEN SIDEBAR TITLE -->
+
+                        <!-- SOCIAL LINKS -->
+                        <div class="social-links vertical">
+                            <!-- SOCIAL LINK -->
+                            <a class="social-link void facebook" href="#">
+                                <!-- ICON FACEBOOK -->
+                                <svg class="icon-facebook">
+                                    <use xlink:href="#svg-facebook"></use>
+                                </svg>
+                                <!-- /ICON FACEBOOK -->
+                            </a>
+                            <!-- /SOCIAL LINK -->
+
+                            <!-- SOCIAL LINK -->
+                            <a class="social-link void twitter" href="#">
+                                <!-- ICON TWITTER -->
+                                <svg class="icon-twitter">
+                                    <use xlink:href="#svg-twitter"></use>
+                                </svg>
+                                <!-- /ICON TWITTER -->
+                            </a>
+                            <!-- /SOCIAL LINK -->
+                        </div>
+                        <!-- /SOCIAL LINKS -->
+                    </div>
+                    <!-- /POST OPEN CONTENT SIDEBAR -->
+
+                    <!-- POST OPEN CONTENT BODY -->
+                    <div class="post-open-content-body">
+                        <!-- POST OPEN PARAGRAPH -->
+                        <p class="post-open-paragraph">{{ article.contenue|raw }}</p>
+                        <!-- /POST OPEN PARAGRAPH -->
+
+
+
+
+
+
+
+
+
+                        <!-- TAG LIST -->
+                        <div class="tag-list">
+                            <!-- TAG ITEM -->
+                            <a class="tag-item secondary" href="newsfeed.html">Streamer</a>
+                            <!-- /TAG ITEM -->
+
+                            <!-- TAG ITEM -->
+                            <a class="tag-item secondary" href="newsfeed.html">Gaming</a>
+                            <!-- /TAG ITEM -->
+
+                            <!-- TAG ITEM -->
+                            <a class="tag-item secondary" href="newsfeed.html">Job</a>
+                            <!-- /TAG ITEM -->
+
+                            <!-- TAG ITEM -->
+                            <a class="tag-item secondary" href="newsfeed.html">Life</a>
+                            <!-- /TAG ITEM -->
+
+                            <!-- TAG ITEM -->
+                            <a class="tag-item secondary" href="newsfeed.html">Experience</a>
+                            <!-- /TAG ITEM -->
+                        </div>
+                        <!-- /TAG LIST -->
+                    </div>
+                    <!-- /POST OPEN CONTENT BODY -->
+                </div>
+                <!-- /POST OPEN CONTENT -->
+
+                <!-- CONTENT ACTIONS -->
+                <div class="content-actions">
+                    {#<!-- CONTENT ACTION -->
+                    <div class="content-action">
+                        <!-- META LINE -->
+                        <div class="meta-line">
+                            <!-- META LINE LIST -->
+                            <div class="meta-line-list reaction-item-list">
+                                <!-- REACTION ITEM -->
+                                <div class="reaction-item">
+                                    <!-- REACTION IMAGE -->
+                                    <img class="reaction-image reaction-item-dropdown-trigger" src="img/reaction/happy.png" alt="reaction-happy">
+                                    <!-- /REACTION IMAGE -->
+
+                                    <!-- SIMPLE DROPDOWN -->
+                                    <div class="simple-dropdown padded reaction-item-dropdown">
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text"><img class="reaction" src="img/reaction/happy.png" alt="reaction-happy"> <span class="bold">Happy</span></p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text">Matt Parker</p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text">Destroy Dex</p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text">The Green Goo</p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+                                    </div>
+                                    <!-- /SIMPLE DROPDOWN -->
+                                </div>
+                                <!-- /REACTION ITEM -->
+
+                                <!-- REACTION ITEM -->
+                                <div class="reaction-item">
+                                    <!-- REACTION IMAGE -->
+                                    <img class="reaction-image reaction-item-dropdown-trigger" src="img/reaction/love.png" alt="reaction-love">
+                                    <!-- /REACTION IMAGE -->
+
+                                    <!-- SIMPLE DROPDOWN -->
+                                    <div class="simple-dropdown padded reaction-item-dropdown">
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text"><img class="reaction" src="img/reaction/love.png" alt="reaction-love"> <span class="bold">Love</span></p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text">Sandra Strange</p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+                                    </div>
+                                    <!-- /SIMPLE DROPDOWN -->
+                                </div>
+                                <!-- /REACTION ITEM -->
+
+                                <!-- REACTION ITEM -->
+                                <div class="reaction-item">
+                                    <!-- REACTION IMAGE -->
+                                    <img class="reaction-image reaction-item-dropdown-trigger" src="img/reaction/like.png" alt="reaction-like">
+                                    <!-- /REACTION IMAGE -->
+
+                                    <!-- SIMPLE DROPDOWN -->
+                                    <div class="simple-dropdown padded reaction-item-dropdown">
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text"><img class="reaction" src="img/reaction/like.png" alt="reaction-like"> <span class="bold">Like</span></p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text">Neko Bebop</p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text">Nick Grissom</p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text">Sarah Diamond</p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text">Jett Spiegel</p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text">Marcus Jhonson</p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text">Jane Rodgers</p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text"><span class="bold">and 2 more...</span></p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+                                    </div>
+                                    <!-- /SIMPLE DROPDOWN -->
+                                </div>
+                                <!-- /REACTION ITEM -->
+                            </div>
+                            <!-- /META LINE LIST -->
+
+                            <!-- META LINE TEXT -->
+                            <p class="meta-line-text">12</p>
+                            <!-- /META LINE TEXT -->
+                        </div>
+                        <!-- /META LINE -->
+
+                        <!-- META LINE -->
+                        <div class="meta-line">
+                            <!-- META LINE LIST -->
+                            <div class="meta-line-list user-avatar-list">
+                                <!-- USER AVATAR -->
+                                <div class="user-avatar micro no-stats">
+                                    <!-- USER AVATAR BORDER -->
+                                    <div class="user-avatar-border">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-22-24"></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR BORDER -->
+
+                                    <!-- USER AVATAR CONTENT -->
+                                    <div class="user-avatar-content">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-image-18-20" data-src="img/avatar/09.jpg"></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR CONTENT -->
+                                </div>
+                                <!-- /USER AVATAR -->
+
+                                <!-- USER AVATAR -->
+                                <div class="user-avatar micro no-stats">
+                                    <!-- USER AVATAR BORDER -->
+                                    <div class="user-avatar-border">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-22-24"></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR BORDER -->
+
+                                    <!-- USER AVATAR CONTENT -->
+                                    <div class="user-avatar-content">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-image-18-20" data-src="img/avatar/08.jpg"></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR CONTENT -->
+                                </div>
+                                <!-- /USER AVATAR -->
+
+                                <!-- USER AVATAR -->
+                                <div class="user-avatar micro no-stats">
+                                    <!-- USER AVATAR BORDER -->
+                                    <div class="user-avatar-border">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-22-24"></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR BORDER -->
+
+                                    <!-- USER AVATAR CONTENT -->
+                                    <div class="user-avatar-content">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-image-18-20" data-src="img/avatar/12.jpg"></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR CONTENT -->
+                                </div>
+                                <!-- /USER AVATAR -->
+
+                                <!-- USER AVATAR -->
+                                <div class="user-avatar micro no-stats">
+                                    <!-- USER AVATAR BORDER -->
+                                    <div class="user-avatar-border">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-22-24"></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR BORDER -->
+
+                                    <!-- USER AVATAR CONTENT -->
+                                    <div class="user-avatar-content">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-image-18-20" data-src="img/avatar/16.jpg"></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR CONTENT -->
+                                </div>
+                                <!-- /USER AVATAR -->
+
+                                <!-- USER AVATAR -->
+                                <div class="user-avatar micro no-stats">
+                                    <!-- USER AVATAR BORDER -->
+                                    <div class="user-avatar-border">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-22-24"></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR BORDER -->
+
+                                    <!-- USER AVATAR CONTENT -->
+                                    <div class="user-avatar-content">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-image-18-20" data-src="img/avatar/06.jpg"></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR CONTENT -->
+                                </div>
+                                <!-- /USER AVATAR -->
+                            </div>
+                            <!-- /META LINE LIST -->
+
+                            <!-- META LINE TEXT -->
+                            <p class="meta-line-text">14 Participants</p>
+                            <!-- /META LINE TEXT -->
+                        </div>
+                        <!-- /META LINE -->
+                    </div>
+                    <!-- /CONTENT ACTION -->#}
+
+                    <!-- CONTENT ACTION -->
+                    <div class="content-action">
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <!-- META LINE -->
+                        <div class="meta-line">
+                            <!-- META LINE LIST -->
+                            <div class="meta-line-list user-avatar-list">
+                                {% set totalComment = 0 %}
+                                {% for c in Comment if (c.idArticle.id == article.id)  %}
+                                    {% set totalComment = totalComment + 1 %}
+                                    <!-- USER AVATAR -->
+                                    <div class="user-avatar micro no-stats">
+                                        <!-- USER AVATAR BORDER -->
+                                        <div class="user-avatar-border">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-22-24"></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR BORDER -->
+
+                                        <!-- USER AVATAR CONTENT -->
+                                        <div class="user-avatar-content">
+                                            <!-- HEXAGON -->
+                                            <a href="{{ path('visit_profile',{id_user:c.idUser.id}) }}">
+                                                <div class="hexagon-image-18-20" data-src="{{ asset('uploads/'~c.idUser.imguser) }}"></div>
+                                            </a>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR CONTENT -->
+                                    </div>
+                                    <!-- /USER AVATAR -->
+
+                                {% endfor %}
+                            </div>
+                            <!-- /META LINE LIST -->
+
+                            <!-- META LINE TEXT -->
+                            <p class="meta-line-text">&nbsp;{{ totalComment }}  <span>Comments</span></p>
+                            <!-- /META LINE TEXT -->
+                        </div>
+                        <!-- /META LINE -->
+
+                        <!-- META LINE -->
+                        <div class="meta-line">
+                            <!-- META LINE TEXT -->
+                            <p class="meta-line-text">0 Shares</p>
+                            <!-- /META LINE TEXT -->
+                        </div>
+                        <!-- /META LINE -->
+
+
+                    </div>
+                    <!-- /CONTENT ACTION -->
+                </div>
+                <!-- /CONTENT ACTIONS -->
+                <!-- POST COMMENT LIST -->
+                <div id="comments" class="post-comment-list">
+                    {% for c in Comment %}
+                    <!-- POST COMMENT -->
+                    <div class="post-comment">
+                        <!-- USER AVATAR -->
+                        <a class="user-avatar small no-outline" href="profile-timeline.html">
+                            <!-- USER AVATAR CONTENT -->
+                            <div class="user-avatar-content">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-image-30-32" data-src="{{ asset('uploads/'~c.idUser.imguser) }}"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR CONTENT -->
+
+                            <!-- USER AVATAR PROGRESS -->
+                            <div class="user-avatar-progress">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-progress-40-44"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR PROGRESS -->
+
+                            <!-- USER AVATAR PROGRESS BORDER -->
+                            <div class="user-avatar-progress-border">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-border-40-44"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR PROGRESS BORDER -->
+
+                            <!-- USER AVATAR BADGE -->
+                            <div class="user-avatar-badge">
+                                <!-- USER AVATAR BADGE BORDER -->
+                                <div class="user-avatar-badge-border">
+                                    <!-- HEXAGON -->
+                                    <div class="hexagon-22-24"></div>
+                                    <!-- /HEXAGON -->
+                                </div>
+                                <!-- /USER AVATAR BADGE BORDER -->
+
+                                <!-- USER AVATAR BADGE CONTENT -->
+                                <div class="user-avatar-badge-content">
+                                    <!-- HEXAGON -->
+                                    <div class="hexagon-dark-16-18"></div>
+                                    <!-- /HEXAGON -->
+                                </div>
+                                <!-- /USER AVATAR BADGE CONTENT -->
+
+                                <!-- USER AVATAR BADGE TEXT -->
+                                <p class="user-avatar-badge-text">6</p>
+                                <!-- /USER AVATAR BADGE TEXT -->
+                            </div>
+                            <!-- /USER AVATAR BADGE -->
+                        </a>
+                        <!-- /USER AVATAR -->
+
+                        <!-- POST COMMENT TEXT -->
+                        <p class="post-comment-text"><a class="post-comment-text-author" href="profile-timeline.html">{{c.idUser.username}}</a> {{c.text}}!</p>
+                        <!-- /POST COMMENT TEXT -->
+
+                        <!-- CONTENT ACTIONS -->
+                        <div class="content-actions">
+                            <!-- CONTENT ACTION -->
+                            <div class="content-action">
+
+
+                                <!-- META LINE -->
+                                <div class="meta-line">
+                                    <!-- META LINE TIMESTAMP -->
+                                    <p class="meta-line-timestamp">
+                                        {% if "now" |date("U") + 3600  > c.datecreation |date("U") + 31104000 %}
+                                            il ya {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("Y") }} ans
+                                        {% elseif "now" |date("U") + 3600  > c.datecreation |date("U") + 2592000 %}
+                                            il ya  {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("m") }} moiss
+                                        {% elseif "now" |date("U") + 3600  > c.datecreation |date("U") + 86400 %}
+                                            il ya {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("d") }} jours
+                                        {% elseif "now" |date("U") + 3600  > c.datecreation |date("U") + 3600  %}
+                                            il ya {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("H") }} heures
+                                        {% elseif "now" |date("U") + 3600  > c.datecreation |date("U") + 60 %}
+                                            il ya {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("i") }} minutes
+                                        {% elseif "now" |date("U") + 3600  > c.datecreation |date("U")  %}
+                                            il ya  {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("s") }} secondes
+                                        {% endif %}
+                                    </p>
+                                    <!-- /META LINE TIMESTAMP -->
+                                </div>
+                                <!-- /META LINE -->
+                                {% if app.user.id == c.idUser.id %}
+                                <!-- META LINE -->
+                                <div class="meta-line settings">
+                                    <!-- POST SETTINGS WRAP -->
+                                    <div class="post-settings-wrap">
+                                        <!-- POST SETTINGS -->
+                                        <div class="post-settings post-settings-dropdown-trigger">
+                                            <!-- POST SETTINGS ICON -->
+                                            <svg class="post-settings-icon icon-more-dots">
+                                                <use xlink:href="#svg-more-dots"></use>
+                                            </svg>
+                                            <!-- /POST SETTINGS ICON -->
+                                        </div>
+                                        <!-- /POST SETTINGS -->
+
+                                        <!-- SIMPLE DROPDOWN -->
+                                        <div class="simple-dropdown post-settings-dropdown">
+                                            <a href="{{ path('suppComment', {'id':c.id,'id2':c.idArticle.id})  }}">
+                                            <!-- SIMPLE DROPDOWN LINK -->
+                                            <p class="simple-dropdown-link">Supprimer</p>
+                                            <!-- /SIMPLE DROPDOWN LINK -->
+                                            </a>
+                                        </div>
+                                        <!-- /SIMPLE DROPDOWN -->
+                                    </div>
+                                    <!-- /POST SETTINGS WRAP -->
+                                </div>
+                                <!-- /META LINE -->
+                                {% endif %}
+                            </div>
+                            <!-- /CONTENT ACTION -->
+                        </div>
+                        <!-- /CONTENT ACTIONS -->
+                    </div>
+                    <!-- /POST COMMENT -->
+                    {% endfor %}
+
+
+
+
+
+                    <!-- POST COMMENT FORM -->
+                    <div class="post-comment-form">
+                        <!-- USER AVATAR -->
+                        <div class="user-avatar small no-outline">
+                            <!-- USER AVATAR CONTENT -->
+                            <div class="user-avatar-content">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-image-30-32" data-src="{{ asset('uploads/'~app.user.imguser) }}"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR CONTENT -->
+
+                            <!-- USER AVATAR PROGRESS -->
+                            <div class="user-avatar-progress">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-progress-40-44"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR PROGRESS -->
+
+                            <!-- USER AVATAR PROGRESS BORDER -->
+                            <div class="user-avatar-progress-border">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-border-40-44"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR PROGRESS BORDER -->
+
+                            <!-- USER AVATAR BADGE -->
+                            <div class="user-avatar-badge">
+                                <!-- USER AVATAR BADGE BORDER -->
+                                <div class="user-avatar-badge-border">
+                                    <!-- HEXAGON -->
+                                    <div class="hexagon-22-24"></div>
+                                    <!-- /HEXAGON -->
+                                </div>
+                                <!-- /USER AVATAR BADGE BORDER -->
+
+                                <!-- USER AVATAR BADGE CONTENT -->
+                                <div class="user-avatar-badge-content">
+                                    <!-- HEXAGON -->
+                                    <div class="hexagon-dark-16-18"></div>
+                                    <!-- /HEXAGON -->
+                                </div>
+                                <!-- /USER AVATAR BADGE CONTENT -->
+
+                                <!-- USER AVATAR BADGE TEXT -->
+                                <p class="user-avatar-badge-text">24</p>
+                                <!-- /USER AVATAR BADGE TEXT -->
+                            </div>
+                            <!-- /USER AVATAR BADGE -->
+                        </div>
+                        <!-- /USER AVATAR -->
+
+                        <!-- FORM -->
+                        <form class="form" action="{{ path('ajouterComment',{'id':article.id}) }}">
+
+                            <!-- FORM ROW -->
+                            <div class="form-row">
+                                <!-- FORM ITEM -->
+                                <div class="form-item">
+                                    <!-- FORM INPUT -->
+                                    <div class="form-input small">
+
+                                        <label for="text">Your Reply</label>
+                                        <input type="text" id="ajouterComment_text" name="text" required>
+                                    </div>
+                                    <!-- /FORM INPUT -->
+                                </div>
+                                <!-- /FORM ITEM -->
+                            </div>
+                            <!-- /FORM ROW -->
+                        </form>
+                        <!-- /FORM -->
+                    </div>
+                    <!-- /POST COMMENT FORM -->
+                </div>
+                <!-- /POST COMMENT LIST -->
+            </div>
+            <!-- /POST OPEN BODY -->
+        </article>
+        <!-- /POST OPEN -->
+    </div>
+    <!-- /CONTENT GRID -->
+
+{% endblock %}

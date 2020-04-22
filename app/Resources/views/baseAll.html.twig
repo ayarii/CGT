@@ -99,7 +99,7 @@
 
 
             <!-- MENU ITEM -->
-            <li class="menu-item active">
+            <li class="menu-item ">
                 {% if app.user.typecompte=="Chasseur du talent" %}
                     <!-- MENU ITEM LINK -->
                     <a class="menu-item-link text-tooltip-tfr" href="{{ path('affichercompetition') }}" data-title="Events">
@@ -127,10 +127,10 @@
             <!-- MENU ITEM -->
             <li class="menu-item">
                 <!-- MENU ITEM LINK -->
-                <a class="menu-item-link text-tooltip-tfr" href="#" data-title="Forums">
+                <a class="menu-item-link text-tooltip-tfr" href="{{ path('afficherBlogUser') }}"data-title="Blogs">
                     <!-- MENU ITEM LINK ICON -->
-                    <svg class="menu-item-link-icon icon-forums">
-                        <use xlink:href="#svg-forums"></use>
+                    <svg class="menu-item-link-icon icon-blog-posts">
+                        <use xlink:href="#svg-blog-posts"></use>
                     </svg>
                     <!-- /MENU ITEM LINK ICON -->
                 </a>
@@ -336,13 +336,13 @@
             <!-- MENU ITEM -->
             <li class="menu-item">
                 <!-- MENU ITEM LINK -->
-                <a class="menu-item-link" href="#">
+                <a class="menu-item-link" href="{{ path('afficherBlogUser') }}">
                     <!-- MENU ITEM LINK ICON -->
-                    <svg class="menu-item-link-icon icon-forums">
-                        <use xlink:href="#svg-forums"></use>
+                    <svg class="menu-item-link-icon icon-blog-posts">
+                        <use xlink:href="#svg-blog-posts"></use>
                     </svg>
                     <!-- /MENU ITEM LINK ICON -->
-                    Forums
+                    Blogs
                 </a>
                 <!-- /MENU ITEM LINK -->
             </li>

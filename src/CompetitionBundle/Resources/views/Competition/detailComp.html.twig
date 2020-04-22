@@ -91,8 +91,10 @@
                                         <!-- USER AVATAR CONTENT -->
                                         <div class="user-avatar-content">
                                             <!-- HEXAGON -->
+                                            <a href="{{ path('visit_profile',{id_user:par.iduser.id}) }}">
                                             <div class="hexagon-image-18-20" data-src="{{ asset('uploads/'~par.iduser.imguser) }}"></div>
-                                            <!-- /HEXAGON -->
+                                            </a>
+                                                <!-- /HEXAGON -->
                                         </div>
                                         <!-- /USER AVATAR CONTENT -->
                                     </div>
@@ -126,32 +128,13 @@
                             <!-- /TAG ITEM -->
                         {% endif %}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
                     </div>
                     <!-- /POST OPEN CONTENT BODY -->
                 </div>
                 <!-- /POST OPEN CONTENT -->
 
-
-
-
             </div>
             <!-- /POST OPEN BODY -->
-
-
-
 
         </article>
     </div>
