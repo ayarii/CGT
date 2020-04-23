@@ -298,13 +298,13 @@
                     <!-- USER STATUS -->
                     <div class="user-status request">
                         <!-- USER STATUS AVATAR -->
-                        <a class="user-status-avatar" href="{{ path('profile', {'id':i.iduser1.id})  }}">
+                        <a class="user-status-avatar" href="{{ path('visit_profile',{id_user:i.idme.id}) }}">
                             <!-- USER AVATAR -->
                             <div class="user-avatar small no-outline">
                                 <!-- USER AVATAR CONTENT -->
                                 <div class="user-avatar-content">
                                     <!-- HEXAGON -->
-                                    <div class="hexagon-image-30-32" data-src="{{ asset('uploads/'~i.idUser1.imguser) }}"></div>
+                                    <div class="hexagon-image-30-32" data-src="{{ asset('uploads/'~i.idme.imguser) }}"></div>
                                     <!-- /HEXAGON -->
                                 </div>
                                 <!-- /USER AVATAR CONTENT -->
@@ -354,7 +354,7 @@
                         <!-- /USER STATUS AVATAR -->
 
                         <!-- USER STATUS TITLE -->
-                        <p class="user-status-title"><a class="bold" href="profile-timeline.html">{{i.idUser1.username}}</a></p>
+                        <p class="user-status-title"><a class="bold" href="profile-timeline.html">{{i.idme.username}}</a></p>
                         <!-- /USER STATUS TITLE -->
 
                         <!-- USER STATUS TEXT -->

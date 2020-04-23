@@ -27,6 +27,7 @@
         "dompdf/dompdf": "^0.8.3",
         "friendsofsymfony/ckeditor-bundle": "^1.2",
         "friendsofsymfony/jsrouting-bundle": "^2.4",
+        "friendsofsymfony/message-bundle": "^2.0",
         "friendsofsymfony/user-bundle": "~2.0",
         "incenteev/composer-parameter-handler": "^2.0",
         "knplabs/knp-paginator-bundle": "^3.0",
