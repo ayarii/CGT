@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e929965-b3b3-4987-aff9-2775e6979b9d" name="Default Changelist" comment="" />
+    <list default="true" id="8e929965-b3b3-4987-aff9-2775e6979b9d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/baseAll.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/baseAll.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -294,7 +297,8 @@
       <workItem from="1587320517682" duration="11498000" />
       <workItem from="1587378585349" duration="5309000" />
       <workItem from="1587471898708" duration="1777000" />
-      <workItem from="1587474129722" duration="33098000" />
+      <workItem from="1587474129722" duration="34609000" />
+      <workItem from="1587655074873" duration="1593000" />
     </task>
     <task id="LOCAL-00001" summary="oussema">
       <created>1587231391634</created>
@@ -359,7 +363,21 @@
       <option name="project" value="LOCAL" />
       <updated>1587516050597</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Ajout du Blog Bundle + qque modification dans Competition">
+      <created>1587516219716</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1587516219716</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Ajout du Blog Bundle + qque modification dans Competition">
+      <created>1587516270273</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1587516270273</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -406,10 +424,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="484" y="230" key="#com.jetbrains.php.framework.ui.FailedToParseDialog/0.0.1366.728@0.0.1366.728" timestamp="1587475069415" />
-    <state x="282" y="0" key="CommitChangelistDialog2" timestamp="1587516045334">
+    <state x="282" y="0" key="CommitChangelistDialog2" timestamp="1587516268847">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="282" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587516045334" />
+    <state x="282" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587516268847" />
     <state x="407" y="256" key="ComposerCompositePathDialog" timestamp="1587475131693">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -420,25 +438,25 @@
     </state>
     <state x="462" y="109" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587480423145" />
     <state x="519" y="123" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585189446351" />
-    <state width="1323" height="140" key="GridCell.Tab.0.bottom" timestamp="1587515061962">
+    <state width="1323" height="140" key="GridCell.Tab.0.bottom" timestamp="1587546796869">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587515061962" />
+    <state width="1323" height="140" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587546796869" />
     <state width="1493" height="183" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
-    <state width="1323" height="140" key="GridCell.Tab.0.center" timestamp="1587515061962">
+    <state width="1323" height="140" key="GridCell.Tab.0.center" timestamp="1587546796869">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587515061962" />
+    <state width="1323" height="140" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587546796869" />
     <state width="1493" height="183" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
-    <state width="1323" height="140" key="GridCell.Tab.0.left" timestamp="1587515061962">
+    <state width="1323" height="140" key="GridCell.Tab.0.left" timestamp="1587546796869">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587515061962" />
+    <state width="1323" height="140" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587546796869" />
     <state width="1493" height="183" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
-    <state width="1323" height="140" key="GridCell.Tab.0.right" timestamp="1587515061962">
+    <state width="1323" height="140" key="GridCell.Tab.0.right" timestamp="1587546796869">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="140" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587515061962" />
+    <state width="1323" height="140" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587546796869" />
     <state width="1493" height="183" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586365897826" />
     <state x="395" y="81" key="MultipleFileMergeDialog" timestamp="1587516125180">
       <screen x="0" y="0" width="1366" height="728" />
@@ -458,27 +476,27 @@
     </state>
     <state x="454" y="279" key="SymfonyPathDialog/0.0.1366.728@0.0.1366.728" timestamp="1587475146877" />
     <state x="511" y="316" key="SymfonyPathDialog/0.0.1536.824@0.0.1536.824" timestamp="1584849486228" />
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1587516075036">
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2" timestamp="1587516281461">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587516075036" />
-    <state x="391" y="193" width="530" height="350" key="com.intellij.ide.util.TipDialog" timestamp="1587474173946">
+    <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587516281460" />
+    <state x="391" y="193" width="530" height="350" key="com.intellij.ide.util.TipDialog" timestamp="1587655627362">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="391" y="193" width="530" height="350" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1587474173946" />
+    <state x="391" y="193" width="530" height="350" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1587655627362" />
     <state x="440" y="218" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586779967101" />
-    <state x="492" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587421939565">
+    <state x="492" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587655638773">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1587421939565" />
+    <state x="492" y="339" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1587655638773" />
     <state x="462" y="10" width="613" height="804" key="find.popup" timestamp="1586270789578">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="462" y="10" width="613" height="804" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1586270789578" />
-    <state x="609" y="123" width="672" height="400" key="run.anything.popup" timestamp="1587514718769">
+    <state x="609" y="123" width="672" height="400" key="run.anything.popup" timestamp="1587655663181">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="609" y="123" width="672" height="400" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1587514718769" />
+    <state x="609" y="123" width="672" height="400" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1587655663181" />
     <state x="685" y="138" width="756" height="767" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1586783257557" />
     <state x="389" y="55" width="756" height="768" key="search.everywhere.popup" timestamp="1586281561981">
       <screen x="0" y="0" width="1536" height="824" />

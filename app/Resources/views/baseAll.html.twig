@@ -147,7 +147,7 @@
     <nav id="navigation-widget" class="navigation-widget navigation-widget-desktop sidebar left hidden" data-simplebar>
         <!-- NAVIGATION WIDGET COVER -->
         <figure class="navigation-widget-cover liquid">
-            <img src="#" alt="cover-01">
+            <img src="{{ asset('template/img/cover/40.jpg') }}" alt="cover-01">
         </figure>
         <!-- /NAVIGATION WIDGET COVER -->
 
@@ -205,7 +205,7 @@
         <div class="badge-list small">
             <!-- BADGE ITEM -->
             <div class="badge-item">
-                <img src="#" alt="badge-gold-s">
+                <img src="{{ asset('template/img/badge/gold-s.png') }}" alt="badge-gold-s">
             </div>
             <!-- /BADGE ITEM -->
 
@@ -214,7 +214,7 @@
 
             <!-- BADGE ITEM -->
             <a class="badge-item" href="#">
-                <img src="#" alt="badge-blank-s">
+                <img src="{{ asset('template/img/badge/blank-s.png') }}" alt="badge-blank-s">
                 <!-- BADGE ITEM TEXT -->
                 <p class="badge-item-text">+9</p>
                 <!-- /BADGE ITEM TEXT -->
@@ -305,7 +305,7 @@
 
 
             <!-- MENU ITEM -->
-            <li class="menu-item active">
+            <li class="menu-item ">
                 {% if app.user.typecompte=="Chasseur du talent" %}
                     <!-- MENU ITEM LINK -->
                     <a class="menu-item-link" href="{{ path('affichercompetition') }}">
