@@ -1,9 +1,6 @@
-publication_show:
-    path:     /show
-    defaults: { _controller: PublicationBundle:Post:affichagePost }
 publication_homepage:
     path:     /newsfeed
-    defaults: { _controller: PublicationBundle:Post:AjouterPostVI }
+    defaults: { _controller: PublicationBundle:Post:affichagePost}
 publication_edit:
     path:    /{id_post}/edit
     defaults: { _controller: PublicationBundle:Post:ModifierPost }
@@ -76,3 +73,7 @@ chatbotcomp:
 chatbotcomp23:
     path:     /{id_user}/evens
     defaults: { _controller: PublicationBundle:Post:chatbotcomp }
+
+Publication_add_new_post:
+    path:     /addnewpost
+    defaults: { _controller: PublicationBundle:Post:newaddMixedPost}

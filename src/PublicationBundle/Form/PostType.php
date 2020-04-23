@@ -21,15 +21,8 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type',ChoiceType::class,array(
-                'choices'=>array(
-                    'video'=>'video',
-                    'text'=>'text',
-                    'img'=>'img'
-                )
-            ))
-
             ->add('titre')
+            ->add('contenue')
             ->add('Publier',SubmitType::class);
     }/**
      * {@inheritdoc}

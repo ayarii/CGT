@@ -2,9 +2,11 @@
 
 namespace PublicationBundle\Controller;
 
+use PublicationBundle\Entity\Media;
 use PublicationBundle\Entity\Post;
 use PublicationBundle\Entity\reaction;
 use PublicationBundle\Entity\Vote;
+use PublicationBundle\Form\MediaType;
 use PublicationBundle\Form\PostType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -159,11 +161,13 @@ class PostController extends Controller
             ->getForm();
     }
     public function affichagePostAction()
-    {
-        $User = $this->getUser();
-        $em = $this->getDoctrine()->getManager();
-        $post = $em->getRepository('PublicationBundle:Post')->findBy(array(), array('date'=>'DESC'));
-        return $this->redirectToRoute('publication_homepage');
+    {   $em=$this->getDoctrine()->getManager();
+        $User=$this->getUser();
+        $posts = $em->getRepository('PublicationBundle:Post')->findBy(array(), array('date'=>'DESC'));
+        $comments=$em->getRepository('PublicationBundle:commentaire')->findBy(array());
+        $reactions=$em->getRepository('PublicationBundle:reaction')->findBy(array());
+        $votes=$em->getRepository('PublicationBundle:Vote')->findBy(array());
+        return $this->render('@Publication/Posts/Acceuil.html.twig',array('user'=>$User,'posts'=>$posts,'comments'=>$comments,'reactions'=>$reactions,'votes'=>$votes));
     }
     public function VoteAction($id_post,Request $request,$slug )
     {
@@ -433,12 +437,61 @@ class PostController extends Controller
       return new Response("");
     }
     public function tooop1Action(Request $request,$id_user)
-    {   $em=$this->getDoctrine()->getManager();
-        $top=$em->getRepository('PublicationBundle:Post')->findOneBy(array('idauthor'=>$id_user));
-        if($request->isXmlHttpRequest())
-        {
-            return $this->json(['titre' =>$top->getTitre(),'contenue'=>$top->getcontenue(),'Votes'=>$top->getVotesPost()]);
+    {
+        $em = $this->getDoctrine()->getManager();
+        $top = $em->getRepository('PublicationBundle:Post')->findOneBy(array('idauthor' => $id_user));
+        if ($request->isXmlHttpRequest()) {
+            return $this->json(['titre' => $top->getTitre(), 'contenue' => $top->getcontenue(), 'Votes' => $top->getVotesPost()]);
         }
+    }
+    public function newaddMixedPostAction(Request $req)
+    {
+        $User=$this->getUser();
+        $post=new Post();
+        $post->setIdauthor($User);
+        $post->setDate(new \DateTime("now", new \DateTimeZone('+0100')));
+        $post->setReactionPost(0);
+        $post->setVotesPost(0);
+        $post->setNbcomments(0);
+        $em=$this->getDoctrine()->getManager();
+           // $medias=$req->request->get('mediacontainer');
+            $medias = json_decode($req->request->get('mediacontainer'));
+            foreach($medias as $m)
+                {
+                    $media=new Media();
+                    $media->setIdUser($User);
+                    //$media->setDescription($m->legende);
+                    $media->setType("post");
+                    $media->setMediatype($m->mediatype);
+                    $srcFile=$m->src;
+                    if ($srcFile) {
+                        $originalFilename=chop($srcFile,'"C:\fakepath\"');
+                        $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                        //$newFilename = $safeFilename.'-'.uniqid().'.'.$srcFile->guessExtension();
+                        $newFilename=$originalFilename;
+
+                        try {
+                            $srcFile->move('uploads/' .$media->getMediatype() , $newFilename);
+                        } catch (FileException $e) {
+                            print $e->getMessage();
+                        }
+                     $media->setSource($newFilename);}
+                    $post->addmedia($media);
+                }
+        $contenue="";$titre="";
+        if($req->isXmlHttpRequest())
+        {    $contenue=$req->request->get('contenudupub');
+             $titre=$req->request->get('titredupub');}
+             $post->setType("Mixed");
+             $post->setSrcPublication($contenue);
+             $post->setTitre($titre);
+             $em->persist($post);
+             $em->flush();
+
+        return $this->redirectToRoute('publication_homepage');
+
     }
 
 }
+
+

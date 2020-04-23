@@ -1,6 +1,7 @@
 <?php
 
 namespace PublicationBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 use Mgilet\NotificationBundle\Annotation\Notifiable;
 use Mgilet\NotificationBundle\NotifiableInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -247,5 +248,23 @@ class Post implements NotifiableInterface
      * @ORM\Column(name="comments_on_post", type="integer", options={"default" : 0})
      */
     private $nbcomments;
+    private $medias;
+    public function __construct()
+    {
+        $this->medias = new ArrayCollection();
+    }
+    public function getmedias()
+    {
+        return $this->medias;
+    }
+    public function addmedia(Media $media)
+    {   $media->getIdpost($this);
+        $this->medias->add($media);
+    }
+    public function removemedia(Media $media)
+    {
+        $this->tags->removeElement($media);
+    }
+
 }
 
