@@ -167,6 +167,10 @@ class ArticleController extends Controller
         $em->flush();
         return $this->redirectToRoute('afficherBlogAdmin');
     }
+    public function accAction()
+    {
+        return $this->render('@Blog/Blog/HomePage.html.twig');
+    }
 
 
 }
