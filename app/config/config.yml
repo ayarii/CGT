@@ -4,7 +4,6 @@ imports:
     - { resource: services.yml }
     - { resource: "@FOSBundle/Resources/config/services.yml" }
     - { resource: "@CompetitionBundle/Resources/config/services.yml" }
-    - { resource: "@MessagerieBundle/Resources/config/services.yml" }
     - { resource: "@PublicationBundle/Resources/config/services.yml" }
     - { resource: "@BlogBundle/Resources/config/services.yml" }
 
@@ -192,7 +191,8 @@ fos_ck_editor:
       filebrowserBrowseRoute: elfinder
       filebrowserBrowseRouteParameters: []
 
-
-
-
+fos_message:
+  db_driver: orm
+  thread_class: FOSBundle\Entity\Thread
+  message_class: FOSBundle\Entity\Message
 

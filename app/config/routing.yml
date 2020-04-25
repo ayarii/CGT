@@ -2,11 +2,6 @@ blog:
     resource: "@BlogBundle/Resources/config/routing.yml"
     prefix:   /
 
-
-messagerie:
-    resource: "@MessagerieBundle/Resources/config/routing.yml"
-    prefix:   /
-
 competition:
     resource: "@CompetitionBundle/Resources/config/routing.yml"
     prefix:   /
@@ -51,3 +46,6 @@ fos_js_routing:
 elfinder:
     resource: "@FMElfinderBundle/Resources/config/routing.yml"
 
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /message
