@@ -29,6 +29,7 @@
         "friendsofsymfony/jsrouting-bundle": "^2.4",
         "friendsofsymfony/message-bundle": "^2.0",
         "friendsofsymfony/user-bundle": "~2.0",
+        "helios-ag/fm-elfinder-bundle": "^9.3",
         "incenteev/composer-parameter-handler": "^2.0",
         "knplabs/knp-paginator-bundle": "^3.0",
         "mgilet/notification-bundle": "^3.1",
@@ -69,7 +70,8 @@
         "platform": {
             "php": "5.6"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "component-dir": "web/assets"
     },
     "extra": {
         "symfony-app-dir": "app",
@@ -83,6 +85,9 @@
         },
         "branch-alias": {
             "dev-master": "3.4-dev"
+        },
+        "symfony": {
+            "allow-contrib": "true"
         }
     }
 }

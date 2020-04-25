@@ -16,7 +16,17 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('sujet')
-            ->add('contenue',CKEditorType::class)
+            //->add('contenue',CKEditorType::class)
+            ->add('contenue', CKEditorType::class, array(
+                'config' => array(
+                    'filebrowserBrowseRoute' => 'elfinder',
+                    'filebrowserBrowseRouteParameters' => array(
+                        'instance' => 'default',
+                        'homeFolder' => ''
+                    )
+                ),
+            )
+    )
             ->add('valider',SubmitType::class);
 
     }/**

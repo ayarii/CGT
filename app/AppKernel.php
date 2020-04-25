@@ -33,6 +33,8 @@ class AppKernel extends Kernel
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new BlogBundle\BlogBundle(),
             new FOS\CKEditorBundle\FOSCKEditorBundle(),
+            new FM\ElfinderBundle\FMElfinderBundle(),
+
 
         ];
 
