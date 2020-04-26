@@ -367,82 +367,12 @@
             <!-- GRID COLUMN -->
             <div class="grid-column">
 
-                <div class="quick-post">
-                    {{ form_start(form) }}
-                    <div class="quick-post-header">
-                        <!-- OPTION ITEMS -->
-                        <div class="option-items">
-                            <!-- OPTION ITEM -->
-                            <div class="option-item active">
-                                <!-- OPTION ITEM ICON -->
-                                <svg class="option-item-icon icon-status">
-                                    <use xlink:href="#svg-status"></use>
-                                </svg>
-                                <!-- /OPTION ITEM ICON -->
-
-                                <!-- OPTION ITEM TITLE -->
-                                <p class="option-item-title" >Statut</p>
-                                <!-- /OPTION ITEM TITLE -->
-                            </div>
-                            <!-- /OPTION ITEM -->
-
-                        </div>
-                        <!-- /OPTION ITEMS -->
+                <div class="quick-post media">
+                    <img class="mr-3" src="{{asset('template/img/avatar/')~app.user.imguser}}" alt="{{ app.user.username }}">
+                    <div class="media-body">
+                        <h6 class="mt-0">Créer une Publication</h6><br>
+                        <input class="btn-primary rounded btn-lg btn-block popup-event-creation-trigger text-white" data-toggle="collapse" data-target="#nexpost"  aria-expanded="false" aria-controls="nexpost" title="Créer une Publication" placeholder="Salut  {{ app.user.username }} ! qu'est vous voulez dire?">
                     </div>
-                    <!-- /QUICK POST HEADER -->
-
-                    <!-- QUICK POST BODY -->
-                    <div class="quick-post-body">
-                        <!-- FORM -->
-                        {{ form_widget(form.type,{'attr':{ 'class':'custom-select mr-sm-2'}}) }}
-                        <!-- FORM ROW -->
-                        <div class="form-row">
-                            <!-- FORM ITEM -->
-                            <div class="form-item">
-                                <!-- FORM TEXTAREA -->
-                                <div class="form-textarea">
-                                    <textarea id="textpublication" {{ form_widget(form.titre,{'attr':{'id':"textpublication",'maxlength':"255",'placeholder':"hi "~app.user.username ~" tell"~utilisateur.username ~"Something" }}) }}></textarea>
-
-                                    <span class="form-textarea-limit-text" id="compteur"></span>
-                                    <!-- /FORM TEXTAREA LIMIT TEXT -->
-                                </div>
-                                <!-- /FORM TEXTAREA -->
-                            </div>
-                            <!-- /FORM ITEM -->
-                        </div>
-                        <!-- /FORM ROW -->
-                    </div>
-                    <!-- /QUICK POST BODY -->
-
-                    <!-- QUICK POST FOOTER -->
-                    <div class="quick-post-footer">
-                        <!-- QUICK POST FOOTER ACTIONS -->
-                        <div class="quick-post-footer-actions">
-                            <!-- QUICK POST FOOTER ACTION -->
-                            <div  class="quick-post-footer-action text-tooltip-tft-medium" data-title="Inserer Une photo Ou un Vidéo">
-                                <!-- QUICK POST FOOTER ACTION ICON -->
-
-                                {{ form_widget(form.contenue,{'attr':{ 'class':'custom-file-input'}}) }}
-
-                                <!-- /QUICK POST FOOTER ACTION ICON -->
-                            </div>
-
-                        </div>
-                        <!-- /QUICK POST FOOTER ACTIONS -->
-
-                        <!-- QUICK POST FOOTER ACTIONS -->
-                        <div class="quick-post-footer-actions">
-                            <!-- BUTTON -->
-                            <p class="button small void">Discard</p>
-                            <!-- /BUTTON -->
-
-                            <!-- BUTTON -->
-                            {{form_widget(form.Publier,{'attr':{ 'class':'btn btn-success'}})}}
-                            <!-- /BUTTON -->
-                        </div>
-                        <!-- /QUICK POST FOOTER ACTIONS -->
-                    </div>
-                    {{ form_end(form) }}
                 </div>
 
                 <div class="simple-tab-items">
@@ -464,7 +394,7 @@
                     <!-- /FORM -->
 
                     <!-- SIMPLE TAB ITEM -->
-                    <p class="simple-tab-item active">PUblications</p>
+                    <p class="simple-tab-item active">Publications</p>
                     <!-- /SIMPLE TAB ITEM -->
                 </div>
                 <!-- /SIMPLE TAB ITEMS -->

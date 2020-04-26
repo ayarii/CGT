@@ -10,7 +10,6 @@ publication_delete:
 publication_show_one1:
     path:    /{id_post}/show1
     defaults: { _controller: PublicationBundle:Post:showone }
-
 commentaire_add:
     path:     /new/{post_id}
     defaults: { _controller: PublicationBundle:commentaire:AjouterComment }
@@ -38,21 +37,21 @@ visit_profile:
 
 publication_share_one:
     path:     /{id_post}/share
-    defaults: { _controller: PublicationBundle:Post:shareone }
+    defaults:  { _controller: PublicationBundle:Post:shareone }
 share:
-     path:    /sharenow
-     defaults: {_controller:PublicationBundle:Post:addpostaj}
+    path:     /sharenow
+    defaults: {_controller:PublicationBundle:Post:addpostaj}
 show_one_post:
-    path:    /showonepost/{id_post}
+    path:     /showonepost/{id_post}
     defaults: {_controller:PublicationBundle:Post:showPost1}
 
 show_Admin_posts:
-        path:    /showpostsadmin
-        defaults: {_controller:PublicationBundle:Post:showPostforadmin}
+    path:     /showpostsadmin
+    defaults: { _controller:PublicationBundle:Post:showPostforadmin}
 
 show_Admin_post:
-            path:    /showonepostadmin/{id_post}
-            defaults: {_controller:PublicationBundle:Post:showPost1Adimin}
+    path:    /showonepostadmin/{id_post}
+    defaults: {_controller:PublicationBundle:Post:showPost1Adimin}
 
 commentaire_supprimera:
     path:     /supprimercommentairea/{id_com}
@@ -77,3 +76,12 @@ chatbotcomp23:
 Publication_add_new_post:
     path:     /addnewpost
     defaults: { _controller: PublicationBundle:Post:newaddMixedPost}
+    methods:   [POST,GET]
+Media_edit:
+    path:     /editMedia/{id_media}
+    defaults: {_controller: PunblicationBundle:Media:editMedia}
+
+Media_Delete:
+    path:     /DeleteMedia/{id_media}
+    defaults: {_controller: PublicationBundle:Media:DeleteMedia}
+

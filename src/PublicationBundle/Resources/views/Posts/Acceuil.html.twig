@@ -1,4 +1,4 @@
-﻿{% extends 'baseAll.html.twig' %}
+﻿{% extends 'baseall.html.twig' %}
 
 {% block body %}
     </br>
@@ -8,7 +8,6 @@
             height:200px;
             overflow-y: scroll;
         }
-
 
     </style>
     <link rel="icon" href="{{ asset('template/img/favicon.ico') }}">
@@ -856,7 +855,7 @@
                     <img class="mr-3" src="{{asset('template/img/avatar/')~app.user.imguser}}" alt="{{ app.user.username }}">
                     <div class="media-body">
                         <h6 class="mt-0">Créer une Publication</h6><br>
-                        <input class="btn-primary rounded btn-lg btn-block popup-event-creation-trigger text-white" data-toggle="collapse" data-target="#nexpost"  aria-expanded="false" aria-controls="nexpost" title="Créer une Publication" placeholder="Salut  {{ app.user.username }} ! qu'est vous voulez dire?">
+                        <input class="btn-primary rounded btn-lg btn-block popup-event-creation-trigger text-white" data-toggle="Modal" data-target="#"  aria-expanded="false" aria-controls="nexpost" title="Créer une Publication" placeholder="Salut  {{ app.user.username }} ! qu'est vous voulez dire?">
                     </div>
                 </div>
                 <div class="simple-tab-items">
@@ -905,7 +904,7 @@
                                         <!-- SIMPLE DROPDOWN LINK -->
 
                                         {% if post.idauthor.id==user.id %}
-                                            <a class="simple-dropdown-link btn btn-default" onclick="affichierpub(this)" id="ModifierPost-{{ post.id }}" data-toggle="modal" data-target="#Postedit" data-whatever="{{ post.id }}" ><i class='fa fa-pencil'></i>Edit</a>
+                                            <a class="simple-dropdown-link btn btn-default popup-album-creation-trigger" onclick="affichierpub(this)" id="ModifierPost-{{ post.id }}"data-whatever="{{ post.id }}" ><i class='fa fa-pencil'></i>Edit</a>
                                             <!-- /SIMPLE DROPDOWN LINK -->
                                             {% if post.type=="shared" %}
                                                 {% set f=0 %}
@@ -1035,128 +1034,142 @@
                                 <!-- WIDGET BOX STATUS TEXT -->
                                 <p class="widget-box-status-text">{{ post.titre }}</p>
                                 <!-- /WIDGET BOX STATUS TEXT -->
+                                <h4 class="widget-box-status-text">{{ post.contenue }}</h4>
                             </div>
                             <!-- /WIDGET BOX STATUS CONTENT -->
-                            {% if post.type == "img" %}
-                                <img class="img-responsive" alt="photo" width="304" height="236"src="{{ asset('/uploads/img/') ~ post.contenue }}" alt="photo-preview-10">
-                                <!-- /IFRAME WRAP -->
-                            {% elseif post.type == "video" %}
-                                <video class="video-fluid" width="304" height="236" src="{{ asset('/uploads/video/') ~ post.contenue }}" ></video>
-                            {% elseif post.type == "shared" %}
-                                {% set trv=0 %}
-                                {%for popo in posts  %}
-                                    {%if popo.id==post.contenue|number_format%}
-                                        {% set trv=1 %}
-                                        <div class="widget-box-status-content" id="tfol-{{ post.id }}">
-                                            <!-- USER STATUS -->
-                                            <div class="user-status">
-                                                <!-- USER STATUS AVATAR -->
-                                                <a class="user-status-avatar" href="{{ path('visit_profile',{id_user:popo.idauthor.id}) }}">
-                                                    <!-- USER AVATAR -->
-                                                    <div class="user-avatar small no-outline">
-                                                        <!-- USER AVATAR CONTENT -->
-                                                        <div class="user-avatar-content">
-                                                            <!-- HEXAGON -->
-                                                            <div class="hexagon-image-30-32" data-src="{{ asset('template/img/avatar/'~post.idauthor.imguser) }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
-                                                            <!-- /HEXAGON -->
-                                                        </div>
-                                                        <!-- /USER AVATAR CONTENT -->
-
-                                                        <!-- USER AVATAR PROGRESS -->
-                                                        <div class="user-avatar-progress">
-                                                            <!-- HEXAGON -->
-                                                            <div class="hexagon-progress-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
-                                                            <!-- /HEXAGON -->
-                                                        </div>
-                                                        <!-- /USER AVATAR PROGRESS -->
-
-                                                        <!-- USER AVATAR PROGRESS BORDER -->
-                                                        <div class="user-avatar-progress-border">
-                                                            <!-- HEXAGON -->
-                                                            <div class="hexagon-border-40-44" style="width: 40px; height: 44px; position: relative;"><canvas width="40" height="44" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
-                                                            <!-- /HEXAGON -->
-                                                        </div>
-                                                        <!-- /USER AVATAR PROGRESS BORDER -->
-
-                                                        <!-- USER AVATAR BADGE -->
-                                                        <div class="user-avatar-badge">
-                                                            <!-- USER AVATAR BADGE BORDER -->
-                                                            <div class="user-avatar-badge-border">
-                                                                <!-- HEXAGON -->
-                                                                <div class="hexagon-22-24" style="width: 22px; height: 24px; position: relative;"><canvas width="22" height="24" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
-                                                                <!-- /HEXAGON -->
-                                                            </div>
-                                                            <!-- /USER AVATAR BADGE BORDER -->
-
-                                                            <!-- USER AVATAR BADGE CONTENT -->
-                                                            <div class="user-avatar-badge-content">
-                                                                <!-- HEXAGON -->
-                                                                <div class="hexagon-dark-16-18" style="width: 16px; height: 18px; position: relative;"><canvas width="16" height="18" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
-                                                                <!-- /HEXAGON -->
-                                                            </div>
-                                                            <!-- /USER AVATAR BADGE CONTENT -->
-
-                                                            <!-- USER AVATAR BADGE TEXT -->
-                                                            <p class="user-avatar-badge-text">1</p>
-                                                            <!-- /USER AVATAR BADGE TEXT -->
-                                                        </div>
-                                                        <!-- /USER AVATAR BADGE -->
-                                                    </div>
-                                                    <!-- /USER AVATAR -->
-                                                </a>
-                                                <!-- /USER STATUS AVATAR -->
-
-                                                <!-- USER STATUS TITLE -->
-                                                <p class="user-status-title medium"><a class="bold" href="{{ path('visit_profile',{id_user:popo.idauthor.id}) }}">{{ popo.idauthor.username }}</a></p>
-                                                <!-- /USER STATUS TITLE -->
-
-                                                <!-- USER STATUS TEXT -->
-                                                <p class="user-status-text small">{% if "now" |date("U") + 3600  > popo.date|date("U") + 31104000 %}
-                                                        {{ ("now" |date("U") + 3600  - popo.date |date("U") ) |date("Y") }} Years Ago
-                                                    {% elseif "now" |date("U") + 3600  > popo.date |date("U") + 2592000 %}
-                                                        {{ ("now" |date("U") + 3600  - popo.date |date("U") ) |date("m") }} Months Ago
-                                                    {% elseif "now" |date("U") + 3600  > popo.date |date("U") + 86400 %}
-                                                        {{ ("now" |date("U") + 3600  - popo.date|date("U") ) |date("d") }} Days Ago
-                                                    {% elseif "now" |date("U") + 3600  > popo.date |date("U") + 3600  %}
-                                                        {{ ("now" |date("U") + 3600  - popo.date |date("U") ) |date("H") }} Hours Ago
-                                                    {% elseif "now" |date("U") + 3600  > popo.date |date("U") + 60 %}
-                                                        {{ ("now" |date("U") + 3600  - popo.date |date("U") ) |date("i") }} Minutes Ago
-                                                    {% elseif "now" |date("U") + 3600  > popo.date |date("U")  %}
-                                                        {{ ("now" |date("U") + 3600  - popo.date |date("U") ) |date("s") }} Seconds Ago
-                                                    {% endif %}</p>
-                                                <!-- /USER STATUS TEXT -->
-                                            </div>
-                                            <!-- /USER STATUS -->
-
-                                            <!-- WIDGET BOX STATUS TEXT -->
-                                            <p class="widget-box-status-text">{{ popo.titre }}</p>
-                                            <!-- /WIDGET BOX STATUS TEXT -->
-                                            {% if popo.type == "img" %}
-                                                <img class="img-responsive" alt="photo" width="304" height="236"src="{{ asset('/uploads/img/') ~ popo.contenue }}" alt="photo-preview-10">
-                                                <!-- /IFRAME WRAP -->
-                                            {% elseif popo.type == "video" %}
-
-                                                <video class="video-fluid" width="304" height="236" src="{{ asset('/uploads/video/') ~ popo.contenue }}" ></video>
-                                            {% endif %}
-                                        </div>
-                                    {% endif %}
-                                {% endfor %}
-                                {% if trv==0 %}
-                                    <div class="card text-white bg-danger mb-3" style="max-width: 18rem;" id="tfol-{{ post.id }}">
-                                        <div class="card-header">Not Available</div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">not found</h5>
-                                            <p class="card-text">this content isn't available !</p>
-                                        </div>
-                                    </div>
+                            {% set postmedias=[] %}
+                            {% for m in medias %}
+                                {% if m.idpost.id==post.id %}
+                                    {% set postmedias=postmedias|merge([m]) %}
                                 {% endif %}
-                            {% endif %}
+                            {% endfor %}
+                            <div class="picture-collage">
+                                {% if postmedias|length>0 %}
+                                    <!-- PICTURE COLLAGE ROW -->
 
+                                    {% if postmedias|length<2 %}
+                                        <div class="picture-collage-row medium">
+                                            {% for pm in postmedias %}
+                                                <!-- PICTURE COLLAGE ITEM -->
+                                                <div class="picture-collage-item popup-picture-trigger">
+                                                    <!-- PHOTO PREVIEW -->
+                                                    <div class="photo-preview">
+                                                        <!-- PHOTO PREVIEW IMAGE -->
+                                                        <figure class="photo-preview-image liquid" style="background: url(&quot;&quot;) center center / cover no-repeat;">
+                                                            <img src="{{ asset('uploads/Mixed/')~pm.source }}" alt="photo-preview-10" style="display: none;">
+                                                        </figure>
+                                                        <!-- /PHOTO PREVIEW IMAGE -->
+                                                    </div>
+                                                    <!-- /PHOTO PREVIEW -->
+                                                </div>
+                                                <!-- /PICTURE COLLAGE ITEM -->
+                                            {% endfor %}
+                                        </div>
+                                        <!-- /PICTURE COLLAGE ROW -->
+                                    {% else%}
+                                        {% if postmedias|length>=2 and postmedias|length <= 5 %}
+                                            <div class="picture-collage-row medium">
+                                                <!-- PICTURE COLLAGE ITEM -->
+                                                {% for pm in postmedias[:2] %}
+                                                    <div class="picture-collage-item popup-picture-trigger">
+                                                        <!-- PHOTO PREVIEW -->
+                                                        <div class="photo-preview">
+                                                            <!-- PHOTO PREVIEW IMAGE -->
+                                                            <figure class="photo-preview-image liquid" style="background: url(&quot;&quot;) center center / cover no-repeat;">
+                                                                <img src="{{ asset('uploads/Mixed/')~pm.source }}" alt="photo-preview-10" style="display: none;">
+                                                            </figure>
+                                                            <!-- /PHOTO PREVIEW IMAGE -->
+                                                        </div>
+
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <!-- PICTURE COLLAGE ROW -->
+                                            <div class="picture-collage-row">
+                                            {% for mp in postmedias[2:] %}
+                                                <!-- PICTURE COLLAGE ITEM -->
+                                                <div class="picture-collage-item popup-picture-trigger">
+                                                    <!-- PHOTO PREVIEW -->
+                                                    <div class="photo-preview">
+                                                        <!-- PHOTO PREVIEW IMAGE -->
+                                                        <figure class="photo-preview-image liquid" style="background: url(&quot;&quot;) center center / cover no-repeat;">
+                                                            <img src="{{ asset('uploads/Mixed/')~mp.source }}" alt="photo-preview-16" style="display: none;">
+                                                        </figure>
+                                                        <!-- /PHOTO PREVIEW IMAGE -->
+                                                    </div>
+                                                    <!-- /PHOTO PREVIEW -->
+                                                </div>
+                                                <!-- /PICTURE COLLAGE ITEM -->
+                                            {% endfor %}
+                                            <!-- PICTURE COLLAGE ITEM -->
+                                            </div>
+                                            {% elseif postmedias|length >5 %}
+                                            {% for mp in postmedias[:2] %}
+                                                <div class="picture-collage-row medium">
+                                                    <!-- PICTURE COLLAGE ITEM -->
+                                                        <div class="picture-collage-item popup-picture-trigger">
+                                                            <!-- PHOTO PREVIEW -->
+                                                            <div class="photo-preview">
+                                                                <!-- PHOTO PREVIEW IMAGE -->
+                                                                <figure class="photo-preview-image liquid" style="background: url(&quot;&quot;) center center / cover no-repeat;">
+                                                                    <img src="{{ asset('uploads/Mixed/')~mp.source }}" alt="photo-preview-10" style="display: none;">
+                                                                </figure>
+                                                                <!-- /PHOTO PREVIEW IMAGE -->
+                                                            </div>
+                                                            <!-- /PHOTO PREVIEW -->
+                                                        </div>
+                                                        <!-- /PICTURE COLLAGE ITEM -->
+                                                </div>
+                                            {% endfor %}
+                                            <!-- PICTURE COLLAGE ROW -->
+                                            <div class="picture-collage-row">
+                                                {% for mp in postmedias[2:4] %}
+                                                    <!-- PICTURE COLLAGE ITEM -->
+                                                    <div class="picture-collage-item popup-picture-trigger">
+                                                        <!-- PHOTO PREVIEW -->
+                                                        <div class="photo-preview">
+                                                            <!-- PHOTO PREVIEW IMAGE -->
+                                                            <figure class="photo-preview-image liquid" style="background: url(&quot;&quot;) center center / cover no-repeat;">
+                                                                <img src="{{ asset('uploads/Mixed/')~mp.source }}" alt="photo-preview-16" style="display: none;">
+                                                            </figure>
+                                                            <!-- /PHOTO PREVIEW IMAGE -->
+                                                        </div>
+                                                        <!-- /PHOTO PREVIEW -->
+                                                    </div>
+                                                    <!-- /PICTURE COLLAGE ITEM -->
+                                                {% endfor %}
+                                                    <div class="picture-collage-item">
+                                                        <!-- PICTURE COLLAGE ITEM OVERLAY -->
+                                                        <a class="picture-collage-item-overlay" href="profile-photos.html">
+                                                            <!-- PICTURE COLLAGE ITEM OVERLAY TEXT -->
+                                                            <p class="picture-collage-item-overlay-text">+ {{ postmedias|length-5}}</p>
+                                                            <!-- /PICTURE COLLAGE ITEM OVERLAY TEXT -->
+                                                        </a>
+                                                        <!-- /PICTURE COLLAGE ITEM OVERLAY -->
+                                                        <!-- PHOTO PREVIEW -->
+                                                        <div class="photo-preview">
+                                                            <!-- PHOTO PREVIEW IMAGE -->
+                                                            <figure class="photo-preview-image liquid" style="background: url(&quot;&quot;) center center / cover no-repeat;">
+                                                                <img src="{{ asset('uploads/Mixed/')~postmedias[4].source }}" alt="photo-preview-14" style="display: none;">
+                                                            </figure>
+                                                            <!-- /PHOTO PREVIEW IMAGE -->
+                                                        </div>
+                                                        <!-- /PHOTO PREVIEW -->
+                                                    </div>
+                                                    <!-- /PICTURE COLLAGE ITEM -->
+
+                                            </div>
+                                            <!-- /PICTURE COLLAGE ROW -->
+                                        {% endif %}
+                                    {% endif %}
+
+                                {% endif %}
+                            </div>
                             <!-- WIDGET BOX STATUS CONTENT -->
                             <div class="widget-box-status-content">
                                 <div class="collapse tag-list" id="socialbuttons-{{ post.id }}">
-                                    {{ facebookButton() }}
-                                    {{ socialButtons() }}
+                                    {{ linkedinButton() }}
+                                    {{ pinterestButton() }}
                                 </div>
                                 <!-- CONTENT ACTIONS -->
                                 <div class="content-actions">
@@ -1597,7 +1610,7 @@
                                         <!-- FORM INPUT -->
                                         <div class="form-input small">
                                             <label for="contenue">Your Reply</label>
-                                            <input type="text" id="commentaire_add_contenue" name="contenue" required>
+                                            <input type="text" id="commentaire_add_contenue-{{ post.id }}" name="contenue" required>
                                             {% if user %}
                                                 <button class="form btn btn-outline-dark"  type="submit">Reply</button>
                                             {% else %}
@@ -1621,6 +1634,7 @@
 
         </div>
     </div>
+    <!--Popupcommentedit-->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -1644,57 +1658,8 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="Postedit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modification de Publication </h4>
-                </div>
-                <div class="modal-body">
-                    <form id="Posteditt" >
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">Titre de Publication</label>
-                            <textarea class="form-control" id="titlepub" name="titre"  required></textarea>
-                        </div>
-                        <div class="form-group" id="content">
-                            <label for="message-text" class="control-label">Contenu</label>
-
-
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">Changer le Contenue</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupFileAddon01" name="contenue">Upload</span>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                           aria-describedby="inputGroupFileAddon01" name="contenue">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">Changer le Type</label>
-                            <select title="choisir le type de contenue" class="selectpicker" name="type">
-                                <option value="texte" >Texte</option>
-                                <option data-icon="glyphicon glyphicon-picture" data-subtext="petrification" value="img">Image</option>
-                                <option data-icon="glyphicon glyphicon-facetime-video" data-subtext="area damage" value="video">video</option>
-                            </select>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" >Enregistrer</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button id="fermm" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal -->
+    <!--Popuppostedit-->
+    <!-- Popuppostshare -->
     <div class="modal fade" id="Postforshare" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -1801,7 +1766,8 @@
             </div>
         </div>
     </div>
-    <div class="popup-box big popup-event-creation quick-post" style="position: absolute; left: 50%; z-index: 100001; opacity: 1; visibility: visible; transform: translate(0px, 0px); transition: transform 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s; top: 100px; margin-left: -192px;">
+    <!--PopupPostadd-->
+    <div id="addnewpost" class="popup-box big popup-event-creation quick-post" style="position: absolute; left: 50%; z-index: 100001; opacity: 1; visibility: visible; transform: translate(0px, 0px); transition: transform 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s; top: 100px; margin-left: -192px;">
         <!-- POPUP CLOSE BUTTON -->
         <div class="popup-close-button popup-event-creation-trigger">
             <!-- POPUP CLOSE BUTTON ICON -->
@@ -1846,7 +1812,7 @@
                 <!--form row-->
                 <input type="file" style="display: none" id="src" onchange='openFile(event)' multiple  />
                 <!--form row-->
-                <div class="form-row " id="photos+video" >
+                <div class="form-row collapse " id="photos+video"  >
                     <div class="form-item">
                         <div class="grid grid-3-3-3-3 centered anyClass" id="gallerie">
 
@@ -1862,8 +1828,8 @@
                 <!-- QUICK POST FOOTER ACTION -->
                 <div class="quick-post-footer-action text-tooltip-tft-medium" data-title="Insert Photo" style="position: relative;">
                     <!-- QUICK POST FOOTER ACTION ICON -->
-                    <button class="quick-post-footer-action-icon icon-camera" onclick="addmediatopost()"><i class="fa fa-camera"></i>
-                    </button>
+                    <a href="#photos+video" data-toggle="collapse" class=" quick-post-footer-action-icon icon-camera" role="button" onclick="addmediatopost()"><i class="fa fa-camera"></i>
+                    </a>
                     <!-- /QUICK POST FOOTER ACTION ICON -->
                     <div class="xm-tooltip" style="white-space: nowrap; position: absolute; z-index: 99999; top: -32px; left: 50%; margin-left: -47px; opacity: 0; visibility: hidden; transform: translate(0px, 10px); transition: all 0.3s ease-in-out 0s;"><p class="xm-tooltip-text">Insert Photo</p></div></div>
                 <!-- /QUICK POST FOOTER ACTION -->
@@ -1893,10 +1859,89 @@
             <!-- /QUICK POST FOOTER ACTIONS -->
         </div>
     </div>
+    <!--finajoutpost-->
+    <!--modificationduPost-->
+    <div id="Post-edit-popup"class="popup-box popup-album-creation" style="position: absolute; left: 50%; z-index: 100001; opacity: 1; visibility: visible; transform: translate(0px, 0px); transition: transform 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s; top: 850px; margin-left: -492px;">
+        <!-- POPUP CLOSE BUTTON -->
+        <div id="closeedit" class="popup-close-button popup-album-creation-trigger">
+            <!-- POPUP CLOSE BUTTON ICON -->
+            <svg class="popup-close-button-icon icon-cross">
+                <use xlink:href="#svg-cross"></use>
+            </svg>
+            <!-- /POPUP CLOSE BUTTON ICON -->
+        </div>
+        <!-- /POPUP CLOSE BUTTON -->
+
+        <!-- POPUP BOX TITLE -->
+        <p class="popup-box-title">Edit Post +</p>
+        <!-- /POPUP BOX TITLE -->
+        <form id="Posteditt" class="form" enctype="multipart/form-data">
+            <div class="page1" id="edit-page-1">
+                <!-- FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input small">
+                            <label for="album-name">Titre du Publication</label>
+                            <input type="text" id="titlepub" name="titre">
+                        </div>
+                        <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input small">
+                            <label for="album-name">Contenu</label>
+                            <input type="text" id="Contenuedit-Form" name="Contenu" >
+                        </div>
+                        <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+            </div>
+            <div class="page2" id="edit-page-2"  style="display:none" >
+                <!-- FORM UPLOADABLES -->
+                <div class="form-uploadables" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px -28px -40px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden scroll;"><div class="simplebar-content" style="padding: 0px 28px 40px;">
+                                        <!-- UPLOAD ITEM LIST -->
+                                        <div class="upload-item-list" id="uploadlist">
+                                            <!-- UPLOAD ITEM -->
+                                            <a class="upload-item"  onclick="uploadnewfile()">
+                                            <div class="icon-plus" >
+                                                    <i class="fa fa-plus"></i>
+                                            </div>
+                                            </a>
+                                            <input id="speeddial" type="file" style="display:none" onchange="imagescreening(event)" multiple>
+                                            <!-- /UPLOAD ITEM -->
+                                        </div>
+                                        <!-- /UPLOAD ITEM LIST -->
+                                    </div></div></div></div><div class="simplebar-placeholder" style="width: auto; height: 696px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; transform: translate3d(0px, 0px, 0px); display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="height: 236px; transform: translate3d(0px, 168px, 0px); display: block;"></div></div></div>
+                <!-- /FORM UPLOADABLES -->
+
+            </div>
+            <!-- POPUP BOX ACTIONS -->
+            <div class="popup-box-actions">
+                <!-- POPUP BOX ACTION -->
+                <p class="popup-box-action button white popup-album-creation-trigger" id="closeedit2"">Discard</p>
+                <!-- /POPUP BOX ACTION -->
+
+                <!-- POPUP BOX ACTION -->
+                <button class="popup-box-action button secondary" id="Sended">Edit</button>
+                <!-- /POPUP BOX ACTION -->
+            </div>
+            <!-- /POPUP BOX ACTIONS -->
+        </form>
+    </div>
+    <!--finMofidicationduPost-->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="Aiijwkm.js"></script>
-    <script src="dropzone-5.7.0/dist/dropzone.js"></script>
-
+    <script type="text/javascript" src="filechooser.js"></script>
     <script  type="text/javascript">
         function affichecomm(elem){
             let idc = $(elem).attr('data-whatever');
@@ -1918,14 +1963,11 @@
             });
 
         }
-
         $("#close").on("click",function () {
             location.reload(true);
         });
         function affichierpub (elem)
         {
-
-
             var idc = $(elem).attr('data-whatever');
             var url ="{{ path('publication_show_one1',{'id_post':'idpub'})}}";
             url = url.replace("idpub", idc);
@@ -1936,41 +1978,61 @@
                 processData: true,
                 success:function(data)
                 {
-                    var src1="/uploads/video/"+data['contenue'];
-                    var src2="/uploads/img/"+data['contenue'];
                     $('#titlepub').html(data['titre']);
-                    if(data['type'].localeCompare("video")==0)
-                    {  $("#content").append('     <video  id=vid" class="video-fluid" autoplay loop muted>\n' +
-                        '          <source src="" type="video/mp4" />\n' +
-                        '        </video>');
-                        document.getElementById('vid').src =src1;}
-                    else {
-                        if (data['type'].localeCompare("img") == 0) {
-                            $("#content").append('<img id="img" src="" class="img-thumbnail" alt="contenue" width="304" height="236">');
-                            document.getElementById('img').src = src2;
-                        }
-                        else
-                        {   var nouty="#tfol-"+idc;
-                            var clonebobo=$(nouty).clone();
-                            $("#content").append(clonebobo);
+                    $('#Contenuedit-Form').html(data['contenue']);
+                    console.log(data['type']);
+                    if (data['type'].localeCompare("Mixed") == 0)
+                    {
+                        if(data['medias']!=null)
+                        {
+                            $("#edit-page-2").css('display','block');
+                            var medias=[];
+                            var deleteurl="{{ path('Media_Delete',{'id_media':'idpub'})}}"
+                            medias=data['medias'];
+                            console.log(medias);
+                            for(var i=0;i<medias.length;i++)
+                            {   var ms=medias[i];
+                               deleteurl=deleteurl.replace('idpub',ms.idmedia);
+                                console.log( ms.source);
+                                $("#uploadlist").append('<div class="upload-item" id="'+ ms.idmedia +'"> \n' +
+                                    ' <figure class="upload-item-image liquid" style="background: url(&quot;/uploads/Mixed/'+ medias[i].source + '&quot;) center center / cover no-repeat;">\n' +
+                                    '<img src="/uploads/Mixed/'+ medias[i].source + '" style="display: none;">\n' +
+                                    '</figure>\n' +
+                                    '<div class="form-input small">\n' +
+                                    '<textarea id="album-photo-description-'+i+'" name="album_photo_description_'+i+'" value=""></textarea>\n' +
+                                    ' </div>\n' +
+                                    '<a onclick="deletemedia('+ ms.idmedia +')" href="'+deleteurl+'"><i class="fa fa-minus-circle"></i><a>\n'+
+                                    '<div class="checkbox-wrap small">\n' +
+                                    '<input type="radio" id="album-set-photo-cover-'+i+'" name="album_set_photo_cover" value="cover-01" checked="">\n' +
+                                    '<div class="checkbox-box">\n' +
+                                    '<svg class="icon-cross">\n' +
+                                    ' <use xlink:href="#svg-cross"></use>\n' +
+                                    '</svg>\n' +
+                                    '</div>\n' +
+                                    '<label for="album-set-photo-cover-'+i+'">Set as album cover</label>\n' +
+                                    '</div>\n' +
+                                    '</div>' );
 
+                            }
                         }
+
                     }
-
-
-
-
-
-                }
-            });
-            $("#Posteditt").submit(function(){
-                let posturl ="{{ path('publication_edit',{'id_post':'idpub'})}}";
+                    else
+                    {   var nouty="#tfol-"+idc;
+                        var clonebobo=$(nouty).clone();
+                        $("#content").append(clonebobo);
+                    }
+                }});
+            $("#Posteditt").submit(function ()
+            {
+                var formedit=new FormData();
+                formedit=createeditformdata();
+                let posturl ="{{path('publication_edit',{'id_post':'idpub'})}}";
                 posturl =posturl.replace("idpub", idc);
-                var form=$("#Posteditt")[0];
                 $.ajax({
                     type:"POST",
                     url:posturl,
-                    data:new FormData(form),
+                    data:formedit,
                     contentType:false,
                     processData:false,
                     cache:false,
@@ -1989,7 +2051,6 @@
                 });
 
             });
-
 
         }
         var divClone = $("#content").clone();
@@ -2012,47 +2073,42 @@
                     $('#usersh').attr("data-src",imguser);
                     var username=data['nameuser'];
                     $('#usernsh').html(username);
-                    var src1="/uploads/video/"+data['contenue'];
-                    var src2="/uploads/img/"+data['contenue'];
+                    var src1=data['contenue'];
                     $('#titlepubshare').html(data['titre']);
-                    if(data['type'].localeCompare("video")==0)
-                    {  $("#pp").append('     <video  id=vid" class="video-fluid" autoplay loop muted>\n' +
-                        '          <source src="" type="video/mp4" />\n' +
-                        '        </video>');
-                        document.getElementById('vid').src =src1;}
-                    else{
-                        $("#pp").append('<img id="img" src="" class="img-thumbnail" alt="contenue" width="304" height="236">');
-                        document.getElementById('img').src =src2;}
-
-                }
-
-
-
-            });
-            $("#formulaire").submit(function() {
-                let posturl = "{{ path('share') }}";
-                var form = $("#formulaire")[0];
-                $.ajax({
-                    type: "POST",
-                    url: posturl,
-                    data: new FormData(form),
-                    contentType: false,
-                    processData: false,
-                    cache: false,
-                    dataType: "json",
-                    error: function (err) {
-                        console.error(err);
-                    },
-                    success: function (data) {
-                        console.log(data);
-                    },
-                    complete: function () {
-                        console.log("Request finished.");
+                    if(data['type'].localeCompare("Mixed")==0)
+                    {   var samir=$("#post-"+idc).clone();
+                        $("#pp").append(samir);
 
                     }
 
-                });
-            });}
+
+
+            }});
+            }
+        $("#formulaire").submit(function() {
+            let posturl = "{{ path('share') }}";
+            var form = $("#formulaire")[0];
+            $.ajax({
+                type: "POST",
+                url: posturl,
+                data: new FormData(form),
+                contentType: false,
+                processData: false,
+                cache: false,
+                dataType: "json",
+                error: function (err) {
+                    console.error(err);
+                },
+                success: function (data) {
+                    console.log(data);
+                },
+                complete: function () {
+                    console.log("Request finished.");
+
+                }
+
+            });
+        });
         function addhahText(text) {
             const chatContainer = document.createElement("div");
             chatContainer.classList.add("chat-widget-speaker");
@@ -2073,14 +2129,6 @@
             element.appendChild(haha);
             botVoice(text);
         })
-        var input5 = document.getElementById("chat-widget-message-text");
-        input5.addEventListener("keyup", function(event) {
-
-            if (event.keyCode === 13) {
-                event.preventDefault();
-                document.getElementById("myBtn").click();
-            }
-        });
         function botVoice(message) {
 
             const speech = new SpeechSynthesisUtterance();
@@ -2227,291 +2275,18 @@
             chatContainer1.appendChild(chatBox1);
             return chatContainer1;
         }
-        function deletemedia(elem)
+        function uploadnewfile()
         {
-            var index = $(elem).attr('data-id');
-            console.log(index);
-            function check(index)
-            {
-                if(media.id != index)
-                    return media;
-            }
-            var result=mediacontainer.filter(check);
-            mediacontainer=result;
-            var bye='#'+index;
-            $(bye).remove();
+            $("#speeddial").trigger("click");
         }
-        function addmediatopost()
-        {
-            $("#src").trigger("click");
-        }
-        /*grid grid-3-3-3-3 centered anyClass
-        function(event){
-        var input = event.target;
-        var reader = new FileReader();
-        reader.onload = function(){
-            var dataURL = reader.result;
-            var type=detectfiletype(dataURL);
-            if (type != "none") {
-                console.log("yes type is no none");
-                var mediaElements = document.querySelectorAll('.card-img-top');
-                if (type == "mp4") {
-                    console.log("yes type is mp4");
-                    const mediacard=document.createElement("div");
-                    mediacard.classList.add("card");
-                    const video=document.createElement("video");
-                    video.classList.add("card-img-top");
-                    video.attr('alt',"video");
-                    const cardbody=document.createElement("div");
-                    cardbody.classList.add("card-img-overlay");
-                    const cardtitle=document.createElement("h6");
-                    cardtitle.classList.add("card-title");
-                    const cardtext=document.createElement("p");
-                    cardtext.classList.add("card-text");
-                    const deleteme=document.createElement("a");
-                    deleteme.classList.add("btn btn-primary");
-                    cardbody.appendChild(cardtitle);
-                    cardbody.appendChild(cardtext);
-                    cardbody.appendChild(deleteme);
-                    mediacard.appendChild(video);
-                    mediacard.appendChild(cardbody);
-                    $('#gallerie').appendChild(mediacard);
-                    console.log("added card");
-                    for (var i = 0; i < mediaElements.length; i++)
-                        mediaElements[i].id = 'media-' + i;
-                    $("media-"+mediaElements.length).src(dataURL);
-
-                }
-                else{
-                    const mediacard=document.createElement("div");
-                    mediacard.classList.add("card");
-                    const video=document.createElement("img");
-                    video.classList.add("card-img-top");
-                    video.attr('alt',"video");
-                    const cardbody=document.createElement("div");
-                    cardbody.classList.add("card-img-overlay");
-                    const cardtitle=document.createElement("h6");
-                    cardtitle.classList.add("card-title");
-                    const cardtext=document.createElement("p");
-                    cardtext.classList.add("card-text");
-                    const deleteme=document.createElement("a");
-                    deleteme.classList.add("btn btn-primary");
-                    cardbody.appendChild(cardtitle);
-                    cardbody.appendChild(cardtext);
-                    cardbody.appendChild(deleteme);
-                    mediacard.appendChild(video);
-                    mediacard.appendChild(cardbody);
-                    $('#gallerie').appendChild(mediacard);
-
-                    for (var i=0;i < mediaElements.length; i++)
-                    {mediaElements[i].id = 'media-' + i;}
-                    $("media-"+mediaElements.length).src(dataURL);
-
-                }
-            }
-        };
-        console.log(input.files);
-        reader.readAsDataURL(input.files);
-        }*/
-        /*         if(source!="")
-            { var type=detectfiletype(source);
-              if (type != "none") {
-                    console.log("yes type is no none");
-                    var mediaElements = document.querySelectorAll('.card-img-top');
-                    if (type == "mp4") {
-                        console.log("yes type is mp4");
-                        const mediacard=document.createElement("div");
-                        mediacard.classList.add("card");
-                        const video=document.createElement("video");
-                        video.classList.add("card-img-top");
-                        video.attr('alt',"video");
-                        for (var i = 0; i < mediaElements.length; i++)
-                            mediaElements[i].id = 'media-' + i;
-                        const cardbody=document.createElement("div");
-                        cardbody.classList.add("card-img-overlay");
-                        const cardtitle=document.createElement("h6");
-                        cardtitle.classList.add("card-title");
-                        const cardtext=document.createElement("p");
-                        cardtext.classList.add("card-text");
-                        const deleteme=document.createElement("a");
-                        deleteme.classList.add("btn btn-primary");
-                        cardbody.appendChild(cardtitle);
-                        cardbody.appendChild(cardtext);
-                        cardbody.appendChild(deleteme);
-                        mediacard.appendChild(video);
-                        mediacard.appendChild(cardbody);
-                        $('#gallerie').appendChild(mediacard);
-                        console.log("added card");
-                        previewFiles();
+        $("#closeedit").on("click",function () {
+            $("#Posteditt").replaceWith(divclone1234.clone().clone());
+        });
+        $("#closeedit2").on("click",function () {
+            $("#Posteditt").replaceWith(divclone1234.clone().clone());
+        })
 
 
-                    }
-                    else{
-                        const mediacard=document.createElement("div");
-                        mediacard.classList.add("card");
-                        const video=document.createElement("img");
-                        video.classList.add("card-img-top");
-                        for (var i=0;i < mediaElements.length; i++)
-                        {mediaElements[i].id = 'media-' + i;}
-                        const cardbody=document.createElement("div");
-                        cardbody.classList.add("card-img-overlay");
-                        const cardtitle=document.createElement("h6");
-                        cardtitle.classList.add("card-title");
-                        const cardtext=document.createElement("p");
-                        cardtext.classList.add("card-text");
-                        const deleteme=document.createElement("a");
-                        deleteme.classList.add("btn-primary");
-                        deleteme.classList.add("btn");
-                        cardbody.appendChild(cardtitle);
-                        cardbody.appendChild(cardtext);
-                        cardbody.appendChild(deleteme);
-                        mediacard.appendChild(video);
-                        mediacard.appendChild(cardbody);
-                        $('#gallerie').append(mediacard);
-                        previewFiles();
-                        console.log(source);
-                    }
-                }
-             console.log(source);
-             console.log(type);}*/
-        function detectfiletype(source)
-        {   var hah="none";
-            var ext = source.split('.').pop().toLowerCase();
-            if($.inArray(ext, ['gif','png','jpg','jpeg','mp4']) == -1) {
-                alert('invalid extension!');
-                return hah;
-            }
-            else
-            {
-                return ext;
-            }
-
-        }
-        var openFile = function(event) {
-            var input = event.target;
-            var reader = new FileReader();
-            reader.onload = function(){
-                var mediaElements = document.querySelectorAll('.card-img-top');
-                source=this.result;
-                var ext = source.split('.').pop().toLowerCase();
-                if(ext!="mp4")
-                {
-                    var nimage ='<img src="coco"alt="image" > \n'
-                    nimage=nimage.replace("coco",this.result);
-                }
-                else{
-                    var nimage ='<video src="coco"alt="video" ></video> \n'
-                    nimage=nimage.replace("coco",this.result);
-                }
-                /* const mediacard=document.createElement("div")
-                 mediacard.classList.add("card");
-                 const video=document.createElement("img");
-                 video.classList.add("card-img-top");
-                 const cardbody=document.createElement("div");
-                 cardbody.classList.add("card-img-overlay");
-                 const cardtitle=document.createElement("h6");
-                 cardtitle.classList.add("card-title");
-                 const cardtext=document.createElement("p");
-                 cardtext.classList.add("card-text");
-                 const deleteme=document.createElement("a");
-                 deleteme.classList.add("btn-light");
-                 deleteme.classList.add("btn");
-                 const legende=document.createElement("input");
-                 legende.setAttribute('type','text');
-                 const label=document.createElement("label");
-                 cardbody.appendChild(cardtitle);
-                 cardbody.appendChild(cardtext);
-                 cardbody.appendChild(deleteme);
-                 mediacard.appendChild(image);
-                 mediacard.appendChild(legende);
-                 mediacard.appendChild(label);
-                 mediacard.appendChild(cardbody);*/
-                var cardphoto='<div class="video-box" id="#0"> \n' +
-                    '<div class="video-box-cover popup-video-trigger">\n' +
-                    '<figure class="video-box-cover-image liquid" style="background: url("img/cover/08.jpg") center center / cover no-repeat;">\n' +
-                    nimage+
-                    '</figure> \n' +
-                    '<a onclick="deletemedia(this)" data-id="#00"> \n' +
-                    '<i class="fa fa-remove"> \n' +
-                    '</i> \n' +
-                    '</a >\n' +
-                    '<a > \n' +
-                    '<i class="fa fa-edit"> \n' +
-                    '</i> \n' +
-                    '</a >\n' +
-                    '</div> \n' +
-                    '<div class="video-box-info"><textarea id="ff"name="description"class="video-box-title" placeholder="Légende"></textarea>  \n' +
-                    '<p class="video-box-text"></p>\n' +
-                    '</div>\n' +
-                    '</div>';
-                $("#gallerie").data('index',$("#gallerie").find('.video-box').length);
-                var index = $("#gallerie").data('index');
-
-                cardphoto=cardphoto.replace('#0',index);
-                cardphoto=cardphoto.replace('#00',index);
-                cardphoto=cardphoto.replace('ff',"i"+index);
-                cardphoto=cardphoto.replace('pp',"file"+index);
-                $('#gallerie').append(cardphoto);
-                $("#gallerie").data('index', index + 1);
-            };
-
-
-            var s=$("#src").val();
-            console.log(s);
-            var mediatype=s.split('.').pop().toLowerCase();
-            console.log(mediatype);
-            var mt="";
-            if(mediatype =='mp4')
-            {
-                mt="video";
-
-            }
-            else
-            {
-                mt="image";
-            }
-            var index = $("#gallerie").data('index');
-            var legend= $("#i"+index).val();
-            var res = s.split('\/').pop();
-            var m=new media(this.result,legend,"post",mt);
-            mediacontainer.push(m);
-            for(var i=0;i<mediacontainer.length;i++)
-            {
-                console.log(mediacontainer[i].src);
-                console.log(mediacontainer[i].legende);
-                console.log(mediacontainer[i].mediatype);
-            }
-            reader.readAsDataURL(input.files[0]);
-
-        };
-        class media
-        {
-            constructor(src,legende,type,mediatype)
-            {
-                this.src = src;
-                this.legende=legende;
-                this.type=type;
-                this.mediatype=mediatype;
-            }
-
-
-        }
-        function addnewpost()
-        {     var newwera=JSON.stringify(mediacontainer);
-            $.ajax({
-                type:"POST",
-                url: "/addnewpost",
-                data: {mediacontainer:newwera},
-                success: function(){
-                    $("#formnewpost").submit();
-                }
-
-            });
-            mediacontainer=[];
-        }
-
-        var mediacontainer= [];
     </script>
 
 {% endblock %}
-

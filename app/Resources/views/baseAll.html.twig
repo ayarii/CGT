@@ -1153,10 +1153,10 @@
 
                     <!-- DROPDOWN NAVIGATION BUTTON -->
                     <a href="{{ path('fos_user_security_logout') }}" title="">
-                    <p class="dropdown-navigation-button button small secondary">
-                        Logout
+                        <p class="dropdown-navigation-button button small secondary">
+                            Logout
 
-                    </p>
+                        </p>
                     </a>
                     <!-- /DROPDOWN NAVIGATION BUTTON -->
                 </div>
@@ -1203,9 +1203,11 @@
     <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-settings.js') }}"></script>
     <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-
-
-
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 {% endblock %}
 </body>
 </html>
+

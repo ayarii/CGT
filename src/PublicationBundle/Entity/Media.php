@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Media
  *
  * @ORM\Table(name="media")
- * @ORM\Entity(repositoryClass="PublicationBundle\Repository\PhotosRepository")
+ * @ORM\Entity(repositoryClass="PublicationBundle\Repository\MediaRepository")
  */
 class Media
 {
