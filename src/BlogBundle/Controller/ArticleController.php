@@ -6,6 +6,7 @@ use BlogBundle\Entity\Article;
 use BlogBundle\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -122,6 +123,9 @@ class ArticleController extends Controller
             ],
         ]);
 
+
+
+
         $form->handleRequest($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -131,10 +135,12 @@ class ArticleController extends Controller
             if ($srcFile) {
                 $originalFilename = pathinfo($srcFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $srcFile->guessExtension();
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$srcFile->guessExtension();
+
+
 
                 try {
-                    $srcFile->move('uploads/' . $Article->getPhoto(), $newFilename);
+                    $srcFile->move('uploads/' , $newFilename);
                 } catch (FileException $e) {
                     print $e->getMessage();
                 }
@@ -160,6 +166,10 @@ class ArticleController extends Controller
         $em->remove($Article);
         $em->flush();
         return $this->redirectToRoute('afficherBlogAdmin');
+    }
+    public function accAction()
+    {
+        return $this->render('@Blog/Blog/HomePage.html.twig');
     }
 
 

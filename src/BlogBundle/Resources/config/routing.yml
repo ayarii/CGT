@@ -36,6 +36,8 @@ ajouterComment:
 modifComment:
     path:     /modifComment/{id}
     defaults: { _controller: BlogBundle:Comment:modifierComment }
-
+acc:
+    path:     /acceuilPage
+    defaults: { _controller: BlogBundle:Article:acc }
 
 

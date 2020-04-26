@@ -20,7 +20,6 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new FOSBundle\FOSBundle(),
             new CompetitionBundle\CompetitionBundle(),
-            new MessagerieBundle\MessagerieBundle(),
             new Mgilet\NotificationBundle\MgiletNotificationBundle(),
             new DocDocDoc\NexmoBundle\DocDocDocNexmoBundle(),
             new Endroid\QrCode\Bundle\QrCodeBundle\EndroidQrCodeBundle(),
@@ -33,6 +32,8 @@ class AppKernel extends Kernel
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new BlogBundle\BlogBundle(),
             new FOS\CKEditorBundle\FOSCKEditorBundle(),
+            new FM\ElfinderBundle\FMElfinderBundle(),
+            new FOS\MessageBundle\FOSMessageBundle(),
 
         ];
 

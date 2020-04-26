@@ -2,11 +2,6 @@ blog:
     resource: "@BlogBundle/Resources/config/routing.yml"
     prefix:   /
 
-
-messagerie:
-    resource: "@MessagerieBundle/Resources/config/routing.yml"
-    prefix:   /
-
 competition:
     resource: "@CompetitionBundle/Resources/config/routing.yml"
     prefix:   /
@@ -43,9 +38,14 @@ mgilet_notification:
 
 adesigns_calendar:
     resource: "@ADesignsCalendarBundle/Resources/config/routing.xml"
-ancarebeca_fullcalendar:
-    resource: "@FullCalendarBundle/Resources/config/routing.yml"
+
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
+elfinder:
+    resource: "@FMElfinderBundle/Resources/config/routing.yml"
+
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /message

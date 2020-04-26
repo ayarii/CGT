@@ -18,7 +18,6 @@
         "php": ">=5.5.9",
         "ext-json": "*",
         "adesigns/calendar-bundle": "^1.1",
-        "anacona16/sonata-media-webcam-provider-bundle": "^2.6",
         "ancarebeca/full-calendar-bundle": "^5.0",
         "cmen/google-charts-bundle": "^3.2",
         "docdocdoc/nexmo-bundle": "dev-master",
@@ -27,7 +26,9 @@
         "dompdf/dompdf": "^0.8.3",
         "friendsofsymfony/ckeditor-bundle": "^1.2",
         "friendsofsymfony/jsrouting-bundle": "^2.4",
+        "friendsofsymfony/message-bundle": "^2.0",
         "friendsofsymfony/user-bundle": "~2.0",
+        "helios-ag/fm-elfinder-bundle": "^9.3",
         "incenteev/composer-parameter-handler": "^2.0",
         "knplabs/knp-paginator-bundle": "^3.0",
         "mgilet/notification-bundle": "^3.1",
@@ -36,7 +37,6 @@
         "onesignal/emoji-picker": "^1.4",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^5.0.0",
-        "sonata-project/media-bundle": "^3.16",
         "symfony/monolog-bundle": "^3.1.0",
         "symfony/polyfill-apcu": "^1.0",
         "symfony/swiftmailer-bundle": "^2.6.4",
@@ -68,7 +68,8 @@
         "platform": {
             "php": "5.6"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "component-dir": "web/assets"
     },
     "extra": {
         "symfony-app-dir": "app",
@@ -82,6 +83,9 @@
         },
         "branch-alias": {
             "dev-master": "3.4-dev"
+        },
+        "symfony": {
+            "allow-contrib": "true"
         }
     }
 }

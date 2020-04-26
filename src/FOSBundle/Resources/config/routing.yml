@@ -2,9 +2,7 @@ fos_homepage:
     path:     /home
     defaults: { _controller: FOSBundle:Security:redirect }
 
-profile:
-    path:     /profile/{id}
-    defaults: { _controller: FOSBundle:ProfileUser:afficherProfile }
+
 
 sendInvitation:
     path:     /sendInvitation/{id}
@@ -22,7 +20,4 @@ decline:
     path:     /decline/{id}
     defaults: { _controller: FOSBundle:ProfileUser:supprimerRequest }
 
-friends:
-    path:     /friends
-    defaults: { _controller: FOSBundle:ProfileUser:afficherFriends }
 

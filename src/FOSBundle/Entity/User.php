@@ -1,8 +1,8 @@
 <?php
-// src/AppBundle/Entity/User.php
 
 namespace FOSBundle\Entity;
 
+use FOS\MessageBundle\Model\ParticipantInterface;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -15,7 +15,7 @@ use Mgilet\NotificationBundle\Annotation\Notifiable;
  * @ORM\Table(name="fos_user")
  * @Notifiable(name="fos_user")
  */
-class User extends BaseUser implements NotifiableInterface
+class User extends BaseUser implements NotifiableInterface ,ParticipantInterface
 {
     /**
      * @ORM\Id

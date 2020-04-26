@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Amitie
  *
- * @ORM\Table(name="amitie", indexes={@ORM\Index(name="amitie_ibfk_1", columns={"idUser1"}), @ORM\Index(name="amitie_ibfk_2", columns={"idUser2"}), @ORM\Index(name="amitie_ibfk_3", columns={"SenderId"})})
+ * @ORM\Table(name="amitie", indexes={@ORM\Index(name="amitie_ibfk_1", columns={"idme"}), @ORM\Index(name="amitie_ibfk_2", columns={"iduser"}), @ORM\Index(name="amitie_ibfk_3", columns={"SenderId"})})
  * @ORM\Entity
  */
 class Amitie
@@ -40,20 +40,52 @@ class Amitie
      *
      * @ORM\ManyToOne(targetEntity="FOSBundle\Entity\User")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idUser1", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="idme", referencedColumnName="id")
      * })
      */
-    private $iduser1;
+    private $idme;
+
+    /**
+     * @return \FosUser
+     */
+    public function getIdme()
+    {
+        return $this->idme;
+    }
+
+    /**
+     * @param \FosUser $idme
+     */
+    public function setIdme($idme)
+    {
+        $this->idme = $idme;
+    }
+
+    /**
+     * @return \FosUser
+     */
+    public function getIduser()
+    {
+        return $this->iduser;
+    }
+
+    /**
+     * @param \FosUser $iduser
+     */
+    public function setIduser($iduser)
+    {
+        $this->iduser = $iduser;
+    }
 
     /**
      * @var \FosUser
      *
      * @ORM\ManyToOne(targetEntity="FOSBundle\Entity\User")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idUser2", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="iduser", referencedColumnName="id")
      * })
      */
-    private $iduser2;
+    private $iduser;
 
     /**
      * @var \FosUser
@@ -113,37 +145,13 @@ class Amitie
         $this->blockid = $blockid;
     }
 
-    /**
-     * @return \FosUser
-     */
-    public function getIduser1()
-    {
-        return $this->iduser1;
-    }
 
-    /**
-     * @param \FosUser $iduser1
-     */
-    public function setIduser1($iduser1)
-    {
-        $this->iduser1 = $iduser1;
-    }
 
-    /**
-     * @return \FosUser
-     */
-    public function getIduser2()
-    {
-        return $this->iduser2;
-    }
 
-    /**
-     * @param \FosUser $iduser2
-     */
-    public function setIduser2($iduser2)
-    {
-        $this->iduser2 = $iduser2;
-    }
+
+
+
+
 
     /**
      * @return \FosUser

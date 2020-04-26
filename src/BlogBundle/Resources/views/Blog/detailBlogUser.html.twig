@@ -405,7 +405,7 @@
                     <!-- POST COMMENT -->
                     <div class="post-comment">
                         <!-- USER AVATAR -->
-                        <a class="user-avatar small no-outline" href="profile-timeline.html">
+                        <a class="user-avatar small no-outline" href="{{ path('visit_profile',{id_user:c.iduser.id}) }}">
                             <!-- USER AVATAR CONTENT -->
                             <div class="user-avatar-content">
                                 <!-- HEXAGON -->
@@ -457,7 +457,7 @@
                         <!-- /USER AVATAR -->
 
                         <!-- POST COMMENT TEXT -->
-                        <p class="post-comment-text"><a class="post-comment-text-author" href="profile-timeline.html">{{c.idUser.username}}</a> {{c.text}}!</p>
+                        <p class="post-comment-text"><a class="post-comment-text-author" href="{{ path('visit_profile',{id_user:c.iduser.id}) }}">{{c.idUser.username}}</a> {{c.text}}!</p>
                         <!-- /POST COMMENT TEXT -->
 
                         <!-- CONTENT ACTIONS -->
