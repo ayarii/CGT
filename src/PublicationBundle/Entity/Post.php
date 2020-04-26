@@ -263,7 +263,7 @@ class Post implements NotifiableInterface
     }
     public function removemedia(Media $media)
     {
-        $this->tags->removeElement($media);
+        $this->medias->removeElement($media);
     }
 
 }

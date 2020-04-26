@@ -86,6 +86,7 @@ class PostController extends Controller
             $em->getRepository('PublicationBundle:commentaire')->deletePostCommentaire($id_post);
             $em->getRepository('PublicationBundle:reaction')->removePostreaction($id_post);
             $em->getRepository('PublicationBundle:Vote')->removePostVote($id_post);
+            $em->getRepository('PublicationBundle:Media')->removePostMedia($id_post);
             $em->remove($publication);
             $em->flush();
         }
@@ -96,20 +97,36 @@ class PostController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $post= $em->getRepository('PublicationBundle:Post')->find($id_post);
+
         if($request->isXmlHttpRequest())
         {
-            $file = $request->files->get('contenue');
-            $titre=$request->request->get('titre');
-            $type=$request->request->get('type');
-            if(!is_null($file)){
-                $filename = uniqid().".".$file->getClientOriginalExtension();
-                $path = 'uploads/'.$type;
-                $file->move($path,$filename);
-                $post->setSrcPublication($filename);
-            }
+            $contenu= $request->request->get('contenudupubmodif');
+            $titre=$request->request->get('titredupubmodif');
+            $lenght=$request->request->get('number');
+            for ($i = 0; $i < $lenght; $i++) {
+                $srcFile= $request->files->get('file'.$i);
+                if ($srcFile) {
+                    $originalFilename = pathinfo($srcFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $srcFile->guessExtension();
 
+                    try {
+                        $srcFile->move('uploads/' . $post->getType(), $newFilename);
+                    } catch (FileException $e) {
+                        print $e->getMessage();
+                    }
+                    $m = json_decode($request->request->get('media' . $i), true);
+                    $media = new Media();
+                    $media->setType("post");
+                    $media->setMediatype($m['mediatype']);
+                    $media->setSource($newFilename);
+                    $post->addmedia($media);
+                    $media->setIdpost($post);
+                    $em->persist($media);
+                }
+            }
             $post->setTitre($titre);
-            $post->setType($type);
+            $post->setSrcPublication($contenu);
             $em->persist($post);
             $em->flush();
             return $this->redirectToRoute('publication_homepage');
@@ -167,7 +184,8 @@ class PostController extends Controller
         $comments=$em->getRepository('PublicationBundle:commentaire')->findBy(array());
         $reactions=$em->getRepository('PublicationBundle:reaction')->findBy(array());
         $votes=$em->getRepository('PublicationBundle:Vote')->findBy(array());
-        return $this->render('@Publication/Posts/Acceuil.html.twig',array('user'=>$User,'posts'=>$posts,'comments'=>$comments,'reactions'=>$reactions,'votes'=>$votes));
+        $medias=$em->getRepository('PublicationBundle:Media')->findBy(array('idUser'=>$User->getId()));
+        return $this->render('@Publication/Posts/Acceuil.html.twig',array('medias'=>$medias,'user'=>$User,'posts'=>$posts,'comments'=>$comments,'reactions'=>$reactions,'votes'=>$votes));
     }
     public function VoteAction($id_post,Request $request,$slug )
     {
@@ -268,8 +286,18 @@ class PostController extends Controller
   {
       $em=$this->getDoctrine()->getManager();
       $post = $em->getRepository('PublicationBundle:Post')->find($id_post);
+      $medias=$em->getRepository('PublicationBundle:Media')->findBy(array('idpost'=>$id_post));
+      foreach ($medias as $med)
+      {
+          $mediacontent[]=array(
+              'idmedia'=>$med->getId(),
+              'source'=>$med->getSource(),
+              'type'=>$med->getType(),
+              'Legende'=>$med->getDescription()
+          );
+      }
       if($request->isXmlHttpRequest())
-      return $this->json(['titre' => $post->getTitre(),'contenue'=>$post->getcontenue(),'type'=>$post->getType()]);
+      return $this->json(['medias'=>$mediacontent,'titre' => $post->getTitre(),'contenue'=>$post->getcontenue(),'type'=>$post->getType()]);
       else
          return new Response("");
   }
@@ -446,52 +474,67 @@ class PostController extends Controller
     }
     public function newaddMixedPostAction(Request $req)
     {
-        $User=$this->getUser();
-        $post=new Post();
+        $User = $this->getUser();
+        $post = new Post();
         $post->setIdauthor($User);
         $post->setDate(new \DateTime("now", new \DateTimeZone('+0100')));
         $post->setReactionPost(0);
         $post->setVotesPost(0);
         $post->setNbcomments(0);
-        $em=$this->getDoctrine()->getManager();
-           // $medias=$req->request->get('mediacontainer');
-            $medias = json_decode($req->request->get('mediacontainer'));
-            foreach($medias as $m)
-                {
-                    $media=new Media();
-                    $media->setIdUser($User);
-                    //$media->setDescription($m->legende);
-                    $media->setType("post");
-                    $media->setMediatype($m->mediatype);
-                    $srcFile=$m->src;
+        $post->setType("Mixed");
+        $em = $this->getDoctrine()->getManager();
+
+        // $medias=$req->request->get('mediacontainer');
+        if($req->isXmlHttpRequest()){
+            $contenue = $req->request->get("contenudupub");
+            $titre = $req->request->get('titredupub');
+            $lenght=$req->request->get('number');
+
+                for ($i = 0; $i < $lenght; $i++) {
+                    $srcFile= $req->files->get('file'.$i);
                     if ($srcFile) {
-                        $originalFilename=chop($srcFile,'"C:\fakepath\"');
+                        $originalFilename = pathinfo($srcFile->getClientOriginalName(), PATHINFO_FILENAME);
                         $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-                        //$newFilename = $safeFilename.'-'.uniqid().'.'.$srcFile->guessExtension();
-                        $newFilename=$originalFilename;
+                        $newFilename = $safeFilename . '-' . uniqid() . '.' . $srcFile->guessExtension();
 
                         try {
-                            $srcFile->move('uploads/' .$media->getMediatype() , $newFilename);
+                            $srcFile->move('uploads/' . $post->getType(), $newFilename);
                         } catch (FileException $e) {
                             print $e->getMessage();
                         }
-                     $media->setSource($newFilename);}
+                    $m = json_decode($req->request->get('media' . $i), true);
+                    $media = new Media();
+                    $media->setIdUser($User);
+                    $media->setType("post");
+                    $media->setMediatype($m['mediatype']);
+                    $media->setSource($newFilename);
                     $post->addmedia($media);
+                    $media->setIdpost($post);
+                    $em->persist($media);
                 }
-        $contenue="";$titre="";
-        if($req->isXmlHttpRequest())
-        {    $contenue=$req->request->get('contenudupub');
-             $titre=$req->request->get('titredupub');}
-             $post->setType("Mixed");
-             $post->setSrcPublication($contenue);
-             $post->setTitre($titre);
-             $em->persist($post);
-             $em->flush();
+            }
+            /*     foreach ($medias as $m) {
+                     $media = new Media();
+                     $media->setIdUser($User);
+                     $media->setType("post");
+                     $media->setMediatype($m['mediatype']);
 
-        return $this->redirectToRoute('publication_homepage');
+                     $post->addmedia($media);
+                     $media->setIdpost($post);
+                     $em->persist($media);
+
+                     }*/
+
+            $post->setSrcPublication($contenue);
+            $post->setTitre($titre);
+            $em->persist($post);
+            $em->flush();
+        }
+
+
+            return $this->redirectToRoute('publication_homepage');
 
     }
-
 }
 
 
