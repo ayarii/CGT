@@ -83,38 +83,19 @@
                         <!-- POST OPEN PARAGRAPH -->
                         <p class="post-open-paragraph">{{ article.contenue|raw }}</p>
                         <!-- /POST OPEN PARAGRAPH -->
-
-
-
-
-
-
-
-
-
+                        {% if article.tag|length != 0 %}
+                        {% set tags = article.tag|split(',') %}
                         <!-- TAG LIST -->
                         <div class="tag-list">
                             <!-- TAG ITEM -->
-                            <a class="tag-item secondary" href="newsfeed.html">Streamer</a>
+                            {% for tag in tags %}
+                            <a class="tag-item secondary" href="#">#{{tag}}</a>
                             <!-- /TAG ITEM -->
+                            {% endfor %}
 
-                            <!-- TAG ITEM -->
-                            <a class="tag-item secondary" href="newsfeed.html">Gaming</a>
-                            <!-- /TAG ITEM -->
-
-                            <!-- TAG ITEM -->
-                            <a class="tag-item secondary" href="newsfeed.html">Job</a>
-                            <!-- /TAG ITEM -->
-
-                            <!-- TAG ITEM -->
-                            <a class="tag-item secondary" href="newsfeed.html">Life</a>
-                            <!-- /TAG ITEM -->
-
-                            <!-- TAG ITEM -->
-                            <a class="tag-item secondary" href="newsfeed.html">Experience</a>
-                            <!-- /TAG ITEM -->
                         </div>
                         <!-- /TAG LIST -->
+                        {% endif %}
                     </div>
                     <!-- /POST OPEN CONTENT BODY -->
                 </div>

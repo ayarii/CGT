@@ -1,6 +1,10 @@
 {% extends 'baseAll.html.twig' %}
     {% block body %}
 
+<!-- CONTENT GRID -->
+<div class="content-grid">
+    <!-- SECTION BANNER -->
+
         <h1>{% trans from 'FOSMessageBundle' %}messenger{% endtrans %}</h1>
 
         <ul>
@@ -10,5 +14,6 @@
         </ul>
 
         {% block fos_message_content %}{% endblock %}
+</div>
 
 {% endblock %}

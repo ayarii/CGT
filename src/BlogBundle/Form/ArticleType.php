@@ -19,6 +19,8 @@ class ArticleType extends AbstractType
             //->add('contenue',CKEditorType::class)
             ->add('contenue', CKEditorType::class, array(
                 'config' => array(
+
+
                     'filebrowserBrowseRoute' => 'elfinder',
                     'filebrowserBrowseRouteParameters' => array(
                         'instance' => 'default',
@@ -27,6 +29,8 @@ class ArticleType extends AbstractType
                 ),
             )
     )
+
+            ->add('tag')
             ->add('valider',SubmitType::class);
 
     }/**

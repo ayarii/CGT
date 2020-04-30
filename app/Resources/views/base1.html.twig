@@ -34,6 +34,8 @@
         <link rel="stylesheet" href="{{ asset('Dashboard/assets/plugins/sweetalert/sweetalert.css') }}"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+        <link rel="stylesheet" href="{{ asset('bootstrap-tagsinput.css') }}">
+
 
 
 
@@ -129,15 +131,15 @@
                     </li>
                     <li class="header">MAIN</li>
 
-                    <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Gestion Compétition</span> </a>
+                    <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-calendar"></i><span>Gestion Compétition</span> </a>
                         <ul class="ml-menu">
                             <li><a href="{{ path('affichercompetitionAdmin') }}">Afficher Compétition</a></li>
                             <li><a href="{{ path('pie')}}">Statistiques</a></li>
                         </ul>
                     </li>
-                    <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-shopping-cart"></i><span>Gestion Blog</span> </a>
+                    <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-blogger"></i><span>Gestion Blog</span> </a>
                         <ul class="ml-menu">
-                            <li> <a href="#">Afficher Sponsors</a></li>
+                            <li> <a href="{{ path('afficherBlogAdmin') }}">Afficher Blogs</a></li>
 
                             <li> <a href="#">Statistiques</a></li>
                         </ul>
@@ -526,6 +528,8 @@
     <script src="{{ asset('Dashboard/assets/js/pages/ui/dialogs.js') }}"></script>
 
     <script src="{{ asset('Dashboard/assets/plugins/dropzone/dropzone.js') }}"></script> <!-- Dropzone Plugin Js -->
+
+    <script src="{{ asset('bootstrap-tagsinput.js') }}"></script>
 
 
 

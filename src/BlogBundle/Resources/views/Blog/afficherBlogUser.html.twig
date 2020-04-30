@@ -144,7 +144,7 @@
                     <!-- POST PREVIEW INFO BOTTOM -->
                     <div class="post-preview-info-bottom">
                         <!-- POST PREVIEW TEXT -->
-                        <p class="post-preview-text">{{ a.contenue|striptags|slice(0,222) }} ... </p>
+                        <p class="post-preview-text">{{ a.contenue|striptags|slice(0,222)|raw }} ... </p>
                         <!-- /POST PREVIEW TEXT -->
                         <a  href="{{ path('detailBlogUser', {'id':a.id})  }}">
                         <!-- POST PREVIEW LINK -->

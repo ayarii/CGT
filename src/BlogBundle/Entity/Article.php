@@ -29,6 +29,29 @@ class Article
     private $sujet;
 
     /**
+     * @return string
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * @param string $tag
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tag", type="string", length=255,nullable=true)
+     */
+    private $tag;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="contenue", type="text")

@@ -1,6 +1,16 @@
 {% extends 'base1.html.twig' %}
 {% block body %}
 
+
+
+
+
+
+
+
+
+
+
     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <section class="content blog-page">
         <div class="block-header">
@@ -29,14 +39,23 @@
                                 <label for="recipient-name" class="form-control-label">Sujet:</label>
                                 {{ form_widget(form.sujet,{'attr':{'class':'form-control'}} ) }}
                             </div>
-
-                            <div class="fallback">
-                                <div class="form-group">
-                                    {{ form_widget(form.photo,{'attr':{'class':'form-group'}} ) }}
-                                </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="form-control-label">Tags : (séparer par des virgules)</label>
+                                {{ form_widget(form.tag, { 'id': 'tag-input1',  'attr': { 'class' : 'custom-class' } } ) }}
                             </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="recipient-name" class="form-control-label">Photo du couverture :</label>
+                                <br>
+                                {{ form_widget(form.photo,{'attr':{'class':'form-group'}} ) }}
+                            </div>
+
+
                         </div>
                     </div>
+
+
+
                     <div class="card">
                         <div class="body">
                             <div class="form-group">
@@ -51,6 +70,9 @@
                 </div>
             </div>
         </div>
+
+
+
     </section>
     </div>
     </div>

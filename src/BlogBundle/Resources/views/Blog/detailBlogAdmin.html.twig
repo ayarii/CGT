@@ -21,18 +21,18 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-8 col-md-12">
+                <div class="col-lg-12 col-md-12">
                     <div class="card single_post">
                         <div class="body">
                             <h3 class="m-t-0 m-b-5"><a href="blog-details.html">{{ article.sujet }}</a></h3>
                             <ul class="meta">
-                                <li><a href="#"><i class="zmdi zmdi-label col-red"></i>{{article.datecreation|date("l d F - H:i")}}</a></li>
-                                <li><a href="#"><i class="zmdi zmdi-comment-text col-blue"></i>Comments: 3</a></li>
+                                <li><a href="#"><i class="fa fa-calendar-times-o" style="font-size:13px;color:deepskyblue"></i>{{article.datecreation|date("l d F - H:i")}}</a></li>
+                                <li><a href="#"><i class="zmdi zmdi-comment-text col-blue"></i>Comments:  {{ Comment|length }}</a></li>
                             </ul>
                         </div>
                         <div class="body">
                             <div class="img-post m-b-15">
-                                <img src="{{asset('uploads/'~article.photo)}}" alt="Awesome Image">
+                                <img src="{{asset('uploads/'~article.photo)}}" alt="Awesome Image" style="height: auto;width: auto;alignment: center">
                                 <div class="social_share">
                                     <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-facebook"></i></button>
                                     <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-twitter"></i></button>
@@ -40,153 +40,87 @@
                                 </div>
                             </div>
                             <p>{{article.contenue|raw}}</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="header">
-                            <h2><strong>Comments</strong> {{ Comment|length }}</h2>
-                        </div>
-                        <div class="body">
-                            <ul class="comment-reply list-unstyled">
-                                {% for c in Comment %}
-                                <li class="row">
-                                    <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="{{asset('uploads/'~c.idUser.imguser)}}" alt="Awesome Image"></div>
-                                    <div class="text-box col-md-10 col-8 p-l-0 p-r0">
-                                        <h5 class="m-b-0">{{c.idUser.username}} </h5>
-                                        <p> {{c.text}}</p>
-                                        <ul class="list-inline">
-                                            <li><a href="#">
-                                                    {% if "now" |date("U") + 3600  > c.datecreation |date("U") + 31104000 %}
-                                                        il ya {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("Y") }} ans
-                                                    {% elseif "now" |date("U") + 3600  > c.datecreation |date("U") + 2592000 %}
-                                                        il ya  {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("m") }} moiss
-                                                    {% elseif "now" |date("U") + 3600  > c.datecreation |date("U") + 86400 %}
-                                                        il ya {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("d") }} jours
-                                                    {% elseif "now" |date("U") + 3600  > c.datecreation |date("U") + 3600  %}
-                                                        il ya {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("H") }} heures
-                                                    {% elseif "now" |date("U") + 3600  > c.datecreation |date("U") + 60 %}
-                                                        il ya {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("i") }} minutes
-                                                    {% elseif "now" |date("U") + 3600  > c.datecreation |date("U")  %}
-                                                        il ya  {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("s") }} secondes
-                                                    {% endif %}
-                                                </a></li>
-                                            <li><a href="{{ path('suppComment', {'id':c.id,'id2':c.idArticle.id})  }}">Supprimer</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                {% endfor %}
+                            <br>
 
-                            </ul>
+
+
+                                {% if article.tag|length != 0 %}
+                                {% set tags = article.tag|split(',') %}
+
+                                        {% for tag in tags %}
+
+
+                                            <a href="#" title="read more" class="btn btn-round btn-info">#{{tag}}</a>
+
+                                        {% endfor %}
+
+                                {% endif %}
+
+
+                            </div>
+
                         </div>
                     </div>
 
-                </div>
-                <div class="col-lg-4 col-md-12 right-box">
-                    <div class="card">
-                        <div class="body search">
-                            <div class="input-group m-b-0">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-addon">
-                                <i class="zmdi zmdi-search"></i>
-                            </span>
-                            </div>
-                        </div>
+
+                <div class="card ">
+                    <div class="header">
+
+                        <h2><strong>Comments : </strong> {{ Comment|length }}</h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right slideUp float-right">
+                                    <li><a href="javascript:void(0);">Edit</a></li>
+                                    <li><a href="javascript:void(0);">Delete</a></li>
+                                    <li><a href="javascript:void(0);">Report</a></li>
+                                </ul>
+                            </li>
+                            <li class="remove">
+                                <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="card">
-                        <div class="header">
-                            <h2><strong>Popular</strong> Posts</h2>
-                        </div>
-                        <div class="body widget popular-post">
-                            <ul class="list-unstyled m-b-0">
-                                <li class="row">
-                                    <div class="icon-box col-4">
-                                        <img class="img-fluid img-thumbnail" src="assets/images/blog/1.jpg" alt="Awesome Image">
+                    <div class="body">
+                        <ul class="inbox-widget list-unstyled clearfix">
+                            {% for c in Comment %}
+                            <li class="inbox-inner"><a href="#">
+                                    <div class="inbox-item">
+                                        <div class="inbox-img"> <img src="{{asset('uploads/'~c.idUser.imguser)}}" class="rounded" alt=""> </div>
+                                        <div class="inbox-item-info">
+                                            <p class="author">{{c.idUser.username}}</p>
+                                            <p class="inbox-message">{{c.text}}</p>
+                                            <p class="inbox-date">
+                                                {% if "now" |date("U") + 3600  > c.datecreation |date("U") + 31104000 %}
+                                                    il ya {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("Y") }} ans
+                                                {% elseif "now" |date("U") + 3600  > c.datecreation |date("U") + 2592000 %}
+                                                    il ya  {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("m") }} moiss
+                                                {% elseif "now" |date("U") + 3600  > c.datecreation |date("U") + 86400 %}
+                                                    il ya {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("d") }} jours
+                                                {% elseif "now" |date("U") + 3600  > c.datecreation |date("U") + 3600  %}
+                                                    il ya {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("H") }} heures
+                                                {% elseif "now" |date("U") + 3600  > c.datecreation |date("U") + 60 %}
+                                                    il ya {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("i") }} minutes
+                                                {% elseif "now" |date("U") + 3600  > c.datecreation |date("U")  %}
+                                                    il ya  {{ ("now" |date("U") + 3600  - c.datecreation |date("U") ) |date("s") }} secondes
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                        <div class="hover_action">
+
+                                            <a href="{{ path('suppComment', {'id':c.id,'id2':c.idArticle.id})  }}"><i class="fa fa-trash" style="font-size:22px"></i></a>
+
+                                        </div>
                                     </div>
-                                    <div class="text-box col-8 p-l-0">
-                                        <h5 class="m-b-0"><a href="#">Web Design</a></h5>
-                                        <small class="author-name">By: <a href="#">Michael Allenson</a></small>
-                                        <small class="date">Dec, 05 2017</small>
-                                    </div>
-                                </li>
-                                <li class="row">
-                                    <div class="icon-box col-4">
-                                        <img class="img-fluid img-thumbnail" src="assets/images/blog/2.jpg" alt="Awesome Image">
-                                    </div>
-                                    <div class="text-box col-8 p-l-0">
-                                        <h5 class="m-b-0"><a href="#">UI UX Design</a></h5>
-                                        <small class="author-name">By: <a href="#">Michael Allenson</a></small>
-                                        <small class="date">Dec, 15 2017</small>
-                                    </div>
-                                </li>
-                                <li class="row">
-                                    <div class="icon-box col-4">
-                                        <img class="img-fluid img-thumbnail" src="assets/images/blog/3.jpg" alt="Awesome Image">
-                                    </div>
-                                    <div class="text-box col-8 p-l-0">
-                                        <h5 class="m-b-0"><a href="#">Photography</a></h5>
-                                        <small class="author-name">By: <a href="#">Michael Allenson</a></small>
-                                        <small class="date">Dec, 15 2017</small>
-                                    </div>
-                                </li>
-                                <li class="row">
-                                    <div class="icon-box col-4">
-                                        <img class="img-fluid img-thumbnail" src="assets/images/blog/4.jpg" alt="Awesome Image">
-                                    </div>
-                                    <div class="text-box col-8 p-l-0">
-                                        <h5 class="m-b-0"><a href="#">New Technology</a></h5>
-                                        <small class="author-name">By: <a href="#">Michael Allenson</a></small>
-                                        <small class="date">Dec, 20 2017</small>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="header">
-                            <h2><strong>Tag</strong> Clouds</h2>
-                        </div>
-                        <div class="body widget tag-clouds">
-                            <ul class="list-unstyled m-b-0">
-                                <li><a href="#" class="tag badge badge-default">Design</a></li>
-                                <li><a href="#" class="tag badge badge-success">Project</a></li>
-                                <li><a href="#" class="tag badge badge-info">Creative UX</a></li>
-                                <li><a href="#" class="tag badge badge-success">Wordpress</a></li>
-                                <li><a href="#" class="tag badge badge-warning">HTML5</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="header">
-                            <h2><strong>Instagram</strong> Post</h2>
-                        </div>
-                        <div class="body widget">
-                            <ul class="list-unstyled instagram-plugin m-b-0">
-                                <li><a href="#"><img src="assets/images/blog/05-img.jpg" alt="image description"></a></li>
-                                <li><a href="#"><img src="assets/images/blog/06-img.jpg" alt="image description"></a></li>
-                                <li><a href="#"><img src="assets/images/blog/07-img.jpg" alt="image description"></a></li>
-                                <li><a href="#"><img src="assets/images/blog/08-img.jpg" alt="image description"></a></li>
-                                <li><a href="#"><img src="assets/images/blog/09-img.jpg" alt="image description"></a></li>
-                                <li><a href="#"><img src="assets/images/blog/10-img.jpg" alt="image description"></a></li>
-                                <li><a href="#"><img src="assets/images/blog/11-img.jpg" alt="image description"></a></li>
-                                <li><a href="#"><img src="assets/images/blog/12-img.jpg" alt="image description"></a></li>
-                                <li><a href="#"><img src="assets/images/blog/13-img.jpg" alt="image description"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="header">
-                            <h2><strong>Email</strong> Newsletter <small>Get our products/news earlier than others, let’s get in touch.</small></h2>
-                        </div>
-                        <div class="body widget newsletter">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Enter Email">
-                                <span class="input-group-addon">
-                                <i class="zmdi zmdi-mail-send"></i>
-                            </span>
-                            </div>
-                        </div>
+                                </a>
+                            </li>
+
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
+
+                </div>
+
             </div>
         </div>
 
