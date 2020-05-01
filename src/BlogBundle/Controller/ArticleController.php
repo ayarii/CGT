@@ -3,6 +3,7 @@
 namespace BlogBundle\Controller;
 
 use BlogBundle\Entity\Article;
+use BlogBundle\Entity\ReactBlog;
 use BlogBundle\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -75,10 +76,26 @@ class ArticleController extends Controller
     {
         $em = $this ->getDoctrine()->getManager();
         $Article = $em->getRepository("BlogBundle:Article")->findAll();
+        $React1= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('type'=>1));
+        $React2= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('type'=>2));
+        $React3= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('type'=>3));
+        $React4= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('type'=>4));
+        $React5= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('type'=>5));
+        $React6= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('type'=>6));
+        $React7= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('type'=>7));
+        $React8= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('type'=>8));
 
         $Comment = $em->getRepository("BlogBundle:Comment")->findAll();
         return $this->render('@Blog/Blog/afficherBloguSER.html.twig', array( 'Article'=>$Article,
-            'Comment'=>$Comment
+            'Comment'=>$Comment,
+            'React1'=>$React1,
+            'React2'=>$React2,
+            'React3'=>$React3,
+            'React4'=>$React4,
+            'React5'=>$React5,
+            'React6'=>$React6,
+            'React7'=>$React7,
+            'React8'=>$React8,
             ));
 
     }
@@ -97,10 +114,26 @@ class ArticleController extends Controller
     public function detailBlogUserAction($id)
     {
         $em = $this ->getDoctrine()->getManager();
+        $React1= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('idblog'=>$id,'type'=>1));
+        $React2= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('idblog'=>$id,'type'=>2));
+        $React3= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('idblog'=>$id,'type'=>3));
+        $React4= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('idblog'=>$id,'type'=>4));
+        $React5= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('idblog'=>$id,'type'=>5));
+        $React6= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('idblog'=>$id,'type'=>6));
+        $React7= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('idblog'=>$id,'type'=>7));
+        $React8= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('idblog'=>$id,'type'=>8));
         $Article = $em->getRepository("BlogBundle:Article")->findOneBy(array('id'=>$id));
         $Comment = $em->getRepository("BlogBundle:Comment")->findBy(array('idArticle'=>$id));
         return $this->render('@Blog/Blog/detailBlogUser.html.twig', array( 'article'=>$Article,
-            'Comment'=>$Comment
+            'Comment'=>$Comment,
+            'React1'=>$React1,
+            'React2'=>$React2,
+            'React3'=>$React3,
+            'React4'=>$React4,
+            'React5'=>$React5,
+            'React6'=>$React6,
+            'React7'=>$React7,
+            'React8'=>$React8,
         ));
 
     }
@@ -167,10 +200,34 @@ class ArticleController extends Controller
         $em->flush();
         return $this->redirectToRoute('afficherBlogAdmin');
     }
-    public function accAction()
+
+    public function AddReactAction($id,$type)
     {
-        return $this->render('@Blog/Blog/HomePage.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $user=$this->getUser();
+        $Article = $em->getRepository("BlogBundle:Article")->find($id);
+        $Exist= $em->getRepository("BlogBundle:ReactBlog")->findOneBy(array('iduser'=>$user,'idblog'=>$id));
+        if($Exist)
+        {
+            $Exist->setType($type);
+            $em->persist($Exist);
+            $em->flush();
+        }
+        else
+        {
+            $React = new ReactBlog();
+            $React->setIduser($user);
+            $React->setIdblog($Article);
+            $React->setType($type);
+
+            $em->persist($React);
+            $em->flush();
+
+        }
+
+        return $this->redirectToRoute('detailBlogUser',array('id'=>$id));
     }
+
 
 
 }

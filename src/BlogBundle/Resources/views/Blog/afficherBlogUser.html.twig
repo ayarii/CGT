@@ -160,6 +160,205 @@
                 <div class="content-actions">
 
 
+
+                    <!-- CONTENT ACTION -->
+                    <div class="content-action">
+                        <!-- META LINE -->
+                        <div class="meta-line">
+                            <!-- META LINE LIST -->
+                            <div class="meta-line-list reaction-item-list">
+                                {% set ReactLenght=0 %}
+
+                                {% for r1 in React1 if (r1.idblog.id == a.id)  %}
+                                    {% set ReactLenght=ReactLenght+1 %}
+                                    {#<!-- REACTION ITEM -->
+                                <div class="reaction-item">
+                                    <!-- REACTION IMAGE -->
+                                    <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/reaction/like.png') }}" alt="reaction-like">
+                                    <!-- /REACTION IMAGE -->
+
+                                    <!-- SIMPLE DROPDOWN -->
+                                    <div class="simple-dropdown padded reaction-item-dropdown">
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text"><img class="reaction" src="{{ asset('template/img/reaction/like.png') }}" alt="reaction-like"> <span class="bold">Like</span></p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+
+
+
+
+                                    </div>
+                                    <!-- /SIMPLE DROPDOWN -->
+                                </div>
+                                <!-- /REACTION ITEM -->#}
+                                {% endfor %}
+
+                                {% for r2 in React2 if (r2.idblog.id == a.id)  %}
+                                    {% set ReactLenght=ReactLenght+1 %}
+                                    {#<!-- REACTION ITEM -->
+                                <div class="reaction-item">
+                                    <!-- REACTION IMAGE -->
+                                    <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/reaction/love.png') }}" alt="reaction-love">
+                                    <!-- /REACTION IMAGE -->
+
+                                    <!-- SIMPLE DROPDOWN -->
+                                    <div class="simple-dropdown padded reaction-item-dropdown">
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text"><img class="reaction" src="{{ asset('template/img/reaction/love.png') }}" alt="reaction-love"> <span class="bold">Love</span></p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+
+
+
+                                    </div>
+                                    <!-- /SIMPLE DROPDOWN -->
+                                </div>
+                                <!-- /REACTION ITEM -->#}
+                                {% endfor %}
+
+                                {% for r3 in React3 if (r3.idblog.id == a.id)  %}
+                                    {% set ReactLenght=ReactLenght+1 %}
+                                    {#<!-- REACTION ITEM -->
+                                <div class="reaction-item">
+                                    <!-- REACTION IMAGE -->
+                                    <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/reaction/dislike.png') }}" alt="reaction-like">
+                                    <!-- /REACTION IMAGE -->
+
+                                    <!-- SIMPLE DROPDOWN -->
+                                    <div class="simple-dropdown padded reaction-item-dropdown">
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text"><img class="reaction" src="{{ asset('template/img/reaction/dislike.png') }}" alt="reaction-like"> <span class="bold">Disike</span></p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+
+
+
+                                    </div>
+                                    <!-- /SIMPLE DROPDOWN -->
+                                </div>
+                                <!-- /REACTION ITEM -->#}
+                                {% endfor %}
+
+                                {% for r4 in React4 if (r4.idblog.id == a.id)  %}
+                                    {% set ReactLenght=ReactLenght+1 %}
+                                    {#<!-- REACTION ITEM -->
+                                <div class="reaction-item">
+                                    <!-- REACTION IMAGE -->
+                                    <img class="reaction-image reaction-item-dropdown-trigger" src="i{{ asset('template/img/reaction/happy.png') }}" alt="reaction-happy">
+                                    <!-- /REACTION IMAGE -->
+
+                                    <!-- SIMPLE DROPDOWN -->
+                                    <div class="simple-dropdown padded reaction-item-dropdown">
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text"><img class="reaction" src="{{ asset('template/img/reaction/happy.png') }}" alt="reaction-happy"> <span class="bold">Happy</span></p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+
+
+                                    </div>
+                                    <!-- /SIMPLE DROPDOWN -->
+                                </div>
+                                <!-- /REACTION ITEM -->#}
+                                {% endfor %}
+
+                                {% for r5 in React5 if (r5.idblog.id == a.id)  %}
+                                    {% set ReactLenght=ReactLenght+1 %}
+                                    {#<!-- REACTION ITEM -->
+                                <div class="reaction-item">
+                                    <!-- REACTION IMAGE -->
+                                    <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/reaction/funny.png') }}" alt="reaction-happy">
+                                    <!-- /REACTION IMAGE -->
+
+                                    <!-- SIMPLE DROPDOWN -->
+                                    <div class="simple-dropdown padded reaction-item-dropdown">
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text"><img class="reaction" src="{{ asset('template/img/reaction/funny.png') }}" alt="reaction-happy"> <span class="bold">Funny</span></p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+
+
+                                    </div>
+                                    <!-- /SIMPLE DROPDOWN -->
+                                </div>
+                                <!-- /REACTION ITEM -->#}
+                                {% endfor %}
+
+                                {% for r6 in React6 if (r6.idblog.id == a.id)  %}
+                                    {% set ReactLenght=ReactLenght+1 %}
+                                    {#<!-- REACTION ITEM -->
+                                <div class="reaction-item">
+                                    <!-- REACTION IMAGE -->
+                                    <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/reaction/wow.png') }}" alt="reaction-happy">
+                                    <!-- /REACTION IMAGE -->
+
+                                    <!-- SIMPLE DROPDOWN -->
+                                    <div class="simple-dropdown padded reaction-item-dropdown">
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text"><img class="reaction" src="{{ asset('template/img/reaction/wow.png') }}" alt="reaction-happy"> <span class="bold">Wow</span></p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+
+                                    </div>
+                                    <!-- /SIMPLE DROPDOWN -->
+                                </div>
+                                <!-- /REACTION ITEM -->#}
+                                {% endfor %}
+
+                                {% for r7 in React7 if (r7.idblog.id == a.id)  %}
+                                    {% set ReactLenght=ReactLenght+1 %}
+                                    {#<!-- REACTION ITEM -->
+                                <div class="reaction-item">
+                                    <!-- REACTION IMAGE -->
+                                    <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/reaction/angry.png') }}" alt="reaction-happy">
+                                    <!-- /REACTION IMAGE -->
+
+                                    <!-- SIMPLE DROPDOWN -->
+                                    <div class="simple-dropdown padded reaction-item-dropdown">
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text"><img class="reaction" src="{{ asset('template/img/reaction/angry.png') }}" alt="reaction-happy"> <span class="bold">Angry</span></p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+
+                                    </div>
+                                    <!-- /SIMPLE DROPDOWN -->
+                                </div>
+                                <!-- /REACTION ITEM -->#}
+                                {% endfor %}
+
+                                {% for r8 in React8 if (r8.idblog.id == a.id)  %}
+                                    {% set ReactLenght=ReactLenght+1 %}
+                               {# <!-- REACTION ITEM -->
+                                <div class="reaction-item">
+                                    <!-- REACTION IMAGE -->
+                                    <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/reaction/sad.png') }}" alt="reaction-happy">
+                                    <!-- /REACTION IMAGE -->
+
+                                    <!-- SIMPLE DROPDOWN -->
+                                    <div class="simple-dropdown padded reaction-item-dropdown">
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <p class="simple-dropdown-text"><img class="reaction" src="{{ asset('template/img/reaction/sad.png') }}" alt="reaction-happy"> <span class="bold">Sad</span></p>
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+
+
+                                    </div>
+                                    <!-- /SIMPLE DROPDOWN -->
+                                </div>
+                                <!-- /REACTION ITEM -->#}
+                                {% endfor %}
+                            </div>
+                            <!-- /REACTION ITEM LIST -->
+
+                            <!-- META LINE TEXT -->
+                            <p class="meta-line-text">{{ReactLenght}}  Reacts</p>
+                            <!-- /META LINE TEXT -->
+                        </div>
+                        <!-- /META LINE -->
+                    </div>
+                    <!-- /CONTENT ACTION -->
+
+
+
                     <!-- CONTENT ACTION -->
                     <div class="content-action">
                         <!-- META LINE -->
