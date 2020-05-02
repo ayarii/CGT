@@ -3,11 +3,16 @@
 {% block fos_message_content %}
 
 <h2>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</h2>
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <form action="{{ url('fos_message_thread_new') }}" method="post">
     {{ form_widget(form) }}
 
-    <input type="submit" />
+
+    <!-- FORM ITEM -->
+    <div class="form-item auto-width">
+        <input type="submit"  class="button primary padded"  >
+    </div>
+    <!-- /FORM ITEM -->
 </form>
 
 {% endblock %}

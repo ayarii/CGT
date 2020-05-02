@@ -2,26 +2,216 @@
 
 {% block fos_message_content %}
 
-<h2>{{ thread.subject }}</h2>
 
-{% for message in thread.messages %}
-    <div class="messenger_thread_message">
-        <div class="messenger_thread_message_info">
-            {% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
+    <!-- CHAT WIDGET -->
+    <div class="chat-widget static">
+        <!-- CHAT WIDGET HEADER -->
+        <div class="chat-widget-header">
+            <!-- CHAT WIDGET SETTINGS -->
+            <div class="chat-widget-settings">
+                <!-- POST SETTINGS WRAP -->
+                <div class="post-settings-wrap">
+                    <!-- POST SETTINGS -->
+                    <div class="post-settings widget-box-post-settings-dropdown-trigger">
+                        <!-- POST SETTINGS ICON -->
+                        <svg class="post-settings-icon icon-more-dots">
+                            <use xlink:href="#svg-more-dots"></use>
+                        </svg>
+                        <!-- /POST SETTINGS ICON -->
+                    </div>
+                    <!-- /POST SETTINGS -->
+
+                    <!-- SIMPLE DROPDOWN -->
+                    <div class="simple-dropdown widget-box-post-settings-dropdown">
+                        <!-- SIMPLE DROPDOWN LINK -->
+                        <p class="simple-dropdown-link">Report</p>
+                        <!-- /SIMPLE DROPDOWN LINK -->
+
+                        <!-- SIMPLE DROPDOWN LINK -->
+                        <p class="simple-dropdown-link">Block</p>
+                        <!-- /SIMPLE DROPDOWN LINK -->
+
+                        <!-- SIMPLE DROPDOWN LINK -->
+                        <p class="simple-dropdown-link">Mute</p>
+                        <!-- /SIMPLE DROPDOWN LINK -->
+                    </div>
+                    <!-- /SIMPLE DROPDOWN -->
+                </div>
+                <!-- /POST SETTINGS WRAP -->
+            </div>
+            <!-- CHAT WIDGET SETTINGS -->
+
+            <!-- USER STATUS -->
+            <div class="user-status">
+                <!-- USER STATUS AVATAR -->
+                <div class="user-status-avatar">
+                    <!-- USER AVATAR -->
+                    <div class="user-avatar small no-outline online">
+                        <!-- USER AVATAR CONTENT -->
+                        <div class="user-avatar-content">
+                            <!-- HEXAGON -->
+                            <div class="hexagon-image-30-32" data-src="img/avatar/03.jpg"></div>
+                            <!-- /HEXAGON -->
+                        </div>
+                        <!-- /USER AVATAR CONTENT -->
+
+                        <!-- USER AVATAR PROGRESS -->
+                        <div class="user-avatar-progress">
+                            <!-- HEXAGON -->
+                            <div class="hexagon-progress-40-44"></div>
+                            <!-- /HEXAGON -->
+                        </div>
+                        <!-- /USER AVATAR PROGRESS -->
+
+                        <!-- USER AVATAR PROGRESS BORDER -->
+                        <div class="user-avatar-progress-border">
+                            <!-- HEXAGON -->
+                            <div class="hexagon-border-40-44"></div>
+                            <!-- /HEXAGON -->
+                        </div>
+                        <!-- /USER AVATAR PROGRESS BORDER -->
+
+                        <!-- USER AVATAR BADGE -->
+                        <div class="user-avatar-badge">
+                            <!-- USER AVATAR BADGE BORDER -->
+                            <div class="user-avatar-badge-border">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-22-24"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR BADGE BORDER -->
+
+                            <!-- USER AVATAR BADGE CONTENT -->
+                            <div class="user-avatar-badge-content">
+                                <!-- HEXAGON -->
+                                <div class="hexagon-dark-16-18"></div>
+                                <!-- /HEXAGON -->
+                            </div>
+                            <!-- /USER AVATAR BADGE CONTENT -->
+
+                            <!-- USER AVATAR BADGE TEXT -->
+                            <p class="user-avatar-badge-text">16</p>
+                            <!-- /USER AVATAR BADGE TEXT -->
+                        </div>
+                        <!-- /USER AVATAR BADGE -->
+                    </div>
+                    <!-- /USER AVATAR -->
+                </div>
+                <!-- /USER STATUS AVATAR -->
+
+                <!-- USER STATUS TITLE -->
+                <p class="user-status-title"><span class="bold">Nick Grissom</span></p>
+                <!-- /USER STATUS TITLE -->
+
+                <!-- USER STATUS TAG -->
+                <p class="user-status-tag online">Online</p>
+                <!-- /USER STATUS TAG -->
+            </div>
+            <!-- /USER STATUS -->
         </div>
+        <!-- /CHAT WIDGET HEADER -->
 
-        <div class="messenger_thread_message_body" id="message_{{ message.id }}">
-            {{ message.body }}
+        <!-- CHAT WIDGET CONVERSATION -->
+        <div class="chat-widget-conversation" data-simplebar>
+            {% for message in thread.messages %}
+                {% if app.user != message.sender %}
+                    <!-- CHAT WIDGET SPEAKER -->
+                    <div class="chat-widget-speaker left">
+                        <!-- CHAT WIDGET SPEAKER AVATAR -->
+                        <div class="chat-widget-speaker-avatar">
+                            <!-- USER AVATAR -->
+                            <div class="user-avatar tiny no-border">
+                                <!-- USER AVATAR CONTENT -->
+                                <div class="user-avatar-content">
+                                    <!-- HEXAGON -->
+                                    <div class="hexagon-image-24-26" data-src="{{asset('uploads/'~message.sender.imguser)}}"></div>
+                                    <!-- /HEXAGON -->
+                                </div>
+                                <!-- /USER AVATAR CONTENT -->
+                            </div>
+                            <!-- /USER AVATAR -->
+                        </div>
+                        <!-- /CHAT WIDGET SPEAKER AVATAR -->
+
+                        <!-- CHAT WIDGET SPEAKER MESSAGE -->
+                        <p class="chat-widget-speaker-message">{{message.body}}</p>
+                        <!-- /CHAT WIDGET SPEAKER MESSAGE -->
+
+                        <!-- CHAT WIDGET SPEAKER TIMESTAMP -->
+                        <p class="chat-widget-speaker-timestamp">{{message.createdAt|date}}</p>
+                        <!-- /CHAT WIDGET SPEAKER TIMESTAMP -->
+                    </div>
+                    <!-- /CHAT WIDGET SPEAKER -->
+                {% else %}
+                    <!-- CHAT WIDGET SPEAKER -->
+                    <div class="chat-widget-speaker right">
+                        <!-- CHAT WIDGET SPEAKER MESSAGE -->
+                        <p class="chat-widget-speaker-message">{{ message.body}}</p>
+                        <!-- /CHAT WIDGET SPEAKER MESSAGE -->
+
+
+
+                        <!-- CHAT WIDGET SPEAKER TIMESTAMP -->
+                        <p class="chat-widget-speaker-timestamp">{{message.createdAt|date}}</p>
+                        <!-- /CHAT WIDGET SPEAKER TIMESTAMP -->
+                    </div>
+                    <!-- /CHAT WIDGET SPEAKER -->
+                {% endif %}
+            {% endfor %}
+
         </div>
-    </div>
-{% endfor %}
+        <!-- /CHAT WIDGET CONVERSATION -->
+        <form class="chat-widget-form" action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post" >
+            {{ form_start(form)}}
+            <!-- FORM ROW -->
+            <div class="form-row split">
+                <!-- FORM ITEM -->
+                <div class="form-item">
+                    <!-- INTERACTIVE INPUT -->
+                    <div class="interactive-input small">
+                        {{ form_widget(form.body, {'attr':{'id':"chat-widget-message-text-2",'name':"chat-widget-message-text-2"}}) }}
+                        <!-- INTERACTIVE INPUT ICON WRAP -->
+                        <div class="interactive-input-icon-wrap actionable">
+                            <!-- TOOLTIP WRAP -->
+                            <div class="tooltip-wrap text-tooltip-tft" data-title="Send Photo">
+                                <!-- INTERACTIVE INPUT ICON -->
+                                <svg class="interactive-input-icon icon-camera">
+                                    <use xlink:href="#svg-camera"></use>
+                                </svg>
+                                <!-- /INTERACTIVE INPUT ICON -->
+                            </div>
+                            <!-- /TOOLTIP WRAP -->
+                        </div>
+                        <!-- /INTERACTIVE INPUT ICON WRAP -->
 
-<h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h3>
+                        <!-- INTERACTIVE INPUT ACTION -->
+                        <div class="interactive-input-action">
+                            <!-- INTERACTIVE INPUT ACTION ICON -->
+                            <svg class="interactive-input-action-icon icon-cross-thin">
+                                <use xlink:href="#svg-cross-thin"></use>
+                            </svg>
+                            <!-- /INTERACTIVE INPUT ACTION ICON -->
+                        </div>
+                        <!-- /INTERACTIVE INPUT ACTION -->
+                    </div>
+                    <!-- /INTERACTIVE INPUT -->
+                </div>
+                <!-- /FORM ITEM -->
 
-<form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
-    {{ form_widget(form) }}
+                <!-- FORM ITEM -->
+                <div class="form-item auto-width">
+                    <input type="submit"  class="button primary padded"  >
+                </div>
+                <!-- /FORM ITEM -->
 
-    <input type="submit" />
-</form>
+            </div>
+            <!-- /FORM ROW -->
+            {{ form_end(form)}}
+        </form>
+
+</div>
+    <!-- /CHAT WIDGET -->
+
+
 
 {% endblock %}
