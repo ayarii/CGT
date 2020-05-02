@@ -189,13 +189,13 @@
                                 <!-- REACTION ITEM -->
                                 <div class="reaction-item">
                                     <!-- REACTION IMAGE -->
-                                    <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/reaction/happy.png') }}" alt="reaction-happy">
+                                    <img class="reaction-image reaction-item-dropdown-trigger" src="{{ asset('template/img/reaction/solidaire.png') }}" alt="reaction-happy">
                                     <!-- /REACTION IMAGE -->
 
                                     <!-- SIMPLE DROPDOWN -->
                                     <div class="simple-dropdown padded reaction-item-dropdown">
                                         <!-- SIMPLE DROPDOWN TEXT -->
-                                        <p class="simple-dropdown-text"><img class="reaction" src="{{ asset('template/img/reaction/happy.png') }}" alt="reaction-like"> <span class="bold">Happy</span></p>
+                                        <p class="simple-dropdown-text"><img class="reaction" src="{{ asset('template/img/reaction/solidaire.png') }}" alt="reaction-like"> <span class="bold">Solidaire</span></p>
                                         <!-- /SIMPLE DROPDOWN TEXT -->
                                         {% for r4 in React4 %}
                                             {% set ReactLenght=ReactLenght+1 %}
@@ -509,9 +509,9 @@
                             <!-- /REACTION OPTION -->
 
                             <!-- REACTION OPTION -->
-                            <div class="reaction-option text-tooltip-tft" data-title="Happy">
+                            <div class="reaction-option text-tooltip-tft" data-title="Solidaire">
                                 <!-- REACTION OPTION IMAGE -->
-                                <a href="{{ path('addReact',{id:article.id,type:4}) }}"><img class="reaction-option-image" src="{{ asset('template/img/reaction/happy.png') }}" alt="reaction-happy"></a>
+                                <a href="{{ path('addReact',{id:article.id,type:4}) }}"><img class="reaction-option-image" src="{{ asset('template/img/reaction/solidaire.png') }}" alt="reaction-happy"></a>
                                 <!-- /REACTION OPTION IMAGE -->
                             </div>
                             <!-- /REACTION OPTION -->
