@@ -192,7 +192,15 @@ fos_ck_editor:
       filebrowserBrowseRouteParameters: []
 
 fos_message:
+
   db_driver: orm
   thread_class: FOSBundle\Entity\Thread
   message_class: FOSBundle\Entity\Message
+                                     # Request query parameter containing the term
+  new_thread_form:
+    type:               FOS\MessageBundle\FormType\NewThreadMultipleMessageFormType
+    handler:            fos_message.new_thread_multiple_form.handler
+    model:              FOS\MessageBundle\FormModel\NewThreadMultipleMessage
+    name:               message
+
 
