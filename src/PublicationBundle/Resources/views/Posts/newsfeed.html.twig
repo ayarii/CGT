@@ -1705,7 +1705,7 @@
                                         <!-- USER AVATAR CONTENT -->
                                         <div class="user-avatar-content">
                                             <!-- HEXAGON -->
-                                            <div class="hexagon-image-30-32" data-src="{{ 'template/img/avatar/'~comment.idUser.imguser }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                            <div class="hexagon-image-30-32" data-src="{{ 'uploads/'~comment.idUser.imguser }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
                                             <!-- /HEXAGON -->
                                         </div>
                                         <!-- /USER AVATAR CONTENT -->
@@ -2207,7 +2207,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="Aiijwkm.js"></script>
     <script type="text/javascript" src="filechooser.js"></script>
-
     <script  type="text/javascript">
         function affichecomm(elem){
             let idc = $(elem).attr('data-whatever');
@@ -2554,5 +2553,4 @@
 
 
     </script>
-
 {% endblock %}

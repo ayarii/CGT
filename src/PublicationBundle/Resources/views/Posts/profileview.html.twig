@@ -1228,7 +1228,7 @@
                                             <!-- USER AVATAR CONTENT -->
                                             <div class="user-avatar-content">
                                                 <!-- HEXAGON -->
-                                                <div class="hexagon-image-30-32" data-src="{{ 'template/img/avatar/'~comment.idUser.imguser }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
+                                                <div class="hexagon-image-30-32" data-src="{{ 'uploads/'~comment.idUser.imguser }}" style="width: 30px; height: 32px; position: relative;"><canvas width="30" height="32" style="position: absolute; top: 0px; left: 0px;"></canvas></div>
                                                 <!-- /HEXAGON -->
                                             </div>
                                             <!-- /USER AVATAR CONTENT -->
@@ -1453,56 +1453,6 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="Postedit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modification de Publication </h4>
-                </div>
-                <div class="modal-body">
-                    <form id="Posteditt" >
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">Titre de Publication</label>
-                            <textarea class="form-control" id="titlepub" name="titre"  required></textarea>
-                        </div>
-                        <div class="form-group" id="content">
-                            <label for="message-text" class="control-label">Contenue</label>
-
-
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">Changer le Contenue</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroupFileAddon01" name="contenue">Upload</span>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                           aria-describedby="inputGroupFileAddon01" name="contenue">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">Changer le Type</label>
-                            <select title="choisir le type de contenue" class="selectpicker" name="type">
-                                <option value="texte" >Texte</option>
-                                <option data-icon="glyphicon glyphicon-picture" data-subtext="petrification" value="img">Image</option>
-                                <option data-icon="glyphicon glyphicon-facetime-video" data-subtext="area damage" value="video">video</option>
-                            </select>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" >Enregistrer</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button id="fermm" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="modal fade" id="Postforshare" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -1609,7 +1559,177 @@
             </div>
         </div>
     </div>
+    <div id="addnewpost" class="popup-box big popup-event-creation quick-post" style="position: absolute; left: 50%; z-index: 100001; opacity: 1; visibility: visible; transform: translate(0px, 0px); transition: transform 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s; top: 100px; margin-left: -192px;">
+        <!-- POPUP CLOSE BUTTON -->
+        <div class="popup-close-button popup-event-creation-trigger">
+            <!-- POPUP CLOSE BUTTON ICON -->
+            <svg class="popup-close-button-icon icon-cross">
+                <use xlink:href="#svg-cross"></use>
+            </svg>
+            <!-- /POPUP CLOSE BUTTON ICON -->
+        </div>
+        <!-- /POPUP CLOSE BUTTON -->
+        <!-- POPUP BOX TITLE -->
+        <p class="popup-box-title">+ Ajouter Une Pubication</p>
+        <!-- /POPUP BOX TITLE -->
+        <div class="popup-box-content quick-post-body" id=xnewpost>
+            <!-- FORM -->
+            <form class="form" id="formnewpost" action="{{ path('Publication_add_new_post')}}" enctype="multipart/form-data">
+                <!-- FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input small">
+                            <label for="event-name">Titre de Publication</label>
+                            <input type="text" id="new-post-title" name="titredupub">
+                        </div>
+                        <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input small">
+                            <label for="event-description">Contenu</label>
+                            <textarea id="new-post-content" name="contenudupub"></textarea>
+                        </div>
+                        <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!--form row-->
+                <input type="file" style="display: none" id="src" onchange='openFile(event)' multiple  />
+                <!--form row-->
+                <div class="form-row collapse " id="photos+video"  >
+                    <div class="form-item">
+                        <div class="grid grid-3-3-3-3 centered anyClass" id="gallerie">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /POPUP BOX ACTIONS -->
+            </form>
+        </div>
+        <div class="quick-post-footer">
+            <!-- QUICK POST FOOTER ACTIONS -->
+            <div class="quick-post-footer-actions">
+                <!-- QUICK POST FOOTER ACTION -->
+                <div class="quick-post-footer-action text-tooltip-tft-medium" data-title="Insert Photo" style="position: relative;">
+                    <!-- QUICK POST FOOTER ACTION ICON -->
+                    <a href="#photos+video" data-toggle="collapse" class=" quick-post-footer-action-icon icon-camera" role="button" onclick="addmediatopost()"><i class="fa fa-camera"></i>
+                    </a>
+                    <!-- /QUICK POST FOOTER ACTION ICON -->
+                    <div class="xm-tooltip" style="white-space: nowrap; position: absolute; z-index: 99999; top: -32px; left: 50%; margin-left: -47px; opacity: 0; visibility: hidden; transform: translate(0px, 10px); transition: all 0.3s ease-in-out 0s;"><p class="xm-tooltip-text">Insert Photo</p></div></div>
+                <!-- /QUICK POST FOOTER ACTION -->
+
+                <!-- QUICK POST FOOTER ACTION -->
+                <div class="quick-post-footer-action text-tooltip-tft-medium" data-title="Insert GIF" style="position: relative;">
+                    <!-- QUICK POST FOOTER ACTION ICON -->
+                    <svg class="quick-post-footer-action-icon icon-gif">
+                        <use xlink:href="#svg-gif"></use>
+                    </svg>
+                    <!-- /QUICK POST FOOTER ACTION ICON -->
+                    <div class="xm-tooltip" style="white-space: nowrap; position: absolute; z-index: 99999; top: -32px; left: 50%; margin-left: -40px; opacity: 0; visibility: hidden; transform: translate(0px, 10px); transition: all 0.3s ease-in-out 0s;"><p class="xm-tooltip-text">Insert GIF</p></div></div>
+                <!-- /QUICK POST FOOTER ACTION -->
+            </div>
+            <!-- /QUICK POST FOOTER ACTIONS -->
+
+            <!-- QUICK POST FOOTER ACTIONS -->
+            <div class="quick-post-footer-actions">
+                <!-- BUTTON -->
+                <p class="button small void">Discard</p>
+                <!-- /BUTTON -->
+
+                <!-- BUTTON -->
+                <p onclick="addnewpost()" class="button small secondary">Post</p>
+                <!-- /BUTTON -->
+            </div>
+            <!-- /QUICK POST FOOTER ACTIONS -->
+        </div>
+    </div>
+    <div id="Post-edit-popup"class="popup-box popup-album-creation" style="position: absolute; left: 50%; z-index: 100001; opacity: 1; visibility: visible; transform: translate(0px, 0px); transition: transform 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s, visibility 0.3s ease-in-out 0s; top: 850px; margin-left: -492px;">
+        <!-- POPUP CLOSE BUTTON -->
+        <div id="closeedit" class="popup-close-button popup-album-creation-trigger">
+            <!-- POPUP CLOSE BUTTON ICON -->
+            <svg class="popup-close-button-icon icon-cross">
+                <use xlink:href="#svg-cross"></use>
+            </svg>
+            <!-- /POPUP CLOSE BUTTON ICON -->
+        </div>
+        <!-- /POPUP CLOSE BUTTON -->
+
+        <!-- POPUP BOX TITLE -->
+        <p class="popup-box-title">Edit Post +</p>
+        <!-- /POPUP BOX TITLE -->
+        <form id="Posteditt" class="form" enctype="multipart/form-data">
+            <div class="page1" id="edit-page-1">
+                <!-- FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input small">
+                            <label for="album-name">Titre du Publication</label>
+                            <input type="text" id="titlepub" name="titre">
+                        </div>
+                        <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input small">
+                            <label for="album-name">Contenu</label>
+                            <input type="text" id="Contenuedit-Form" name="Contenu" >
+                        </div>
+                        <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+            </div>
+            <div class="page2" id="edit-page-2"  style="display:none" >
+                <!-- FORM UPLOADABLES -->
+                <div class="form-uploadables" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px -28px -40px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden scroll;"><div class="simplebar-content" style="padding: 0px 28px 40px;">
+                                        <!-- UPLOAD ITEM LIST -->
+                                        <div class="upload-item-list" id="uploadlist">
+                                            <!-- UPLOAD ITEM -->
+                                            <a class="upload-item"  onclick="uploadnewfile()">
+                                                <div class="icon-plus" >
+                                                    <i class="fa fa-plus"></i>
+                                                </div>
+                                            </a>
+                                            <input id="speeddial" type="file" style="display:none" onchange="imagescreening(event)" multiple>
+                                            <!-- /UPLOAD ITEM -->
+                                        </div>
+                                        <!-- /UPLOAD ITEM LIST -->
+                                    </div></div></div></div><div class="simplebar-placeholder" style="width: auto; height: 696px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; transform: translate3d(0px, 0px, 0px); display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="height: 236px; transform: translate3d(0px, 168px, 0px); display: block;"></div></div></div>
+                <!-- /FORM UPLOADABLES -->
+
+            </div>
+            <!-- POPUP BOX ACTIONS -->
+            <div class="popup-box-actions">
+                <!-- POPUP BOX ACTION -->
+                <p class="popup-box-action button white popup-album-creation-trigger" id="closeedit2">Discard</p>
+                <!-- /POPUP BOX ACTION -->
+
+                <!-- POPUP BOX ACTION -->
+                <button class="popup-box-action button secondary" id="Sended">Edit</button>
+                <!-- /POPUP BOX ACTION -->
+            </div>
+            <!-- /POPUP BOX ACTIONS -->
+        </form>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="filechooser.js"></script>
     <script  type="text/javascript">
         function affichecomm(elem){
             let idc = $(elem).attr('data-whatever');
@@ -1631,14 +1751,11 @@
             });
 
         }
-
         $("#close").on("click",function () {
             location.reload(true);
         });
         function affichierpub (elem)
         {
-
-
             var idc = $(elem).attr('data-whatever');
             var url ="{{ path('publication_show_one1',{'id_post':'idpub'})}}";
             url = url.replace("idpub", idc);
@@ -1649,41 +1766,61 @@
                 processData: true,
                 success:function(data)
                 {
-                    var src1="/uploads/video/"+data['contenue'];
-                    var src2="/uploads/img/"+data['contenue'];
                     $('#titlepub').html(data['titre']);
-                    if(data['type'].localeCompare("video")==0)
-                    {  $("#content").append('     <video  id=vid" class="video-fluid" autoplay loop muted>\n' +
-                        '          <source src="" type="video/mp4" />\n' +
-                        '        </video>');
-                        document.getElementById('vid').src =src1;}
-                    else {
-                        if (data['type'].localeCompare("img") == 0) {
-                            $("#content").append('<img id="img" src="" class="img-thumbnail" alt="contenue" width="304" height="236">');
-                            document.getElementById('img').src = src2;
-                        }
-                        else
-                        {   var nouty="#tfol-"+idc;
-                            var clonebobo=$(nouty).clone();
-                            $("#content").append(clonebobo);
+                    $('#Contenuedit-Form').html(data['contenue']);
+                    console.log(data['type']);
+                    if (data['type'].localeCompare("Mixed") == 0)
+                    {
+                        if(data['medias']!=null)
+                        {
+                            $("#edit-page-2").css('display','block');
+                            var medias=[];
+                            var deleteurl="{{ path('Media_Delete',{'id_media':'idpub'})}}"
+                            medias=data['medias'];
+                            console.log(medias);
+                            for(var i=0;i<medias.length;i++)
+                            {   var ms=medias[i];
+                                deleteurl=deleteurl.replace('idpub',ms.idmedia);
+                                console.log( ms.source);
+                                $("#uploadlist").append('<div class="upload-item" id="'+ ms.idmedia +'"> \n' +
+                                    ' <figure class="upload-item-image liquid" style="background: url(&quot;/uploads/Mixed/'+ medias[i].source + '&quot;) center center / cover no-repeat;">\n' +
+                                    '<img src="/uploads/Mixed/'+ medias[i].source + '" style="display: none;">\n' +
+                                    '</figure>\n' +
+                                    '<div class="form-input small">\n' +
+                                    '<textarea id="album-photo-description-'+i+'" name="album_photo_description_'+i+'" value=""></textarea>\n' +
+                                    ' </div>\n' +
+                                    '<a onclick="deletemedia('+ ms.idmedia +')" href="'+deleteurl+'"><i class="fa fa-minus-circle"></i><a>\n'+
+                                    '<div class="checkbox-wrap small">\n' +
+                                    '<input type="radio" id="album-set-photo-cover-'+i+'" name="album_set_photo_cover" value="cover-01" checked="">\n' +
+                                    '<div class="checkbox-box">\n' +
+                                    '<svg class="icon-cross">\n' +
+                                    ' <use xlink:href="#svg-cross"></use>\n' +
+                                    '</svg>\n' +
+                                    '</div>\n' +
+                                    '<label for="album-set-photo-cover-'+i+'">Set as album cover</label>\n' +
+                                    '</div>\n' +
+                                    '</div>' );
 
+                            }
                         }
+
                     }
-
-
-
-
-
-                }
-            });
-            $("#Posteditt").submit(function(){
-                let posturl ="{{ path('publication_edit',{'id_post':'idpub'})}}";
+                    else
+                    {   var nouty="#tfol-"+idc;
+                        var clonebobo=$(nouty).clone();
+                        $("#content").append(clonebobo);
+                    }
+                }});
+            $("#Posteditt").submit(function ()
+            {
+                var formedit=new FormData();
+                formedit=createeditformdata();
+                let posturl ="{{path('publication_edit',{'id_post':'idpub'})}}";
                 posturl =posturl.replace("idpub", idc);
-                var form=$("#Posteditt")[0];
                 $.ajax({
                     type:"POST",
                     url:posturl,
-                    data:new FormData(form),
+                    data:formedit,
                     contentType:false,
                     processData:false,
                     cache:false,
@@ -1703,7 +1840,6 @@
 
             });
 
-
         }
         var divClone = $("#content").clone();
         $("#fermm").on("click",function(){$("#content").replaceWith(divClone.clone());});
@@ -1720,53 +1856,223 @@
                 processData: true,
                 success:function(data)
                 {   $("#idpost").val(idc);
-                    var imguser="/uploads/"+data['imguser'];
+                    var imguser="/template/img/avatar/"+data['imguser'];
                     var source="{{ asset('imguser') }}";
                     $('#usersh').attr("data-src",imguser);
                     var username=data['nameuser'];
                     $('#usernsh').html(username);
-                    var src1="/uploads/video/"+data['contenue'];
-                    var src2="/uploads/img/"+data['contenue'];
+                    var src1=data['contenue'];
                     $('#titlepubshare').html(data['titre']);
-                    if(data['type'].localeCompare("video")==0)
-                    {  $("#pp").append('     <video  id=vid" class="video-fluid" autoplay loop muted>\n' +
-                        '          <source src="" type="video/mp4" />\n' +
-                        '        </video>');
-                        document.getElementById('vid').src =src1;}
-                    else{
-                        $("#pp").append('<img id="img" src="" class="img-thumbnail" alt="contenue" width="304" height="236">');
-                        document.getElementById('img').src =src2;}
-
-                }
-
-
-
-            });
-            $("#formulaire").submit(function() {
-                let posturl = "{{ path('share') }}";
-                var form = $("#formulaire")[0];
-                $.ajax({
-                    type: "POST",
-                    url: posturl,
-                    data: new FormData(form),
-                    contentType: false,
-                    processData: false,
-                    cache: false,
-                    dataType: "json",
-                    error: function (err) {
-                        console.error(err);
-                    },
-                    success: function (data) {
-                        console.log(data);
-                    },
-                    complete: function () {
-                        console.log("Request finished.");
+                    if(data['type'].localeCompare("Mixed")==0)
+                    {   var samir=$("#content-post"+idc).clone();
+                        $("#pp").append(samir);
 
                     }
 
-                });
-            });}
 
+
+                }});
+        }
+        $("#formulaire").submit(function() {
+            let posturl = "{{ path('share') }}";
+            var form = $("#formulaire")[0];
+            $.ajax({
+                type: "POST",
+                url: posturl,
+                data: new FormData(form),
+                contentType: false,
+                processData: false,
+                cache: false,
+                dataType: "json",
+                error: function (err) {
+                    console.error(err);
+                },
+                success: function (data) {
+                    console.log(data);
+                },
+                complete: function () {
+                    console.log("Request finished.");
+
+                }
+
+            });
+        });
+        function addhahText(text) {
+            const chatContainer = document.createElement("div");
+            chatContainer.classList.add("chat-widget-speaker");
+            chatContainer.classList.add("left");
+            chatContainer.classList.add("chat-container");
+            const chatBox = document.createElement("p");
+            chatBox.classList.add("chat-widget-speaker-message");
+            chatBox.classList.add("voice2text");
+            const chatText = document.createTextNode(text);
+            chatBox.appendChild(chatText);
+            chatContainer.appendChild(chatBox);
+            return chatContainer;
+        }
+        $("#myBtn").on("click",function () {
+            var text= $("#chat-widget-message-text1").val();
+            var haha=addhahText(text);
+            var element = document.getElementById("container");
+            element.appendChild(haha);
+            botVoice(text);
+        })
+        function botVoice(message) {
+
+            const speech = new SpeechSynthesisUtterance();
+            speech.text="je n'arrive pas à vous comprendre"
+            var haha=addBotText(speech.text);
+            var coca=$(".voice").attr('data-id');
+            if (message.includes('salut')) {
+                speech.text = "salut, heureuse de te parler une autre fois!";
+                haha=addBotText(speech.text);
+            }
+            if (message.includes('ça va')) {
+                speech.text = "ça va bien et vous ";
+                haha=addBotText(speech.text);
+            }
+            if (message.includes('bien')) {
+                speech.text = "heureuse de savoir ça ,Comment je peux vous aider";
+                haha=addBotText(speech.text);
+            }
+            if (message.includes('vote')) {
+                speech.text = "VoiLa la publication qui a rempoté le plus de votes !";
+                haha=addBotText(speech.text);
+                var url = coca+"/yes";
+                $.ajax({
+                    type:"GET",
+                    url:url,
+                    dataType: "json",
+                    processData: true,
+                    success:function(data){
+                        var card=document.createElement("div");
+                        card.classList.add("card");
+                        card.style.width="170px";
+                        var img=document.createElement("img");
+                        img.classList.add("card-img-top");
+                        var card1=document.createElement("div");
+                        card1.classList.add("card-body");
+                        var h5=document.createElement("h5");
+                        h5.classList.add("card-title");
+                        h5.classList.add("mama");
+                        var p=document.createElement("p");
+                        p.classList.add("card-text");
+                        p.classList.add("details");
+                        var texte='Titre: '+data['titre']+"Nb Votes: " +data['Votes'];
+                        const info = document.createTextNode(texte);
+                        p.appendChild(info);
+                        card1.appendChild(h5);
+                        card1.appendChild(p);
+                        card.appendChild(img);
+                        card.appendChild(card1);
+                        img.src ='/uploads/img/'+data['contenue'];
+                        $('.mama').html('POST');
+                        haha.append(card);
+
+                    }
+                });}
+            if (message.includes('événement')) {
+                speech.text = "Voila Les evenement qui pourrait vous interesser ";
+                var haha=addBotText(speech.text);
+                var url = coca+"/evens";
+                $.ajax({
+                    type:"GET",
+                    url:url,
+                    dataType: "json",
+                    processData: true,
+                    success:function(data){
+                        if(data['cout']!=null)
+                        {
+                            var card=document.createElement("div");
+                            card.classList.add("card");
+                            card.style.width="170px";
+                            var img=document.createElement("img");
+                            img.classList.add("card-img-top");
+                            var card1=document.createElement("div");
+                            card1.classList.add("card-body");
+                            var h5=document.createElement("h5");
+                            h5.classList.add("card-title");
+                            h5.classList.add("mama");
+                            var p=document.createElement("p");
+                            p.classList.add("card-text");
+                            p.classList.add("details");
+                            var texte='date limite:' +data['datef']+"cout:" +data['cout'];
+                            const info = document.createTextNode(texte);
+                            p.appendChild(info);
+                            card1.appendChild(h5);
+                            card1.appendChild(p);
+                            card.appendChild(img);
+                            card.appendChild(card1);
+                            img.src ='template/img/cover/'+data['imgc'];
+                            haha.append(card);
+
+                        }
+                        else
+                        {
+                            var card=document.createElement("div");
+                            card.classList.add("card");
+                            card.style.width="170px";
+                            var img=document.createElement("img");
+                            img.classList.add("card-img-top");
+                            var card1=document.createElement("div");
+                            card1.classList.add("card-body");
+                            var h5=document.createElement("h5");
+                            h5.classList.add("card-title");
+                            h5.classList.add("mama");
+                            var p=document.createElement("p");
+                            p.classList.add("card-text");
+                            p.classList.add("details");
+                            var texte='Aucun evenement Disponible Pour le moments ';
+                            const info = document.createTextNode(texte);
+                            p.appendChild(info);
+                            card1.appendChild(h5);
+                            card1.appendChild(p);
+                            card.appendChild(img);
+                            card.appendChild(card1);
+                            img.src ='template/img/landing/404-bg.png';
+                            haha.append(card);
+                        }
+                    }
+
+                });
+            }
+            if (message.includes('Bonjour')) {
+                speech.text = "Bounjour, heureuse de te parler une autre fois!";
+                haha=addBotText(speech.text);
+            }
+
+
+            speech.volume = 1;
+            speech.rate = 1;
+            speech.pitch = 1;
+            window.speechSynthesis.speak(speech);
+            var element = document.getElementById("container");
+            element.appendChild(haha);
+        }
+        function addBotText(text) {
+            const chatContainer1 = document.createElement("div");
+            chatContainer1.classList.add("chat-widget-speaker");
+            chatContainer1.classList.add("right");
+            chatContainer1.classList.add("chat-container");
+            chatContainer1.classList.add("darker");
+            const chatBox1 = document.createElement("p");
+            chatBox1.classList.add("chat-widget-speaker-message");
+            chatBox1.classList.add("voice2text");
+            const chatText1 = document.createTextNode(text);
+            chatBox1.appendChild(chatText1);
+            chatContainer1.appendChild(chatBox1);
+            return chatContainer1;
+        }
+        function uploadnewfile()
+        {
+            $("#speeddial").trigger("click");
+        }
+        $("#closeedit").on("click",function () {
+            $("#Posteditt").replaceWith(divclone1234.clone().clone());
+        });
+        $("#closeedit2").on("click",function () {
+            $("#Posteditt").replaceWith(divclone1234.clone().clone());
+        })
 
 
     </script>
