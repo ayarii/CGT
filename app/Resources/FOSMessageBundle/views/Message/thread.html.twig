@@ -4,7 +4,7 @@
 
 
     <!-- CHAT WIDGET -->
-    <div class="chat-widget static">
+    <div style="width:2200px"  class="chat-widget static">
         <!-- CHAT WIDGET HEADER -->
         <div class="chat-widget-header">
             <!-- CHAT WIDGET SETTINGS -->
@@ -43,6 +43,14 @@
 
             <!-- USER STATUS -->
             <div class="user-status">
+                {% set img='' %}
+                {% set nom='' %}
+                {% for mm in thread.messages %}
+                    {% if mm.sender != app.user %}
+                    {% set img= mm.sender.imguser %}
+                    {% set nom= mm.sender.username %}
+                    {% endif %}
+                {% endfor %}
                 <!-- USER STATUS AVATAR -->
                 <div class="user-status-avatar">
                     <!-- USER AVATAR -->
@@ -50,7 +58,7 @@
                         <!-- USER AVATAR CONTENT -->
                         <div class="user-avatar-content">
                             <!-- HEXAGON -->
-                            <div class="hexagon-image-30-32" data-src="img/avatar/03.jpg"></div>
+                            <div class="hexagon-image-30-32" data-src="{{asset('uploads/'~img)}}"></div>
                             <!-- /HEXAGON -->
                         </div>
                         <!-- /USER AVATAR CONTENT -->
@@ -100,7 +108,7 @@
                 <!-- /USER STATUS AVATAR -->
 
                 <!-- USER STATUS TITLE -->
-                <p class="user-status-title"><span class="bold">Nick Grissom</span></p>
+                <p class="user-status-title"><span class="bold">{{ nom }}</span></p>
                 <!-- /USER STATUS TITLE -->
 
                 <!-- USER STATUS TAG -->
@@ -163,13 +171,16 @@
         <!-- /CHAT WIDGET CONVERSATION -->
         <form class="chat-widget-form" action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post" >
             {{ form_start(form)}}
+
+
+
             <!-- FORM ROW -->
             <div class="form-row split">
                 <!-- FORM ITEM -->
                 <div class="form-item">
                     <!-- INTERACTIVE INPUT -->
                     <div class="interactive-input small">
-                        {{ form_widget(form.body, {'attr':{'id':"chat-widget-message-text-2",'name':"chat-widget-message-text-2"}}) }}
+                        {{ form_widget(form.body, { 'attr': {'id': 'chat-widget-message-text-2', 'name' : 'chat-widget-message-text-2','placeholder' : 'Write a message...' } }) }}
                         <!-- INTERACTIVE INPUT ICON WRAP -->
                         <div class="interactive-input-icon-wrap actionable">
                             <!-- TOOLTIP WRAP -->
@@ -200,13 +211,18 @@
 
                 <!-- FORM ITEM -->
                 <div class="form-item auto-width">
-                    <input type="submit"  class="button primary padded"  >
+
+                    <button type="submit" class="button primary padded" title="Envoyer">
+                        <svg class="button-icon no-space icon-send-message">
+                            <use xlink:href="#svg-send-message"></use>
+                        </svg>
+                    </button>
                 </div>
                 <!-- /FORM ITEM -->
-
             </div>
             <!-- /FORM ROW -->
             {{ form_end(form)}}
+            <br><br>
         </form>
 
 </div>

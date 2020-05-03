@@ -1,75 +1,331 @@
-<table>
 
-    <thead>
-        <tr>
-            <th>{% trans from 'FOSMessageBundle' %}subject{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}starter{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}startdate{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}messages{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}last_message{% endtrans %}</th>
-            <th>{% trans from 'FOSMessageBundle' %}actions{% endtrans %}</th>
-        </tr>
-    </thead>
 
-    <tbody>
 
-    {% if threads %}
-        {% for thread in threads %}
-            <tr>
-                <td>
-                    <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}">
-                        {{ thread.subject }}
-                    </a>
 
-                    {% if not fos_message_is_read(thread) %}
-                        ({% trans from 'FOSMessageBundle' %}new{% endtrans %})
+
+
+<!-- CHAT WIDGET -->
+<div style="width:2200px" class="chat-widget static">
+
+
+    <!-- CHAT WIDGET MESSAGES -->
+    <div class="chat-widget-messages" data-simplebar>
+
+        {% if threads %}
+
+
+
+            {% for thread in threads %}
+
+
+
+                {% set img='' %}
+                {% set nom='' %}
+                {% for mm in thread.messages %}
+                    {% if mm.sender != app.user %}
+                        {% set img= mm.sender.imguser %}
+                        {% set nom= mm.sender.username %}
                     {% endif %}
-                </td>
-                <td>
-                    {{ thread.createdBy }}
-                </td>
-                <td>
-                    {{ thread.createdAt|date }}
-                </td>
-                <td>
-                    {{ thread.messages|length }}
-                </td>
-                <td>
-                    {% if thread.lastMessage %}
-                        <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}#message_{{ thread.lastMessage.id }}" title="{% trans from 'FOSMessageBundle' %}goto_last{% endtrans %}">
-                            →
+                {% endfor %}
+
+                {% if not fos_message_is_read(thread) %}
+
+
+                    <!-- CHAT WIDGET MESSAGE -->
+                    <div class="chat-widget-message active" href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}">
+
+
+
+                        <!-- USER STATUS -->
+                        <div class="user-status">
+                            <!-- USER STATUS AVATAR -->
+                            <div class="user-status-avatar">
+                                <!-- USER AVATAR -->
+                                <div class="user-avatar small no-outline">
+                                    <!-- USER AVATAR CONTENT -->
+                                    <div class="user-avatar-content">
+
+
+
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-image-30-32" data-src="{{asset('uploads/'~img)}}"></div>
+                                        <!-- /HEXAGON -->
+
+
+
+
+                                    </div>
+                                    <!-- /USER AVATAR CONTENT -->
+
+                                    <!-- USER AVATAR PROGRESS -->
+                                    <div class="user-avatar-progress">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-progress-40-44"></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR PROGRESS -->
+
+                                    <!-- USER AVATAR PROGRESS BORDER -->
+                                    <div class="user-avatar-progress-border">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-border-40-44"></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR PROGRESS BORDER -->
+
+                                    <!-- USER AVATAR BADGE -->
+                                    <div class="user-avatar-badge">
+                                        <!-- USER AVATAR BADGE BORDER -->
+                                        <div class="user-avatar-badge-border">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-22-24"></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR BADGE BORDER -->
+
+                                        <!-- USER AVATAR BADGE CONTENT -->
+                                        <div class="user-avatar-badge-content">
+                                            <!-- HEXAGON -->
+                                            <div class="hexagon-dark-16-18"></div>
+                                            <!-- /HEXAGON -->
+                                        </div>
+                                        <!-- /USER AVATAR BADGE CONTENT -->
+
+                                        <!-- USER AVATAR BADGE TEXT -->
+                                        <p class="user-avatar-badge-text">{{ thread.messages|length }}</p>
+                                        <!-- /USER AVATAR BADGE TEXT -->
+                                    </div>
+                                    <!-- /USER AVATAR BADGE -->
+                                </div>
+                                <!-- /USER AVATAR -->
+                            </div>
+                            <!-- /USER STATUS AVATAR -->
+
+
+
+                            <!-- USER STATUS TITLE -->
+                            <p class="user-status-title"><span class="bold">{{ nom }}</span></p>
+                            <!-- /USER STATUS TITLE -->
+
+
+
+
+                            <!-- USER STATUS TEXT -->
+                            <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}">
+                                <p class="user-status-text">{{ thread.lastMessage.body }}</p>
+                                <!-- /USER STATUS TEXT -->
+                            </a>
+
+
+                            {% if thread.lastMessage %}
+                                <!-- USER STATUS TIMESTAMP -->
+                                <p class="user-status-timestamp floaty">{{thread.lastMessage.createdAt|date}}</p>
+                                <!-- /USER STATUS TIMESTAMP -->
+                            {% else %}
+                                ----
+                            {% endif %}
+
+
+                        </div>
+                        <!-- /USER STATUS -->
+
+
+                    </div>
+                    <!-- /CHAT WIDGET MESSAGE -->
+
+                 {% else %}
+                <!-- CHAT WIDGET MESSAGE -->
+                     <!-- CHAT WIDGET SETTINGS -->
+                     <div class="chat-widget-settings">
+                         <!-- POST SETTINGS WRAP -->
+                         <div class="post-settings-wrap">
+                             <!-- POST SETTINGS -->
+                             <div class="post-settings widget-box-post-settings-dropdown-trigger">
+                                 <!-- POST SETTINGS ICON -->
+                                 <svg class="post-settings-icon icon-more-dots">
+                                     <use xlink:href="#svg-more-dots"></use>
+                                 </svg>
+                                 <!-- /POST SETTINGS ICON -->
+                             </div>
+                             <!-- /POST SETTINGS -->
+
+                             <!-- SIMPLE DROPDOWN -->
+                             <div class="simple-dropdown widget-box-post-settings-dropdown">
+
+
+                                 {% if fos_message_can_delete_thread(thread) %}
+                                     {% if fos_message_deleted_by_participant(thread) %}
+                                         {% set formAction %}{{ url('fos_message_thread_undelete', {'threadId': thread.id}) }}{% endset %}
+                                         {% set submitValue %}{% trans from 'FOSMessageBundle' %}undelete{% endtrans %}{% endset %}
+                                     {% else %}
+                                         {% set formAction %}{{ url('fos_message_thread_delete', {'threadId': thread.id}) }}{% endset %}
+                                         {% set submitValue %}{% trans from 'FOSMessageBundle' %}delete{% endtrans %}{% endset %}
+                                     {% endif %}
+                                     <form action="{{ formAction }}" method="post">
+
+                                         <div class="form-item auto-width">
+                                         <button type="submit" class="button primary padded" title="{{ submitValue }}">
+                                             <svg class="button-icon no-space icon-delete">
+                                                 <use xlink:href="#svg-delete"></use>
+                                             </svg>
+                                         </button>
+                                         </div>
+
+
+                                     </form>
+                                 {% endif %}
+
+
+                             </div>
+                             <!-- /SIMPLE DROPDOWN -->
+                         </div>
+                         <!-- /POST SETTINGS WRAP -->
+                     </div>
+                     <!-- CHAT WIDGET SETTINGS -->
+                <div class="chat-widget-message" href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}">
+
+
+
+                    <!-- USER STATUS -->
+                    <div class="user-status">
+                        <!-- USER STATUS AVATAR -->
+                        <div class="user-status-avatar">
+                            <!-- USER AVATAR -->
+                            <div class="user-avatar small no-outline">
+                                <!-- USER AVATAR CONTENT -->
+                                <div class="user-avatar-content">
+
+
+
+                                    <!-- HEXAGON -->
+                                    <div class="hexagon-image-30-32" data-src="{{asset('uploads/'~img)}}"></div>
+                                    <!-- /HEXAGON -->
+
+
+
+
+                                </div>
+                                <!-- /USER AVATAR CONTENT -->
+
+                                <!-- USER AVATAR PROGRESS -->
+                                <div class="user-avatar-progress">
+                                    <!-- HEXAGON -->
+                                    <div class="hexagon-progress-40-44"></div>
+                                    <!-- /HEXAGON -->
+                                </div>
+                                <!-- /USER AVATAR PROGRESS -->
+
+                                <!-- USER AVATAR PROGRESS BORDER -->
+                                <div class="user-avatar-progress-border">
+                                    <!-- HEXAGON -->
+                                    <div class="hexagon-border-40-44"></div>
+                                    <!-- /HEXAGON -->
+                                </div>
+                                <!-- /USER AVATAR PROGRESS BORDER -->
+
+                                <!-- USER AVATAR BADGE -->
+                                <div class="user-avatar-badge">
+                                    <!-- USER AVATAR BADGE BORDER -->
+                                    <div class="user-avatar-badge-border">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-22-24"></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR BADGE BORDER -->
+
+                                    <!-- USER AVATAR BADGE CONTENT -->
+                                    <div class="user-avatar-badge-content">
+                                        <!-- HEXAGON -->
+                                        <div class="hexagon-dark-16-18"></div>
+                                        <!-- /HEXAGON -->
+                                    </div>
+                                    <!-- /USER AVATAR BADGE CONTENT -->
+
+                                    <!-- USER AVATAR BADGE TEXT -->
+                                    <p class="user-avatar-badge-text">{{ thread.messages|length }}</p>
+                                    <!-- /USER AVATAR BADGE TEXT -->
+                                </div>
+                                <!-- /USER AVATAR BADGE -->
+                            </div>
+                            <!-- /USER AVATAR -->
+                        </div>
+                        <!-- /USER STATUS AVATAR -->
+
+
+
+                    <!-- USER STATUS TITLE -->
+                 <p class="user-status-title"><span class="bold">{{ nom }}</span></p>
+                    <!-- /USER STATUS TITLE -->
+
+
+
+
+                        <!-- USER STATUS TEXT -->
+                        <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}">
+                            <p class="user-status-text">{{ thread.lastMessage.body }}</p>
+                            <!-- /USER STATUS TEXT -->
                         </a>
-                        {% trans with {'%date%': thread.lastMessage.createdAt|date} from 'FOSMessageBundle' %}on{% endtrans %}
-                        <br />
-                        {% trans with {'%sender%': thread.lastMessage.sender|e } from 'FOSMessageBundle' %}by{% endtrans %}
-                    {% else %}
-                        ----
-                    {% endif %}
-                </td>
-                <td>
-                    {% if fos_message_can_delete_thread(thread) %}
-                        {% if fos_message_deleted_by_participant(thread) %}
-                            {% set formAction %}{{ url('fos_message_thread_undelete', {'threadId': thread.id}) }}{% endset %}
-                            {% set submitValue %}{% trans from 'FOSMessageBundle' %}undelete{% endtrans %}{% endset %}
+
+
+                        {% if thread.lastMessage %}
+                            <!-- USER STATUS TIMESTAMP -->
+                            <p class="user-status-timestamp floaty">{{thread.lastMessage.createdAt|date}}</p>
+                            <!-- /USER STATUS TIMESTAMP -->
                         {% else %}
-                            {% set formAction %}{{ url('fos_message_thread_delete', {'threadId': thread.id}) }}{% endset %}
-                            {% set submitValue %}{% trans from 'FOSMessageBundle' %}delete{% endtrans %}{% endset %}
+                            ----
                         {% endif %}
-                        <form action="{{ formAction }}" method="post">
-                                <input type="submit" value="{{ submitValue }}" />
-                        </form>
-                    {% endif %}
+
+
+
+
+                    </div>
+                    <!-- /USER STATUS -->
+
+
+
+                </div>
+                <!-- /CHAT WIDGET MESSAGE -->
+                {% endif %}
+
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="6">
+                    {% trans from 'FOSMessageBundle' %}no_thread{% endtrans %}.
                 </td>
             </tr>
-        {% endfor %}
-    {% else %}
-        <tr>
-            <td colspan="6">
-                {% trans from 'FOSMessageBundle' %}no_thread{% endtrans %}.
-            </td>
-        </tr>
-    {% endif %}
+        {% endif %}
 
-    </tbody>
+    </div>
+    <!-- /CHAT WIDGET MESSAGES -->
 
-</table>
+    <!-- CHAT WIDGET FORM -->
+    <form class="chat-widget-form">
+        <!-- INTERACTIVE INPUT -->
+        <div class="interactive-input small">
+            <input type="text" id="chat-widget-search-2" name="chat_widget_search_2" placeholder="Search Messages...">
+            <!-- INTERACTIVE INPUT ICON WRAP -->
+            <div class="interactive-input-icon-wrap">
+                <!-- INTERACTIVE INPUT ICON -->
+                <svg class="interactive-input-icon icon-magnifying-glass">
+                    <use xlink:href="#svg-magnifying-glass"></use>
+                </svg>
+                <!-- /INTERACTIVE INPUT ICON -->
+            </div>
+            <!-- /INTERACTIVE INPUT ICON WRAP -->
+
+            <!-- INTERACTIVE INPUT ACTION -->
+            <div class="interactive-input-action">
+                <!-- INTERACTIVE INPUT ACTION ICON -->
+                <svg class="interactive-input-action-icon icon-cross-thin">
+                    <use xlink:href="#svg-cross-thin"></use>
+                </svg>
+                <!-- /INTERACTIVE INPUT ACTION ICON -->
+            </div>
+            <!-- /INTERACTIVE INPUT ACTION -->
+        </div>
+        <!-- /INTERACTIVE INPUT -->
+    </form>
+    <!-- /CHAT WIDGET FORM -->
+</div>
+<!-- /CHAT WIDGET -->

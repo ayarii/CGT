@@ -275,6 +275,11 @@
 
                         <!-- SECTION HEADER ACTIONS -->
                         <div class="section-header-actions">
+
+                            <!-- SECTION HEADER ACTION -->
+                            <a href="{{ url('fos_message_thread_new' )}}"><p class="section-header-action">{% trans from 'FOSMessageBundle' %}new message{% endtrans %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></a>
+                            <!-- /SECTION HEADER ACTION -->
+
                             <!-- SECTION HEADER ACTION -->
                             <a href="{{ url('fos_message_inbox') }}"><p class="section-header-action">{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></a>
                             <!-- /SECTION HEADER ACTION -->
@@ -286,6 +291,8 @@
                             <!-- SECTION HEADER ACTION -->
                                     <a href="{{ url('fos_message_deleted') }}"><p class="section-header-action">{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></a>
                             <!-- /SECTION HEADER ACTION -->
+
+
 
 
                         </div>

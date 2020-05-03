@@ -2,17 +2,96 @@
 
 {% block fos_message_content %}
 
-<h2>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</h2>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<form action="{{ url('fos_message_thread_new') }}" method="post">
-    {{ form_widget(form) }}
 
 
-    <!-- FORM ITEM -->
-    <div class="form-item auto-width">
-        <input type="submit"  class="button primary padded"  >
+
+
+
+    <!-- WIDGET BOX -->
+    <div style="width:5000px" class="widget-box">
+        <!-- WIDGET BOX TITLE -->
+        <p class="widget-box-title">New message</p>
+        <!-- /WIDGET BOX TITLE -->
+
+        <!-- WIDGET BOX CONTENT -->
+        <div class="widget-box-content">
+
+
+            <!-- FORM -->
+            <form class="form" action="{{ url('fos_message_thread_new') }}" method="post" >
+
+                {{ form_start(form) }}
+
+                <!-- FORM ROW -->
+                <div class="form-row split">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input small ">
+                            <label for="profile-name">Recipient</label>
+
+                            {{ form_row(form.recipient, { 'attr': {'id': 'profile-tagline', 'name' : 'profile-tagline' } }) }}
+
+                        </div>
+                        <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM ITEM -->
+
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input small ">
+                            <label for="profile-tagline">Subject</label>
+                            {{ form_row(form.subject, { 'attr': {'id': 'profile-tagline', 'name' : 'profile-tagline' } }) }}
+
+                        </div>
+                        <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+
+                <!-- FORM ROW -->
+                <div class="form-row">
+                    <!-- FORM ITEM -->
+                    <div class="form-item">
+                        <!-- FORM INPUT -->
+                        <div class="form-input small mid-textarea ">
+                            <label for="profile-job-1-description">Body</label>
+                            {{ form_row(form.body, { 'attr': {'id': 'profile-job-2-description', 'name' : 'profile_job_2_description' } }) }}
+
+                        </div>
+                        <!-- /FORM INPUT -->
+                    </div>
+                    <!-- /FORM ITEM -->
+                </div>
+                <!-- /FORM ROW -->
+
+                <br><br>
+
+                <!-- FORM ITEM -->
+                <div class="form-item auto-width">
+
+                    <button type="submit" class="button primary padded" title="Envoyer">
+                        <svg class="button-icon no-space icon-send-message">
+                            <use xlink:href="#svg-send-message"></use>
+                        </svg>
+                        &nbsp;Envoyer
+                    </button>
+                </div>
+                <!-- /FORM ITEM -->
+
+
+
+
+                {{ form_end(form) }}
+            </form>
+            <!-- /FORM -->
+        </div>
+        <!-- WIDGET BOX CONTENT -->
     </div>
-    <!-- /FORM ITEM -->
-</form>
+    <!-- /WIDGET BOX -->
+
+
 
 {% endblock %}
