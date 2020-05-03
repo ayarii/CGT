@@ -94,30 +94,6 @@ class Media
     }
 
     /**
-     * Set photo
-     *
-     * @param string $photo
-     *
-     * @return Media
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Get photo
-     *
-     * @return string
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
-
-    /**
      * Set description
      *
      * @param string $description

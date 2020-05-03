@@ -84,4 +84,3 @@ Media_edit:
 Media_Delete:
     path:     /DeleteMedia/{id_media}
     defaults: {_controller: PublicationBundle:Media:DeleteMedia}
-

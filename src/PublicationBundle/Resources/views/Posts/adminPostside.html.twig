@@ -32,18 +32,52 @@
                             </ul>
                         </div>
                         <div class="body">
-                            {% if post.type == "img" %}
-                                <img class="img-responsive" alt="photo" width="304" height="236"src="{{ asset('/uploads/img/') ~ post.contenue }}" alt="photo-preview-10">
-                                <!-- /IFRAME WRAP -->
-                            {% elseif post.type == "video" %}
-                                <video class="video-fluid" width="304" height="236" src="{{ asset('/uploads/video/') ~ post.contenue }}" ></video>
-                            {% elseif post.type == "shared" %}
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="2017">
+                                    <div class="row clearfix">
+                                        {% for m in medias %}
+                                        {% if m.idpost.id==post.id %}
+                                        <div class="col-lg-3 col-md-4 col-sm-12">
+                                            <div class="card">
+                                                <div class="file">
+                                                    <a href="javascript:void(0);">
+                                                        <div class="hover">
+                                                            <a role="button" class="btn btn-icon btn-icon-mini btn-round btn-danger" href="{{ path('Media_Delete',{id_media:m.id}) }}">
+                                                                <i class="zmdi zmdi-delete"></i>
+                                                            </a>
+                                                        </div>
+                                                        <div class="icon">
+                                                            {% if m.mediatype=="image" %}
+                                                            <img src="{{ asset('uploads/Mixed/')~m.source }}"></img>
+                                                             {% else %}
+                                                              <video src="{{ asset('uploads/Mixed/')~m.source }}"   ></video>
+                                                             {% endif %}
+                                                        </div>
+                                                        <div class="file-name">
+                                                            <p class="m-b-5 text-muted">{{ m.source }}</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% if post.type=="shared" %}
+                                {% set popo=null %}
                                 {% set trv=0 %}
-                                {%for popo in posts  %}
-                                    {%if popo.id==post.contenue|number_format%}
+                                {% for po in posts %}
+                                    {% if post.contenue|number_format==po.id %}
                                         {% set trv=1 %}
+                                        {% set popo=po %}
+                                    {% endif %}
+                                {% endfor %}
+                                {% if trv==1 %}
+                                    <div class="card single_post">
                                         <div class="body">
-                                            <h3 class="m-t-0 m-b-5"><a href="blog-details.html">{{ popo.titre }}</a></h3>
+                                            <h3 class="m-t-0 m-b-5"><a href="#">{{ popo.titre }}</a></h3>
                                             <ul class="meta">
                                                 <li><a href="#"><i class="zmdi zmdi-account col-blue"></i>Posted By:{{ popo.idauthor.username }}</a></li>
                                                 <li><a href="#"><i class="zmdi zmdi-label col-red"></i>{{ popo.type }}</a></li>
@@ -51,31 +85,58 @@
                                             </ul>
                                         </div>
                                         <div class="body">
-                                        {% if popo.type == "img" %}
-                                         <img class="img-responsive" alt="photo" width="304" height="236"src="{{ asset('/uploads/img/') ~ popo.contenue }}" alt="photo-preview-10">
-                                    <!-- /IFRAME WRAP -->
-                                        {% elseif popo.type == "video" %}
-                                        <video class="video-fluid" width="304" height="236" src="{{ asset('/uploads/video/') ~ popo.contenue }}" ></video>
-                                       {% endif %}
-                                            <p>{{ popo.titre }}</p>
-                                            <a href="{{ path ('show_Admin_post',{id_post:popo.id}) }}" title="read more" class="btn btn-round btn-info">Read More</a>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="2017">
+                                                    <div class="row clearfix">
+                                                     {% for m in medias %}
+                                            {% if m.idpost.id==popo.id %}
+                                                <div class="col-lg-3 col-md-4 col-sm-12">
+                                                    <div class="card">
+                                                        <div class="file">
+                                                            <a href="javascript:void(0);">
+                                                                <div class="hover">
+                                                                    <a role="button" class="btn btn-icon btn-icon-mini btn-round btn-danger" href="{{ path('Media_Delete',{id_media:m.id}) }}">
+                                                                        <i class="zmdi zmdi-delete"></i>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="icon">
+                                                                    {% if m.mediatype=="image" %}
+                                                                        <img src="{{ asset('uploads/Mixed/')~m.source }}"></img>
+                                                                    {% else %}
+                                                                        <video src="{{ asset('uploads/Mixed/')~m.source }}"   ></video>
+                                                                    {% endif %}
+                                                                </div>
+                                                                <div class="file-name">
+                                                                    <p class="m-b-5 text-muted">{{ m.source }}</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        {% endif %}
-
-                                {% endfor %}
-                                {% if trv==0 %}
-                                    <div class="card text-white bg-danger mb-3" style="max-width: 18rem;" id="tfol-{{ post.id }}">
-                                        <div class="card-header">Not Available</div>
+                                    </div>
+                                {% else %}
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Alert:Not found
+                                        </div>
                                         <div class="card-body">
-                                            <h5 class="card-title">not found</h5>
-                                            <p class="card-text">this content isn't available !</p>
+                                            <blockquote class="blockquote mb-0">
+                                                <p>this post maybe could be deleted by its original owner  </p>
+                                                <footer class="blockquote-footer">QGT<cite title="Source Title"></cite></footer>
+                                            </blockquote>
                                         </div>
                                     </div>
                                 {% endif %}
-
-
-                        {% endif %}
-                                            <p>{{ post.titre }}</p>
+                            {% endif %}
+                                            {% if post.type=="Mixed" %}
+                                            <p>{{ post.contenue}}</p>
+                                            {% endif %}
                                             <a href="{{ path ('show_Admin_post',{id_post:post.id}) }}" title="read more" class="btn btn-round btn-info">Read More</a>
                                         </div>
                         </div>

@@ -248,18 +248,23 @@ class Post implements NotifiableInterface
      * @ORM\Column(name="comments_on_post", type="integer", options={"default" : 0})
      */
     private $nbcomments;
+
     private $medias;
     public function __construct()
     {
         $this->medias = new ArrayCollection();
     }
+
     public function getmedias()
     {
         return $this->medias;
     }
-    public function addmedia(Media $media)
-    {   $media->getIdpost($this);
-        $this->medias->add($media);
+    public function addmediasource( Media $media)
+    {
+
+            $media->setIdpost($this);
+            $this->medias->add($media);
+
     }
     public function removemedia(Media $media)
     {

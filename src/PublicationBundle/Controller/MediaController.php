@@ -14,7 +14,7 @@ class MediaController extends Controller
         $m=$em->getRepository('PublicationBundle:Media')->find($id_media);
         $em->remove($m);
         $em->flush();
-        return new \Symfony\Component\HttpFoundation\Response("");
+        return $this->redirectToRoute('publication_homepage');
     }
     function editMediaAction(Request $request,$id_media)
     {   $em=$this->getDoctrine()->getManager();

@@ -2,6 +2,7 @@
 
 namespace PublicationBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use PublicationBundle\Entity\Media;
 use PublicationBundle\Entity\Post;
 use PublicationBundle\Entity\reaction;
@@ -14,68 +15,15 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use CompetitionBundle\Entity\Competition;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class PostController extends Controller
 {
-    public function AjouterPostVIAction(Request $req)
-    {
-        $User=$this->getUser();
-        $post=new Post();
-        $post->setIdauthor($User);
-        $post->setDate(new \DateTime("now", new \DateTimeZone('+0100')));
-        $post->setReactionPost(0);
-        $post->setVotesPost(0);
-        $post->setNbcomments(0);
-        $form=$this->createForm(PostType::class,$post);
-        $form->add('contenue', FileType::class, [
-            'label' => 'Content(video, text, image)',
-            'mapped' => false,
-            'required' => false,
-            'constraints' => [
-                new \Symfony\Component\Validator\Constraints\File([
-                    'maxSize' => '1024M',
-                    'mimeTypesMessage' => 'Please upload a valid document',
-                ])
-            ],
-        ]);
-
-        $form->handleRequest($req);
-        $em=$this->getDoctrine()->getManager();
-        if($form->isSubmitted()&&$form->isValid())
-        {
-
-            $srcFile = $form->get('contenue')->getData();
-            if ($srcFile) {
-                $originalFilename = pathinfo($srcFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$srcFile->guessExtension();
-
-                try {
-                    $srcFile->move('uploads/' . $post->getType(), $newFilename);
-                } catch (FileException $e) {
-                    print $e->getMessage();
-                }
-                $post->setSrcPublication($newFilename);
-
-            }
-
-            $em->persist($post);
-            $em->flush();
-
-
-
-        }
-        $posts = $em->getRepository('PublicationBundle:Post')->findBy(array(), array('date'=>'DESC'));
-        $comments=$em->getRepository('PublicationBundle:commentaire')->findBy(array());
-        $reactions=$em->getRepository('PublicationBundle:reaction')->findBy(array());
-        $votes=$em->getRepository('PublicationBundle:Vote')->findBy(array());
-        return $this->render('@Publication/Posts/Acceuil.html.twig',array('user'=>$User,'posts'=>$posts,'comments'=>$comments,'reactions'=>$reactions,'form'=>$form->createView(),'votes'=>$votes));
-
-
-    }
     public function DeletePostAction($id_post,Request $request)
     {
         $user = $this->getUser() ;
@@ -185,7 +133,7 @@ class PostController extends Controller
         $reactions=$em->getRepository('PublicationBundle:reaction')->findBy(array());
         $votes=$em->getRepository('PublicationBundle:Vote')->findBy(array());
         $medias=$em->getRepository('PublicationBundle:Media')->findBy(array('idUser'=>$User->getId()));
-        return $this->render('@Publication/Posts/Acceuil.html.twig',array('medias'=>$medias,'user'=>$User,'posts'=>$posts,'comments'=>$comments,'reactions'=>$reactions,'votes'=>$votes));
+        return $this->render('@Publication/Posts/newsfeed.html.twig',array('medias'=>$medias,'user'=>$User,'posts'=>$posts,'comments'=>$comments,'reactions'=>$reactions,'votes'=>$votes));
     }
     public function VoteAction($id_post,Request $request,$slug )
     {
@@ -301,62 +249,17 @@ class PostController extends Controller
       else
          return new Response("");
   }
-    public function visitprofileAction(Request $req,$id_user)
-  {   $em=$this->getDoctrine()->getManager();
-      $utilisateur= $em->getRepository('FOSBundle:User')->find($id_user);
-      $User=$this->getUser();
-      $post=new Post();
-      $post->setIdauthor($User);
-      $post->setDate(new \DateTime("now", new \DateTimeZone('+0100')));
-      $post->setReactionPost(0);
-      $post->setVotesPost(0);
-      $post->setNbcomments(0);
-      $form=$this->createForm(PostType::class,$post);
-      $form->add('contenue', FileType::class, [
-          'label' => 'Content(video, text, image)',
-          'mapped' => false,
-          'required' => true,
-          'constraints' => [
-              new \Symfony\Component\Validator\Constraints\File([
-                  'maxSize' => '1024M',
-
-                  'mimeTypesMessage' => 'Please upload a valid document',
-              ])
-          ],
-      ]);
-
-      $form->handleRequest($req);
+    public function visitprofileAction($id_user)
+  {
       $em=$this->getDoctrine()->getManager();
-      if($form->isSubmitted()&&$form->isValid())
-      {
-
-          $srcFile = $form->get('contenue')->getData();
-          if ($srcFile) {
-              $originalFilename = pathinfo($srcFile->getClientOriginalName(), PATHINFO_FILENAME);
-              $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-              $newFilename = $safeFilename.'-'.uniqid().'.'.$srcFile->guessExtension();
-
-              try {
-                  $srcFile->move('uploads/' . $post->getType(), $newFilename);
-              } catch (FileException $e) {
-                  print $e->getMessage();
-              }
-              $post->setSrcPublication($newFilename);
-
-          }
-
-          $em->persist($post);
-          $em->flush();
-
-      }
-      $posts = $em->getRepository('PublicationBundle:Post')->findBy(array(), array('date'=>'DESC'));
+      $User=$this->getUser();
+      $utilisateur=$em->getRepository('FOSBundle:User')->findOneBy(array('id'=>$id_user));
+      $posts = $em->getRepository('PublicationBundle:Post')->findBy(array('idauthor'=>$id_user), array('date'=>'DESC'));
       $comments=$em->getRepository('PublicationBundle:commentaire')->findBy(array());
       $reactions=$em->getRepository('PublicationBundle:reaction')->findBy(array());
       $votes=$em->getRepository('PublicationBundle:Vote')->findBy(array());
-      return $this->render('@Publication/Posts/profile.html.twig',array('user'=>$User,'posts'=>$posts,'comments'=>$comments,'reactions'=>$reactions,'form'=>$form->createView(),'votes'=>$votes,'utilisateur'=>$utilisateur));
-
-
-
+      $medias=$em->getRepository('PublicationBundle:Media')->findBy(array('idUser'=>$id_user));
+      return $this->render('@Publication/Posts/profileview.html.twig',array('medias'=>$medias,'user'=>$User,'utilisateur'=>$utilisateur,'posts'=>$posts,'comments'=>$comments,'reactions'=>$reactions,'votes'=>$votes));
 
   }
     public function shareoneAction(Request $request,$id_post)
@@ -400,8 +303,9 @@ class PostController extends Controller
         $comments=$em->getRepository('PublicationBundle:commentaire')->findBy(array());
         $reactions=$em->getRepository('PublicationBundle:reaction')->findBy(array());
         $votes=$em->getRepository('PublicationBundle:Vote')->findby(array());
+        $medias=$em->getRepository('PublicationBundle:Media')->findBy(array('idpost'=>$id_post));
         if($post->getId()!=null)
-        return $this->render('@Publication/Posts/onepost.html.twig',array('post'=>$post,'comments'=>$comments,'reactions'=>$reactions,'votes'=>$votes,'posts'=>$posts));
+        return $this->render('@Publication/Posts/onepost.html.twig',array('medias'=>$medias,'post'=>$post,'comments'=>$comments,'reactions'=>$reactions,'votes'=>$votes,'posts'=>$posts));
         else
             return $this->redirectToRoute('publication_homepage');
 
@@ -412,8 +316,9 @@ class PostController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user=$this->getUser();
         $posts=$em->getRepository('PublicationBundle:Post')->findAll();
+        $medias=$em->getRepository('PublicationBundle:Media')->findAll();
         $top3=$em->getRepository('PublicationBundle:Post')->findBy(array(), array('votesPost'=>'DESC'), 3);
-        return $this->render('@Publication/Posts/adminPostside.html.twig',array('tp3'=>$top3,'user'=>$user,'posts'=>$posts));
+        return $this->render('@Publication/Posts/adminPostside.html.twig',array('tp3'=>$top3,'user'=>$user,'posts'=>$posts,'medias'=>$medias));
 
     }
     public function showPost1AdiminAction($id_post,Request $request)
@@ -425,9 +330,10 @@ class PostController extends Controller
         $comments=$em->getRepository('PublicationBundle:commentaire')->findBy(array());
         $reactions=$em->getRepository('PublicationBundle:reaction')->findBy(array());
         $votes=$em->getRepository('PublicationBundle:Vote')->findby(array());
+        $medias=$em->getRepository('PublicationBundle:Media')->findAll();
         $top3=$em->getRepository('PublicationBundle:Post')->findBy(array(), array('votesPost'=>'DESC'), 3);
         if($post->getId()!=null)
-            return $this->render('@Publication/Posts/view1postadmin.html.twig',array('tp3'=>$top3,'user'=>$user,'post'=>$post,'comments'=>$comments,'reactions'=>$reactions,'votes'=>$votes,'posts'=>$posts));
+            return $this->render('@Publication/Posts/view1postadmin.html.twig',array('medias'=>$medias,'tp3'=>$top3,'user'=>$user,'post'=>$post,'comments'=>$comments,'reactions'=>$reactions,'votes'=>$votes,'posts'=>$posts));
          else
              $this->redirectToRoute('show_Admin_posts');
 
@@ -443,6 +349,7 @@ class PostController extends Controller
             $em->getRepository('PublicationBundle:commentaire')->deletePostCommentaire($id_post);
             $em->getRepository('PublicationBundle:reaction')->removePostreaction($id_post);
             $em->getRepository('PublicationBundle:Vote')->removePostVote($id_post);
+            $em->getRepository('PublicationBundle:Media')->removePostmedia($id_post);
             $em->remove($publication);
             $em->flush();
         }
@@ -486,55 +393,57 @@ class PostController extends Controller
 
         // $medias=$req->request->get('mediacontainer');
         if($req->isXmlHttpRequest()){
-            $contenue = $req->request->get("contenudupub");
-            $titre = $req->request->get('titredupub');
-            $lenght=$req->request->get('number');
+        $contenue = $req->request->get("contenudupub");
+        $titre = $req->request->get('titredupub');
+        $lenght=$req->request->get('number');
 
-                for ($i = 0; $i < $lenght; $i++) {
-                    $srcFile= $req->files->get('file'.$i);
-                    if ($srcFile) {
-                        $originalFilename = pathinfo($srcFile->getClientOriginalName(), PATHINFO_FILENAME);
-                        $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-                        $newFilename = $safeFilename . '-' . uniqid() . '.' . $srcFile->guessExtension();
+        for ($i = 0; $i < $lenght; $i++) {
+            $srcFile= $req->files->get('file'.$i);
+            if ($srcFile) {
+                $originalFilename = pathinfo($srcFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $srcFile->guessExtension();
 
-                        try {
-                            $srcFile->move('uploads/' . $post->getType(), $newFilename);
-                        } catch (FileException $e) {
-                            print $e->getMessage();
-                        }
-                    $m = json_decode($req->request->get('media' . $i), true);
-                    $media = new Media();
-                    $media->setIdUser($User);
-                    $media->setType("post");
-                    $media->setMediatype($m['mediatype']);
-                    $media->setSource($newFilename);
-                    $post->addmedia($media);
-                    $media->setIdpost($post);
-                    $em->persist($media);
+                try {
+                    $srcFile->move('uploads/' . $post->getType(), $newFilename);
+                } catch (FileException $e) {
+                    print $e->getMessage();
                 }
+                $m = json_decode($req->request->get('media' . $i), true);
+                $media = new Media();
+                $media->setIdUser($User);
+                $media->setType("post");
+                $media->setMediatype($m['mediatype']);
+                $media->setSource($newFilename);
+                $post->addmedia($media);
+                $media->setIdpost($post);
+                $em->persist($media);
             }
-            /*     foreach ($medias as $m) {
-                     $media = new Media();
-                     $media->setIdUser($User);
-                     $media->setType("post");
-                     $media->setMediatype($m['mediatype']);
-
-                     $post->addmedia($media);
-                     $media->setIdpost($post);
-                     $em->persist($media);
-
-                     }*/
-
-            $post->setSrcPublication($contenue);
-            $post->setTitre($titre);
-            $em->persist($post);
-            $em->flush();
         }
+        /*     foreach ($medias as $m) {
+                 $media = new Media();
+                 $media->setIdUser($User);
+                 $media->setType("post");
+                 $media->setMediatype($m['mediatype']);
+
+                 $post->addmedia($media);
+                 $media->setIdpost($post);
+                 $em->persist($media);
+
+                 }*/
+
+        $post->setSrcPublication($contenue);
+        $post->setTitre($titre);
+        $em->persist($post);
+        $em->flush();
+    }
 
 
             return $this->redirectToRoute('publication_homepage');
 
     }
+
+
 }
 
 
