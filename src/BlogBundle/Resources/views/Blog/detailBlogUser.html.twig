@@ -466,10 +466,90 @@
 
                 <!-- POST OPTIONS -->
                 <div class="post-options">
+
                     <!-- POST OPTION WRAP -->
-                    <div class="post-option-wrap">
+                    <div class="post-option-wrap active">
                         <!-- POST OPTION -->
                         <div class="post-option reaction-options-dropdown-trigger">
+                            {% if Reactuser|length !=0 %}
+
+                                {% if Reactuser.type==1 %}
+
+                                    <!-- SIMPLE DROPDOWN TEXT -->
+                                   <img class="reaction" style="height: 23px;width: 23px" src="{{ asset('template/img/reaction/like.png') }}" alt="reaction-sad">
+                                    <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                <!-- POST OPTION TEXT -->
+                                <p class="post-option-text">&nbsp;&nbsp;&nbsp;&nbsp;Like</p>
+                                <!-- /POST OPTION TEXT -->
+                                {% elseif Reactuser.type==2 %}
+                                    <!-- SIMPLE DROPDOWN TEXT -->
+                                    <img class="reaction" style="height: 23px;width: 23px" src="{{ asset('template/img/reaction/love.png') }}" alt="reaction-sad">
+                                    <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                    <!-- POST OPTION TEXT -->
+                                    <p class="post-option-text">&nbsp;&nbsp;&nbsp;&nbsp;Love</p>
+                                    <!-- /POST OPTION TEXT -->
+
+                                {% elseif Reactuser.type==3 %}
+                                    <!-- SIMPLE DROPDOWN TEXT -->
+                                    <img class="reaction" style="height: 23px;width: 23px" src="{{ asset('template/img/reaction/dislike.png') }}" alt="reaction-sad">
+                                    <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                    <!-- POST OPTION TEXT -->
+                                    <p class="post-option-text">&nbsp;&nbsp;&nbsp;&nbsp;Dislike</p>
+                                    <!-- /POST OPTION TEXT -->
+
+
+
+
+                                    {% elseif Reactuser.type==4 %}
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <img class="reaction" style="height: 23px;width: 23px" src="{{ asset('template/img/reaction/solidaire.png') }}" alt="reaction-sad">
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- POST OPTION TEXT -->
+                                        <p class="post-option-text">&nbsp;&nbsp;&nbsp;&nbsp;Solidaire</p>
+                                        <!-- /POST OPTION TEXT -->
+
+                                    {% elseif Reactuser.type==5 %}
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <img class="reaction" style="height: 23px;width: 23px" src="{{ asset('template/img/reaction/funny.png') }}" alt="reaction-sad">
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- POST OPTION TEXT -->
+                                        <p class="post-option-text">&nbsp;&nbsp;&nbsp;&nbsp;Funny</p>
+                                        <!-- /POST OPTION TEXT -->
+
+                                    {% elseif Reactuser.type==6 %}
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <img class="reaction" style="height: 23px;width: 23px" src="{{ asset('template/img/reaction/wow.png') }}" alt="reaction-sad">
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- POST OPTION TEXT -->
+                                        <p class="post-option-text">&nbsp;&nbsp;&nbsp;&nbsp;Wow</p>
+                                        <!-- /POST OPTION TEXT -->
+
+                                    {% elseif Reactuser.type==7 %}
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <img class="reaction" style="height: 23px;width: 23px" src="{{ asset('template/img/reaction/angry.png') }}" alt="reaction-sad">
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- POST OPTION TEXT -->
+                                        <p class="post-option-text">&nbsp;&nbsp;&nbsp;&nbsp;Angry</p>
+                                        <!-- /POST OPTION TEXT -->
+
+                                    {% elseif Reactuser.type==8 %}
+                                        <!-- SIMPLE DROPDOWN TEXT -->
+                                        <img class="reaction" style="height: 23px;width: 23px" src="{{ asset('template/img/reaction/sad.png') }}" alt="reaction-sad">
+                                        <!-- /SIMPLE DROPDOWN TEXT -->
+
+                                        <!-- POST OPTION TEXT -->
+                                        <p class="post-option-text">&nbsp;&nbsp;&nbsp;&nbsp;Sad</p>
+                                        <!-- /POST OPTION TEXT -->
+                                        {% endif %}
+
+                            {% else %}
                             <!-- POST OPTION ICON -->
                             <svg class="post-option-icon icon-thumbs-up">
                                 <use xlink:href="#svg-thumbs-up"></use>
@@ -479,6 +559,7 @@
                             <!-- POST OPTION TEXT -->
                             <p class="post-option-text">React!</p>
                             <!-- /POST OPTION TEXT -->
+                            {% endif %}
                         </div>
                         <!-- /POST OPTION -->
 
@@ -690,8 +771,18 @@
                                         <!-- SIMPLE DROPDOWN -->
                                         <div class="simple-dropdown post-settings-dropdown">
                                             <a href="{{ path('suppComment', {'id':c.id,'id2':c.idArticle.id})  }}">
+
+
+
                                             <!-- SIMPLE DROPDOWN LINK -->
-                                            <p class="simple-dropdown-link">Supprimer</p>
+                                            <p class="simple-dropdown-link">
+                                                <!-- POST OPTION ICON -->
+                                                <svg class="post-option-icon icon-delete">
+                                                    <use xlink:href="#svg-delete"></use>
+                                                </svg>
+                                                <!-- /POST OPTION ICON -->
+
+                                               &nbsp; Supprimer</p>
                                             <!-- /SIMPLE DROPDOWN LINK -->
                                             </a>
                                         </div>

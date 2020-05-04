@@ -114,6 +114,7 @@ class ArticleController extends Controller
     public function detailBlogUserAction($id)
     {
         $em = $this ->getDoctrine()->getManager();
+        $user=$this->getUser();
         $React1= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('idblog'=>$id,'type'=>1));
         $React2= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('idblog'=>$id,'type'=>2));
         $React3= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('idblog'=>$id,'type'=>3));
@@ -122,6 +123,7 @@ class ArticleController extends Controller
         $React6= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('idblog'=>$id,'type'=>6));
         $React7= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('idblog'=>$id,'type'=>7));
         $React8= $em->getRepository("BlogBundle:ReactBlog")->findBy(array('idblog'=>$id,'type'=>8));
+        $Reactuser= $em->getRepository("BlogBundle:ReactBlog")->findOneBy(array('idblog'=>$id,'iduser'=>$user));
         $Article = $em->getRepository("BlogBundle:Article")->findOneBy(array('id'=>$id));
         $Comment = $em->getRepository("BlogBundle:Comment")->findBy(array('idArticle'=>$id));
         return $this->render('@Blog/Blog/detailBlogUser.html.twig', array( 'article'=>$Article,
@@ -134,6 +136,7 @@ class ArticleController extends Controller
             'React6'=>$React6,
             'React7'=>$React7,
             'React8'=>$React8,
+            'Reactuser'=>$Reactuser,
         ));
 
     }
