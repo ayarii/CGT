@@ -19,8 +19,102 @@
             </div>
             <!-- /SECTION BANNER -->
 
+
+            <!-- SECTION HEADER -->
+            <div class="section-header">
+                <!-- SECTION HEADER INFO -->
+                <div class="section-header-info">
+                    <!-- SECTION PRETITLE -->
+                    <p class="section-pretitle">Browse {{app.user.username}}'s</p>
+                    <!-- /SECTION PRETITLE -->
+
+                    <!-- SECTION TITLE -->
+                    <h2 class="section-title">Messages <span class="highlighted"></span></h2>
+                    <!-- /SECTION TITLE -->
+                </div>
+                <!-- /SECTION HEADER INFO -->
+            </div>
+            <!-- /SECTION HEADER -->
+
+
+            <!-- SECTION FILTERS BAR -->
+            <div class="section-filters-bar v1">
+                <!-- SECTION FILTERS BAR ACTIONS -->
+                <div class="section-filters-bar-actions">
+                    <!-- FORM -->
+                    <form class="form">
+                        <!-- FORM INPUT -->
+                        <div class="form-input small with-button">
+                            <label for="groups-search">Search Message</label>
+                            <input type="text" id="groups-search" name="groups_search">
+                            <!-- BUTTON -->
+                            <button class="button primary">
+                                <!-- ICON MAGNIFYING GLASS -->
+                                <svg class="icon-magnifying-glass">
+                                    <use xlink:href="#svg-magnifying-glass"></use>
+                                </svg>
+                                <!-- /ICON MAGNIFYING GLASS -->
+                            </button>
+                            <!-- /BUTTON -->
+                        </div>
+                        <!-- /FORM INPUT -->
+
+
+                    </form>
+                    <!-- /FORM -->
+
+                    <!-- FILTER TABS -->
+                    <div class="filter-tabs">
+
+                        <!-- FILTER TAB -->
+                        <div class="filter-tab ">
+
+                            <!-- SECTION HEADER ACTION -->
+                            <a href="{{ url('fos_message_thread_new' )}}"><p class="filter-tab-text">{% trans from 'FOSMessageBundle' %}new message{% endtrans %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></a>
+                            <!-- /SECTION HEADER ACTION -->
+                        </div>
+                        <!-- /FILTER TAB -->
+
+                        <!-- FILTER TAB -->
+                        <div class="filter-tab">
+
+                            <!-- SECTION HEADER ACTION -->
+                            <a href="{{ url('fos_message_inbox') }}"><p class="filter-tab-text">{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></a>
+                            <!-- /SECTION HEADER ACTION -->
+                        </div>
+                        <!-- /FILTER TAB -->
+
+                        <!-- FILTER TAB -->
+                        <div class="filter-tab">
+
+                            <!-- SECTION HEADER ACTION -->
+                            <a href="{{ url('fos_message_sent') }}"><p class="filter-tab-text">{% trans from 'FOSMessageBundle' %}sent{% endtrans %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></a>
+                            <!-- /SECTION HEADER ACTION -->
+                        </div>
+                        <!-- /FILTER TAB -->
+
+                        <!-- FILTER TAB -->
+                        <div class="filter-tab">
+
+                            <!-- SECTION HEADER ACTION -->
+                            <a href="{{ url('fos_message_deleted') }}"><p class="filter-tab-text">{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></a>
+                            <!-- /SECTION HEADER ACTION -->
+                        </div>
+                        <!-- /FILTER TAB -->
+                    </div>
+                    <!-- /FILTER TABS -->
+                </div>
+                <!-- /SECTION FILTERS BAR ACTIONS -->
+
+
+            </div>
+            <!-- /SECTION FILTERS BAR -->
+
             <!-- GRID -->
             <div class="grid grid-3-9 medium-space">
+
+
+
                 <!-- GRID COLUMN -->
                 <div class="account-hub-sidebar">
                     <!-- SIDEBAR BOX -->
@@ -259,46 +353,14 @@
 
                 <!-- GRID COLUMN -->
                 <div class="account-hub-content">
-                    <!-- SECTION HEADER -->
-                    <div class="section-header">
-                        <!-- SECTION HEADER INFO -->
-                        <div class="section-header-info">
-                            <!-- SECTION PRETITLE -->
-                            <p class="section-pretitle">My Profile</p>
-                            <!-- /SECTION PRETITLE -->
-
-                            <!-- SECTION TITLE -->
-                            <h2 class="section-title">Messages</h2>
-                            <!-- /SECTION TITLE -->
-                        </div>
-                        <!-- /SECTION HEADER INFO -->
-
-                        <!-- SECTION HEADER ACTIONS -->
-                        <div class="section-header-actions">
-
-                            <!-- SECTION HEADER ACTION -->
-                            <a href="{{ url('fos_message_thread_new' )}}"><p class="section-header-action">{% trans from 'FOSMessageBundle' %}new message{% endtrans %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></a>
-                            <!-- /SECTION HEADER ACTION -->
-
-                            <!-- SECTION HEADER ACTION -->
-                            <a href="{{ url('fos_message_inbox') }}"><p class="section-header-action">{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></a>
-                            <!-- /SECTION HEADER ACTION -->
-
-                            <!-- SECTION HEADER ACTION -->
-                                <a href="{{ url('fos_message_sent') }}"><p class="section-header-action">{% trans from 'FOSMessageBundle' %}sent{% endtrans %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></a>
-                            <!-- /SECTION HEADER ACTION -->
-
-                            <!-- SECTION HEADER ACTION -->
-                                    <a href="{{ url('fos_message_deleted') }}"><p class="section-header-action">{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></a>
-                            <!-- /SECTION HEADER ACTION -->
 
 
 
 
-                        </div>
-                        <!-- /SECTION HEADER ACTIONS -->
-                    </div>
-                    <!-- /SECTION HEADER -->
+
+
+
+
 
 
 
