@@ -3,6 +3,7 @@
 namespace BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Mgilet\NotificationBundle\NotifiableInterface;
 
 /**
  * Comment
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="BlogBundle\Repository\CommentRepository")
  */
-class Comment
+class Comment implements NotifiableInterface
 {
     /**
      * @var int

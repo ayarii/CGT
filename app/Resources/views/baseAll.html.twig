@@ -905,6 +905,8 @@
 
                 <!-- ACTION LIST ITEM WRAP -->
                 <div class="action-list-item-wrap">
+
+                    {% if  mgilet_notification_unseen_count(app.user)  != 0 %}
                     <!-- ACTION LIST ITEM -->
                     <div class="action-list-item unread header-dropdown-trigger">
                         <!-- ACTION LIST ITEM ICON -->
@@ -915,120 +917,22 @@
                     </div>
                     <!-- /ACTION LIST ITEM -->
 
-                    <!-- DROPDOWN BOX -->
-                    <div class="dropdown-box header-dropdown">
-                        <!-- DROPDOWN BOX HEADER -->
-                        <div class="dropdown-box-header">
-                            <!-- DROPDOWN BOX HEADER TITLE -->
-                            <p class="dropdown-box-header-title">Notifications</p>
-                            <!-- /DROPDOWN BOX HEADER TITLE -->
+                    {{ mgilet_notification_render(app.user) }}
+                    {% else %}
 
-                            <!-- DROPDOWN BOX HEADER ACTIONS -->
-                            <div class="dropdown-box-header-actions">
-                                <!-- DROPDOWN BOX HEADER ACTION -->
-                                <p class="dropdown-box-header-action">Mark all as Read</p>
-                                <!-- /DROPDOWN BOX HEADER ACTION -->
-
-                                <!-- DROPDOWN BOX HEADER ACTION -->
-                                <p class="dropdown-box-header-action">Settings</p>
-                                <!-- /DROPDOWN BOX HEADER ACTION -->
-                            </div>
-                            <!-- /DROPDOWN BOX HEADER ACTIONS -->
+                        <!-- ACTION LIST ITEM -->
+                        <div class="action-list-item read header-dropdown-trigger">
+                            <!-- ACTION LIST ITEM ICON -->
+                            <svg class="action-list-item-icon icon-notification">
+                                <use xlink:href="#svg-notification"></use>
+                            </svg>
+                            <!-- /ACTION LIST ITEM ICON -->
                         </div>
-                        <!-- /DROPDOWN BOX HEADER -->
+                        <!-- /ACTION LIST ITEM -->
 
-                        <!-- DROPDOWN BOX LIST -->
-                        <div class="dropdown-box-list" data-simplebar>
-                            <!-- DROPDOWN BOX LIST ITEM -->
-                            <div class="dropdown-box-list-item unread">
-                                <!-- USER STATUS -->
-                                <div class="user-status notification">
-                                    <!-- USER STATUS AVATAR -->
-                                    <a class="user-status-avatar" href="#">
-                                        <!-- USER AVATAR -->
-                                        <div class="user-avatar small no-outline">
-                                            <!-- USER AVATAR CONTENT -->
-                                            <div class="user-avatar-content">
-                                                <!-- HEXAGON -->
-                                                <div class="hexagon-image-30-32" data-src="#"></div>
-                                                <!-- /HEXAGON -->
-                                            </div>
-                                            <!-- /USER AVATAR CONTENT -->
+                        {{ mgilet_notification_render(app.user) }}
 
-                                            <!-- USER AVATAR PROGRESS -->
-                                            <div class="user-avatar-progress">
-                                                <!-- HEXAGON -->
-                                                <div class="hexagon-progress-40-44"></div>
-                                                <!-- /HEXAGON -->
-                                            </div>
-                                            <!-- /USER AVATAR PROGRESS -->
-
-                                            <!-- USER AVATAR PROGRESS BORDER -->
-                                            <div class="user-avatar-progress-border">
-                                                <!-- HEXAGON -->
-                                                <div class="hexagon-border-40-44"></div>
-                                                <!-- /HEXAGON -->
-                                            </div>
-                                            <!-- /USER AVATAR PROGRESS BORDER -->
-
-                                            <!-- USER AVATAR BADGE -->
-                                            <div class="user-avatar-badge">
-                                                <!-- USER AVATAR BADGE BORDER -->
-                                                <div class="user-avatar-badge-border">
-                                                    <!-- HEXAGON -->
-                                                    <div class="hexagon-22-24"></div>
-                                                    <!-- /HEXAGON -->
-                                                </div>
-                                                <!-- /USER AVATAR BADGE BORDER -->
-
-                                                <!-- USER AVATAR BADGE CONTENT -->
-                                                <div class="user-avatar-badge-content">
-                                                    <!-- HEXAGON -->
-                                                    <div class="hexagon-dark-16-18"></div>
-                                                    <!-- /HEXAGON -->
-                                                </div>
-                                                <!-- /USER AVATAR BADGE CONTENT -->
-
-                                                <!-- USER AVATAR BADGE TEXT -->
-                                                <p class="user-avatar-badge-text">16</p>
-                                                <!-- /USER AVATAR BADGE TEXT -->
-                                            </div>
-                                            <!-- /USER AVATAR BADGE -->
-                                        </div>
-                                        <!-- /USER AVATAR -->
-                                    </a>
-                                    <!-- /USER STATUS AVATAR -->
-
-                                    <!-- USER STATUS TITLE -->
-                                    <p class="user-status-title"><a class="bold" href="#">Nick Grissom</a> posted a comment on your <a class="highlighted" href="#">status update</a></p>
-                                    <!-- /USER STATUS TITLE -->
-
-                                    <!-- USER STATUS TIMESTAMP -->
-                                    <p class="user-status-timestamp">2 minutes ago</p>
-                                    <!-- /USER STATUS TIMESTAMP -->
-
-                                    <!-- USER STATUS ICON -->
-                                    <div class="user-status-icon">
-                                        <!-- ICON COMMENT -->
-                                        <svg class="icon-comment">
-                                            <use xlink:href="#svg-comment"></use>
-                                        </svg>
-                                        <!-- /ICON COMMENT -->
-                                    </div>
-                                    <!-- /USER STATUS ICON -->
-                                </div>
-                                <!-- /USER STATUS -->
-                            </div>
-                            <!-- /DROPDOWN BOX LIST ITEM -->
-
-                        </div>
-                        <!-- /DROPDOWN BOX LIST -->
-
-                        <!-- DROPDOWN BOX BUTTON -->
-                        <a class="dropdown-box-button secondary" href="#">View all Notifications</a>
-                        <!-- /DROPDOWN BOX BUTTON -->
-                    </div>
-                    <!-- /DROPDOWN BOX -->
+                    {% endif %}
                 </div>
                 <!-- /ACTION LIST ITEM WRAP -->
             </div>

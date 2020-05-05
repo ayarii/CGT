@@ -26,6 +26,11 @@ class ParticipationController extends Controller
         $Participation->setIdcompetition($idc);
         $Participation->setIduser($user);
 
+        $manager2 = $this->get('mgilet.notification');
+        $notif=$manager2->createNotification( $user->getImguser() ,$user->getUsername().' a participé dans votre compétitions','/detailuser/'.$id);
+        $manager2->addNotification(array($Participation->getIdcompetition()->getIduser()), $notif, true);
+
+
         $em->persist($Participation);
         $em->flush();
         // $message = new \DocDocDoc\NexmoBundle\Message\Simple("Tunisian GT", "21623422387", "Participation avec succée je vous souhaite la bienvenue  :) ");

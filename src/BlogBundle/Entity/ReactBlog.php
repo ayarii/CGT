@@ -3,6 +3,7 @@
 namespace BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Mgilet\NotificationBundle\NotifiableInterface;
 
 /**
  * ReactBlog
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="react_blog")
  * @ORM\Entity(repositoryClass="BlogBundle\Repository\ReactBlogRepository")
  */
-class ReactBlog
+class ReactBlog implements NotifiableInterface
 {
     /**
      * @var int

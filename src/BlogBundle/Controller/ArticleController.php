@@ -208,20 +208,50 @@ class ArticleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user=$this->getUser();
+        $userManager = $this->get('fos_user.user_manager');
+        $userall = $userManager->findUsers();
         $Article = $em->getRepository("BlogBundle:Article")->find($id);
         $Exist= $em->getRepository("BlogBundle:ReactBlog")->findOneBy(array('iduser'=>$user,'idblog'=>$id));
         if($Exist)
         {
+
+
+
             $Exist->setType($type);
+
+            $manager2 = $this->get('mgilet.notification');
+            $notif=$manager2->createNotification($Exist->getIduser()->getImguser() ,$Exist->getType(),'/detailBlogUser/'.$id);
+
+
+            foreach ($userall as $u)
+            {
+                if ($u->getId()!=$user->getId())
+                {
+                    $manager2->addNotification(array($u), $notif, true);
+                }
+
+            }
+
             $em->persist($Exist);
             $em->flush();
         }
         else
         {
+
+
             $React = new ReactBlog();
             $React->setIduser($user);
             $React->setIdblog($Article);
             $React->setType($type);
+
+
+            $manager2 = $this->get('mgilet.notification');
+            $notif=$manager2->createNotification($React->getIduser() ,$React->getType(),$React->getIduser()->getImguser());
+
+            foreach ($userall as $u)
+            {
+                $manager2->addNotification(array($u), $notif, true);
+            }
 
             $em->persist($React);
             $em->flush();

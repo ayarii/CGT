@@ -14,6 +14,10 @@ class CommentController extends Controller
     {
         $user=$this->getUser();
         $Comment= new Comment();
+
+        $userManager = $this->get('fos_user.user_manager');
+        $userall = $userManager->findUsers();
+
         $em = $this->getDoctrine()->getManager();
         $Article= $em->getRepository('BlogBundle:Article')->find($id);
         $Comment->setDatecreation(new \DateTime("now", new \DateTimeZone('+0100')));
@@ -23,7 +27,19 @@ class CommentController extends Controller
         $Comment->setText($text);
 
 
+        $manager2 = $this->get('mgilet.notification');
+        $notif=$manager2->createNotification($Comment->getIduser()->getImguser() ,$Comment->getIduser().' posted a comment on a Blog','/detailBlogUser/'.$id);
 
+
+
+
+        foreach ($userall as $u)
+        {
+            if ($u->getId()!=$user->getId())
+            {
+                $manager2->addNotification(array($u), $notif, true);
+            }
+        }
 
 
             $em->persist($Comment);

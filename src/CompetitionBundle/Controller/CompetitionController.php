@@ -71,6 +71,22 @@ class CompetitionController extends Controller
 
 
 
+            $userManager = $this->get('fos_user.user_manager');
+            $userall = $userManager->findUsers();
+
+            $manager2 = $this->get('mgilet.notification');
+
+            $notif=$manager2->createNotification($Competition->getIduser()->getImguser() ,$Competition->getIduser().'a ajouté une nouvelle Competition intitulé '.$Competition->getTitre(),'/affichercompetitionUser');
+
+
+            foreach ($userall as $u)
+            {
+                if ($u->getId()!=$user->getId())
+                {
+                    $manager2->addNotification(array($u), $notif, true);
+                }
+
+            }
 
             //  return $this->redirectToRoute('evenement_show', array('id_evenement' => $evenement->getId_evenement()));
             $this->get('session')->getFlashBag()->add('succes'," Ajout d'une nouvelle Competition avec succées !!!");

@@ -3,6 +3,8 @@
 namespace BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Mgilet\NotificationBundle\Annotation\Notifiable;
+use Mgilet\NotificationBundle\NotifiableInterface;
 
 /**
  * Article
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="BlogBundle\Repository\ArticleRepository")
  */
-class Article
+class Article implements NotifiableInterface
 {
     /**
      * @var int

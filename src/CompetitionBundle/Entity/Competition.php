@@ -5,6 +5,8 @@ namespace CompetitionBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert ;
+use Mgilet\NotificationBundle\Annotation\Notifiable;
+use Mgilet\NotificationBundle\NotifiableInterface;
 
 /**
  * Competition
@@ -12,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert ;
  * @ORM\Table(name="competition", indexes={@ORM\Index(name="FK_AB55E24F5E5C27E9", columns={"idUser"})})
  * @ORM\Entity(repositoryClass="CompetitionBundle\Repository\CompetitionRepository")
  */
-class Competition
+class Competition implements NotifiableInterface
 {
     /**
      * @var integer
