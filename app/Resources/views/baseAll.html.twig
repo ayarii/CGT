@@ -917,7 +917,27 @@
                     </div>
                     <!-- /ACTION LIST ITEM -->
 
-                    {{ mgilet_notification_render(app.user) }}
+                    <!-- DROPDOWN BOX -->
+                        <div class="dropdown-box header-dropdown">
+                            <!-- DROPDOWN BOX HEADER -->
+                            <div class="dropdown-box-header">
+                                <!-- DROPDOWN BOX HEADER TITLE -->
+                                <p class="dropdown-box-header-title">Notifications  <a class="highlighted" href="#">{{ mgilet_notification_count(app.user) }}</a> </p>
+                                <!-- /DROPDOWN BOX HEADER TITLE -->
+
+
+                            </div>
+                            <!-- /DROPDOWN BOX HEADER -->
+
+                            {{ mgilet_notification_render(app.user) }}
+
+                            <!-- DROPDOWN BOX BUTTON -->
+                            <a class="dropdown-box-button secondary" href="{{ path('notification') }}">View all Notifications</a>
+                            <!-- /DROPDOWN BOX BUTTON -->
+
+
+                        </div>
+                        <!-- /DROPDOWN BOX -->
                     {% else %}
 
                         <!-- ACTION LIST ITEM -->
@@ -930,7 +950,33 @@
                         </div>
                         <!-- /ACTION LIST ITEM -->
 
+
+                        <!-- DROPDOWN BOX -->
+                        <div class="dropdown-box header-dropdown">
+                            <!-- DROPDOWN BOX HEADER -->
+                            <div class="dropdown-box-header">
+                                <!-- DROPDOWN BOX HEADER TITLE -->
+                                <p class="dropdown-box-header-title">Notifications  <a class="highlighted" href="#">{{ mgilet_notification_count(app.user) }}</a> </p>
+                                <!-- /DROPDOWN BOX HEADER TITLE -->
+
+
+                            </div>
+                            <!-- /DROPDOWN BOX HEADER -->
+
                         {{ mgilet_notification_render(app.user) }}
+
+                            <!-- DROPDOWN BOX BUTTON -->
+                            <a class="dropdown-box-button secondary" href="{{ path('notification') }}">View all Notifications</a>
+                            <!-- /DROPDOWN BOX BUTTON -->
+
+
+                        </div>
+                        <!-- /DROPDOWN BOX -->
+
+
+
+
+
 
                     {% endif %}
                 </div>
@@ -1015,7 +1061,7 @@
                     <!-- /DROPDOWN NAVIGATION LINK -->
 
                     <!-- DROPDOWN NAVIGATION LINK -->
-                    <a class="dropdown-navigation-link" href="#">Notifications</a>
+                    <a class="dropdown-navigation-link" href="{{ path('notification') }}">Notifications</a>
                     <!-- /DROPDOWN NAVIGATION LINK -->
 
                     <!-- DROPDOWN NAVIGATION LINK -->

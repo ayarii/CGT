@@ -5,11 +5,20 @@ namespace BlogBundle\Controller;
 use BlogBundle\Entity\Article;
 use BlogBundle\Entity\ReactBlog;
 use BlogBundle\Form\ArticleType;
+use Mgilet\NotificationBundle\MgiletNotificationBundle;
+use Mgilet\NotificationBundle\NotifiableInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Mgilet\NotificationBundle\Entity\Notification;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Mgilet\NotificationBundle\Entity;
+
+
 
 class ArticleController extends Controller
 {
@@ -246,11 +255,15 @@ class ArticleController extends Controller
 
 
             $manager2 = $this->get('mgilet.notification');
-            $notif=$manager2->createNotification($React->getIduser() ,$React->getType(),$React->getIduser()->getImguser());
+            $notif=$manager2->createNotification($React->getIduser()->getImguser() ,$React->getType(),'/detailBlogUser/'.$id);
+
 
             foreach ($userall as $u)
             {
-                $manager2->addNotification(array($u), $notif, true);
+                if ($u->getId()!=$user->getId())
+                {
+                    $manager2->addNotification(array($u), $notif, true);
+                }
             }
 
             $em->persist($React);
@@ -260,6 +273,17 @@ class ArticleController extends Controller
 
         return $this->redirectToRoute('detailBlogUser',array('id'=>$id));
     }
+
+    public function notiAction()
+    {
+        return $this->render('@MgiletNotification/notifications.html.twig');
+
+    }
+
+
+
+
+
 
 
 

@@ -27,7 +27,7 @@ class ParticipationController extends Controller
         $Participation->setIduser($user);
 
         $manager2 = $this->get('mgilet.notification');
-        $notif=$manager2->createNotification( $user->getImguser() ,$user->getUsername().' a participé dans votre compétitions','/detailuser/'.$id);
+        $notif=$manager2->createNotification( $user->getImguser() ,$user->getUsername().' '.' a participé dans votre compétitions','/detailuser/'.$id);
         $manager2->addNotification(array($Participation->getIdcompetition()->getIduser()), $notif, true);
 
 

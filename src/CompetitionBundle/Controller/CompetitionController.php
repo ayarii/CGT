@@ -262,6 +262,12 @@ class CompetitionController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $Competition = $em->getRepository("CompetitionBundle:Competition")->find($id);
+
+        $manager2 = $this->get('mgilet.notification');
+        $notif=$manager2->createNotification($Competition->getIduser()->getImguser() ,' Administrateur a supprimé votre Competition < '.$Competition->getTitre().' > pour des raisons du sécurité','/affichercompetitionUser');
+
+                $manager2->addNotification(array($Competition->getIduser()), $notif, true);
+
         $em->remove($Competition);
         $em->flush();
         return $this->redirectToRoute('affichercompetitionAdmin');

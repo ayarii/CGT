@@ -40,4 +40,8 @@ addReact:
     path:     /addReact/{id}/{type}
     defaults: { _controller: BlogBundle:Article:AddReact }
 
+notification:
+    path:     /notification
+    defaults: { _controller: BlogBundle:Article:noti }
+
 

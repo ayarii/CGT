@@ -28,7 +28,7 @@ class CommentController extends Controller
 
 
         $manager2 = $this->get('mgilet.notification');
-        $notif=$manager2->createNotification($Comment->getIduser()->getImguser() ,$Comment->getIduser().' posted a comment on a Blog','/detailBlogUser/'.$id);
+        $notif=$manager2->createNotification($Comment->getIduser()->getImguser() ,' '.$Comment->getIduser().'  posted a comment on a Blog','/detailBlogUser/'.$id);
 
 
 
